@@ -43,7 +43,7 @@ jobs:
         run: mandoc -Tlint -Werror man/elite_ringbuffer.3 man/eliteipc.7
       - name: Preserve logs, including failed lanes
         if: always()
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: ubuntu-${{ matrix.lane }}-${{ matrix.cc }}-${{ github.run_attempt }}
           path: build/ci-evidence
@@ -78,7 +78,7 @@ jobs:
           brew install --build-from-source eliteipc/ci/elite-ringbuffer
           brew test eliteipc/ci/elite-ringbuffer
       - if: always()
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: macos-arm64-${{ github.run_attempt }}
           path: build/ci-evidence
@@ -112,7 +112,7 @@ jobs:
             python3.13 ci/run_lane.py --lane freebsd --cc cc --out build/ci-evidence
             mandoc -Tlint -Werror man/elite_ringbuffer.3 man/eliteipc.7
       - if: always()
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: freebsd-14.4-${{ github.run_attempt }}
           path: build/ci-evidence

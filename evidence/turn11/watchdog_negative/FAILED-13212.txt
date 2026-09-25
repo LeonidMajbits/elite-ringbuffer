@@ -1,0 +1,5 @@
+HARNESS_FAILED
+benchmarks/bench_cache.c:41
+!bench_cancelled() && bench_watch_ns()<w->deadline
+errno=0
+No complete-run success or loss count is certified.

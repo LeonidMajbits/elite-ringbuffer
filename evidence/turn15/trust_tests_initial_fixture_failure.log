@@ -1,0 +1,311 @@
+test_bool_integer_substitution (__main__.CapsuleTests.test_bool_integer_substitution) ... ERROR
+test_capsule_modified_rate_claim (__main__.CapsuleTests.test_capsule_modified_rate_claim) ... ERROR
+test_changed_member (__main__.CapsuleTests.test_changed_member) ... ERROR
+test_cli_optimized_rejects (__main__.CapsuleTests.test_cli_optimized_rejects) ... ERROR
+test_deterministic_pack (__main__.CapsuleTests.test_deterministic_pack) ... ERROR
+test_duplicate_archive_member (__main__.CapsuleTests.test_duplicate_archive_member) ... ERROR
+test_duplicate_json (__main__.CapsuleTests.test_duplicate_json) ... ERROR
+test_escape (__main__.CapsuleTests.test_escape) ... ERROR
+test_generated_file (__main__.CapsuleTests.test_generated_file) ... ERROR
+test_missing_member (__main__.CapsuleTests.test_missing_member) ... ERROR
+test_no_overwrite (__main__.CapsuleTests.test_no_overwrite) ... ERROR
+test_regeneration_does_not_forge_canonical (__main__.CapsuleTests.test_regeneration_does_not_forge_canonical) ... ERROR
+test_rehashed_wrong_header (__main__.CapsuleTests.test_rehashed_wrong_header) ... ERROR
+test_signature_is_not_invented (__main__.CapsuleTests.test_signature_is_not_invented) ... ERROR
+test_source_policy_agreement (__main__.CapsuleTests.test_source_policy_agreement) ... ERROR
+test_symlink (__main__.CapsuleTests.test_symlink) ... ERROR
+test_valid_with_external_pin (__main__.CapsuleTests.test_valid_with_external_pin) ... ERROR
+test_wrong_pin (__main__.CapsuleTests.test_wrong_pin) ... ERROR
+
+======================================================================
+ERROR: test_bool_integer_substitution (__main__.CapsuleTests.test_bool_integer_substitution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_capsule_modified_rate_claim (__main__.CapsuleTests.test_capsule_modified_rate_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_changed_member (__main__.CapsuleTests.test_changed_member)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_cli_optimized_rejects (__main__.CapsuleTests.test_cli_optimized_rejects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_deterministic_pack (__main__.CapsuleTests.test_deterministic_pack)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_duplicate_archive_member (__main__.CapsuleTests.test_duplicate_archive_member)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_duplicate_json (__main__.CapsuleTests.test_duplicate_json)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_escape (__main__.CapsuleTests.test_escape)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_generated_file (__main__.CapsuleTests.test_generated_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_missing_member (__main__.CapsuleTests.test_missing_member)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_no_overwrite (__main__.CapsuleTests.test_no_overwrite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_regeneration_does_not_forge_canonical (__main__.CapsuleTests.test_regeneration_does_not_forge_canonical)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_rehashed_wrong_header (__main__.CapsuleTests.test_rehashed_wrong_header)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_signature_is_not_invented (__main__.CapsuleTests.test_signature_is_not_invented)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_source_policy_agreement (__main__.CapsuleTests.test_source_policy_agreement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_symlink (__main__.CapsuleTests.test_symlink)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_valid_with_external_pin (__main__.CapsuleTests.test_valid_with_external_pin)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+======================================================================
+ERROR: test_wrong_pin (__main__.CapsuleTests.test_wrong_pin)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tests/test_trust_capsule.py", line 32, in setUp
+    build(self.root,self.archive,self.capsule)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/build_release_archive.py", line 39, in build
+    result=inspect_archive(archive)
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 97, in inspect_archive
+    need(CORE_REQUIRED | {'MANIFEST.sha256'} <= set(names), 'required archive members missing')
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_RingBuffer_v1_1_0/tools/verify_trust_capsule.py", line 33, in need
+    raise ValueError(text)
+ValueError: required archive members missing
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.322s
+
+FAILED (errors=18)

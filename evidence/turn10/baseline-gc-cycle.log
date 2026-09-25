@@ -1,0 +1,4 @@
+{"exporter_gc_tracked": false}
+{"outer_lease_collected": true, "endpoint_collected": false, "endpoint_still_busy": true, "cleanup_failures": []}
+explicit cycle break cleaned all resources
+EXIT_CODE=0

@@ -1,0 +1,20 @@
+[
+  {
+    "lane": "gcc",
+    "cases": 10,
+    "messages": 156000,
+    "status": "PASS_WITHIN_SCOPE"
+  },
+  {
+    "lane": "clang",
+    "cases": 10,
+    "messages": 156000,
+    "status": "PASS_WITHIN_SCOPE"
+  },
+  {
+    "lane": "asan",
+    "cases": 10,
+    "messages": 17200,
+    "status": "PASS_WITHIN_SCOPE"
+  }
+]

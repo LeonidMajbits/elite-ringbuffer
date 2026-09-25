@@ -1,0 +1,18 @@
+{
+  "status": "PASS_WITHIN_SCOPE",
+  "scenario": "storm",
+  "mode": 1,
+  "messages": 32000,
+  "generations": 1,
+  "worker_processes": 2,
+  "signals_sent": 60,
+  "recovery": null,
+  "inventories": {
+    "0": {
+      "spsc_cursors": [
+        32000,
+        32000
+      ]
+    }
+  }
+}

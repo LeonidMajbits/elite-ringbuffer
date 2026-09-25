@@ -1,0 +1,12 @@
+{
+  "parser": "PyYAML BaseLoader",
+  "version": "6.0.3",
+  "source_sha256": "85fafb9451eac7389543ecb6c15dc5be0efbb8939f4cf7ebba164037801843d9",
+  "jobs": [
+    "ubuntu",
+    "macos-arm64",
+    "freebsd"
+  ],
+  "ubuntu_rows": 5,
+  "scope": "YAML parsing and explicit shape checks, not actionlint/GitHub execution"
+}

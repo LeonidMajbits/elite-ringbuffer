@@ -1,0 +1,21 @@
+{
+  "command": [
+    "make",
+    "-j2",
+    "CC=clang",
+    "CXX=clang++",
+    "BUILD=build/clang",
+    "libraries",
+    "python",
+    "check",
+    "check-hooks",
+    "limits",
+    "chaos",
+    "fuzz",
+    "check-bench-tools",
+    "check-cpp"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 7.94540810585022,
+  "started_unix": 1790209927.7839212
+}

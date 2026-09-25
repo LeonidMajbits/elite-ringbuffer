@@ -1,0 +1,10 @@
+{
+  "command": [
+    "bash",
+    "-lc",
+    "export ASAN_OPTIONS=detect_leaks=1:halt_on_error=1:abort_on_error=1 UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1; build/gcc-asan/test_core && build/gcc-asan/test_adversarial && build/gcc-asan/fuzz_prefix 1000000"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 7.935544490814209,
+  "started_unix": 1790209981.2430933
+}

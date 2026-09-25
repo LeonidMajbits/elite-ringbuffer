@@ -1,0 +1,19 @@
+{
+  "command": [
+    "make",
+    "-j2",
+    "CC=gcc",
+    "BUILD=build/gcc-asan",
+    "OPT=-O1 -g -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-lto -fsanitize=address,undefined -fno-sanitize-recover=all",
+    "LDFLAGS=-fsanitize=address,undefined",
+    "PY_SANITIZE=address,undefined",
+    "libraries",
+    "python",
+    "build/gcc-asan/test_core",
+    "build/gcc-asan/test_adversarial",
+    "build/gcc-asan/fuzz_prefix"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 6.778193712234497,
+  "started_unix": 1790209960.1503398
+}

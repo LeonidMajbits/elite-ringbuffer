@@ -1,0 +1,302 @@
+.TH ELITE_RINGBUFFER 3 "2026-09-24" "ELITEIPC 1.1.0" "Library Functions"
+.SH NAME
+elite_ringbuffer \- C11 zero-copy SPSC and NCQ-SC64 shared-memory IPC
+.SH SYNOPSIS
+.nf
+.B #include <elite_api.h>
+/* C11 shared-layout inspection, only when required: */
+.B #include <elite_ringbuffer.h>
+
+elite_result elite_platform_admit(void);
+elite_result elite_write_reserve(elite_connection *c,
+    elite_lease *lease, elite_write_span *span);
+elite_result elite_write_commit(elite_connection *c,
+    const elite_lease *lease, uint32_t length,
+    uint32_t message_type, uint64_t message_id);
+elite_result elite_write_abort(elite_connection *c,
+    const elite_lease *lease);
+elite_result elite_read_borrow(elite_connection *c,
+    elite_lease *lease, elite_read_span *span);
+elite_result elite_read_release(elite_connection *c,
+    const elite_lease *lease);
+
+/* Link through the imported CMake target elite::ringbuffer,
+ * or -lelite_ringbuffer with the platform thread dependencies. */
+.fi
+.SH DESCRIPTION
+ELITEIPC transports CPU payloads between trusted, registered processes using
+POSIX shared-memory objects and C11 atomics. It provides fixed-capacity SPSC
+and publish-first NCQ-SC64 work-sharing queues. Payload addresses are local
+borrowed pointers into mapped storage; they are not serialized pointers.
+.PP
+The library release is 1.1.0. The shared wire ABI is LE128-V1, numeric
+0x00010000. These are different version domains. Use matching native and
+Python wrapper/exporter releases; do not replace a loaded library in place.
+.SH PLATFORM ADMISSION
+Native little-endian x86-64 or ARM64, coherent normal CPU memory, compatible
+address-independent lock-free 32- and 64-bit atomics, and the compiled C11
+layout are required. The OS page size must be a power of two between 128
+and 16384 and divide the 16384-byte format quantum. No 128-bit atomic is
+required. Layout declarations use explicit 128-byte isolation cells, not
+packed structs. C++ callers use elite_api.h, not an independent std::atomic
+overlay on the wire format.
+.PP
+Linux and macOS are the established target families. The native Darwin
+waiting adapter requires macOS 14.4 or later. The Turn 16 FreeBSD port is
+explicitly experimental, enabled only with ELITE_EXPERIMENTAL_FREEBSD;
+only POLL_ONLY is admitted there. It has no implemented parkable adapter.
+Native FreeBSD target execution is a separate qualification gate.
+.SH CREATION AND ATTACHMENT
+The application owns one serialized elite_authority. Create it with
+.B elite_authority_create
+using nonzero, nonreused host/authority identities and a maximum backing
+size. Fill an elite_config and an array of elite_endpoint_definition records.
+.B elite_create
+constructs a fresh exclusively named object; it never truncates or resets
+an existing live object. Activate it with
+.BR elite_object_activate .
+.PP
+Before exposing a one-shot endpoint grant, register self or an unreaped,
+owned child with
+.BR elite_object_register_process .
+Issue the grant using
+.BR elite_object_grant .
+The child calls
+.B elite_attach
+only on that trusted, constructed-object grant. Use a controlled bootstrap
+channel. Native grant structs are process-local ABI objects, not a portable
+or authenticated serialization format. The bundled demo uses the same
+executable on both sides of its private pipe.
+.PP
+Construction must precede exposure. A correct CRC or a name discovered in
+a namespace does not establish this condition. Unregistered descendants
+or mapping transfers violate the holder-accounting contract.
+.PP
+Create or attach errors can leave a non-NULL object or connection carrying
+cleanup responsibility. Examine output handles even on failure. Do not
+convert an ambiguous OS close result into an unaccounted retry on a reused
+file descriptor.
+.SH ZERO-COPY WRITE LEASE
+.B elite_write_reserve
+returns one writable span of at most the configured capacity and an opaque
+process-local lease. Write directly to this span. Only one operation/lease
+may be outstanding on each endpoint. Do not reuse an active lease output
+object for a second reserve.
+.PP
+Finish all construction and all writable aliases before
+.BR elite_write_commit .
+Only the valid prefix specified by length is published. The caller supplies
+message_type and message_id; neither imposes a total order on producers or
+external side effects. Copying an existing buffer into the span is still a
+copy; the transport does not conceal it under the zero-copy label.
+.PP
+After the publication linearization point the producer must not access
+mutable descriptor or payload bytes, even if commit has not returned.
+.B elite_write_abort
+cancels only a still-unpublished write after its aliases end. It cannot
+undo publication. Abort consumes the relevant lease epoch; epochs do not
+reset when a reservation is cancelled.
+.SH READ LEASE AND ALIASES
+.B elite_read_borrow
+claims one ready record and returns a read-only span with valid length,
+type, ID and epoch. Never dereference an observed queue index before winning
+ownership. Reading outside the valid prefix is not part of this record.
+.PP
+End every direct or exported alias before
+.BR elite_read_release .
+A release enables reuse, not merely removal from the ready queue. A slow
+reader retains capacity. A compiler fence, checksum or later generation
+check cannot make use through a released pointer safe.
+.PP
+.B elite_view_retain
+and
+.B elite_view_end
+track wrapper-managed aliases and prevent premature transfer or detach.
+They cannot discover arbitrary C pointer copies. The optional Python
+exporter retains both mapping and slot lease for memoryview slices/casts;
+Python native-call serialization does not serialize arbitrary simultaneous
+access through those views. Main-interpreter, GIL-enabled CPython is the
+admitted wrapper runtime.
+.SH RESULT AND ERROR CONTRACT
+Each elite_result contains status, outcome, os_error and a reserved word.
+Functions do not encode every failure solely in errno. Inspect status and
+outcome together. os_error is meaningful for the particular OS failure.
+An OS notification error with outcome PUBLISHED is not an unsent message.
+Do not retry publication merely because status is nonzero.
+.SS Status codes
+.TP
+.B ELITE_OK (0)
+Operation completed under its stated contract; inspect its outcome.
+.TP
+.B ELITE_NO_DATA_OBSERVED (1)
+No ready data authorized by the current try observation. Not an exact
+wall-clock size query.
+.TP
+.B ELITE_NO_CAPACITY_OBSERVED (2)
+No available storage observed. Held leases can exhaust capacity even when
+no messages are ready.
+.TP
+.B ELITE_RETIRED (3)
+Generation no longer admits the requested operation.
+.TP
+.B ELITE_BUSY (4)
+Calls, aliases, holders or object budgets prevent the requested transition.
+.TP
+.B ELITE_BAD_ABI (5), ELITE_BAD_LAYOUT (6), ELITE_BAD_IDENTITY (7)
+The supplied format, geometry or identity is incompatible.
+.TP
+.B ELITE_NOT_READY (8)
+Required lifecycle condition or terminal child evidence is not yet present.
+.TP
+.B ELITE_COUNTER_LIMIT (9)
+A checked nonwrapping ticket or epoch ceiling prevents continuation.
+.TP
+.B ELITE_INTEGRITY (10)
+An authorized metadata, phase or checksum check failed. Do not repair by
+scanning or reinserting ordinary descriptor contents.
+.TP
+.B ELITE_OS_ERROR (11), ELITE_OUTCOME_UNCERTAIN (12)
+OS failure or unresolved transfer outcome. Preserve any cleanup obligation.
+.TP
+.B ELITE_AUTHORITY_REQUIRED (13), ELITE_UNSUPPORTED (14)
+The operation needs an authority or is not supported by the admitted profile.
+.TP
+.B ELITE_INVALID_LEASE (15), ELITE_INVALID_ARGUMENT (16)
+The live local operation or argument failed validation. A magic check cannot
+make an arbitrary dangling C pointer safe to pass.
+.TP
+.B ELITE_CREATE_CONFLICT (17)
+Creation did not obtain an exclusive fresh name.
+.SS Outcome codes
+.TP
+.B NONE (0)
+No ownership transition specified by this result.
+.TP
+.B WRITE_OWNED (1), READ_OWNED (3)
+The caller holds the returned write/read lease.
+.TP
+.B PUBLISHED (2), RETURNED (4)
+Ownership transferred irrevocably through the relevant publication edge.
+.TP
+.B RETAINED (5), UNCERTAIN (6)
+Responsibility remains or is unresolved. Neither means the block is free.
+.PP
+All outcome constants have the ELITE_ prefix. Use
+.B elite_status_string
+for diagnostics, not to derive ownership semantics from text.
+.SH MEMORY ORDER AND PROGRESS
+SPSC has one publication writer and one reclamation writer. Its polling
+try path reserves privately, without a shared reservation CAS. Producer
+release publication synchronizes with a covering consumer acquire; consumer
+release reclamation synchronizes with a covering producer acquire before
+reuse. Both edges are required.
+.PP
+NCQ-SC64 has two index queues: QF distributes free blocks and QR carries
+completed blocks. Queue heads, tails and entry words use strong sequentially
+consistent atomics. Entry installation is publication; tail advancement
+follows and is helpable. Successful head CAS grants exclusive removal.
+A losing CAS discards the entire dependent observation, not only expected.
+FIFO means publication order, not reservation or consumer-completion order.
+.PP
+A live generation never wraps its counters or epochs. Near exhaustion it
+retires instead of repeating an identity. Conditional queue lock-freedom
+is system-wide progress, not per-caller fairness or a scheduling deadline.
+True sharing, page faults, CPU preemption and finite-storage pressure remain.
+.SH WAITING
+.B elite_wait_data
+and
+.B elite_wait_space
+are bounded scheduling hints for PARKABLE_SPSC. Retry the actual borrow or
+reserve predicate afterward. A wake, interruption or timeout grants no
+payload ownership. NCQ parking is unsupported. POLL_ONLY does not acquire
+a hidden notification RMW cost.
+.SH RETIREMENT, SIGNALS AND CRASHES
+No library operation is promised async-signal-safe. A signal handler should
+only set an appropriate flag or use a separately approved async-safe
+notification; perform queue and management operations in normal execution.
+SIGKILL runs no abort or finalizer.
+.PP
+.B elite_retire
+or
+.B elite_object_retire
+closes new admission. Previously admitted operations may still finish.
+.B elite_enable_drain
+permits the implemented old-generation drain only in RETIRE_REQUESTED.
+.B elite_object_quarantine
+retains uncertain old storage; it does not revoke pointers.
+.PP
+A heartbeat timeout cannot distinguish a dead process from a resumable
+writer. Do not steal its bytes. A failed holder may strand a token without
+blocking other ready entries. Once all capacity is held, useful traffic
+cannot continue. A missing sole SPSC role needs a new managed generation.
+.PP
+.B elite_authority_reap_child
+observes registered owned-child termination. A stopped child is not fenced.
+Normal cleanup uses
+.B elite_detach
+followed by
+.B elite_object_ack_cleanup
+at the authority. BUSY retains the connection. After QUARANTINED a read
+return may be RETIRED/RETAINED; after alias closure,
+.B elite_abandon_retained
+ends local responsibility without reinserting the block.
+.PP
+.B elite_object_destroy
+requires all issued grants resolved or fenced, not merely a zero attachment
+count. The authority permits at most four objects and two quarantines.
+.B elite_authority_destroy
+likewise requires resolved responsibility. Safe replacement uses distinct
+backing and does not redirect old virtual addresses onto successor storage.
+.PP
+There is no persistent recovery after power loss, automatic authority
+takeover, exactly-once external transaction, or malicious-writer isolation.
+.SH AUXILIARY INTERFACES
+.B elite_object_info
+and
+.B elite_get_info
+copy immutable cached metadata into a correctly aligned C11 object.
+.B elite_binding_info
+and
+.B elite_local_layout
+serve non-overlaid FFI introspection.
+.B elite_validate_prefix
+validates stable bytes; it must not inspect a concurrently rewritten live
+header. The CRC helpers are
+.BR elite_crc32 ,
+.B elite_crc64
+and
+.BR elite_header_crc32 .
+Header CRC coverage is the immutable 512-byte prefix with its CRC field
+zeroed only in the calculation. CRC64 is optional and covers the valid
+payload prefix. Neither authenticates a peer or repairs a data race.
+.B elite_version_string
+and
+.B elite_version_number
+report the native library release identity.
+.SH EXAMPLES
+Complete compiled examples are provided in examples/local_roundtrip.c,
+examples/cpp_roundtrip.cpp and examples/python_roundtrip.py. The
+live_throughput_demo executable uses two distinct POSIX rings and a spawned
+responder. Its p50/p99 values are full instrumented RTT, never RTT/2.
+.SH FILES
+.TP
+.I include/elite_api.h
+Opaque C/C++ calling API and status definitions.
+.TP
+.I include/elite_ringbuffer.h
+C11 byte layout and admission assertions.
+.TP
+.I docs/API.md, docs/INTEGRATION.md
+Detailed API contracts and integration examples.
+.TP
+.I docs/CHAOS_RECOVERY.md, docs/FORMAL_VERIFICATION.md
+Finite failure/model evidence and unverified coverage.
+.SH SEE ALSO
+.BR eliteipc (7),
+.BR shm_open (3),
+.BR mmap (2),
+.BR waitpid (2),
+.BR signal (7)
+.SH AUTHORS
+Leonid Majbits / Gemini Operator Lab.
+See NOTICE.md for algorithmic attribution and LICENSE for the MIT terms.

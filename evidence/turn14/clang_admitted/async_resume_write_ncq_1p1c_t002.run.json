@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+    "async_resume_write",
+    "ncq",
+    "1000000",
+    "100",
+    "1",
+    "1"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "wall_ns": 368366256,
+  "trace_sha256": "a7d65725a1ec55872a86510bd0ac374df9affe6299e3bcda13f381e2f52b572d",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

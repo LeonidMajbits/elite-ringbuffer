@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_07/tools/verify_results.py", line 105, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_07/tools/verify_results.py", line 61, in main
+    raise RuntimeError('Verification must not disable assertions with Python -O')
+RuntimeError: Verification must not disable assertions with Python -O

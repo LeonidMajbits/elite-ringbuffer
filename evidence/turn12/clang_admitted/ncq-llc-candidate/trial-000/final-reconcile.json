@@ -1,0 +1,1 @@
+{"status":"PASS_WITHIN_SCOPE","publications":18,"capacity":2,"segment_bytes":134299648,"all_tokens_returned":true,"designated_cell_isolation_64_128":true,"universal_no_false_sharing":false,"qf_head":18,"qf_tail":20,"qr_head":20,"qr_tail":20,"free_entries":[{"ticket":18,"entry":18,"block":0,"status_word":36,"epoch":9},{"ticket":19,"entry":19,"block":1,"status_word":36,"epoch":9}]}

@@ -1,0 +1,64 @@
+COMMAND=['make', '-j2', 'CC=clang', 'CXX=clang++', 'BUILD=build/clang', 'libraries', 'python', 'check', 'check-hooks', 'limits', 'chaos', 'fuzz', 'check-bench-tools', 'check-cpp']
+mkdir -p build/clang
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_core.c -o build/clang/elite_core.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_format.c -o build/clang/elite_format.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_spsc.c -o build/clang/elite_spsc.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_mpmc_ncq.c -o build/clang/elite_mpmc_ncq.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_shm.c -o build/clang/elite_shm.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_wait.c -o build/clang/elite_wait.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_version.c -o build/clang/elite_version.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_core.c -o build/clang/test_elite_core.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_format.c -o build/clang/test_elite_format.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_spsc.c -o build/clang/test_elite_spsc.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_mpmc_ncq.c -o build/clang/test_elite_mpmc_ncq.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_shm.c -o build/clang/test_elite_shm.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_wait.c -o build/clang/test_elite_wait.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_version.c -o build/clang/test_elite_version.o
+ar rcs build/clang/libelite_ringbuffer.a build/clang/elite_core.o build/clang/elite_format.o build/clang/elite_spsc.o build/clang/elite_mpmc_ncq.o build/clang/elite_shm.o build/clang/elite_wait.o build/clang/elite_version.o
+clang -march=x86-64 -mtune=generic  -shared -Wl,-soname,libelite_ringbuffer.so -o build/clang/libelite_ringbuffer.so build/clang/elite_core.o build/clang/elite_format.o build/clang/elite_spsc.o build/clang/elite_mpmc_ncq.o build/clang/elite_shm.o build/clang/elite_wait.o build/clang/elite_version.o -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/clang/test_core tests/test_core.c build/clang/libelite_ringbuffer.a -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/clang/test_ipc tests/test_ipc.c build/clang/libelite_ringbuffer.a -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/clang/example examples/local_roundtrip.c build/clang/libelite_ringbuffer.a -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE -DELITE_TESTING  -pie -o build/clang/test_adversarial tests/test_adversarial.c build/clang/test_elite_core.o build/clang/test_elite_format.o build/clang/test_elite_spsc.o build/clang/test_elite_mpmc_ncq.o build/clang/test_elite_shm.o build/clang/test_elite_wait.o build/clang/test_elite_version.o -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE -DELITE_TESTING  -pie -o build/clang/test_limits tests/test_limits.c build/clang/test_elite_core.o build/clang/test_elite_format.o build/clang/test_elite_spsc.o build/clang/test_elite_mpmc_ncq.o build/clang/test_elite_shm.o build/clang/test_elite_wait.o build/clang/test_elite_version.o -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE -DELITE_TESTING  -pie -o build/clang/test_chaos tests/test_chaos.c build/clang/test_elite_core.o build/clang/test_elite_format.o build/clang/test_elite_spsc.o build/clang/test_elite_mpmc_ncq.o build/clang/test_elite_shm.o build/clang/test_elite_wait.o build/clang/test_elite_version.o -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/clang/fuzz_prefix tests/fuzz_prefix.c build/clang/libelite_ringbuffer.a -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/clang/test_benchmark_tools tests/test_benchmark_tools.c benchmarks/bench_common.c build/clang/libelite_ringbuffer.a -pthread
+clang++ -std=c++20 -O3 -Wall -Wextra -Werror -pedantic -Iinclude -march=x86-64 -mtune=generic  -o build/clang/cpp_example examples/cpp_roundtrip.cpp build/clang/libelite_ringbuffer.a -pthread
+python3 tools/build_python.py --cc "clang" --build "build/clang" 
+clang -std=c11 -O3 -g -Wall -Wextra -Werror -pedantic -fPIC -isystem /usr/include/python3.13 -shared /mnt/data/turn10_work/elite-ringbuffer-1.0.1/bindings/python/elite_buffer.c -o /mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/clang/python/_elite_buffer.cpython-313-x86_64-linux-gnu.so
+build/clang/test_core
+parser_single_byte_mutations_rejected=512
+PASS core_groups=68 shared_header=2048 descriptor=128 participant=256
+build/clang/test_ipc spsc 1 1 100000
+PASS native_spawn_ipc mode=SPSC producers=1 consumers=1 messages=100000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=15660229 (not_latency)
+build/clang/test_ipc ncq 4 4 100000
+PASS native_spawn_ipc mode=NCQ-SC64 producers=4 consumers=4 messages=100000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=25428426 (not_latency)
+build/clang/test_adversarial
+PASS one_mapping_threads 2P2C messages=100000 exact_membership=yes
+PASS controlled publication point=2 healthy_lifecycles_while_paused=10000
+PASS controlled publication point=5 healthy_lifecycles_while_paused=10000
+PASS controlled stale_head discards_old_entry_after_101_competing_claims
+PASS controlled late_returner no_post_LP_descriptor_write
+PASS integrity mode=1 retained_corrupt_token_not_reclaimed
+PASS integrity mode=2 retained_corrupt_token_not_reclaimed
+PASS SPSC finite_wait wake_before_or_after_block and_retirement
+PASS adversarial_histories=8
+build/clang/test_limits
+PASS near_limit mode=1 limit=TICKET no_wrap_and_no_terminal_publication
+PASS near_limit mode=1 limit=EPOCH no_wrap_and_no_terminal_publication
+PASS near_limit mode=2 limit=TICKET no_wrap_and_no_terminal_publication
+PASS near_limit mode=2 limit=EPOCH no_wrap_and_no_terminal_publication
+build/clang/test_chaos
+build/clang/fuzz_prefix 1000000
+PASS native_SIGKILL cut=MID_WRITE healthy_lifecycles_before_fencing=10000 no_token_theft=yes
+PASS native_SIGKILL cut=POST_PUBLICATION_PRE_TAIL healthy_lifecycles_before_fencing=10000 no_token_theft=yes
+PASS native_SIGSTOP_successor_SIGCONT old_writer_did_not_modify_successor
+PASS native_chaos_scenarios=3
+build/clang/test_benchmark_tools
+PASS benchmark tool groups=8 exact-ranks p99.99 rounding zeros payload negative-control
+build/clang/cpp_example
+C++ opaque API 1.0.1: OK
+PASS stable_prefix_corpus inputs=1000000 accepted_valid_mutations=89908 rejected=910092 seed=744125b77cc09301
+
+EXIT_CODE=0

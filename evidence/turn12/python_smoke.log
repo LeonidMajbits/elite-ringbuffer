@@ -1,0 +1,50 @@
+Traceback (most recent call last):
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/matrix_worker.py", line 203, in run
+    status=shm.reap(proc.pid,max(0,deadline-time.monotonic()));need(status is not None,'exit missing');proc.returncode=os.waitstatus_to_exitcode(status);need(proc.returncode==0,'worker failed')
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/elite_ringbuffer/__init__.py", line 334, in reap
+    if r.status != 8: _check(r, "reap_child", self)
+                      ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/elite_ringbuffer/__init__.py", line 68, in _check
+    raise cls(r, operation, resource)
+elite_ringbuffer.EliteError: reap_child: BAD_IDENTITY; outcome=0; os_error=0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/matrix_worker.py", line 210, in run
+    status=shm.reap(proc.pid,5)
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/elite_ringbuffer/__init__.py", line 334, in reap
+    if r.status != 8: _check(r, "reap_child", self)
+                      ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/elite_ringbuffer/__init__.py", line 68, in _check
+    raise cls(r, operation, resource)
+elite_ringbuffer.EliteError: reap_child: BAD_IDENTITY; outcome=0; os_error=0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/matrix_worker.py", line 252, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/matrix_worker.py", line 251, in main
+    cfg=json.loads(a.config.read_text());a.out.mkdir();run(cfg,a.build,a.out/'trial-000',a.build.resolve()/'bench_topology',a.timeout)
+                                                       ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/matrix_worker.py", line 172, in run
+    with EliteShm(cfg['mode'],capacity=cfg['capacity'],max_payload=cfg['payload_bytes'],
+         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                  producers=cfg['producers'],consumers=cfg['consumers'],
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                  checksum=bool(cfg['checksum']),max_backing_bytes=536870912) as shm:
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/elite_ringbuffer/__init__.py", line 366, in __exit__
+    def __exit__(self, exc_type, exc, tb): self.close(); return False
+                                           ~~~~~~~~~~^^
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/elite_ringbuffer/__init__.py", line 362, in close
+    self._life.close()
+    ~~~~~~~~~~~~~~~~^^
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/elite_ringbuffer/__init__.py", line 166, in close
+    _check(N.lib.elite_object_destroy(C.byref(self._ptr)), "object_destroy", self)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/elite_ringbuffer/__init__.py", line 68, in _check
+    raise cls(r, operation, resource)
+elite_ringbuffer.BusyError: object_destroy: BUSY; outcome=5; os_error=0

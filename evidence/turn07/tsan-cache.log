@@ -1,0 +1,2 @@
+CACHE CONTROL workers=4 stride=8 RMW/s=2589496 (not IPC, no ratio pass threshold)
+CACHE CONTROL workers=4 stride=128 RMW/s=107968333 (not IPC, no ratio pass threshold)

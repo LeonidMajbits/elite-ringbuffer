@@ -1,0 +1,11 @@
+write_claim_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+read_claim_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+late_publication_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+resume_write_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+resume_read_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+resume_write_spsc_1p1c_t000: PASS_WITHIN_SCOPE messages=10000
+resume_read_spsc_1p1c_t000: PASS_WITHIN_SCOPE messages=10000
+random_abort_kill_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+storm_ncq_4p4c_t000: PASS_WITHIN_SCOPE messages=16000
+resources_t000: PASS_WITHIN_SCOPE messages=0
+{"status": "COMPLETE", "plan_sha256": "e793969ceff5a0f21ef5dc43aed0e73bfb4e672e09c12779b0a5c9c8f5929210", "cases": ["write_claim_ncq_1p1c_t000", "read_claim_ncq_1p1c_t000", "late_publication_ncq_1p1c_t000", "resume_write_ncq_1p1c_t000", "resume_read_ncq_1p1c_t000", "resume_write_spsc_1p1c_t000", "resume_read_spsc_1p1c_t000", "random_abort_kill_ncq_1p1c_t000", "storm_ncq_4p4c_t000", "resources_t000"], "messages": 156000}

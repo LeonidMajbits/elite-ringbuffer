@@ -1,0 +1,12 @@
+{
+  "plan_sha256": "11a5203695a30aa3801b06457ad68e0baa382ba7df523d3326aae7bf64b14bb4",
+  "completed_records": 93,
+  "skipped_cells": [
+    "reported-cross-numa",
+    "intra_perf",
+    "perf_to_efficiency",
+    "all-tokens-retained",
+    "host-memory-pressure",
+    "owned-corruption"
+  ]
+}

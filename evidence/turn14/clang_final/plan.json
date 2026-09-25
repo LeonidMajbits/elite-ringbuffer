@@ -1,0 +1,2057 @@
+{
+  "schema": "elite-chaos-campaign-v1",
+  "profile": "standard",
+  "trials": 3,
+  "messages": 10000,
+  "storm_messages": 32000,
+  "cases": [
+    {
+      "id": "write_claim_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_claim",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_claim",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_reserved_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_reserved",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_reserved",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_committed_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_committed",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_committed",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_published_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_published",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_published",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_claim_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "read_claim",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "read_claim",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_returning_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "read_returning",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "read_returning",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_returned_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "read_returned",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "read_returned",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "late_publication_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "late_publication",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "late_publication",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_partial_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "write_partial",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "write_partial",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_held_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "read_held",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "read_held",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_write_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_write",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_write",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_read_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_read",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_read",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "async_resume_write_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "async_resume_write",
+        "ncq",
+        "1000000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "async_resume_write",
+        "ncq",
+        "1000000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_partial_spsc_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "write_partial",
+        "spsc",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "write_partial",
+        "spsc",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_held_spsc_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "read_held",
+        "spsc",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "read_held",
+        "spsc",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_write_spsc_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_write",
+        "spsc",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_write",
+        "spsc",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_read_spsc_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_read",
+        "spsc",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_read",
+        "spsc",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "random_abort_kill_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "random_abort_kill",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "random_abort_kill",
+        "ncq",
+        "10000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_spsc_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "spsc",
+        "32000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "spsc",
+        "32000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_ncq_4p4c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "1",
+        "4",
+        "4"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "1",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "id": "storm_ncq_16p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "1",
+        "16",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "1",
+        "16",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_ncq_1p16c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "1",
+        "1",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "1",
+        "1",
+        "16"
+      ]
+    },
+    {
+      "id": "storm_ncq_16p16c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "1",
+        "16",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "1",
+        "16",
+        "16"
+      ]
+    },
+    {
+      "id": "storm_restart_spsc_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "spsc",
+        "32000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "spsc",
+        "32000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_1p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_4p4c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "1",
+        "4",
+        "4"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "1",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_16p1c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "1",
+        "16",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "1",
+        "16",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_1p16c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "1",
+        "1",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "1",
+        "1",
+        "16"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_16p16c_t000",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "1",
+        "16",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "1",
+        "16",
+        "16"
+      ]
+    },
+    {
+      "id": "resources_t000",
+      "kind": "resource",
+      "binary": "chaos_resources",
+      "args": [],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_resources"
+      ]
+    },
+    {
+      "id": "write_claim_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_claim",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_claim",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_reserved_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_reserved",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_reserved",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_committed_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_committed",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_committed",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_published_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_published",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_published",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_claim_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "read_claim",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "read_claim",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_returning_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "read_returning",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "read_returning",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_returned_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "read_returned",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "read_returned",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "late_publication_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "late_publication",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "late_publication",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_partial_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "write_partial",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "write_partial",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_held_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "read_held",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "read_held",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_write_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_write",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_write",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_read_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_read",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_read",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "async_resume_write_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "async_resume_write",
+        "ncq",
+        "1000000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "async_resume_write",
+        "ncq",
+        "1000000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_partial_spsc_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "write_partial",
+        "spsc",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "write_partial",
+        "spsc",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_held_spsc_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "read_held",
+        "spsc",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "read_held",
+        "spsc",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_write_spsc_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_write",
+        "spsc",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_write",
+        "spsc",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_read_spsc_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_read",
+        "spsc",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_read",
+        "spsc",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "random_abort_kill_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "random_abort_kill",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "random_abort_kill",
+        "ncq",
+        "10000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_spsc_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "spsc",
+        "32000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "spsc",
+        "32000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_ncq_4p4c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "10",
+        "4",
+        "4"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "10",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "id": "storm_ncq_16p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "10",
+        "16",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "10",
+        "16",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_ncq_1p16c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "10",
+        "1",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "10",
+        "1",
+        "16"
+      ]
+    },
+    {
+      "id": "storm_ncq_16p16c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "10",
+        "16",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "10",
+        "16",
+        "16"
+      ]
+    },
+    {
+      "id": "storm_restart_spsc_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "spsc",
+        "32000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "spsc",
+        "32000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_1p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "10",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "10",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_4p4c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "10",
+        "4",
+        "4"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "10",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_16p1c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "10",
+        "16",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "10",
+        "16",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_1p16c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "10",
+        "1",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "10",
+        "1",
+        "16"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_16p16c_t001",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "10",
+        "16",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "10",
+        "16",
+        "16"
+      ]
+    },
+    {
+      "id": "resources_t001",
+      "kind": "resource",
+      "binary": "chaos_resources",
+      "args": [],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_resources"
+      ]
+    },
+    {
+      "id": "write_claim_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_claim",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_claim",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_reserved_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_reserved",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_reserved",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_committed_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_committed",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_committed",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_published_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "write_published",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "write_published",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_claim_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "read_claim",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "read_claim",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_returning_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "read_returning",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "read_returning",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_returned_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "read_returned",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "read_returned",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "late_publication_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess_hooks",
+      "args": [
+        "late_publication",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess_hooks",
+        "late_publication",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_partial_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "write_partial",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "write_partial",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_held_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "read_held",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "read_held",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_write_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_write",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_write",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_read_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_read",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_read",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "async_resume_write_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "async_resume_write",
+        "ncq",
+        "1000000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "async_resume_write",
+        "ncq",
+        "1000000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "write_partial_spsc_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "write_partial",
+        "spsc",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "write_partial",
+        "spsc",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "read_held_spsc_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "read_held",
+        "spsc",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "read_held",
+        "spsc",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_write_spsc_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_write",
+        "spsc",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_write",
+        "spsc",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "resume_read_spsc_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "resume_read",
+        "spsc",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "resume_read",
+        "spsc",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "random_abort_kill_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "random_abort_kill",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "random_abort_kill",
+        "ncq",
+        "10000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_spsc_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "spsc",
+        "32000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "spsc",
+        "32000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_ncq_4p4c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "100",
+        "4",
+        "4"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "100",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "id": "storm_ncq_16p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "100",
+        "16",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "100",
+        "16",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_ncq_1p16c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "100",
+        "1",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "100",
+        "1",
+        "16"
+      ]
+    },
+    {
+      "id": "storm_ncq_16p16c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm",
+        "ncq",
+        "32000",
+        "100",
+        "16",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm",
+        "ncq",
+        "32000",
+        "100",
+        "16",
+        "16"
+      ]
+    },
+    {
+      "id": "storm_restart_spsc_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "spsc",
+        "32000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "spsc",
+        "32000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_1p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "100",
+        "1",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "100",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_4p4c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "100",
+        "4",
+        "4"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "100",
+        "4",
+        "4"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_16p1c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "100",
+        "16",
+        "1"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "100",
+        "16",
+        "1"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_1p16c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "100",
+        "1",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "100",
+        "1",
+        "16"
+      ]
+    },
+    {
+      "id": "storm_restart_ncq_16p16c_t002",
+      "kind": "data",
+      "binary": "chaos_multiprocess",
+      "args": [
+        "storm_restart",
+        "ncq",
+        "32000",
+        "100",
+        "16",
+        "16"
+      ],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_multiprocess",
+        "storm_restart",
+        "ncq",
+        "32000",
+        "100",
+        "16",
+        "16"
+      ]
+    },
+    {
+      "id": "resources_t002",
+      "kind": "resource",
+      "binary": "chaos_resources",
+      "args": [],
+      "command": [
+        "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/clang-chaos/chaos_resources"
+      ]
+    }
+  ],
+  "source_hashes": {
+    "tests/test_chaos_multiprocess.c": "f8337276908f164360abc5b9bfae143ee2c7c0f1cb0e2e1ad77c316234f0ed63",
+    "tests/chaos_protocol.h": "1e6a8d1af185bc0a6887a081ea99f85018f6b446b636e0ccf773241362cf6c89",
+    "tests/test_chaos_resources.c": "11b32cd0954223600e4b113e1be34918c35fb038efe832859f7122feb4bbce61",
+    "tests/test_support.h": "46f56719485cbee12ceef4b5696c7714877230538b589006687428fa418ece73",
+    "tools/run_chaos.py": "dd689180d203ff94bca77ed65eddb1a16ffe8878e26187ff1477dc62e280b8d2",
+    "tools/verify_chaos_results.py": "d5e3afc68517a333133ef102edaa440c56a0a28452e8540eafaabc0f2749259c",
+    "src/elite_spsc.c": "fac8a92d5a71c8475769586b2744ed39a99b57cb29e9704efcacbec59c84e774",
+    "src/elite_mpmc_ncq.c": "540715143bf5f9b90477f212e52dfa60bebeb55e0bc88b983f8a71affc11cec9",
+    "src/elite_core.c": "0796eec66cb0a9b7d3085ee309bc81f01d4e32bd3c2d5560b17c5aea53f2cc29",
+    "src/elite_shm.c": "ab55901b6c0384e3a1d4a177aa702c946ff4942d0ca88df06c8f2965910aa00e",
+    "src/elite_format.c": "c2d476cb01aca60b4419133b9c039aa2590bfc5fab725475cb513b62bb8bee31",
+    "src/elite_wait.c": "7b48360855807165ad3d35ab53cc5a214c7285ce5812e687ae3bc243c4949adc",
+    "src/elite_version.c": "c213bb1baabd249aa3f00d0df7b84861a62f07c65fb5c1818750b2ad53e4e257",
+    "src/elite_internal.h": "c10de31f4b1ee4ae636d3023fcf1eb6dffeb2097d89db127718df6633b12e74f",
+    "include/elite_ringbuffer.h": "34c899d40e491874a199bc41b58a3a5d8c524dd70d4bbde0ad7dc42792ed3f5b",
+    "include/elite_api.h": "3f4aa4180d48a6010af5c78f4059f5583ba74be38afdd756e6ce2d3130dd9153",
+    "include/elite_version.h": "dcf9507750104c44c53daea9ed3cc36ac694c3812cf507dea9de039fdeedd2f1",
+    "Makefile": "c1721e1a3273155edf122ef6716f5b22031e6ffb3534ff3bccf637c5abe8bcd1"
+  },
+  "binaries": {
+    "chaos_multiprocess": "8ba3a16c5668a06b66d6f215edb04a7f5d6df1743fad0c48c0bf0a6b9d87d222",
+    "chaos_multiprocess_hooks": "b7e3ee69b9d79acdbfd30045105d4134c9260273bb70237f75ee7f6c0b849d75",
+    "chaos_resources": "10757a66167bf78eab512f2e6a0c07c13dada2f64ceb2435a10b00881beb8ec6"
+  },
+  "host": {
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "machine": "x86_64",
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "cpu_count": 5,
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "timeout_seconds": 75,
+  "created_utc": "2026-09-24T05:51:30Z",
+  "qualification": "FINITE_CHAOS_CASES_NOT_FULL_TURN5_POPULATION"
+}

@@ -1,0 +1,55 @@
+test_bad_plan_hash (__main__.CampaignTests.test_bad_plan_hash) ... ok
+test_changed_plan_workload (__main__.CampaignTests.test_changed_plan_workload) ... ok
+test_duplicate_plan (__main__.CampaignTests.test_duplicate_plan) ... ok
+test_invented_completed_count (__main__.CampaignTests.test_invented_completed_count) ... ok
+test_manifest_guards_inventory (__main__.CampaignTests.test_manifest_guards_inventory) ... ok
+test_missing_completion (__main__.CampaignTests.test_missing_completion) ... ok
+test_missing_trial (__main__.CampaignTests.test_missing_trial) ... ok
+test_renamed_trial (__main__.CampaignTests.test_renamed_trial) ... ok
+test_skip_without_reason (__main__.CampaignTests.test_skip_without_reason) ... ok
+test_valid_campaign (__main__.CampaignTests.test_valid_campaign) ... ok
+test_affinity_lie (__main__.RecordTests.test_affinity_lie) ... ok
+test_bad_capacity (__main__.RecordTests.test_bad_capacity) ... ok
+test_bad_read_timestamp (__main__.RecordTests.test_bad_read_timestamp) ... ok
+test_bandwidth (__main__.RecordTests.test_bandwidth) ... ok
+test_boolean_arrival (__main__.RecordTests.test_boolean_arrival) ... ok
+test_cli_under_optimized_python (__main__.RecordTests.test_cli_under_optimized_python) ... ok
+test_duplicate_free_token (__main__.RecordTests.test_duplicate_free_token) ... ok
+test_duplicate_json_key (__main__.RecordTests.test_duplicate_json_key) ... ok
+test_duplicate_membership (__main__.RecordTests.test_duplicate_membership) ... ok
+test_duplicate_worker (__main__.RecordTests.test_duplicate_worker) ... ok
+test_elapsed (__main__.RecordTests.test_elapsed) ... ok
+test_eligible_scope (__main__.RecordTests.test_eligible_scope) ... ok
+test_epoch_mismatch (__main__.RecordTests.test_epoch_mismatch) ... ok
+test_external_binary (__main__.RecordTests.test_external_binary) ... ok
+test_fixed_schedule_not_closed_loop (__main__.RecordTests.test_fixed_schedule_not_closed_loop) ... ok
+test_geometry (__main__.RecordTests.test_geometry) ... ok
+test_invented_cross_numa (__main__.RecordTests.test_invented_cross_numa) ... ok
+test_invented_pe (__main__.RecordTests.test_invented_pe) ... ok
+test_invented_residency (__main__.RecordTests.test_invented_residency) ... ok
+test_invented_uncertainty (__main__.RecordTests.test_invented_uncertainty) ... ok
+test_max_integer (__main__.RecordTests.test_max_integer) ... ok
+test_missing_membership (__main__.RecordTests.test_missing_membership) ... ok
+test_missing_worker (__main__.RecordTests.test_missing_worker) ... ok
+test_negative_tick (__main__.RecordTests.test_negative_tick) ... ok
+test_no_final_tokens (__main__.RecordTests.test_no_final_tokens) ... ok
+test_nonfinite (__main__.RecordTests.test_nonfinite) ... ok
+test_rate (__main__.RecordTests.test_rate) ... ok
+test_retained_phase (__main__.RecordTests.test_retained_phase) ... ok
+test_retention_not_omitted (__main__.RecordTests.test_retention_not_omitted) ... ok
+test_runtime (__main__.RecordTests.test_runtime) ... ok
+test_shifted_offer (__main__.RecordTests.test_shifted_offer) ... ok
+test_synthetic_hardware (__main__.RecordTests.test_synthetic_hardware) ... ok
+test_truncated_trace (__main__.RecordTests.test_truncated_trace) ... ok
+test_valid (__main__.RecordTests.test_valid) ... ok
+test_warmup_reset (__main__.RecordTests.test_warmup_reset) ... ok
+test_wrong_quantile (__main__.RecordTests.test_wrong_quantile) ... ok
+test_wrong_sample_count (__main__.RecordTests.test_wrong_sample_count) ... ok
+test_wrong_segment (__main__.RecordTests.test_wrong_segment) ... ok
+test_wrong_union (__main__.RecordTests.test_wrong_union) ... ok
+test_zero_timebase (__main__.RecordTests.test_zero_timebase) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 0.799s
+
+OK

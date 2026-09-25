@@ -1,0 +1,140 @@
+make: Entering directory '/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08'
+g++ -std=c++20 -O3 -Wall -Wextra -Werror -pedantic -Iinclude -march=x86-64 -mtune=generic  -o build/native/cpp_example examples/cpp_roundtrip.cpp build/native/libelite_ringbuffer.a -pthread
+build/native/cpp_example
+C++ opaque API 1.0.0: OK
+python3 tools/build_python.py --cc "gcc" --build "build/native"
+gcc -std=c11 -O3 -g -Wall -Wextra -Werror -pedantic -fPIC -isystem /usr/include/python3.13 -shared /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_buffer.c -o /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/build/native/python/_elite_buffer.cpython-313-x86_64-linux-gnu.so
+ELITE_LIBRARY=/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/build/native/libelite_ringbuffer.so PYTHONPATH=/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/build/native/python:/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python python3 tests/test_python_bindings.py
+test_bounds_before_narrowing (__main__.BindingTests.test_bounds_before_narrowing) ... ok
+test_busy_detach_and_manager (__main__.BindingTests.test_busy_detach_and_manager) ... ok
+test_cast_survives_root (__main__.BindingTests.test_cast_survives_root) ... ok
+test_context_abort (__main__.BindingTests.test_context_abort) ... ok
+test_crc_profile (__main__.BindingTests.test_crc_profile) ... ok
+test_direct_roundtrip (__main__.BindingTests.test_direct_roundtrip) ... ok
+test_duplicate_attach_cleanup_does_not_resolve_original (__main__.BindingTests.test_duplicate_attach_cleanup_does_not_resolve_original) ... ok
+test_duplicate_transfer (__main__.BindingTests.test_duplicate_transfer) ... ok
+test_epoch_advances_on_abort (__main__.BindingTests.test_epoch_advances_on_abort) ... ok
+test_explicit_copy (__main__.BindingTests.test_explicit_copy) ... ok
+test_exporter_without_views_retains_ability (__main__.BindingTests.test_exporter_without_views_retains_ability) ... ok
+test_gc_outer_lease_retained_by_alias (__main__.BindingTests.test_gc_outer_lease_retained_by_alias) ... ok
+test_gc_uncommitted_write_aborts (__main__.BindingTests.test_gc_uncommitted_write_aborts) ... ok
+test_multiple_roots (__main__.BindingTests.test_multiple_roots) ... ok
+test_read_context_exception_returns_token (__main__.BindingTests.test_read_context_exception_returns_token) ... ok
+test_readonly_exporter (__main__.BindingTests.test_readonly_exporter) ... ok
+test_received_mapping_survives_endpoint_name_drop (__main__.BindingTests.test_received_mapping_survives_endpoint_name_drop) ... ok
+test_retirement_does_not_revoke_alias (__main__.BindingTests.test_retirement_does_not_revoke_alias) ... ok
+test_role_rejected_before_attach (__main__.BindingTests.test_role_rejected_before_attach) ... ok
+test_slice_survives_root (__main__.BindingTests.test_slice_survives_root) ... ok
+test_threads_serialized_one_outstanding (__main__.BindingTests.test_threads_serialized_one_outstanding) ... ok
+test_timeout_is_not_lease_revocation (__main__.BindingTests.test_timeout_is_not_lease_revocation) ... ok
+test_version_layouts (__main__.BindingTests.test_version_layouts) ... ok
+test_zero_length (__main__.BindingTests.test_zero_length) ... ok
+test_binding_cleanup_registry_empty (__main__.ProcessTests.test_binding_cleanup_registry_empty) ... ok
+test_grant_encoding_rejects_missing_fields (__main__.ProcessTests.test_grant_encoding_rejects_missing_fields) ... ok
+test_inherited_handle_methods_reject (__main__.ProcessTests.test_inherited_handle_methods_reject) ... /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/tests/test_python_bindings.py:263: DeprecationWarning: This process (pid=795) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  p=s.producer();child=os.fork()
+ok
+test_kill_leaks_token_but_whole_generation_cleans (__main__.ProcessTests.test_kill_leaks_token_but_whole_generation_cleans) ... ERROR
+test_pause_resume_distinct_successor (__main__.ProcessTests.test_pause_resume_distinct_successor) ... ERROR
+test_spawned_python_publication (__main__.ProcessTests.test_spawned_python_publication) ... ERROR
+
+======================================================================
+ERROR: test_kill_leaks_token_but_whole_generation_cleans (__main__.ProcessTests.test_kill_leaks_token_but_whole_generation_cleans)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/tests/test_python_bindings.py", line 232, in test_kill_leaks_token_but_whole_generation_cleans
+    read_line(victim);self.assertEqual(finish(s,victim,kill=True),-signal.SIGKILL)
+                                       ~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/tests/test_python_bindings.py", line 66, in finish
+    status=shm.reap(p.pid,10)
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 240, in reap
+    if r.status != 4: _check(r, "reap_child", self)
+                      ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 63, in _check
+    raise cls(r, operation, resource)
+elite_ringbuffer.EliteError: reap_child: NOT_READY; outcome=0; os_error=0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/tests/test_python_bindings.py", line 230, in test_kill_leaks_token_but_whole_generation_cleans
+    with EliteShm('ncq',capacity=8,producers=2) as s:
+         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 272, in __exit__
+    def __exit__(self, exc_type, exc, tb): self.close(); return False
+                                           ~~~~~~~~~~^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 268, in close
+    _check(N.lib.elite_object_destroy(C.byref(self._ptr)), "object_destroy", self)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 63, in _check
+    raise cls(r, operation, resource)
+elite_ringbuffer.BusyError: object_destroy: BUSY; outcome=5; os_error=0
+
+======================================================================
+ERROR: test_pause_resume_distinct_successor (__main__.ProcessTests.test_pause_resume_distinct_successor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/tests/test_python_bindings.py", line 250, in test_pause_resume_distinct_successor
+    self.assertIsNone(old.reap(victim.pid,0))
+                      ~~~~~~~~^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 240, in reap
+    if r.status != 4: _check(r, "reap_child", self)
+                      ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 63, in _check
+    raise cls(r, operation, resource)
+elite_ringbuffer.EliteError: reap_child: NOT_READY; outcome=0; os_error=0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/tests/test_python_bindings.py", line 247, in test_pause_resume_distinct_successor
+    with EliteShm('ncq',capacity=8) as old:
+         ~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 272, in __exit__
+    def __exit__(self, exc_type, exc, tb): self.close(); return False
+                                           ~~~~~~~~~~^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 268, in close
+    _check(N.lib.elite_object_destroy(C.byref(self._ptr)), "object_destroy", self)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 63, in _check
+    raise cls(r, operation, resource)
+elite_ringbuffer.BusyError: object_destroy: BUSY; outcome=5; os_error=0
+
+======================================================================
+ERROR: test_spawned_python_publication (__main__.ProcessTests.test_spawned_python_publication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/tests/test_python_bindings.py", line 226, in test_spawned_python_publication
+    self.assertEqual(finish(s,p),0);s.ack_cleanup(line['receipt'])
+                     ~~~~~~^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/tests/test_python_bindings.py", line 66, in finish
+    status=shm.reap(p.pid,10)
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 240, in reap
+    if r.status != 4: _check(r, "reap_child", self)
+                      ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 63, in _check
+    raise cls(r, operation, resource)
+elite_ringbuffer.EliteError: reap_child: NOT_READY; outcome=0; os_error=0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/tests/test_python_bindings.py", line 224, in test_spawned_python_publication
+    with EliteShm(mode,capacity=8) as s:
+         ~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 272, in __exit__
+    def __exit__(self, exc_type, exc, tb): self.close(); return False
+                                           ~~~~~~~~~~^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 268, in close
+    _check(N.lib.elite_object_destroy(C.byref(self._ptr)), "object_destroy", self)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_ringbuffer/__init__.py", line 63, in _check
+    raise cls(r, operation, resource)
+elite_ringbuffer.BusyError: object_destroy: BUSY; outcome=5; os_error=0
+
+----------------------------------------------------------------------
+Ran 30 tests in 5.471s
+
+FAILED (errors=3)
+make: *** [Makefile:124: check-python] Error 1
+make: Leaving directory '/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08'

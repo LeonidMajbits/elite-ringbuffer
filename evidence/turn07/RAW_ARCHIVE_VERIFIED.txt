@@ -1,0 +1,4 @@
+PASS
+Members listed: 70
+SHA256 manifest records verified by streamed decompression: 69
+No unlisted member. Reading each ZIP stream completed its CRC verification.

@@ -1,0 +1,3 @@
+PASS strict M4 source-to-assembly profile; native SDK/link/run NOT_TESTED
+
+exit_status=0

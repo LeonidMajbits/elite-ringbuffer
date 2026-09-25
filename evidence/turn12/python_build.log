@@ -1,0 +1,3 @@
+gcc -march=x86-64 -mtune=generic  -shared -Wl,-soname,libelite_ringbuffer.so -o build/gcc/libelite_ringbuffer.so build/gcc/elite_core.o build/gcc/elite_format.o build/gcc/elite_spsc.o build/gcc/elite_mpmc_ncq.o build/gcc/elite_shm.o build/gcc/elite_wait.o build/gcc/elite_version.o -pthread
+python3 tools/build_python.py --cc "gcc" --build "build/gcc" 
+gcc -std=c11 -O3 -g -Wall -Wextra -Werror -pedantic -fPIC -isystem /usr/include/python3.13 -shared /mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/elite_buffer.c -o /mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/build/gcc/python/_elite_buffer.cpython-313-x86_64-linux-gnu.so

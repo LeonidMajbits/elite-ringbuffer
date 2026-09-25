@@ -1,0 +1,18 @@
+{
+  "command": [
+    "env",
+    "LD_PRELOAD=/usr/local/swift/usr/lib/clang/17/lib/linux/libclang_rt.asan-x86_64.so",
+    "PYTHONMALLOC=malloc",
+    "ASAN_OPTIONS=detect_leaks=0:halt_on_error=1:abort_on_error=1",
+    "UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1",
+    "ELITE_TEST_TIMEOUT_SCALE=3",
+    "ELITE_LIBRARY=/mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/clang-asan/libelite_ringbuffer.so",
+    "PYTHONPATH=/mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/clang-asan/python:/mnt/data/turn10_work/elite-ringbuffer-1.0.1/bindings/python",
+    "python3",
+    "tools/check_python.py",
+    "--hardening"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 113.9175705909729,
+  "started_unix": 1790209981.3709571
+}

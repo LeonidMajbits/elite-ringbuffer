@@ -1,0 +1,149 @@
+{
+  "modified": [
+    {
+      "path": "Makefile",
+      "parent_sha256": "4d91cfca650d3e9a29d14a4c480c8f7087bf23717d7b1892de3ccc23aacfbdc9",
+      "current_sha256": "de5b39e0e0ac3d9f91270261ee31b8e26ce47486d0b06a5f129a6c61dead546f"
+    },
+    {
+      "path": "formal/SOURCE_BINDING.json",
+      "parent_sha256": "100105b003620728557e050805fb48e55a6177746e3bc2047cacfeae01c42fa3",
+      "current_sha256": "3b0c5c58b5e2a1207ec9af10ddd29fdb0115acdba4202bdfcef94e2b0ffa3df6"
+    },
+    {
+      "path": "src/elite_format.c",
+      "parent_sha256": "c2d476cb01aca60b4419133b9c039aa2590bfc5fab725475cb513b62bb8bee31",
+      "current_sha256": "433195b980aac406187b028852ef70cdfce923b08c7bf8a4fc569df1b62e07fd"
+    },
+    {
+      "path": "tests/test_formal_results.py",
+      "parent_sha256": "517b80b11b07a4354154ad93fd1b6da877b75d14df30f0a0d598ac45c640a9dd",
+      "current_sha256": "b13f66346eefbb96331485af8d82a46ed1a588ade0652d44d13fd3315c3b8fcd"
+    },
+    {
+      "path": "tools/release_manifest.py",
+      "parent_sha256": "aa7ae71dcf8e215909c4119076c0aa2ceb656453abf4f426050b52b779f7d48c",
+      "current_sha256": "142b8cd0c1951d6d1cb51d9d3772c565f37dfbfb4d3a43376a1659da922d39cf"
+    },
+    {
+      "path": "tools/verify_trust_capsule.py",
+      "parent_sha256": "55c09a216d578c71b959e6a633b664659b693aee075b2f1a2683fcba2b3c6aa2",
+      "current_sha256": "aa210fb6012ea96c76ecd1a9435f4571fe1de9000f6ff19420899daecb84f738"
+    }
+  ],
+  "added": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "sha256": "f10f13d238f5bd224c3dc10af372d69a5841116ce6aed999b3e6f17c6212eebe"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "sha256": "a23c20301d29bdc0a0e61caa42bfeb3b6e0e3568ab5a7d639e3e6978c8930902"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "85fafb9451eac7389543ecb6c15dc5be0efbb8939f4cf7ebba164037801843d9"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "c0f9e25af6c1a6f9107eae9cfaf2c9f8d94d67121a7fffd68d99668ae96f81ef"
+    },
+    {
+      "path": "ci/run_lane.py",
+      "sha256": "fb93baf5eb898057e216eab93c3df984bca95258c19458beab17e8a90405a605"
+    },
+    {
+      "path": "cmake/elite_ringbuffer.pc.in",
+      "sha256": "f3982b568b61168a13d07631ec4fcf5b777ad507a85770ed3c33e0c3691a9931"
+    },
+    {
+      "path": "cmake/elite_ringbufferConfig.cmake.in",
+      "sha256": "cc5a526dc8c4de21cefc749d40414279921aa2d671d551d0b479017a341902ab"
+    },
+    {
+      "path": "elite-ringbuffer.rb",
+      "sha256": "5d5564fadb4ed4cd39316d90b1fde2fdd857884aaef640baecd3731958a20391"
+    },
+    {
+      "path": "evidence/turn16/LOCAL_FINAL_VALIDATION_DRIVER.py",
+      "sha256": "fcfd9a25e0d4ea8da16ff8d5dfd009d47fedddba71e82a830d255ca2bf501a6d"
+    },
+    {
+      "path": "evidence/turn16/LOCAL_INITIAL_VALIDATION_DRIVER.py",
+      "sha256": "bd3942522b51e09375dee11e6ec2c666d9f0ba394b74a2c58be13479da20358b"
+    },
+    {
+      "path": "evidence/turn16/LOCAL_LIVE_DRIVER.py",
+      "sha256": "4dc267a0aba9fda858ca0c185c2ea41b3c865546a30615649e27afc0f7df92e4"
+    },
+    {
+      "path": "examples/live_throughput_demo.c",
+      "sha256": "8cc448efddf10cd32d216247eb0343f372a6fa4e6f4b5dadf60827f9a394b481"
+    },
+    {
+      "path": "man/elite_ringbuffer.3",
+      "sha256": "a1b5020b14012a215b0fc1f890297bcbc1dbe606a70a9a58accafd7fd0c4f19b"
+    },
+    {
+      "path": "man/eliteipc.7",
+      "sha256": "f83aa5bd4bfc6b6cb604edec7e8c268581e6514bd7523303d3a0cce6997c20fe"
+    },
+    {
+      "path": "packaging/homebrew/elite-ringbuffer.rb.in",
+      "sha256": "c258a7497f2ab04024b861c6d574d5641673ec4d9618aebe97c8c2959f763788"
+    },
+    {
+      "path": "packaging/vcpkg/elite-ringbuffer/portfile.cmake",
+      "sha256": "29b404b6a5ae70754d78b33b92fe03ed98d1a668271316f62fb77c791b8f5387"
+    },
+    {
+      "path": "packaging/vcpkg/elite-ringbuffer/vcpkg.json",
+      "sha256": "c3504496fce0e3b3d5937b7f8f20f8f2cd75d377503023c3ef22b712d000ef53"
+    },
+    {
+      "path": "tests/cmake_consumer/CMakeLists.txt",
+      "sha256": "c2b483b6a329aa3c422bc1f936985016ae4a0e850cff85fad2f4572044a4940b"
+    },
+    {
+      "path": "tests/cmake_consumer/consumer.c",
+      "sha256": "496f4363e33c2c1fc7d3849102da35ebb3c5aa42ec55e82f1b62118db606e1e5"
+    },
+    {
+      "path": "tests/cmake_consumer/consumer.cpp",
+      "sha256": "5a7fac79dfecbb7ea46b7890b7478495ceb88d6a6a61172ea24433334459b003"
+    },
+    {
+      "path": "tests/test_live_demo.py",
+      "sha256": "b778898ab28b02706b61823b8553facfd8eec24746aa64d6927ee884f94b23e3"
+    },
+    {
+      "path": "tests/test_portability.c",
+      "sha256": "7946eb3f4ee35daf3475f5df6494d596b8a1cd526aaa7345d8df76b409f3a1f2"
+    },
+    {
+      "path": "tests/test_seeding.py",
+      "sha256": "265115433a7b219ec47b789959c01bb9ceacf039baf5e66f616ae8b9f977fe49"
+    },
+    {
+      "path": "tests/tsan_detector_control.c",
+      "sha256": "fa97aa78581e9005be90b9cd01dd6833f95150e43aa79b329d64133ab36a3a46"
+    },
+    {
+      "path": "tools/check_cmake_install.py",
+      "sha256": "df6f2cb19f9d70c2b0e2c2b3cf6d3559856b51b36e2b77c96f193c8d399dbb98"
+    },
+    {
+      "path": "tools/seed_packages.py",
+      "sha256": "748e9594f6b9a72c8b39e8a475af0fdb87dfdf7111a136fa65a589efded2c2fb"
+    },
+    {
+      "path": "tools/verify_live_demo.py",
+      "sha256": "1aa47ee734705c6f1eeb478a9a074f0ba923113610667d8fb4819948b930ff5a"
+    },
+    {
+      "path": "vcpkg.json",
+      "sha256": "dbb829e625029e53b92850e58afc0fcbe4987b6dc6420fa02a4b10685c27d733"
+    }
+  ],
+  "removed": []
+}

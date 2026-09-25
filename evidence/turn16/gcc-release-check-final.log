@@ -1,0 +1,658 @@
+$ ['make', 'CC=gcc', 'CXX=g++', 'BUILD=build/gcc-seed', 'release-check', 'check-seeding']
+build/gcc-seed/test_core
+parser_single_byte_mutations_rejected=512
+PASS core_groups=68 shared_header=2048 descriptor=128 participant=256
+build/gcc-seed/test_ipc spsc 1 1 100000
+PASS native_spawn_ipc mode=SPSC producers=1 consumers=1 messages=100000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=13125451 (not_latency)
+build/gcc-seed/test_ipc ncq 4 4 100000
+PASS native_spawn_ipc mode=NCQ-SC64 producers=4 consumers=4 messages=100000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=46704176 (not_latency)
+build/gcc-seed/test_adversarial
+PASS one_mapping_threads 2P2C messages=100000 exact_membership=yes
+PASS controlled publication point=2 healthy_lifecycles_while_paused=10000
+PASS controlled publication point=5 healthy_lifecycles_while_paused=10000
+PASS controlled stale_head discards_old_entry_after_101_competing_claims
+PASS controlled late_returner no_post_LP_descriptor_write
+PASS integrity mode=1 retained_corrupt_token_not_reclaimed
+PASS integrity mode=2 retained_corrupt_token_not_reclaimed
+PASS SPSC finite_wait wake_before_or_after_block and_retirement
+PASS adversarial_histories=8
+build/gcc-seed/test_limits
+PASS near_limit mode=1 limit=TICKET no_wrap_and_no_terminal_publication
+PASS near_limit mode=1 limit=EPOCH no_wrap_and_no_terminal_publication
+PASS near_limit mode=2 limit=TICKET no_wrap_and_no_terminal_publication
+PASS near_limit mode=2 limit=EPOCH no_wrap_and_no_terminal_publication
+build/gcc-seed/test_chaos
+PASS native_SIGKILL cut=MID_WRITE healthy_lifecycles_before_fencing=10000 no_token_theft=yes
+PASS native_SIGKILL cut=POST_PUBLICATION_PRE_TAIL healthy_lifecycles_before_fencing=10000 no_token_theft=yes
+PASS native_SIGSTOP_successor_SIGCONT old_writer_did_not_modify_successor
+PASS native_chaos_scenarios=3
+build/gcc-seed/fuzz_prefix 1000000
+PASS stable_prefix_corpus inputs=1000000 accepted_valid_mutations=89908 rejected=910092 seed=744125b77cc09301
+build/gcc-seed/test_benchmark_tools
+PASS benchmark tool groups=8 exact-ranks p99.99 rounding zeros payload negative-control
+build/gcc-seed/cpp_example
+C++ opaque API 1.1.0: OK
+python3 tools/build_python.py --cc "gcc" --build "build/gcc-seed" 
+gcc -std=c11 -O3 -g -Wall -Wextra -Werror -pedantic -fPIC -isystem /usr/include/python3.13 -shared /mnt/data/turn16_work/elite-ringbuffer-1.1.0/bindings/python/elite_buffer.c -o /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/gcc-seed/python/_elite_buffer.cpython-313-x86_64-linux-gnu.so
+ELITE_LIBRARY="/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/gcc-seed/libelite_ringbuffer.so" PYTHONPATH="/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/gcc-seed/python:/mnt/data/turn16_work/elite-ringbuffer-1.1.0/bindings/python" python3 tools/check_python.py
+test_bounds_before_narrowing (__main__.BindingTests.test_bounds_before_narrowing) ... ok
+test_busy_detach_and_manager (__main__.BindingTests.test_busy_detach_and_manager) ... ok
+test_cast_survives_root (__main__.BindingTests.test_cast_survives_root) ... ok
+test_context_abort (__main__.BindingTests.test_context_abort) ... ok
+test_crc_profile (__main__.BindingTests.test_crc_profile) ... ok
+test_ctypes_export_retains_slot (__main__.BindingTests.test_ctypes_export_retains_slot) ... ok
+test_direct_roundtrip (__main__.BindingTests.test_direct_roundtrip) ... ok
+test_duplicate_attach_cleanup_does_not_resolve_original (__main__.BindingTests.test_duplicate_attach_cleanup_does_not_resolve_original) ... ok
+test_duplicate_transfer (__main__.BindingTests.test_duplicate_transfer) ... ok
+test_epoch_advances_on_abort (__main__.BindingTests.test_epoch_advances_on_abort) ... ok
+test_explicit_copy (__main__.BindingTests.test_explicit_copy) ... ok
+test_exporter_without_views_retains_ability (__main__.BindingTests.test_exporter_without_views_retains_ability) ... ok
+test_gc_outer_lease_retained_by_alias (__main__.BindingTests.test_gc_outer_lease_retained_by_alias) ... ok
+test_gc_uncommitted_write_aborts (__main__.BindingTests.test_gc_uncommitted_write_aborts) ... ok
+test_multiple_roots (__main__.BindingTests.test_multiple_roots) ... ok
+test_pattern_helper_all_bytes (__main__.BindingTests.test_pattern_helper_all_bytes) ... ok
+test_read_context_exception_returns_token (__main__.BindingTests.test_read_context_exception_returns_token) ... ok
+test_readonly_exporter (__main__.BindingTests.test_readonly_exporter) ... ok
+test_received_mapping_survives_endpoint_name_drop (__main__.BindingTests.test_received_mapping_survives_endpoint_name_drop) ... ok
+test_retirement_does_not_revoke_alias (__main__.BindingTests.test_retirement_does_not_revoke_alias) ... ok
+test_role_rejected_before_attach (__main__.BindingTests.test_role_rejected_before_attach) ... ok
+test_slice_survives_root (__main__.BindingTests.test_slice_survives_root) ... ok
+test_threads_serialized_one_outstanding (__main__.BindingTests.test_threads_serialized_one_outstanding) ... ok
+test_timeout_is_not_lease_revocation (__main__.BindingTests.test_timeout_is_not_lease_revocation) ... ok
+test_version_layouts (__main__.BindingTests.test_version_layouts) ... ok
+test_zero_length (__main__.BindingTests.test_zero_length) ... ok
+test_binding_cleanup_registry_empty (__main__.ProcessTests.test_binding_cleanup_registry_empty) ... ok
+test_grant_encoding_rejects_missing_fields (__main__.ProcessTests.test_grant_encoding_rejects_missing_fields) ... ok
+test_inherited_handle_methods_reject (__main__.ProcessTests.test_inherited_handle_methods_reject) ... ok
+test_kill_leaks_token_but_whole_generation_cleans (__main__.ProcessTests.test_kill_leaks_token_but_whole_generation_cleans) ... ok
+test_normal_exit_closes_idle_generation (__main__.ProcessTests.test_normal_exit_closes_idle_generation) ... ok
+test_pause_resume_distinct_successor (__main__.ProcessTests.test_pause_resume_distinct_successor) ... ok
+test_python_mpmc_two_producers_two_consumers (__main__.ProcessTests.test_python_mpmc_two_producers_two_consumers) ... ok
+test_spawned_python_publication (__main__.ProcessTests.test_spawned_python_publication) ... ok
+test_throughput_driver (__main__.ProcessTests.test_throughput_driver) ... ok
+test_uncertain_python_return_never_blindly_retries (__main__.ProcessTests.test_uncertain_python_return_never_blindly_retries) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 18.267s
+
+OK
+ELITE_DEMO_BINARY="/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/gcc-seed/live_throughput_demo" ELITE_TOPOLOGY_BINARY="/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/gcc-seed/bench_topology" ELITE_LIBRARY="/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/gcc-seed/libelite_ringbuffer.so" PYTHONPATH="/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/gcc-seed/python:/mnt/data/turn16_work/elite-ringbuffer-1.1.0/bindings/python" python3 tools/check_python.py --hardening
+test_callback_exception_rolls_back_pending_count (test_adversarial_races.ExportTransactionTests.test_callback_exception_rolls_back_pending_count) ... ok
+test_callback_failure_completes_requested_finalization (test_adversarial_races.ExportTransactionTests.test_callback_failure_completes_requested_finalization) ... ok
+test_callback_result_decref_is_inside_transaction (test_adversarial_races.ExportTransactionTests.test_callback_result_decref_is_inside_transaction) ... ok
+test_close_failure_can_retry_without_double_drop (test_adversarial_races.ExportTransactionTests.test_close_failure_can_retry_without_double_drop) ... ok
+test_close_is_serialized_during_cleanup_callback (test_adversarial_races.ExportTransactionTests.test_close_is_serialized_during_cleanup_callback) ... ok
+test_fillinfo_failure_completes_requested_finalization (test_adversarial_races.ExportTransactionTests.test_fillinfo_failure_completes_requested_finalization) ... ok
+test_fillinfo_readonly_failure_rolls_back (test_adversarial_races.ExportTransactionTests.test_fillinfo_readonly_failure_rolls_back) ... ok
+test_original_four_race_schedules (test_adversarial_races.ExportTransactionTests.test_original_four_race_schedules) ... ok
+test_pending_export_blocks_abort_and_close (test_adversarial_races.ExportTransactionTests.test_pending_export_blocks_abort_and_close) ... ok
+test_reentrant_close_rejected (test_adversarial_races.ExportTransactionTests.test_reentrant_close_rejected) ... ok
+test_successful_export_defers_requested_finalization (test_adversarial_races.ExportTransactionTests.test_successful_export_defers_requested_finalization) ... ok
+test_all_supported_reordered_ids (test_cache_provenance.ProvenanceTests.test_all_supported_reordered_ids) ... ok
+test_binary_hash_format (test_cache_provenance.ProvenanceTests.test_binary_hash_format) ... ok
+test_bool_is_not_integer (test_cache_provenance.ProvenanceTests.test_bool_is_not_integer) ... ok
+test_cache_not_coherence (test_cache_provenance.ProvenanceTests.test_cache_not_coherence) ... ok
+test_campaign_missing_record (test_cache_provenance.ProvenanceTests.test_campaign_missing_record) ... ok
+test_cli_malformed_and_optimized (test_cache_provenance.ProvenanceTests.test_cli_malformed_and_optimized) ... ok
+test_counter_duplicate (test_cache_provenance.ProvenanceTests.test_counter_duplicate) ... ok
+test_counter_loss (test_cache_provenance.ProvenanceTests.test_counter_loss) ... ok
+test_duplicate_event_id (test_cache_provenance.ProvenanceTests.test_duplicate_event_id) ... ok
+test_duplicate_worker_thread (test_cache_provenance.ProvenanceTests.test_duplicate_worker_thread) ... ok
+test_elapsed_mismatch (test_cache_provenance.ProvenanceTests.test_elapsed_mismatch) ... ok
+test_external_binary_and_source (test_cache_provenance.ProvenanceTests.test_external_binary_and_source) ... ok
+test_fractional_mach_timebase (test_cache_provenance.ProvenanceTests.test_fractional_mach_timebase) ... ok
+test_incomplete_native_PMC_state (test_cache_provenance.ProvenanceTests.test_incomplete_native_PMC_state) ... ok
+test_invalid_frame_rejected (test_cache_provenance.ProvenanceTests.test_invalid_frame_rejected) ... ok
+test_max_worker_end (test_cache_provenance.ProvenanceTests.test_max_worker_end) ... ok
+test_missing_worker (test_cache_provenance.ProvenanceTests.test_missing_worker) ... ok
+test_multiplex_incorrect_estimate (test_cache_provenance.ProvenanceTests.test_multiplex_incorrect_estimate) ... ok
+test_multiplex_scaling (test_cache_provenance.ProvenanceTests.test_multiplex_scaling) ... ok
+test_never_scheduled (test_cache_provenance.ProvenanceTests.test_never_scheduled) ... ok
+test_never_scheduled_nonzero (test_cache_provenance.ProvenanceTests.test_never_scheduled_nonzero) ... ok
+test_no_false_p_core_pinning (test_cache_provenance.ProvenanceTests.test_no_false_p_core_pinning) ... ok
+test_no_infinity (test_cache_provenance.ProvenanceTests.test_no_infinity) ... ok
+test_no_nan (test_cache_provenance.ProvenanceTests.test_no_nan) ... ok
+test_no_unsupported_metrics (test_cache_provenance.ProvenanceTests.test_no_unsupported_metrics) ... ok
+test_no_zero_invented_for_unavailable_event (test_cache_provenance.ProvenanceTests.test_no_zero_invented_for_unavailable_event) ... ok
+test_one_ulp_admitted (test_cache_provenance.ProvenanceTests.test_one_ulp_admitted) ... ok
+test_paranoid_classification_not_guessed (test_cache_provenance.ProvenanceTests.test_paranoid_classification_not_guessed) ... ok
+test_process_accounting_decrease (test_cache_provenance.ProvenanceTests.test_process_accounting_decrease) ... ok
+test_rate_mismatch (test_cache_provenance.ProvenanceTests.test_rate_mismatch) ... ok
+test_raw_u64_subtraction_above_binary64_precision (test_cache_provenance.ProvenanceTests.test_raw_u64_subtraction_above_binary64_precision) ... ok
+test_running_exceeds_enabled (test_cache_provenance.ProvenanceTests.test_running_exceeds_enabled) ... ok
+test_source_snapshot_digest (test_cache_provenance.ProvenanceTests.test_source_snapshot_digest) ... ok
+test_t0_wrap (test_cache_provenance.ProvenanceTests.test_t0_wrap) ... ok
+test_timer_correlation_does_not_assume_frequency (test_cache_provenance.ProvenanceTests.test_timer_correlation_does_not_assume_frequency) ... ok
+test_total_operations (test_cache_provenance.ProvenanceTests.test_total_operations) ... ok
+test_two_ulp_rejected (test_cache_provenance.ProvenanceTests.test_two_ulp_rejected) ... ok
+test_worker_delta (test_cache_provenance.ProvenanceTests.test_worker_delta) ... ok
+test_zero_timebase (test_cache_provenance.ProvenanceTests.test_zero_timebase) ... ok
+test_all_saved_native_fixtures (test_chaos_results.ChaosOracleTests.test_all_saved_native_fixtures) ... ok
+test_async_dropped_pending_message (test_chaos_results.ChaosOracleTests.test_async_dropped_pending_message) ... ok
+test_async_is_not_zero_loss (test_chaos_results.ChaosOracleTests.test_async_is_not_zero_loss) ... ok
+test_async_orphan_unrecorded (test_chaos_results.ChaosOracleTests.test_async_orphan_unrecorded) ... ok
+test_bad_gate_bits (test_chaos_results.ChaosOracleTests.test_bad_gate_bits) ... ok
+test_bad_gate_count (test_chaos_results.ChaosOracleTests.test_bad_gate_count) ... ok
+test_bool_integer (test_chaos_results.ChaosOracleTests.test_bool_integer) ... ok
+test_child_future_clock (test_chaos_results.ChaosOracleTests.test_child_future_clock) ... ok
+test_child_sequence (test_chaos_results.ChaosOracleTests.test_child_sequence) ... ok
+test_cli_optimized_rejects_mutant (test_chaos_results.ChaosOracleTests.test_cli_optimized_rejects_mutant) ... ok
+test_clock_reverse (test_chaos_results.ChaosOracleTests.test_clock_reverse) ... ok
+test_count_wrong (test_chaos_results.ChaosOracleTests.test_count_wrong) ... ok
+test_duplicate_free_token (test_chaos_results.ChaosOracleTests.test_duplicate_free_token) ... ok
+test_duplicate_json_keys (test_chaos_results.ChaosOracleTests.test_duplicate_json_keys) ... ok
+test_early_timeout (test_chaos_results.ChaosOracleTests.test_early_timeout) ... ok
+test_exit_signal_wrong (test_chaos_results.ChaosOracleTests.test_exit_signal_wrong) ... ok
+test_false_hook_claim (test_chaos_results.ChaosOracleTests.test_false_hook_claim) ... ok
+test_foreign_pid (test_chaos_results.ChaosOracleTests.test_foreign_pid) ... ok
+test_free_epoch_bad (test_chaos_results.ChaosOracleTests.test_free_epoch_bad) ... ok
+test_header_corruption (test_chaos_results.ChaosOracleTests.test_header_corruption) ... ok
+test_illegal_resumed_commit (test_chaos_results.ChaosOracleTests.test_illegal_resumed_commit) ... ok
+test_incomplete_campaign (test_chaos_results.ChaosOracleTests.test_incomplete_campaign) ... ok
+test_late_publication_omitted (test_chaos_results.ChaosOracleTests.test_late_publication_omitted) ... ok
+test_loss_hidden_by_count (test_chaos_results.ChaosOracleTests.test_loss_hidden_by_count) ... ok
+test_missing_completion (test_chaos_results.ChaosOracleTests.test_missing_completion) ... ok
+test_missing_name_cleanup (test_chaos_results.ChaosOracleTests.test_missing_name_cleanup) ... ok
+test_nohook_storm_with_hooks (test_chaos_results.ChaosOracleTests.test_nohook_storm_with_hooks) ... ok
+test_nonfinite (test_chaos_results.ChaosOracleTests.test_nonfinite) ... ok
+test_orphan_identity_changed (test_chaos_results.ChaosOracleTests.test_orphan_identity_changed) ... ok
+test_orphan_phase_corruption (test_chaos_results.ChaosOracleTests.test_orphan_phase_corruption) ... ok
+test_premature_destruction_allowed (test_chaos_results.ChaosOracleTests.test_premature_destruction_allowed) ... ok
+test_resource_budget (test_chaos_results.ChaosOracleTests.test_resource_budget) ... ok
+test_reused_parent_address (test_chaos_results.ChaosOracleTests.test_reused_parent_address) ... ok
+test_reused_session (test_chaos_results.ChaosOracleTests.test_reused_session) ... ok
+test_sequence_gap (test_chaos_results.ChaosOracleTests.test_sequence_gap) ... ok
+test_spsc_reclamation_lie (test_chaos_results.ChaosOracleTests.test_spsc_reclamation_lie) ... ok
+test_spsc_status_mutation (test_chaos_results.ChaosOracleTests.test_spsc_status_mutation) ... ok
+test_standard_population (test_chaos_results.ChaosOracleTests.test_standard_population) ... ok
+test_stop_not_terminal (test_chaos_results.ChaosOracleTests.test_stop_not_terminal) ... ok
+test_storm_no_deliveries (test_chaos_results.ChaosOracleTests.test_storm_no_deliveries) ... ok
+test_timeout_custody (test_chaos_results.ChaosOracleTests.test_timeout_custody) ... ok
+test_timeout_does_not_fence (test_chaos_results.ChaosOracleTests.test_timeout_does_not_fence) ... ok
+test_timeout_does_not_reclaim (test_chaos_results.ChaosOracleTests.test_timeout_does_not_reclaim) ... ok
+test_too_large_frontier (test_chaos_results.ChaosOracleTests.test_too_large_frontier) ... ok
+test_uncommitted_sentinel_delivered (test_chaos_results.ChaosOracleTests.test_uncommitted_sentinel_delivered) ... ok
+test_unknown_campaign_profile (test_chaos_results.ChaosOracleTests.test_unknown_campaign_profile) ... ok
+test_unreaped_complete (test_chaos_results.ChaosOracleTests.test_unreaped_complete) ... ok
+test_wrong_hook_cut (test_chaos_results.ChaosOracleTests.test_wrong_hook_cut) ... ok
+test_wrong_live_cycle (test_chaos_results.ChaosOracleTests.test_wrong_live_cycle) ... ok
+test_wrong_snapshot_scope (test_chaos_results.ChaosOracleTests.test_wrong_snapshot_scope) ... ok
+test_alias_transfer_rejected (test_formal.FormalTests.test_alias_transfer_rejected) ... ok
+test_all_structural_mutants (test_formal.FormalTests.test_all_structural_mutants) ... ok
+test_budget_fails_closed (test_formal.FormalTests.test_budget_fails_closed) ... ok
+test_counter_bounds (test_formal.FormalTests.test_counter_bounds) ... ok
+test_duplicate_membership_rejected (test_formal.FormalTests.test_duplicate_membership_rejected) ... ok
+test_fake_witness_rejected (test_formal.FormalTests.test_fake_witness_rejected) ... ok
+test_finite_deadend_rejected (test_formal.FormalTests.test_finite_deadend_rejected) ... ok
+test_gate_races (test_formal.FormalTests.test_gate_races) ... ok
+test_hash_collision_does_not_merge (test_formal.FormalTests.test_hash_collision_does_not_merge) ... ok
+test_hb_transitive_closure (test_formal.FormalTests.test_hb_transitive_closure) ... ok
+test_inapplicable_mutation (test_formal.FormalTests.test_inapplicable_mutation) ... ok
+test_initial_conservation (test_formal.FormalTests.test_initial_conservation) ... ok
+test_invalid_capacity (test_formal.FormalTests.test_invalid_capacity) ... ok
+test_ncq_complete (test_formal.FormalTests.test_ncq_complete) ... ok
+test_ncq_reference_hb (test_formal.FormalTests.test_ncq_reference_hb) ... ok
+test_ncq_relaxed_install_epoch_race (test_formal.FormalTests.test_ncq_relaxed_install_epoch_race) ... ok
+test_ncq_relaxed_observation_epoch_race (test_formal.FormalTests.test_ncq_relaxed_observation_epoch_race) ... ok
+test_negative_spsc_role (test_formal.FormalTests.test_negative_spsc_role) ... ok
+test_nonprogress_cycle_detector (test_formal.FormalTests.test_nonprogress_cycle_detector) ... ok
+test_overbooked_endpoints (test_formal.FormalTests.test_overbooked_endpoints) ... ok
+test_progress_cycle_not_deadlock (test_formal.FormalTests.test_progress_cycle_not_deadlock) ... ok
+test_relaxed_CAS_retains_atomicity (test_formal.FormalTests.test_relaxed_CAS_retains_atomicity) ... ok
+test_source_anchors (test_formal.FormalTests.test_source_anchors) ... ok
+test_spsc_complete (test_formal.FormalTests.test_spsc_complete) ... ok
+test_spsc_publication_relaxed_races (test_formal.FormalTests.test_spsc_publication_relaxed_races) ... ok
+test_spsc_ra_graphs (test_formal.FormalTests.test_spsc_ra_graphs) ... ok
+test_spsc_recycle_relaxed_races (test_formal.FormalTests.test_spsc_recycle_relaxed_races) ... ok
+test_stale_consumer_across_laps (test_formal.FormalTests.test_stale_consumer_across_laps) ... ok
+test_stale_head_witness (test_formal.FormalTests.test_stale_head_witness) ... ok
+test_stopped_writer_private (test_formal.FormalTests.test_stopped_writer_private) ... ok
+test_stopped_writer_published (test_formal.FormalTests.test_stopped_writer_published) ... ok
+test_tail_ahead_rejected (test_formal.FormalTests.test_tail_ahead_rejected) ... ok
+test_time_cutoff (test_formal.FormalTests.test_time_cutoff) ... ok
+test_wrap_witness (test_formal.FormalTests.test_wrap_witness) ... ok
+test_changed_boundary_witness (test_formal_results.ReceiptTests.test_changed_boundary_witness) ... ok
+test_changed_handoff_edge (test_formal_results.ReceiptTests.test_changed_handoff_edge) ... ok
+test_changed_targeted_trace (test_formal_results.ReceiptTests.test_changed_targeted_trace) ... ok
+test_claim_full_qualification (test_formal_results.ReceiptTests.test_claim_full_qualification) ... ok
+test_duplicate_keys (test_formal_results.ReceiptTests.test_duplicate_keys) ... ok
+test_external_tool_claim (test_formal_results.ReceiptTests.test_external_tool_claim) ... ok
+test_fabricated_mutant_transition (test_formal_results.ReceiptTests.test_fabricated_mutant_transition) ... ok
+test_incomplete_as_pass (test_formal_results.ReceiptTests.test_incomplete_as_pass) ... ok
+test_laundered_expected_exit (test_formal_results.ReceiptTests.test_laundered_expected_exit) ... ok
+test_missing_case (test_formal_results.ReceiptTests.test_missing_case) ... ok
+test_numeric_infinity (test_formal_results.ReceiptTests.test_numeric_infinity) ... ok
+test_python_optimized_cli_rejects (test_formal_results.ReceiptTests.test_python_optimized_cli_rejects) ... ok
+test_removed_source_identity (test_formal_results.ReceiptTests.test_removed_source_identity) ... ok
+test_valid_all_auxiliary_replay (test_formal_results.ReceiptTests.test_valid_all_auxiliary_replay) ... ok
+test_wrong_bound (test_formal_results.ReceiptTests.test_wrong_bound) ... ok
+test_cross_object_cycles (test_gc_cycle.GCLifetimeTests.test_cross_object_cycles) ... ok
+test_cycle_ncq_read_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_read_endpoint) ... ok
+test_cycle_ncq_read_lease (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_read_lease) ... ok
+test_cycle_ncq_read_manager (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_read_manager) ... ok
+test_cycle_ncq_write_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_write_endpoint) ... ok
+test_cycle_ncq_write_lease (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_write_lease) ... ok
+test_cycle_ncq_write_manager (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_write_manager) ... ok
+test_cycle_spsc_read_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_read_endpoint) ... ok
+test_cycle_spsc_read_lease (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_read_lease) ... ok
+test_cycle_spsc_read_manager (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_read_manager) ... ok
+test_cycle_spsc_write_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_write_endpoint) ... ok
+test_cycle_spsc_write_lease (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_write_lease) ... ok
+test_cycle_spsc_write_manager (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_write_manager) ... ok
+test_downstream_ctypes_alias_keeps_pin (test_gc_cycle.GCLifetimeTests.test_downstream_ctypes_alias_keeps_pin) ... ok
+test_external_slice_prevents_reclamation (test_gc_cycle.GCLifetimeTests.test_external_slice_prevents_reclamation) ... ok
+test_finalizer_resurrects_live_view_without_revocation (test_gc_cycle.GCLifetimeTests.test_finalizer_resurrects_live_view_without_revocation) ... ok
+test_repeated_cycles_no_failures (test_gc_cycle.GCLifetimeTests.test_repeated_cycles_no_failures) ... ok
+test_two_independent_exports (test_gc_cycle.GCLifetimeTests.test_two_independent_exports) ... ok
+test_zero_length_export_still_pins (test_gc_cycle.GCLifetimeTests.test_zero_length_export_still_pins) ... ok
+test_lost_acquisition_result_is_visible_and_retained (test_hardening_failures.FailureRecoveryTests.test_lost_acquisition_result_is_visible_and_retained) ... ok
+test_unraisable_hook_never_receives_freed_self (test_hardening_failures.FailureRecoveryTests.test_unraisable_hook_never_receives_freed_self) ... ok
+test_bad_arguments (test_live_demo.LiveNative.test_bad_arguments) ... ok
+test_cancel_between_records (test_live_demo.LiveNative.test_cancel_between_records) ... ok
+test_existing_file_refused (test_live_demo.LiveNative.test_existing_file_refused) ... ok
+test_modes (test_live_demo.LiveNative.test_modes) ... ok
+test_boolean_window_rejected (test_live_demo.LiveOracle.test_boolean_window_rejected) ... ok
+test_cancelled_not_complete (test_live_demo.LiveOracle.test_cancelled_not_complete) ... ok
+test_duplicate_key (test_live_demo.LiveOracle.test_duplicate_key) ... ok
+test_exact_rational_and_large_ticks (test_live_demo.LiveOracle.test_exact_rational_and_large_ticks) ... ok
+test_float_payload_size_rejected (test_live_demo.LiveOracle.test_float_payload_size_rejected) ... ok
+test_mutations (test_live_demo.LiveOracle.test_mutations) ... ok
+test_optimized_python_rejects (test_live_demo.LiveOracle.test_optimized_python_rejects) ... ok
+test_truncated (test_live_demo.LiveOracle.test_truncated) ... ok
+test_bad_plan_hash (test_matrix_results.CampaignTests.test_bad_plan_hash) ... ok
+test_changed_plan_workload (test_matrix_results.CampaignTests.test_changed_plan_workload) ... ok
+test_duplicate_plan (test_matrix_results.CampaignTests.test_duplicate_plan) ... ok
+test_invented_completed_count (test_matrix_results.CampaignTests.test_invented_completed_count) ... ok
+test_manifest_guards_inventory (test_matrix_results.CampaignTests.test_manifest_guards_inventory) ... ok
+test_missing_completion (test_matrix_results.CampaignTests.test_missing_completion) ... ok
+test_missing_trial (test_matrix_results.CampaignTests.test_missing_trial) ... ok
+test_renamed_trial (test_matrix_results.CampaignTests.test_renamed_trial) ... ok
+test_skip_without_reason (test_matrix_results.CampaignTests.test_skip_without_reason) ... ok
+test_valid_campaign (test_matrix_results.CampaignTests.test_valid_campaign) ... ok
+test_affinity_lie (test_matrix_results.RecordTests.test_affinity_lie) ... ok
+test_bad_capacity (test_matrix_results.RecordTests.test_bad_capacity) ... ok
+test_bad_read_timestamp (test_matrix_results.RecordTests.test_bad_read_timestamp) ... ok
+test_bandwidth (test_matrix_results.RecordTests.test_bandwidth) ... ok
+test_boolean_arrival (test_matrix_results.RecordTests.test_boolean_arrival) ... ok
+test_cli_under_optimized_python (test_matrix_results.RecordTests.test_cli_under_optimized_python) ... ok
+test_duplicate_free_token (test_matrix_results.RecordTests.test_duplicate_free_token) ... ok
+test_duplicate_json_key (test_matrix_results.RecordTests.test_duplicate_json_key) ... ok
+test_duplicate_membership (test_matrix_results.RecordTests.test_duplicate_membership) ... ok
+test_duplicate_worker (test_matrix_results.RecordTests.test_duplicate_worker) ... ok
+test_elapsed (test_matrix_results.RecordTests.test_elapsed) ... ok
+test_eligible_scope (test_matrix_results.RecordTests.test_eligible_scope) ... ok
+test_epoch_mismatch (test_matrix_results.RecordTests.test_epoch_mismatch) ... ok
+test_external_binary (test_matrix_results.RecordTests.test_external_binary) ... ok
+test_fixed_schedule_not_closed_loop (test_matrix_results.RecordTests.test_fixed_schedule_not_closed_loop) ... ok
+test_geometry (test_matrix_results.RecordTests.test_geometry) ... ok
+test_invented_cross_numa (test_matrix_results.RecordTests.test_invented_cross_numa) ... ok
+test_invented_pe (test_matrix_results.RecordTests.test_invented_pe) ... ok
+test_invented_residency (test_matrix_results.RecordTests.test_invented_residency) ... ok
+test_invented_uncertainty (test_matrix_results.RecordTests.test_invented_uncertainty) ... ok
+test_max_integer (test_matrix_results.RecordTests.test_max_integer) ... ok
+test_missing_membership (test_matrix_results.RecordTests.test_missing_membership) ... ok
+test_missing_worker (test_matrix_results.RecordTests.test_missing_worker) ... ok
+test_negative_tick (test_matrix_results.RecordTests.test_negative_tick) ... ok
+test_no_final_tokens (test_matrix_results.RecordTests.test_no_final_tokens) ... ok
+test_nonfinite (test_matrix_results.RecordTests.test_nonfinite) ... ok
+test_rate (test_matrix_results.RecordTests.test_rate) ... ok
+test_retained_phase (test_matrix_results.RecordTests.test_retained_phase) ... ok
+test_retention_not_omitted (test_matrix_results.RecordTests.test_retention_not_omitted) ... ok
+test_runtime (test_matrix_results.RecordTests.test_runtime) ... ok
+test_shifted_offer (test_matrix_results.RecordTests.test_shifted_offer) ... ok
+test_synthetic_hardware (test_matrix_results.RecordTests.test_synthetic_hardware) ... ok
+test_truncated_trace (test_matrix_results.RecordTests.test_truncated_trace) ... ok
+test_valid (test_matrix_results.RecordTests.test_valid) ... ok
+test_warmup_reset (test_matrix_results.RecordTests.test_warmup_reset) ... ok
+test_wrong_quantile (test_matrix_results.RecordTests.test_wrong_quantile) ... ok
+test_wrong_sample_count (test_matrix_results.RecordTests.test_wrong_sample_count) ... ok
+test_wrong_segment (test_matrix_results.RecordTests.test_wrong_segment) ... ok
+test_wrong_union (test_matrix_results.RecordTests.test_wrong_union) ... ok
+test_zero_timebase (test_matrix_results.RecordTests.test_zero_timebase) ... ok
+test_bounds_before_narrowing (test_python_bindings.BindingTests.test_bounds_before_narrowing) ... ok
+test_busy_detach_and_manager (test_python_bindings.BindingTests.test_busy_detach_and_manager) ... ok
+test_cast_survives_root (test_python_bindings.BindingTests.test_cast_survives_root) ... ok
+test_context_abort (test_python_bindings.BindingTests.test_context_abort) ... ok
+test_crc_profile (test_python_bindings.BindingTests.test_crc_profile) ... ok
+test_ctypes_export_retains_slot (test_python_bindings.BindingTests.test_ctypes_export_retains_slot) ... ok
+test_direct_roundtrip (test_python_bindings.BindingTests.test_direct_roundtrip) ... ok
+test_duplicate_attach_cleanup_does_not_resolve_original (test_python_bindings.BindingTests.test_duplicate_attach_cleanup_does_not_resolve_original) ... ok
+test_duplicate_transfer (test_python_bindings.BindingTests.test_duplicate_transfer) ... ok
+test_epoch_advances_on_abort (test_python_bindings.BindingTests.test_epoch_advances_on_abort) ... ok
+test_explicit_copy (test_python_bindings.BindingTests.test_explicit_copy) ... ok
+test_exporter_without_views_retains_ability (test_python_bindings.BindingTests.test_exporter_without_views_retains_ability) ... ok
+test_gc_outer_lease_retained_by_alias (test_python_bindings.BindingTests.test_gc_outer_lease_retained_by_alias) ... ok
+test_gc_uncommitted_write_aborts (test_python_bindings.BindingTests.test_gc_uncommitted_write_aborts) ... ok
+test_multiple_roots (test_python_bindings.BindingTests.test_multiple_roots) ... ok
+test_pattern_helper_all_bytes (test_python_bindings.BindingTests.test_pattern_helper_all_bytes) ... ok
+test_read_context_exception_returns_token (test_python_bindings.BindingTests.test_read_context_exception_returns_token) ... ok
+test_readonly_exporter (test_python_bindings.BindingTests.test_readonly_exporter) ... ok
+test_received_mapping_survives_endpoint_name_drop (test_python_bindings.BindingTests.test_received_mapping_survives_endpoint_name_drop) ... ok
+test_retirement_does_not_revoke_alias (test_python_bindings.BindingTests.test_retirement_does_not_revoke_alias) ... ok
+test_role_rejected_before_attach (test_python_bindings.BindingTests.test_role_rejected_before_attach) ... ok
+test_slice_survives_root (test_python_bindings.BindingTests.test_slice_survives_root) ... ok
+test_threads_serialized_one_outstanding (test_python_bindings.BindingTests.test_threads_serialized_one_outstanding) ... ok
+test_timeout_is_not_lease_revocation (test_python_bindings.BindingTests.test_timeout_is_not_lease_revocation) ... ok
+test_version_layouts (test_python_bindings.BindingTests.test_version_layouts) ... ok
+test_zero_length (test_python_bindings.BindingTests.test_zero_length) ... ok
+test_binding_cleanup_registry_empty (test_python_bindings.ProcessTests.test_binding_cleanup_registry_empty) ... ok
+test_grant_encoding_rejects_missing_fields (test_python_bindings.ProcessTests.test_grant_encoding_rejects_missing_fields) ... ok
+test_inherited_handle_methods_reject (test_python_bindings.ProcessTests.test_inherited_handle_methods_reject) ... ok
+test_kill_leaks_token_but_whole_generation_cleans (test_python_bindings.ProcessTests.test_kill_leaks_token_but_whole_generation_cleans) ... ok
+test_normal_exit_closes_idle_generation (test_python_bindings.ProcessTests.test_normal_exit_closes_idle_generation) ... ok
+test_pause_resume_distinct_successor (test_python_bindings.ProcessTests.test_pause_resume_distinct_successor) ... ok
+test_python_mpmc_two_producers_two_consumers (test_python_bindings.ProcessTests.test_python_mpmc_two_producers_two_consumers) ... ok
+test_spawned_python_publication (test_python_bindings.ProcessTests.test_spawned_python_publication) ... ok
+test_throughput_driver (test_python_bindings.ProcessTests.test_throughput_driver) ... ok
+test_uncertain_python_return_never_blindly_retries (test_python_bindings.ProcessTests.test_uncertain_python_return_never_blindly_retries) ... ok
+test_cli_is_read_only_in_pristine_tree (test_release_integrity.ReleaseIntegrityTests.test_cli_is_read_only_in_pristine_tree) ... ok
+test_deleted_audit_detected (test_release_integrity.ReleaseIntegrityTests.test_deleted_audit_detected) ... ok
+test_pristine_passes (test_release_integrity.ReleaseIntegrityTests.test_pristine_passes) ... ok
+test_required_license_edit_detected (test_release_integrity.ReleaseIntegrityTests.test_required_license_edit_detected) ... ok
+test_source_coverage_cannot_be_silently_dropped (test_release_integrity.ReleaseIntegrityTests.test_source_coverage_cannot_be_silently_dropped) ... ok
+test_strict_mode_rejects_build_overlay (test_release_integrity.ReleaseIntegrityTests.test_strict_mode_rejects_build_overlay) ... ok
+test_symlink_rejected (test_release_integrity.ReleaseIntegrityTests.test_symlink_rejected) ... ok
+test_unlisted_hidden_member_detected (test_release_integrity.ReleaseIntegrityTests.test_unlisted_hidden_member_detected) ... ok
+test_bad_repository (test_seeding.PackageSeed.test_bad_repository) ... ok
+test_credentials_refused (test_seeding.PackageSeed.test_credentials_refused) ... ok
+test_local_formula (test_seeding.PackageSeed.test_local_formula) ... ok
+test_no_overwrite (test_seeding.PackageSeed.test_no_overwrite) ... ok
+test_plain_http_refused (test_seeding.PackageSeed.test_plain_http_refused) ... ok
+test_public_formula (test_seeding.PackageSeed.test_public_formula) ... ok
+test_wrong_source_version (test_seeding.PackageSeed.test_wrong_source_version) ... ok
+test_complete_cmake_export (test_seeding.SeedingSurface.test_complete_cmake_export) ... ok
+test_man_pages_sections_and_contracts (test_seeding.SeedingSurface.test_man_pages_sections_and_contracts) ... ok
+test_manual_references_actual_api (test_seeding.SeedingSurface.test_manual_references_actual_api) ... ok
+test_matrix_scopes (test_seeding.SeedingSurface.test_matrix_scopes) ... ok
+test_ruby_syntax (test_seeding.SeedingSurface.test_ruby_syntax) ... ok
+test_source_manifest_policy_covers_seeding (test_seeding.SeedingSurface.test_source_manifest_policy_covers_seeding) ... ok
+test_vcpkg_metadata (test_seeding.SeedingSurface.test_vcpkg_metadata) ... ok
+test_workflow_no_write_or_privileged_pr_trigger (test_seeding.SeedingSurface.test_workflow_no_write_or_privileged_pr_trigger) ... ok
+test_workflow_pins (test_seeding.SeedingSurface.test_workflow_pins) ... ok
+test_ambiguous_node_not_certified (test_topology.Fixtures.test_ambiguous_node_not_certified) ... ok
+test_cgroup_resource_budget (test_topology.Fixtures.test_cgroup_resource_budget) ... ok
+test_conflicting_nodes (test_topology.Fixtures.test_conflicting_nodes) ... ok
+test_escape_cgroup_rejected (test_topology.Fixtures.test_escape_cgroup_rejected) ... ok
+test_known_cross_numa_shape (test_topology.Fixtures.test_known_cross_numa_shape) ... ok
+test_limit_no_truncation (test_topology.Fixtures.test_limit_no_truncation) ... ok
+test_malformed_cpu_list (test_topology.Fixtures.test_malformed_cpu_list) ... ok
+test_memory_unknown (test_topology.Fixtures.test_memory_unknown) ... ok
+test_missing_cache_is_partial (test_topology.Fixtures.test_missing_cache_is_partial) ... ok
+test_no_live_claim_from_fixture (test_topology.Fixtures.test_no_live_claim_from_fixture) ... ok
+test_no_node_guess (test_topology.Fixtures.test_no_node_guess) ... ok
+test_no_per_cpu_pe_fabrication (test_topology.Fixtures.test_no_per_cpu_pe_fabrication) ... ok
+test_not_instruction_only_l2 (test_topology.Fixtures.test_not_instruction_only_l2) ... ok
+test_oversized_mountinfo (test_topology.Fixtures.test_oversized_mountinfo) ... ok
+test_same_data_l2 (test_topology.Fixtures.test_same_data_l2) ... ok
+test_sparse_numa_and_smt (test_topology.Fixtures.test_sparse_numa_and_smt) ... ok
+test_topology_not_residency (test_topology.Fixtures.test_topology_not_residency) ... ok
+test_unlimited_is_not_zero (test_topology.Fixtures.test_unlimited_is_not_zero) ... ok
+test_v1_not_unlimited (test_topology.Fixtures.test_v1_not_unlimited) ... ok
+test_visible_ancestor_quota (test_topology.Fixtures.test_visible_ancestor_quota) ... ok
+test_wrong_same_numa (test_topology.Fixtures.test_wrong_same_numa) ... ok
+test_bool_integer_substitution (test_trust_capsule.CapsuleTests.test_bool_integer_substitution) ... ok
+test_capsule_modified_rate_claim (test_trust_capsule.CapsuleTests.test_capsule_modified_rate_claim) ... ok
+test_changed_member (test_trust_capsule.CapsuleTests.test_changed_member) ... ok
+test_cli_optimized_rejects (test_trust_capsule.CapsuleTests.test_cli_optimized_rejects) ... ok
+test_deterministic_pack (test_trust_capsule.CapsuleTests.test_deterministic_pack) ... ok
+test_duplicate_archive_member (test_trust_capsule.CapsuleTests.test_duplicate_archive_member) ... /usr/lib/python3.13/zipfile/__init__.py:1642: UserWarning: Duplicate name: 'elite-ringbuffer-1.1.0/.github/workflows/ci.yml'
+  return self._open_to_write(zinfo, force_zip64=force_zip64)
+ok
+test_duplicate_json (test_trust_capsule.CapsuleTests.test_duplicate_json) ... ok
+test_escape (test_trust_capsule.CapsuleTests.test_escape) ... ok
+test_generated_file (test_trust_capsule.CapsuleTests.test_generated_file) ... ok
+test_missing_member (test_trust_capsule.CapsuleTests.test_missing_member) ... ok
+test_no_overwrite (test_trust_capsule.CapsuleTests.test_no_overwrite) ... ok
+test_regeneration_does_not_forge_canonical (test_trust_capsule.CapsuleTests.test_regeneration_does_not_forge_canonical) ... ok
+test_rehashed_wrong_header (test_trust_capsule.CapsuleTests.test_rehashed_wrong_header) ... ok
+test_signature_is_not_invented (test_trust_capsule.CapsuleTests.test_signature_is_not_invented) ... ok
+test_source_policy_agreement (test_trust_capsule.CapsuleTests.test_source_policy_agreement) ... ok
+test_symlink (test_trust_capsule.CapsuleTests.test_symlink) ... ok
+test_valid_with_external_pin (test_trust_capsule.CapsuleTests.test_valid_with_external_pin) ... ok
+test_wrong_pin (test_trust_capsule.CapsuleTests.test_wrong_pin) ... ok
+test_continued_cannot_fence (test_wait_status.WaitStatusTests.test_continued_cannot_fence) ... ok
+test_darwin_continued_is_not_linux_stop (test_wait_status.WaitStatusTests.test_darwin_continued_is_not_linux_stop) ... ok
+test_darwin_stop (test_wait_status.WaitStatusTests.test_darwin_stop) ... ok
+test_exits (test_wait_status.WaitStatusTests.test_exits) ... ok
+test_explicit_linux_fixture (test_wait_status.WaitStatusTests.test_explicit_linux_fixture) ... ok
+test_invalid_encodings (test_wait_status.WaitStatusTests.test_invalid_encodings) ... ok
+test_legacy_linux_fixture (test_wait_status.WaitStatusTests.test_legacy_linux_fixture) ... ok
+test_linux_continued (test_wait_status.WaitStatusTests.test_linux_continued) ... ok
+test_linux_stop (test_wait_status.WaitStatusTests.test_linux_stop) ... ok
+test_mismatched_signal (test_wait_status.WaitStatusTests.test_mismatched_signal) ... ok
+test_stop_is_not_death (test_wait_status.WaitStatusTests.test_stop_is_not_death) ... ok
+test_synthetic_darwin_fixtures (test_wait_status.WaitStatusTests.test_synthetic_darwin_fixtures) ... ok
+test_terminal_sigkill (test_wait_status.WaitStatusTests.test_terminal_sigkill) ... ok
+test_unknown_abi (test_wait_status.WaitStatusTests.test_unknown_abi) ... ok
+
+----------------------------------------------------------------------
+Ran 345 tests in 86.171s
+
+OK
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -UNDEBUG -fPIE  -pie -o build/gcc-seed/formal_spsc_handoff formal/c11/spsc_handoff.c -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -UNDEBUG -fPIE  -pie -o build/gcc-seed/formal_ncq_handoff formal/c11/ncq_handoff.c -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -UNDEBUG -fPIE  -pie -o build/gcc-seed/formal_ticket_atomicity formal/c11/ticket_atomicity.c -pthread
+build/gcc-seed/formal_spsc_handoff
+build/gcc-seed/formal_ncq_handoff
+build/gcc-seed/formal_ticket_atomicity
+python3 tools/check_formal_binding.py
+PASS: 8 source files match the reviewed model binding
+python3 tests/test_formal.py
+test_alias_transfer_rejected (__main__.FormalTests.test_alias_transfer_rejected) ... ok
+test_all_structural_mutants (__main__.FormalTests.test_all_structural_mutants) ... ok
+test_budget_fails_closed (__main__.FormalTests.test_budget_fails_closed) ... ok
+test_counter_bounds (__main__.FormalTests.test_counter_bounds) ... ok
+test_duplicate_membership_rejected (__main__.FormalTests.test_duplicate_membership_rejected) ... ok
+test_fake_witness_rejected (__main__.FormalTests.test_fake_witness_rejected) ... ok
+test_finite_deadend_rejected (__main__.FormalTests.test_finite_deadend_rejected) ... ok
+test_gate_races (__main__.FormalTests.test_gate_races) ... ok
+test_hash_collision_does_not_merge (__main__.FormalTests.test_hash_collision_does_not_merge) ... ok
+test_hb_transitive_closure (__main__.FormalTests.test_hb_transitive_closure) ... ok
+test_inapplicable_mutation (__main__.FormalTests.test_inapplicable_mutation) ... ok
+test_initial_conservation (__main__.FormalTests.test_initial_conservation) ... ok
+test_invalid_capacity (__main__.FormalTests.test_invalid_capacity) ... ok
+test_ncq_complete (__main__.FormalTests.test_ncq_complete) ... ok
+test_ncq_reference_hb (__main__.FormalTests.test_ncq_reference_hb) ... ok
+test_ncq_relaxed_install_epoch_race (__main__.FormalTests.test_ncq_relaxed_install_epoch_race) ... ok
+test_ncq_relaxed_observation_epoch_race (__main__.FormalTests.test_ncq_relaxed_observation_epoch_race) ... ok
+test_negative_spsc_role (__main__.FormalTests.test_negative_spsc_role) ... ok
+test_nonprogress_cycle_detector (__main__.FormalTests.test_nonprogress_cycle_detector) ... ok
+test_overbooked_endpoints (__main__.FormalTests.test_overbooked_endpoints) ... ok
+test_progress_cycle_not_deadlock (__main__.FormalTests.test_progress_cycle_not_deadlock) ... ok
+test_relaxed_CAS_retains_atomicity (__main__.FormalTests.test_relaxed_CAS_retains_atomicity) ... ok
+test_source_anchors (__main__.FormalTests.test_source_anchors) ... ok
+test_spsc_complete (__main__.FormalTests.test_spsc_complete) ... ok
+test_spsc_publication_relaxed_races (__main__.FormalTests.test_spsc_publication_relaxed_races) ... ok
+test_spsc_ra_graphs (__main__.FormalTests.test_spsc_ra_graphs) ... ok
+test_spsc_recycle_relaxed_races (__main__.FormalTests.test_spsc_recycle_relaxed_races) ... ok
+test_stale_consumer_across_laps (__main__.FormalTests.test_stale_consumer_across_laps) ... ok
+test_stale_head_witness (__main__.FormalTests.test_stale_head_witness) ... ok
+test_stopped_writer_private (__main__.FormalTests.test_stopped_writer_private) ... ok
+test_stopped_writer_published (__main__.FormalTests.test_stopped_writer_published) ... ok
+test_tail_ahead_rejected (__main__.FormalTests.test_tail_ahead_rejected) ... ok
+test_time_cutoff (__main__.FormalTests.test_time_cutoff) ... ok
+test_wrap_witness (__main__.FormalTests.test_wrap_witness) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 2.101s
+
+OK
+python3 tests/test_formal_results.py
+test_changed_boundary_witness (__main__.ReceiptTests.test_changed_boundary_witness) ... ok
+test_changed_handoff_edge (__main__.ReceiptTests.test_changed_handoff_edge) ... ok
+test_changed_targeted_trace (__main__.ReceiptTests.test_changed_targeted_trace) ... ok
+test_claim_full_qualification (__main__.ReceiptTests.test_claim_full_qualification) ... ok
+test_duplicate_keys (__main__.ReceiptTests.test_duplicate_keys) ... ok
+test_external_tool_claim (__main__.ReceiptTests.test_external_tool_claim) ... ok
+test_fabricated_mutant_transition (__main__.ReceiptTests.test_fabricated_mutant_transition) ... ok
+test_incomplete_as_pass (__main__.ReceiptTests.test_incomplete_as_pass) ... ok
+test_laundered_expected_exit (__main__.ReceiptTests.test_laundered_expected_exit) ... ok
+test_missing_case (__main__.ReceiptTests.test_missing_case) ... ok
+test_numeric_infinity (__main__.ReceiptTests.test_numeric_infinity) ... ok
+test_python_optimized_cli_rejects (__main__.ReceiptTests.test_python_optimized_cli_rejects) ... ok
+test_removed_source_identity (__main__.ReceiptTests.test_removed_source_identity) ... ok
+test_valid_all_auxiliary_replay (__main__.ReceiptTests.test_valid_all_auxiliary_replay) ... ok
+test_wrong_bound (__main__.ReceiptTests.test_wrong_bound) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 13.662s
+
+OK
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Itests -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc-seed/chaos_multiprocess tests/test_chaos_multiprocess.c build/gcc-seed/libelite_ringbuffer.a -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Itests -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE -DELITE_TESTING  -pie -o build/gcc-seed/chaos_multiprocess_hooks tests/test_chaos_multiprocess.c build/gcc-seed/test_elite_core.o build/gcc-seed/test_elite_format.o build/gcc-seed/test_elite_spsc.o build/gcc-seed/test_elite_mpmc_ncq.o build/gcc-seed/test_elite_shm.o build/gcc-seed/test_elite_wait.o build/gcc-seed/test_elite_version.o -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Itests -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc-seed/chaos_resources tests/test_chaos_resources.c build/gcc-seed/libelite_ringbuffer.a -pthread
+python3 tests/test_chaos_results.py
+test_all_saved_native_fixtures (__main__.ChaosOracleTests.test_all_saved_native_fixtures) ... ok
+test_async_dropped_pending_message (__main__.ChaosOracleTests.test_async_dropped_pending_message) ... ok
+test_async_is_not_zero_loss (__main__.ChaosOracleTests.test_async_is_not_zero_loss) ... ok
+test_async_orphan_unrecorded (__main__.ChaosOracleTests.test_async_orphan_unrecorded) ... ok
+test_bad_gate_bits (__main__.ChaosOracleTests.test_bad_gate_bits) ... ok
+test_bad_gate_count (__main__.ChaosOracleTests.test_bad_gate_count) ... ok
+test_bool_integer (__main__.ChaosOracleTests.test_bool_integer) ... ok
+test_child_future_clock (__main__.ChaosOracleTests.test_child_future_clock) ... ok
+test_child_sequence (__main__.ChaosOracleTests.test_child_sequence) ... ok
+test_cli_optimized_rejects_mutant (__main__.ChaosOracleTests.test_cli_optimized_rejects_mutant) ... ok
+test_clock_reverse (__main__.ChaosOracleTests.test_clock_reverse) ... ok
+test_count_wrong (__main__.ChaosOracleTests.test_count_wrong) ... ok
+test_duplicate_free_token (__main__.ChaosOracleTests.test_duplicate_free_token) ... ok
+test_duplicate_json_keys (__main__.ChaosOracleTests.test_duplicate_json_keys) ... ok
+test_early_timeout (__main__.ChaosOracleTests.test_early_timeout) ... ok
+test_exit_signal_wrong (__main__.ChaosOracleTests.test_exit_signal_wrong) ... ok
+test_false_hook_claim (__main__.ChaosOracleTests.test_false_hook_claim) ... ok
+test_foreign_pid (__main__.ChaosOracleTests.test_foreign_pid) ... ok
+test_free_epoch_bad (__main__.ChaosOracleTests.test_free_epoch_bad) ... ok
+test_header_corruption (__main__.ChaosOracleTests.test_header_corruption) ... ok
+test_illegal_resumed_commit (__main__.ChaosOracleTests.test_illegal_resumed_commit) ... ok
+test_incomplete_campaign (__main__.ChaosOracleTests.test_incomplete_campaign) ... ok
+test_late_publication_omitted (__main__.ChaosOracleTests.test_late_publication_omitted) ... ok
+test_loss_hidden_by_count (__main__.ChaosOracleTests.test_loss_hidden_by_count) ... ok
+test_missing_completion (__main__.ChaosOracleTests.test_missing_completion) ... ok
+test_missing_name_cleanup (__main__.ChaosOracleTests.test_missing_name_cleanup) ... ok
+test_nohook_storm_with_hooks (__main__.ChaosOracleTests.test_nohook_storm_with_hooks) ... ok
+test_nonfinite (__main__.ChaosOracleTests.test_nonfinite) ... ok
+test_orphan_identity_changed (__main__.ChaosOracleTests.test_orphan_identity_changed) ... ok
+test_orphan_phase_corruption (__main__.ChaosOracleTests.test_orphan_phase_corruption) ... ok
+test_premature_destruction_allowed (__main__.ChaosOracleTests.test_premature_destruction_allowed) ... ok
+test_resource_budget (__main__.ChaosOracleTests.test_resource_budget) ... ok
+test_reused_parent_address (__main__.ChaosOracleTests.test_reused_parent_address) ... ok
+test_reused_session (__main__.ChaosOracleTests.test_reused_session) ... ok
+test_sequence_gap (__main__.ChaosOracleTests.test_sequence_gap) ... ok
+test_spsc_reclamation_lie (__main__.ChaosOracleTests.test_spsc_reclamation_lie) ... ok
+test_spsc_status_mutation (__main__.ChaosOracleTests.test_spsc_status_mutation) ... ok
+test_standard_population (__main__.ChaosOracleTests.test_standard_population) ... ok
+test_stop_not_terminal (__main__.ChaosOracleTests.test_stop_not_terminal) ... ok
+test_storm_no_deliveries (__main__.ChaosOracleTests.test_storm_no_deliveries) ... ok
+test_timeout_custody (__main__.ChaosOracleTests.test_timeout_custody) ... ok
+test_timeout_does_not_fence (__main__.ChaosOracleTests.test_timeout_does_not_fence) ... ok
+test_timeout_does_not_reclaim (__main__.ChaosOracleTests.test_timeout_does_not_reclaim) ... ok
+test_too_large_frontier (__main__.ChaosOracleTests.test_too_large_frontier) ... ok
+test_uncommitted_sentinel_delivered (__main__.ChaosOracleTests.test_uncommitted_sentinel_delivered) ... ok
+test_unknown_campaign_profile (__main__.ChaosOracleTests.test_unknown_campaign_profile) ... ok
+test_unreaped_complete (__main__.ChaosOracleTests.test_unreaped_complete) ... ok
+test_wrong_hook_cut (__main__.ChaosOracleTests.test_wrong_hook_cut) ... ok
+test_wrong_live_cycle (__main__.ChaosOracleTests.test_wrong_live_cycle) ... ok
+test_wrong_snapshot_scope (__main__.ChaosOracleTests.test_wrong_snapshot_scope) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 1.542s
+
+OK
+python3 tools/check_chaos.py --build build/gcc-seed
+write_claim_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+read_claim_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+late_publication_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+resume_write_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+resume_read_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+resume_write_spsc_1p1c_t000: PASS_WITHIN_SCOPE messages=10000
+resume_read_spsc_1p1c_t000: PASS_WITHIN_SCOPE messages=10000
+random_abort_kill_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+storm_ncq_4p4c_t000: PASS_WITHIN_SCOPE messages=16000
+resources_t000: PASS_WITHIN_SCOPE messages=0
+{"status": "COMPLETE", "plan_sha256": "4eece44e55d2c37e7b0edb2471b9d9574b788fadb579f99701e7cfcd8f1835e5", "cases": ["write_claim_ncq_1p1c_t000", "read_claim_ncq_1p1c_t000", "late_publication_ncq_1p1c_t000", "resume_write_ncq_1p1c_t000", "resume_read_ncq_1p1c_t000", "resume_write_spsc_1p1c_t000", "resume_read_spsc_1p1c_t000", "random_abort_kill_ncq_1p1c_t000", "storm_ncq_4p4c_t000", "resources_t000"], "messages": 156000}
+{"status": "PASS_WITHIN_SCOPE", "cases": 10, "measured_messages": 156000}
+python3 tests/test_trust_capsule.py
+test_bool_integer_substitution (__main__.CapsuleTests.test_bool_integer_substitution) ... ok
+test_capsule_modified_rate_claim (__main__.CapsuleTests.test_capsule_modified_rate_claim) ... ok
+test_changed_member (__main__.CapsuleTests.test_changed_member) ... ok
+test_cli_optimized_rejects (__main__.CapsuleTests.test_cli_optimized_rejects) ... ok
+test_deterministic_pack (__main__.CapsuleTests.test_deterministic_pack) ... ok
+test_duplicate_archive_member (__main__.CapsuleTests.test_duplicate_archive_member) ... /usr/lib/python3.13/zipfile/__init__.py:1642: UserWarning: Duplicate name: 'elite-ringbuffer-1.1.0/.github/workflows/ci.yml'
+  return self._open_to_write(zinfo, force_zip64=force_zip64)
+ok
+test_duplicate_json (__main__.CapsuleTests.test_duplicate_json) ... ok
+test_escape (__main__.CapsuleTests.test_escape) ... ok
+test_generated_file (__main__.CapsuleTests.test_generated_file) ... ok
+test_missing_member (__main__.CapsuleTests.test_missing_member) ... ok
+test_no_overwrite (__main__.CapsuleTests.test_no_overwrite) ... ok
+test_regeneration_does_not_forge_canonical (__main__.CapsuleTests.test_regeneration_does_not_forge_canonical) ... ok
+test_rehashed_wrong_header (__main__.CapsuleTests.test_rehashed_wrong_header) ... ok
+test_signature_is_not_invented (__main__.CapsuleTests.test_signature_is_not_invented) ... ok
+test_source_policy_agreement (__main__.CapsuleTests.test_source_policy_agreement) ... ok
+test_symlink (__main__.CapsuleTests.test_symlink) ... ok
+test_valid_with_external_pin (__main__.CapsuleTests.test_valid_with_external_pin) ... ok
+test_wrong_pin (__main__.CapsuleTests.test_wrong_pin) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 2.140s
+
+OK
+python3 tests/test_wait_status.py
+test_continued_cannot_fence (__main__.WaitStatusTests.test_continued_cannot_fence) ... ok
+test_darwin_continued_is_not_linux_stop (__main__.WaitStatusTests.test_darwin_continued_is_not_linux_stop) ... ok
+test_darwin_stop (__main__.WaitStatusTests.test_darwin_stop) ... ok
+test_exits (__main__.WaitStatusTests.test_exits) ... ok
+test_explicit_linux_fixture (__main__.WaitStatusTests.test_explicit_linux_fixture) ... ok
+test_invalid_encodings (__main__.WaitStatusTests.test_invalid_encodings) ... ok
+test_legacy_linux_fixture (__main__.WaitStatusTests.test_legacy_linux_fixture) ... ok
+test_linux_continued (__main__.WaitStatusTests.test_linux_continued) ... ok
+test_linux_stop (__main__.WaitStatusTests.test_linux_stop) ... ok
+test_mismatched_signal (__main__.WaitStatusTests.test_mismatched_signal) ... ok
+test_stop_is_not_death (__main__.WaitStatusTests.test_stop_is_not_death) ... ok
+test_synthetic_darwin_fixtures (__main__.WaitStatusTests.test_synthetic_darwin_fixtures) ... ok
+test_terminal_sigkill (__main__.WaitStatusTests.test_terminal_sigkill) ... ok
+test_unknown_abi (__main__.WaitStatusTests.test_unknown_abi) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.066s
+
+OK
+ELITE_DEMO_BINARY="/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/gcc-seed/live_throughput_demo" python3 -m unittest discover -s tests -p 'test_live_demo.py' -v
+test_bad_arguments (test_live_demo.LiveNative.test_bad_arguments) ... ok
+test_cancel_between_records (test_live_demo.LiveNative.test_cancel_between_records) ... ok
+test_existing_file_refused (test_live_demo.LiveNative.test_existing_file_refused) ... ok
+test_modes (test_live_demo.LiveNative.test_modes) ... ok
+test_boolean_window_rejected (test_live_demo.LiveOracle.test_boolean_window_rejected) ... ok
+test_cancelled_not_complete (test_live_demo.LiveOracle.test_cancelled_not_complete) ... ok
+test_duplicate_key (test_live_demo.LiveOracle.test_duplicate_key) ... ok
+test_exact_rational_and_large_ticks (test_live_demo.LiveOracle.test_exact_rational_and_large_ticks) ... ok
+test_float_payload_size_rejected (test_live_demo.LiveOracle.test_float_payload_size_rejected) ... ok
+test_mutations (test_live_demo.LiveOracle.test_mutations) ... ok
+test_optimized_python_rejects (test_live_demo.LiveOracle.test_optimized_python_rejects) ... ok
+test_truncated (test_live_demo.LiveOracle.test_truncated) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.538s
+
+OK
+python3 -m unittest discover -s tests -p 'test_seeding.py' -v
+test_bad_repository (test_seeding.PackageSeed.test_bad_repository) ... ok
+test_credentials_refused (test_seeding.PackageSeed.test_credentials_refused) ... ok
+test_local_formula (test_seeding.PackageSeed.test_local_formula) ... ok
+test_no_overwrite (test_seeding.PackageSeed.test_no_overwrite) ... ok
+test_plain_http_refused (test_seeding.PackageSeed.test_plain_http_refused) ... ok
+test_public_formula (test_seeding.PackageSeed.test_public_formula) ... ok
+test_wrong_source_version (test_seeding.PackageSeed.test_wrong_source_version) ... ok
+test_complete_cmake_export (test_seeding.SeedingSurface.test_complete_cmake_export) ... ok
+test_man_pages_sections_and_contracts (test_seeding.SeedingSurface.test_man_pages_sections_and_contracts) ... ok
+test_manual_references_actual_api (test_seeding.SeedingSurface.test_manual_references_actual_api) ... ok
+test_matrix_scopes (test_seeding.SeedingSurface.test_matrix_scopes) ... ok
+test_ruby_syntax (test_seeding.SeedingSurface.test_ruby_syntax) ... ok
+test_source_manifest_policy_covers_seeding (test_seeding.SeedingSurface.test_source_manifest_policy_covers_seeding) ... ok
+test_vcpkg_metadata (test_seeding.SeedingSurface.test_vcpkg_metadata) ... ok
+test_workflow_no_write_or_privileged_pr_trigger (test_seeding.SeedingSurface.test_workflow_no_write_or_privileged_pr_trigger) ... ok
+test_workflow_pins (test_seeding.SeedingSurface.test_workflow_pins) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.088s
+
+OK

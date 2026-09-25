@@ -1,0 +1,16 @@
+{
+  "status": "PASS_WITHIN_DECLARED_SCOPE",
+  "complete_configurations": 7,
+  "states": 2158499,
+  "transitions": 5700615,
+  "structural_witnesses": 7,
+  "ordering_mutation_families": 4,
+  "wrap_identity_witness": true,
+  "formal_selftests": 34,
+  "receipt_selftests": 15,
+  "release_integrity_selftests": 8,
+  "broad_python_tests": 235,
+  "full_turn5_v1": false,
+  "spin_executed": false,
+  "genmc_executed": false
+}

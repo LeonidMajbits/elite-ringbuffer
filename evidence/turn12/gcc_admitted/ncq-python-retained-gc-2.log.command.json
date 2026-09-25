@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/opt/pyvenv/bin/python3",
+    "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/matrix_worker.py",
+    "--config",
+    "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/evidence/turn12/gcc_admitted/ncq-python-retained-gc.config.json",
+    "--build",
+    "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/build/gcc",
+    "--out",
+    "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/evidence/turn12/gcc_admitted/ncq-python-retained-gc/run-002",
+    "--timeout",
+    "120"
+  ],
+  "cwd": "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12",
+  "watchdog_seconds": 130
+}

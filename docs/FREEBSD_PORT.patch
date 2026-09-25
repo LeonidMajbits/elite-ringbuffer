@@ -1,0 +1,23 @@
+--- v1.1.0/src/elite_format.c
++++ turn16/src/elite_format.c
+@@ -37,6 +37,11 @@
+ 
+ elite_result el_geometry(struct elite_immutable_header *h)
+ {
++#if defined(__FreeBSD__)
++    /* New opt-in platform: do not accept an unimplemented sleeping adapter. */
++    if(h->wait_mode!=ELITE_POLL_ONLY)
++        return el_result(ELITE_UNSUPPORTED,ELITE_NONE,0);
++#endif
+     uint64_t n=h->capacity,k=(uint64_t)h->producer_endpoints+h->consumer_endpoints;
+     uint64_t q=ELITE_QUANTUM, o=0,x=0;
+     if(n<2 || n>(UINT64_C(1)<<31) || (n&(n-1))!=0 || k<2 || k>n ||
+@@ -73,7 +78,7 @@
+ 
+ elite_result elite_platform_admit(void)
+ {
+-#if (!defined(__linux__) && !defined(__APPLE__)) || (!defined(__x86_64__) && !defined(__aarch64__))
++#if (!defined(__linux__) && !defined(__APPLE__) && !(defined(__FreeBSD__) && defined(ELITE_EXPERIMENTAL_FREEBSD))) || (!defined(__x86_64__) && !defined(__aarch64__))
+     return el_result(ELITE_UNSUPPORTED,ELITE_NONE,0);
+ #else
+     const uint32_t value=UINT32_C(0x01020304);

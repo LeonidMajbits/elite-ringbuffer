@@ -1,0 +1,37 @@
+test_binding_cleanup_registry_empty (__main__.ProcessTests.test_binding_cleanup_registry_empty) ... ok
+test_grant_encoding_rejects_missing_fields (__main__.ProcessTests.test_grant_encoding_rejects_missing_fields) ... ok
+test_inherited_handle_methods_reject (__main__.ProcessTests.test_inherited_handle_methods_reject) ... ok
+test_kill_leaks_token_but_whole_generation_cleans (__main__.ProcessTests.test_kill_leaks_token_but_whole_generation_cleans) ... ok
+test_normal_exit_closes_idle_generation (__main__.ProcessTests.test_normal_exit_closes_idle_generation) ... ok
+test_pause_resume_distinct_successor (__main__.ProcessTests.test_pause_resume_distinct_successor) ... ok
+test_python_mpmc_two_producers_two_consumers (__main__.ProcessTests.test_python_mpmc_two_producers_two_consumers) ... ok
+test_spawned_python_publication (__main__.ProcessTests.test_spawned_python_publication) ... ok
+test_throughput_driver (__main__.ProcessTests.test_throughput_driver) ... ERROR
+test_uncertain_python_return_never_blindly_retries (__main__.ProcessTests.test_uncertain_python_return_never_blindly_retries) ... ok
+
+======================================================================
+ERROR: test_throughput_driver (__main__.ProcessTests.test_throughput_driver)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/tests/test_python_bindings.py", line 354, in test_throughput_driver
+    result=subprocess.run([sys.executable,str(script),'--count','256','--warmup','16',
+                           '--size','64','--out',str(out)],capture_output=True,text=True,timeout=20)
+  File "/usr/lib/python3.13/subprocess.py", line 556, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1222, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 2129, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1269, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['/opt/pyvenv/bin/python3', '/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/bench_python.py', '--count', '256', '--warmup', '16', '--size', '64', '--out', '/tmp/tmpbvamioky/result.json']' timed out after 20 seconds
+
+----------------------------------------------------------------------
+Ran 10 tests in 70.288s
+
+FAILED (errors=1)

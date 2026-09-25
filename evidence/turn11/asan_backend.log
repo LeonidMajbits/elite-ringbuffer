@@ -1,0 +1,1 @@
+PASS synthetic perf backend: 8 setup/read/enable/disable/denial/multiplex/error cases; no fake hardware evidence

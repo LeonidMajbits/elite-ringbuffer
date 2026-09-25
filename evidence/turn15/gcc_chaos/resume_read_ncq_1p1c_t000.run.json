@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/mnt/data/Elite_RingBuffer_v1_1_0/build/gcc/chaos_multiprocess",
+    "resume_read",
+    "ncq",
+    "10000",
+    "1",
+    "1",
+    "1"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "wall_ns": 32002952,
+  "trace_sha256": "2f5bb3901ca4ed4cd688e7f81e665246a008b6e5f4e8cbdff0da873709bf7b8f",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,17 @@
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_core.c -o build/native/test_elite_core.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_format.c -o build/native/test_elite_format.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_spsc.c -o build/native/test_elite_spsc.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_mpmc_ncq.c -o build/native/test_elite_mpmc_ncq.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_shm.c -o build/native/test_elite_shm.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_wait.c -o build/native/test_elite_wait.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING  -o build/native/test_adversarial tests/test_adversarial.c build/native/test_elite_core.o build/native/test_elite_format.o build/native/test_elite_spsc.o build/native/test_elite_mpmc_ncq.o build/native/test_elite_shm.o build/native/test_elite_wait.o -pthread
+build/native/test_adversarial
+PASS one_mapping_threads 2P2C messages=100000 exact_membership=yes
+PASS controlled publication point=2 healthy_lifecycles_while_paused=10000
+PASS controlled publication point=5 healthy_lifecycles_while_paused=10000
+PASS controlled stale_head discards_old_entry_after_101_competing_claims
+PASS controlled late_returner no_post_LP_descriptor_write
+PASS integrity mode=1 retained_corrupt_token_not_reclaimed
+PASS integrity mode=2 retained_corrupt_token_not_reclaimed
+PASS SPSC finite_wait wake_before_or_after_block and_retirement
+PASS adversarial_histories=8

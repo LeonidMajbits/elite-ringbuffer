@@ -1,0 +1,16 @@
+{
+  "linux_preprocessed_bytes_identical": true,
+  "original_source_sha256": "c2d476cb01aca60b4419133b9c039aa2590bfc5fab725475cb513b62bb8bee31",
+  "updated_source_sha256": "433195b980aac406187b028852ef70cdfce923b08c7bf8a4fc569df1b62e07fd",
+  "preprocessed_sha256": "5bdee833ff6381b73341de40db367384fc211c965212d383ccfcf0516c5af704",
+  "command": [
+    "gcc",
+    "-E",
+    "-P",
+    "-std=c11",
+    "-D_POSIX_C_SOURCE=200809L",
+    "-D_DEFAULT_SOURCE",
+    "-Iinclude",
+    "-Isrc"
+  ]
+}

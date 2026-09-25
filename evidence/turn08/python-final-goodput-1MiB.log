@@ -1,0 +1,114 @@
+{
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "executable": "/opt/pyvenv/bin/python3",
+  "native_library": "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/build/clang/libelite_ringbuffer.so",
+  "native_sha256": "3379a5147cad3666db1690262efe6ef30bd9b3ee25fabb26e8ae03b7157f7477",
+  "clock": "time.perf_counter_ns; per-process monotonic clock; start/end only",
+  "exporter_path": "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/build/clang/python/_elite_buffer.cpython-313-x86_64-linux-gnu.so",
+  "exporter_sha256": "f647910033d63b058ce84d0c400a2a6052000f5153f8d6252b58bb4c8b111f68",
+  "source_sha256": {
+    "bindings/python/bench_python.py": "deb4de7d3a4b9aeca270278aeeae311972e4c47fa5c03bde07404e11e6f434a0",
+    "bindings/python/elite_buffer.c": "20568c03cc1625625d4aeb64e6777e2cf39adbd0953262710dd43079b47b97ba",
+    "bindings/python/elite_ringbuffer/__init__.py": "ccb0146083df5e8c2a6f80bdfccb1d6e00ea4b858300a5eac28241cc5929b646",
+    "bindings/python/elite_ringbuffer/_native.py": "42bdd5ee9accd1e87b2abd76ec7cdcc71f1ddb4321530375403b7dad389c60ce"
+  },
+  "repetitions": 1,
+  "conditions": [
+    {
+      "mode": "spsc",
+      "messages": 1000,
+      "warmup": 100,
+      "payload_bytes": 1048576,
+      "capacity": 8,
+      "elapsed_seconds": 0.135415425,
+      "messages_per_second": 7384.683096478853,
+      "delivered_GB_per_second": 7.74340146257341,
+      "oracle": "exact sequential identity and native comparison of every payload byte",
+      "workload": "Python per-message ctypes calls + native direct pattern fill/check through memoryviews",
+      "records": [
+        {
+          "start_ns": 725174668079,
+          "entry_ns": 725174812424,
+          "end_ns": 725309914237,
+          "count": 1000,
+          "write": true,
+          "receipt": {
+            "session_id": "1d98fc151ef84a75b8723d04d0844a02",
+            "endpoint_id": "8c4f973ec2464af191bf323a0e9ab009",
+            "process_incarnation_id": "829a229387b346809638c600e9765c57",
+            "endpoint_index": 0,
+            "local_cleanup_complete": 1,
+            "owns_grant_claim": 1
+          },
+          "cleanup_failures": []
+        },
+        {
+          "start_ns": 725174668079,
+          "entry_ns": 725174816007,
+          "end_ns": 725310083504,
+          "count": 1000,
+          "write": false,
+          "receipt": {
+            "session_id": "1d98fc151ef84a75b8723d04d0844a02",
+            "endpoint_id": "cde8104858a34ca591951a709b6fa785",
+            "process_incarnation_id": "dd28891431274e5dbd07f73f5a396634",
+            "endpoint_index": 1,
+            "local_cleanup_complete": 1,
+            "owns_grant_claim": 1
+          },
+          "cleanup_failures": []
+        }
+      ],
+      "status": "PASS_WITHIN_SCOPE"
+    },
+    {
+      "mode": "ncq",
+      "messages": 1000,
+      "warmup": 100,
+      "payload_bytes": 1048576,
+      "capacity": 8,
+      "elapsed_seconds": 0.162946367,
+      "messages_per_second": 6136.988620310878,
+      "delivered_GB_per_second": 6.435098979531099,
+      "oracle": "exact sequential identity and native comparison of every payload byte",
+      "workload": "Python per-message ctypes calls + native direct pattern fill/check through memoryviews",
+      "records": [
+        {
+          "start_ns": 727200311403,
+          "entry_ns": 727200463750,
+          "end_ns": 727363139409,
+          "count": 1000,
+          "write": true,
+          "receipt": {
+            "session_id": "0e4f0454cde148c6be45f8caa6925414",
+            "endpoint_id": "7e94436ab915447580595d79b34a5033",
+            "process_incarnation_id": "62a197f695d745548643cb5bd9252216",
+            "endpoint_index": 0,
+            "local_cleanup_complete": 1,
+            "owns_grant_claim": 1
+          },
+          "cleanup_failures": []
+        },
+        {
+          "start_ns": 727200311403,
+          "entry_ns": 727200466417,
+          "end_ns": 727363257770,
+          "count": 1000,
+          "write": false,
+          "receipt": {
+            "session_id": "0e4f0454cde148c6be45f8caa6925414",
+            "endpoint_id": "86f734c883094d87900d55dfa0bb7f03",
+            "process_incarnation_id": "a3fd420d88b045b4a0fe13c9c3144fdb",
+            "endpoint_index": 1,
+            "local_cleanup_complete": 1,
+            "owns_grant_claim": 1
+          },
+          "cleanup_failures": []
+        }
+      ],
+      "status": "PASS_WITHIN_SCOPE"
+    }
+  ]
+}
+

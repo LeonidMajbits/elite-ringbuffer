@@ -1,0 +1,1 @@
+HARNESS_FAILED pid=1489 benchmarks/bench_common.c:121 o->mode!=ELITE_SPSC || (o->producers==1 && o->consumers==1) errno=0

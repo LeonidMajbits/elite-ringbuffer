@@ -1,0 +1,109 @@
+{
+  "input_zip": {
+    "bytes": 3959129,
+    "sha256": "9d8a9843ecbde3cd5dcc780a744f398c2638a92a0a656b3aaa86ddc72cec2907",
+    "regular_files": 486,
+    "all_original_extracted_files_unchanged": true
+  },
+  "completed_audit_zip_sha256": "97a0c35ced3a44acbbfdebbf4f4ab49f43e19e4627bd9a2adeb57b2df9c632a9",
+  "completed_audit_manifest_entries_verified": 158,
+  "completed_audit_report_sha256": "9862ec19ccc05a2f8ae850a6fe0e15d4827e4337803594f4668fb39f49ac3200",
+  "unchanged_algorithm_abi_files": [
+    "src/elite_spsc.c",
+    "src/elite_mpmc_ncq.c",
+    "src/elite_core.c",
+    "src/elite_format.c",
+    "src/elite_wait.c",
+    "src/elite_internal.h",
+    "include/elite_ringbuffer.h",
+    "include/elite_api.h"
+  ],
+  "license_and_gitignore_bytes_preserved": true,
+  "existing_file_delta_before_packaging": [
+    {
+      "path": "Makefile",
+      "change": "modified",
+      "old_sha256": "746550a7b75f1369cedccb11d07f26be8fb1fa4ab9932b4d18ba5cbba7f40f1d",
+      "new_sha256": "7beeace85cb9b9c101b115788f6203d3eb91d60136396d084ad569a093284f63"
+    },
+    {
+      "path": "NOTICE.md",
+      "change": "modified",
+      "old_sha256": "737cf19f58717c836c817f22004d8119498be6b9297074933cd8efe383f76c10",
+      "new_sha256": "d96d8ef0229695e16c2853db39780203312015632fccba468b0cb8357b2263c9"
+    },
+    {
+      "path": "README.md",
+      "change": "modified",
+      "old_sha256": "d815d168de0301310d9891524049182ed8785698aaa2c4ff1984a1c668486f00",
+      "new_sha256": "ede2f250c59622cf6a98bc6e633cdeb6eb9c8690f9f83700d9a747933c11e1dd"
+    },
+    {
+      "path": "bindings/python/README.md",
+      "change": "modified",
+      "old_sha256": "895961d5adc53e3f68edbef1e613b59f36fcf79efabcade99d410db3b93952ad",
+      "new_sha256": "aa05ba096b9fb0085371b6d864e277e60738ffa890d587d5b65a8acf4fd83cd3"
+    },
+    {
+      "path": "bindings/python/elite_buffer.c",
+      "change": "modified",
+      "old_sha256": "ca4d6ffa5f05a3beb839129a11993a5a1c1f33d62420abd840dc4d24ad7f565e",
+      "new_sha256": "cac0be1931832b0d5fca895ce263c18370a68ff1d134e45325431e97a2d28a21"
+    },
+    {
+      "path": "bindings/python/elite_ringbuffer/__init__.py",
+      "change": "modified",
+      "old_sha256": "1017c3ee7adcb08abbdd688142259bf7a6e7e00eb1bc7b6f4dc3546dd5462692",
+      "new_sha256": "efa8378a642bd92a3aa4154de5284e070ac95ef7139af335c59629eeff80dd12"
+    },
+    {
+      "path": "bindings/python/elite_ringbuffer/_native.py",
+      "change": "modified",
+      "old_sha256": "42bdd5ee9accd1e87b2abd76ec7cdcc71f1ddb4321530375403b7dad389c60ce",
+      "new_sha256": "85b3e2d0785e423c754a1a8cbba7e8338132d3cc339edc78ac0bab37dab0b23c"
+    },
+    {
+      "path": "docs/INTEGRATION.md",
+      "change": "modified",
+      "old_sha256": "bab74aae371f8566336c954b35ebc5d9fe5c980311cf9aabc68914a1d0cac570",
+      "new_sha256": "fd25e9570136ce7af25f3a922252d18e20d5d22b956d7dac1ab211e9961bfdfe"
+    },
+    {
+      "path": "include/elite_version.h",
+      "change": "modified",
+      "old_sha256": "aa47cc072f62e79f8c8c21ad7cb3f7e3c3b2c3733a1bbace3aaf2f1fe643c523",
+      "new_sha256": "dcf9507750104c44c53daea9ed3cc36ac694c3812cf507dea9de039fdeedd2f1"
+    },
+    {
+      "path": "src/elite_shm.c",
+      "change": "modified",
+      "old_sha256": "e009639a9c80381afc4e3460c33eb26b79d236bb5a34e67e76d01d694fb09569",
+      "new_sha256": "ab55901b6c0384e3a1d4a177aa702c946ff4942d0ca88df06c8f2965910aa00e"
+    },
+    {
+      "path": "src/elite_version.c",
+      "change": "modified",
+      "old_sha256": "4c78a61544ab5a455e9ad34c67ae82351f29cd9822a570ea334ef18a7b9245b9",
+      "new_sha256": "c213bb1baabd249aa3f00d0df7b84861a62f07c65fb5c1818750b2ad53e4e257"
+    },
+    {
+      "path": "tests/test_python_bindings.py",
+      "change": "modified",
+      "old_sha256": "cb9a2fcd36103d6a125fa48c5d6e37b35effcc39614b20be203d143028ce654a",
+      "new_sha256": "b2f4efa18ad7f9510e422d7cdfb1dfcd14bc05cb9747fa61dc0fb73f17f6cf27"
+    },
+    {
+      "path": "tools/check_python.py",
+      "change": "modified",
+      "old_sha256": "ee2ff33b6cae8e4350e70bd8d26971f7bdc11eed2795ce0be15705b83e8ac88a",
+      "new_sha256": "83ae7a141f42a05ef3950f867e5d09900131581411e951e7bcfb5265a4bba278"
+    },
+    {
+      "path": "tools/verify_release.py",
+      "change": "modified",
+      "old_sha256": "2188a4ae9726f10c293fde86800c7aa2422a6aa98f7e80b71e314399c8b1b0f1",
+      "new_sha256": "94f789d35f3b843179834b3472b907b6306ab2670a36f31b109dc7628618d9f3"
+    }
+  ],
+  "manifest_changes": "Replaced deliberately; original bytes retained under docs/history/1.0.0.*"
+}

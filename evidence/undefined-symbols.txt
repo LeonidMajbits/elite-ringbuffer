@@ -1,0 +1,80 @@
+
+elite_core.o:
+                 U __errno_location
+                 U el_ncq_abort
+                 U el_ncq_borrow
+                 U el_ncq_commit
+                 U el_ncq_release
+                 U el_ncq_reserve
+                 U el_notify_connection
+                 U el_spsc_abort
+                 U el_spsc_borrow
+                 U el_spsc_commit
+                 U el_spsc_release
+                 U el_spsc_reserve
+                 U el_wait
+                 U elite_crc64
+                 U memcmp
+                 U memset
+                 U posix_memalign
+
+elite_format.o:
+                 U el_zero
+                 U memcmp
+                 U sysconf
+
+elite_spsc.o:
+                 U el_begin_token
+                 U el_end_token
+                 U el_fail
+                 U el_notify_connection
+                 U el_read_metadata
+                 U elite_crc64
+
+elite_mpmc_ncq.o:
+                 U el_begin_token
+                 U el_end_token
+                 U el_fail
+                 U el_read_metadata
+                 U el_set_epoch
+                 U elite_crc64
+
+elite_shm.o:
+                 U __errno_location
+                 U calloc
+                 U close
+                 U el_alloc_aligned
+                 U el_geometry
+                 U el_notify
+                 U el_ready
+                 U el_retire_raw
+                 U el_zero
+                 U elite_header_crc32
+                 U elite_platform_admit
+                 U elite_validate_prefix
+                 U fchmod
+                 U fcntl
+                 U free
+                 U fstat
+                 U ftruncate
+                 U geteuid
+                 U getpid
+                 U malloc
+                 U memcmp
+                 U memset
+                 U mmap
+                 U munmap
+                 U qsort
+                 U shm_open
+                 U shm_unlink
+                 U syscall
+                 U waitid
+                 U waitpid
+
+elite_wait.o:
+                 U __errno_location
+                 U clock_gettime
+                 U el_enter
+                 U el_fail
+                 U el_ready
+                 U syscall

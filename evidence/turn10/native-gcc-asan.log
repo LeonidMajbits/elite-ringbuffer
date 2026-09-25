@@ -1,0 +1,15 @@
+COMMAND=['bash', '-lc', 'export ASAN_OPTIONS=detect_leaks=1:halt_on_error=1:abort_on_error=1 UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1; build/gcc-asan/test_core && build/gcc-asan/test_adversarial && build/gcc-asan/fuzz_prefix 1000000']
+parser_single_byte_mutations_rejected=512
+PASS core_groups=68 shared_header=2048 descriptor=128 participant=256
+PASS one_mapping_threads 2P2C messages=100000 exact_membership=yes
+PASS controlled publication point=2 healthy_lifecycles_while_paused=10000
+PASS controlled publication point=5 healthy_lifecycles_while_paused=10000
+PASS controlled stale_head discards_old_entry_after_101_competing_claims
+PASS controlled late_returner no_post_LP_descriptor_write
+PASS integrity mode=1 retained_corrupt_token_not_reclaimed
+PASS integrity mode=2 retained_corrupt_token_not_reclaimed
+PASS SPSC finite_wait wake_before_or_after_block and_retirement
+PASS adversarial_histories=8
+PASS stable_prefix_corpus inputs=1000000 accepted_valid_mutations=89908 rejected=910092 seed=744125b77cc09301
+
+EXIT_CODE=0

@@ -1,0 +1,799 @@
+--- a/Makefile
++++ b/Makefile
+@@ -11,7 +11,7 @@
+   ELITE_ARCH_FLAGS ?= -arch arm64 -mmacosx-version-min=14.4
+   CPPFLAGS += -D_DARWIN_C_SOURCE
+   SOEXT = dylib
+-  SHARED = -dynamiclib -install_name @rpath/libelite_ringbuffer.dylib -compatibility_version 1.0.0 -current_version 1.0.0
++  SHARED = -dynamiclib -install_name @rpath/libelite_ringbuffer.dylib -compatibility_version 1.0.0 -current_version 1.0.1
+   OBJDUMP ?= xcrun llvm-objdump
+   # Requested mnemonic profile. No changes to source memory orders.
+   ELITE_STRICT_LDAR ?= 1
+@@ -136,3 +136,9 @@
+ 
+ .PHONY: release-check
+ release-check: check check-hooks limits chaos fuzz check-bench-tools check-cpp check-python
++
++# Hardened Python regression: original 36 plus races, cyclic GC, and failure probes.
++.PHONY: check-python-hardening
++check-python-hardening: python
++	ELITE_LIBRARY="$(abspath $(BUILD)/libelite_ringbuffer.$(SOEXT))" PYTHONPATH="$(abspath $(BUILD)/python):$(abspath bindings/python)" $(PYTHON) tools/check_python.py --hardening
++release-check: check-python-hardening
+--- a/bindings/python/elite_buffer.c
++++ b/bindings/python/elite_buffer.c
+@@ -15,12 +15,15 @@
+ typedef struct {
+     PyObject_HEAD
+     PyObject *owner;
++    PyObject *cleanup_owner; /* Acyclic native-lifetime state, not user wrappers. */
+     void *address;
+     Py_ssize_t length;
+     Py_ssize_t exports;
+     pid_t pid;
+     int readonly;
+     int closed;
++    int closing;
++    int close_requested;
+ } EliteBuffer;
+ 
+ static int same_process(EliteBuffer *self)
+@@ -31,46 +34,93 @@
+     }
+     return 1;
+ }
++static void rollback_export(EliteBuffer *self);
+ static int buffer_get(PyObject *object, Py_buffer *view, int flags)
+ {
+     EliteBuffer *self=(EliteBuffer *)object;
+     if (view==NULL) { PyErr_SetString(PyExc_BufferError,"NULL buffer request"); return -1; }
+     view->obj=NULL;
+     if (!same_process(self)) return -1;
+-    if (self->closed || self->owner == NULL) {
++    if (self->closed || self->close_requested || self->owner == NULL) {
+         PyErr_SetString(PyExc_BufferError, "ELITE lease exporter is closed"); return -1;
+     }
+     if (self->exports == PY_SSIZE_T_MAX) {
+         PyErr_SetString(PyExc_BufferError, "too many ELITE buffer exports"); return -1;
+     }
++    /* exports includes pending acquisitions BEFORE arbitrary Python executes.
++     * close() must see this transaction even if _assert_live drops the GIL. */
++    ++self->exports;
+     PyObject *ok=PyObject_CallMethod(self->owner,"_assert_live",NULL);
+-    if (ok == NULL) return -1;
++    if (ok == NULL) { rollback_export(self); return -1; }
+     Py_DECREF(ok);
+-    if (PyBuffer_FillInfo(view,object,self->address,self->length,self->readonly,flags)<0) return -1;
+-    ++self->exports;
+-    return 0;
++    if (PyBuffer_FillInfo(view,object,self->address,self->length,self->readonly,flags)<0) {
++        rollback_export(self);
++        return -1;
++    }
++    return 0;
++}
++static int close_buffer(EliteBuffer *self)
++{
++    if (!same_process(self)) return -1;
++    if (self->closing) {
++        PyErr_SetString(PyExc_BufferError,"ELITE exporter cleanup is in progress");
++        return -1;
++    }
++    if (self->closed) return 0;
++    if (self->exports != 0) {
++        PyErr_SetString(PyExc_BufferError,"live or pending buffer(s): release every view before transferring the slot");
++        return -1;
++    }
++    self->closing=1;
++    self->closed=1; /* Block reentrant acquisition throughout native cleanup. */
++    PyObject *result=PyObject_CallMethod(self->cleanup_owner,"_drop_view_pin",NULL);
++    if (result == NULL) { self->closed=0; self->closing=0; return -1; }
++    Py_DECREF(result);
++    self->address=NULL;
++    self->closing=0;
++    /* Close state is complete before decrefs execute further finalizers. */
++    Py_CLEAR(self->owner);
++    Py_CLEAR(self->cleanup_owner);
++    return 0;
++}
++static void cleanup_unraisable(EliteBuffer *self)
++{
++    /* Preserve a failed native obligation outside the collectible wrapper graph.
++     * Never expose a dying self to sys.unraisablehook (A09-07). */
++    PyObject *et=NULL,*ev=NULL,*tb=NULL;
++    PyErr_Fetch(&et,&ev,&tb);
++    if (self->cleanup_owner != NULL) {
++        PyObject *r=PyObject_CallMethod(self->cleanup_owner,"_exporter_cleanup_failed",NULL);
++        if (r == NULL) PyErr_WriteUnraisable(Py_None);
++        else Py_DECREF(r);
++    }
++    PyErr_Restore(et,ev,tb);
++    PyErr_WriteUnraisable(Py_None);
++}
++/* An explicit finalization request can occur inside the validation callback.
++ * A failing export must both unwind its count and honor a now-unblocked close,
++ * while preserving the exception which caused the export to fail. */
++static void rollback_export(EliteBuffer *self)
++{
++    --self->exports;
++    if (self->exports==0 && self->close_requested && !self->closed && getpid()==self->pid) {
++        PyObject *et=NULL,*ev=NULL,*tb=NULL;
++        PyErr_Fetch(&et,&ev,&tb);
++        if (close_buffer(self)<0) cleanup_unraisable(self);
++        PyErr_Restore(et,ev,tb);
++    }
+ }
+ static void buffer_release(PyObject *object, Py_buffer *view)
+ {
+     EliteBuffer *self=(EliteBuffer *)object;
+     (void)view;
+     if (self->exports>0) --self->exports;
+-}
+-static int close_buffer(EliteBuffer *self)
+-{
+-    if (!same_process(self)) return -1;
+-    if (self->closed) return 0;
+-    if (self->exports != 0) {
+-        PyErr_SetString(PyExc_BufferError,"live derived buffer(s): release every view before transferring the slot");
+-        return -1;
+-    }
+-    self->closed=1; /* No new reentrant export during native-pin cleanup. */
+-    PyObject *result=PyObject_CallMethod(self->owner,"_drop_view_pin",NULL);
+-    if (result == NULL) { self->closed=0; return -1; }
+-    Py_DECREF(result);
+-    Py_CLEAR(self->owner);
+-    self->address=NULL;
+-    return 0;
++    if (self->exports==0 && self->close_requested && !self->closed && getpid()==self->pid) {
++        PyObject *et=NULL,*ev=NULL,*tb=NULL;
++        PyErr_Fetch(&et,&ev,&tb);
++        if (close_buffer(self)<0) cleanup_unraisable(self);
++        PyErr_Restore(et,ev,tb);
++    }
+ }
+ static PyObject *buffer_close(EliteBuffer *self, PyObject *unused)
+ {
+@@ -82,18 +132,45 @@
+ { (void)unused; return PyBool_FromLong(self->closed); }
+ static PyObject *buffer_exports(EliteBuffer *self, void *unused)
+ { (void)unused; return PyLong_FromSsize_t(self->exports); }
+-static void buffer_dealloc(EliteBuffer *self)
+-{
++static int buffer_traverse(EliteBuffer *self, visitproc visit, void *arg)
++{
++    Py_VISIT(self->owner);
++    Py_VISIT(self->cleanup_owner);
++    return 0;
++}
++static void buffer_finalize(PyObject *object)
++{
++    EliteBuffer *self=(EliteBuffer *)object;
+     PyObject *et=NULL,*ev=NULL,*tb=NULL;
+     PyErr_Fetch(&et,&ev,&tb);
+-    /* A live Py_buffer owns a reference, hence normal deallocation has no
+-     * exports. A raw unregistered fork child never performs native cleanup. */
+-    if (!self->closed && getpid()==self->pid && self->owner!=NULL) {
+-        if (close_buffer(self)<0) PyErr_WriteUnraisable((PyObject *)self);
+-    }
++    self->close_requested=1;
++    /* A cyclic isolate can contain a memoryview. Do NOT revoke its Py_buffer.
++     * Its release will finish cleanup; an externally rooted alias keeps the
++     * entire exporter graph reachable and is not cleared by cyclic GC. */
++    if (self->exports==0 && !self->closed && getpid()==self->pid && self->cleanup_owner!=NULL) {
++        if (close_buffer(self)<0) cleanup_unraisable(self);
++    }
++    PyErr_Restore(et,ev,tb);
++}
++static int buffer_clear(EliteBuffer *self)
++{
++    self->close_requested=1;
++    if (self->exports!=0) return 0;
++    /* Finalization/release already attempted native cleanup. tp_clear only
++     * severs Python edges and cannot run a second native ownership transfer. */
++    self->closed=1;
++    self->address=NULL;
+     Py_CLEAR(self->owner);
++    Py_CLEAR(self->cleanup_owner);
++    return 0;
++}
++static void buffer_dealloc(EliteBuffer *self)
++{
++    /* CPython's helper detects resurrection during ANY finalizer callback. */
++    if (PyObject_CallFinalizerFromDealloc((PyObject *)self)<0) return;
++    PyObject_GC_UnTrack(self);
++    (void)buffer_clear(self);
+     Py_TYPE(self)->tp_free((PyObject *)self);
+-    PyErr_Restore(et,ev,tb);
+ }
+ static PyBufferProcs buffer_procs={.bf_getbuffer=buffer_get,.bf_releasebuffer=buffer_release};
+ static PyMethodDef buffer_methods[]={
+@@ -110,7 +187,10 @@
+     .tp_name="_elite_buffer.LeaseBuffer",
+     .tp_basicsize=sizeof(EliteBuffer),
+     .tp_dealloc=(destructor)buffer_dealloc,
+-    .tp_flags=Py_TPFLAGS_DEFAULT,
++    .tp_flags=Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC,
++    .tp_traverse=(traverseproc)buffer_traverse,
++    .tp_clear=(inquiry)buffer_clear,
++    .tp_finalize=buffer_finalize,
+     .tp_doc="Owner-retaining read-only/writable payload exporter; private factory only.",
+     .tp_as_buffer=&buffer_procs,
+     .tp_methods=buffer_methods,
+@@ -119,16 +199,18 @@
+ static PyObject *module_create(PyObject *module, PyObject *args)
+ {
+     (void)module;
+-    PyObject *pointer,*owner; Py_ssize_t length; int readonly;
+-    if (!PyArg_ParseTuple(args,"OnpO:create",&pointer,&length,&readonly,&owner)) return NULL;
++    PyObject *pointer,*owner,*cleanup_owner=NULL; Py_ssize_t length; int readonly;
++    if (!PyArg_ParseTuple(args,"OnpO|O:create",&pointer,&length,&readonly,&owner,&cleanup_owner)) return NULL;
+     if (length<0) {PyErr_SetString(PyExc_ValueError,"negative buffer length");return NULL;}
+     void *address=PyLong_AsVoidPtr(pointer);
+     if (PyErr_Occurred()) return NULL;
+     if (address==NULL) {PyErr_SetString(PyExc_ValueError,"NULL native payload");return NULL;}
+-    EliteBuffer *self=PyObject_New(EliteBuffer,&BufferType);
++    EliteBuffer *self=(EliteBuffer *)BufferType.tp_alloc(&BufferType,0);
+     if (self==NULL) return NULL;
+-    self->owner=Py_NewRef(owner); self->address=address; self->length=length;
+-    self->readonly=readonly; self->closed=0; self->exports=0; self->pid=getpid();
++    self->owner=Py_NewRef(owner);
++    self->cleanup_owner=Py_NewRef(cleanup_owner!=NULL?cleanup_owner:owner);
++    self->address=address; self->length=length;
++    self->readonly=readonly; self->closed=0; self->closing=0; self->close_requested=0; self->exports=0; self->pid=getpid();
+     return (PyObject *)self;
+ }
+ /* Benchmark/example workload helpers, not transport primitives. Every byte
+@@ -189,5 +271,11 @@
+         PyErr_SetString(PyExc_ImportError,"ELITE exporter supports the main interpreter only");return NULL;
+     }
+     if (PyType_Ready(&BufferType)<0) return NULL;
+-    return PyModule_Create(&module_definition);
+-}
++    PyObject *module=PyModule_Create(&module_definition);
++    if (module==NULL) return NULL;
++    if (PyModule_AddIntConstant(module,"API_VERSION",0x00010001)<0) {
++        Py_DECREF(module);
++        return NULL;
++    }
++    return module;
++}
+--- a/bindings/python/elite_ringbuffer/__init__.py
++++ b/bindings/python/elite_ringbuffer/__init__.py
+@@ -1,4 +1,4 @@
+-"""ELITEIPC 1.0.0: ctypes control/data API with tracked zero-copy memoryviews.
++"""ELITEIPC 1.0.1: ctypes control/data API with tracked zero-copy memoryviews.
+ 
+ Memoryviews retain both slot ownership and the mapped endpoint. Release every
+ view (including derived views) before commit/release. Context exits abort an
+@@ -26,7 +26,10 @@
+ except ImportError as exc:
+     raise ImportError("Build the tracked exporter with make python and add BUILD/python to PYTHONPATH") from exc
+ 
+-__version__ = "1.0.0"
++if getattr(_elite_buffer, "API_VERSION", None) != 0x00010001:
++    raise ImportError("ELITE requires the matching 1.0.1 tracked exporter; rebuild make python")
++
++__version__ = "1.0.1"
+ __all__ = ["EliteShm", "EliteSpscProducer", "EliteSpscConsumer", "EliteNcqProducer",
+            "EliteNcqConsumer", "WriteLease", "ReadLease", "EliteError", "BusyError",
+            "WouldBlock", "RetiredError", "cleanup_failures", "__version__"]
+@@ -140,6 +143,87 @@
+             _retain_failure(self, exc)
+ 
+ 
++class _ObjectLifetime:
++    """Native object ownership, independent of a public manager's user graph."""
++    def __init__(self, ptr, authority):
++        self._ptr, self.authority = ptr, authority
++        self.pid = os.getpid()
++        self.connections = weakref.WeakSet()
++        self.close_requested = False
++
++    def ack(self, receipt):
++        with self.authority.lock:
++            self.authority.check()
++            if self._ptr:
++                _check(N.lib.elite_object_ack_cleanup(self._ptr, C.byref(receipt)), "ack_cleanup", self)
++
++    def close(self):
++        if not self._ptr: return
++        if any(c._ptr for c in list(self.connections)):
++            raise BusyError(N.Result(4, 5, 0, 0), "object lifetime: active endpoint", self)
++        with self.authority.lock:
++            self.authority.check()
++            _check(N.lib.elite_object_destroy(C.byref(self._ptr)), "object_destroy", self)
++
++    def request_close(self):
++        self.close_requested = True
++        self.try_close()
++
++    def try_close(self):
++        if self.pid != os.getpid() or not self.close_requested or not self._ptr: return
++        if any(c._ptr for c in list(self.connections)): return
++        try: self.close()
++        except BaseException as exc: _retain_failure(self, exc)
++
++
++class _EndpointLifetime:
++    """No strong edges to the public endpoint, manager, lease, or exporter.
++
++    Retained by wrapper finalizers and lease state. Therefore GC cannot clear
++    the native cleanup data while it is clearing an application reference cycle.
++    """
++    def __init__(self, ptr, lock, pid, owner):
++        self._ptr, self._lock, self._pid = ptr, lock, pid
++        self.owner = owner
++        self._pin = None
++        self.receipt = None
++        self.close_requested = False
++        self.poisoned = False
++        if owner is not None: owner.connections.add(self)
++
++    def _check(self):
++        if self._pid != os.getpid(): raise RuntimeError("inherited endpoint: spawn/exec required")
++        if not self._ptr: raise RuntimeError("endpoint is closed")
++        if self.poisoned: raise EliteError(N.Result(12, 6, 0, 0), "endpoint outcome is uncertain", self)
++
++    @property
++    def busy(self):
++        pin = self._pin() if self._pin else None
++        return self.poisoned or (pin is not None and (pin.active or pin.acquiring))
++
++    def close(self):
++        with self._lock:
++            if not self._ptr: return self.receipt
++            self._check()
++            if self.busy: raise BusyError(N.Result(4, 5, 0, 0), "endpoint.close: outstanding lease/view", self)
++            receipt = N.Receipt()
++            _check(N.lib.elite_detach(C.byref(self._ptr), C.byref(receipt)), "detach", self)
++            self.receipt = _encode(receipt)
++            if self.owner is not None:
++                self.owner.ack(receipt)
++                self.owner.try_close()
++            return self.receipt
++
++    def request_close(self):
++        self.close_requested = True
++        self.try_close()
++
++    def try_close(self):
++        if self._pid != os.getpid() or not self.close_requested or not self._ptr or self.busy: return
++        try: self.close()
++        except BaseException as exc: _retain_failure(self, exc)
++
++
+ class EliteShm:
+     """Application-owned managed generation. Not a name-only attach primitive.
+ 
+@@ -162,6 +246,8 @@
+         if parkable and mode != "spsc": raise ValueError("MPMC parking is not an admitted protocol")
+         self._pid = os.getpid(); self._ptr = N.P()
+         self._authority = _authority or _Authority(max_backing_bytes)
++        self._life = _ObjectLifetime(self._ptr, self._authority)
++        self._finalizer = weakref.finalize(self, self._life.request_close)
+         self._local: weakref.WeakSet[_Endpoint] = weakref.WeakSet()
+         self._issued: dict[int, int] = {}
+         self.mode, self.capacity, self.max_payload = mode, capacity, max_payload
+@@ -273,15 +359,11 @@
+         for endpoint in endpoints: endpoint.close()
+         with self._authority.lock:
+             self._check()
+-            _check(N.lib.elite_object_destroy(C.byref(self._ptr)), "object_destroy", self)
++            self._life.close()
+             self._authority.objects.discard(self)
+ 
+     def __enter__(self): self._check(); return self
+     def __exit__(self, exc_type, exc, tb): self.close(); return False
+-    def __del__(self):
+-        try:
+-            if getattr(self, "_pid", None) == os.getpid() and getattr(self, "_ptr", None): self.close()
+-        except BaseException as exc: _retain_failure(self, exc)
+ 
+ 
+ class _Endpoint:
+@@ -292,6 +374,9 @@
+         self._pid = os.getpid(); self._lock = threading.RLock(); self._ptr = N.P()
+         self._pin: weakref.ReferenceType[_Pin] | None = None
+         self._owner = _owner; self._receipt = None
++        self._life = _EndpointLifetime(self._ptr, self._lock, self._pid,
++                                       _owner._life if _owner is not None else None)
++        self._finalizer = weakref.finalize(self, self._life.request_close)
+         native = _decode(N.Grant, grant)
+         if native.role != self._role or native.layout_profile != self._profile: raise ValueError("grant role/profile mismatch")
+         r = N.lib.elite_attach(C.byref(native), C.byref(self._ptr))
+@@ -311,18 +396,11 @@
+     @property
+     def busy(self) -> bool:
+         with self._lock:
+-            pin = self._pin() if self._pin else None
+-            return pin is not None and pin.active
++            return self._life.busy
+ 
+     def close(self) -> dict[str, Any] | None:
+         with self._lock:
+-            if not self._ptr: return self._receipt
+-            self._check()
+-            if self.busy: raise BusyError(N.Result(4, 5, 0, 0), "endpoint.close: outstanding lease/view", self)
+-            receipt = N.Receipt()
+-            _check(N.lib.elite_detach(C.byref(self._ptr), C.byref(receipt)), "detach", self)
+-            self._receipt = _encode(receipt)
+-            if self._owner: self._owner.ack_cleanup(self._receipt)
++            self._receipt = self._life.close()
+             return self._receipt
+ 
+     def _obtain(self, writing: bool):
+@@ -330,13 +408,31 @@
+             self._check()
+             if self.busy: raise BusyError(N.Result(4, 5, 0, 0), "one outstanding token per endpoint", self)
+             lease = N.Lease(); span = N.WriteSpan() if writing else N.ReadSpan()
+-            f = N.lib.elite_write_reserve if writing else N.lib.elite_read_borrow
+-            r = f(self._ptr, C.byref(lease), C.byref(span))
+-            if r.status in (1, 2): return None
+-            if r.status and not any(lease.opaque): _check(r, "reserve" if writing else "borrow", self)
+-            pin = _Pin(self, lease, span, writing)
++            state = _LeaseState(self._life, lease, span, writing)
++            # Install recovery ownership BEFORE ctypes may acquire a token.
++            self._life._pin = weakref.ref(state)
++            pin = _Pin(self, state)
+             self._pin = weakref.ref(pin)
+             resource = WriteLease(pin) if writing else ReadLease(pin)
++            f = N.lib.elite_write_reserve if writing else N.lib.elite_read_borrow
++            try:
++                state.acquiring = True
++                r = f(self._ptr, C.byref(lease), C.byref(span))
++                state.adopt(span)
++                state.acquiring = False
++            except BaseException:
++                state.acquiring = False
++                state.uncertain = True
++                state.active = bool(any(lease.opaque))
++                self._life.poisoned = True
++                _retain_failure(state, EliteError(N.Result(12, 6, 0, 0), "interrupted acquisition: outcome uncertain", state))
++                raise
++            if r.status in (1, 2):
++                self._life._pin = None
++                return None
++            if r.status and not any(lease.opaque):
++                self._life._pin = None
++                _check(r, "reserve" if writing else "borrow", self)
+             if r.status: raise EliteError(r, "lease acquisition retained ownership", resource)
+             return resource
+ 
+@@ -357,25 +453,35 @@
+ 
+     def __enter__(self): self._check(); return self
+     def __exit__(self, exc_type, exc, tb): self.close(); return False
+-    def __del__(self):
+-        try:
+-            if getattr(self, "_pid", None) == os.getpid() and getattr(self, "_ptr", None): self.close()
+-        except BaseException as exc: _retain_failure(self, exc)
+-
+-
+-class _Pin:
+-    """Acyclic lease owner: exporter -> pin -> endpoint -> optional manager.
+-
+-    Endpoint only weakly references its current pin. No lease/exporter cycle.
++
++
++class _LeaseState:
++    """Cleanup data with no path back to any application wrapper/exporter.
++
++    A weakref finalizer roots this state until _Pin dies. The exporter also
++    retains it directly, so cyclic GC may clear _Pin/endpoint dictionaries in
++    any order without destroying native cleanup metadata.
+     """
+-    def __init__(self, endpoint: _Endpoint, lease: N.Lease, span, writing: bool):
++    def __init__(self, endpoint: _EndpointLifetime, lease: N.Lease, span, writing: bool):
+         self.endpoint, self.lease, self.writing = endpoint, lease, writing
+         self.address = span.data
+         self.length = span.capacity if writing else span.length
+         self.message_type = 0 if writing else span.message_type
+         self.message_id = 0 if writing else span.message_id
+         self.epoch = int(lease.opaque[5])
+-        self.active = True; self.view_pin = False; self.uncertain = False
++        self.active = False; self.view_pin = False; self.uncertain = False
++        self.acquiring = False; self.cleanup_requested = False
++
++    def adopt(self, span):
++        self.active = bool(any(self.lease.opaque))
++        self.address = span.data
++        self.length = span.capacity if self.writing else span.length
++        self.message_type = 0 if self.writing else span.message_type
++        self.message_id = 0 if self.writing else span.message_id
++        self.epoch = int(self.lease.opaque[5])
++
++    def _exporter_cleanup_failed(self):
++        _retain_failure(self, RuntimeError("exporter finalization did not complete native unpin"))
+ 
+     def _assert_live(self) -> None:
+         self.endpoint._check()
+@@ -386,19 +492,36 @@
+         with self.endpoint._lock:
+             self._assert_live()
+             if self.view_pin: raise RuntimeError("exporter already owns a native view pin")
+-            _check(N.lib.elite_view_retain(self.endpoint._ptr, C.byref(self.lease)), "view_retain", self)
++            # Reserve the local pin transaction before a GIL-releasing FFI call.
+             self.view_pin = True
++            try:
++                r = N.lib.elite_view_retain(self.endpoint._ptr, C.byref(self.lease))
++            except BaseException as exc:
++                self.uncertain = True
++                self.endpoint.poisoned = True
++                _retain_failure(self, exc)
++                raise
++            if r.status:
++                self.view_pin = False
++                _check(r, "view_retain", self)
+ 
+     def _drop_view_pin(self) -> None:
+         with self.endpoint._lock:
+             if not self.view_pin: return
+             self._assert_live()
+-            r = N.lib.elite_view_end(self.endpoint._ptr, C.byref(self.lease))
++            try:
++                r = N.lib.elite_view_end(self.endpoint._ptr, C.byref(self.lease))
++            except BaseException as exc:
++                self.uncertain = True
++                self.endpoint.poisoned = True
++                _retain_failure(self, exc)
++                raise
+             if r.status:
+                 exc = EliteError(r, "view_end", self)
+                 _retain_failure(self, exc)
+                 raise exc
+             self.view_pin = False
++            if self.cleanup_requested: self.cleanup()
+ 
+     def finish(self, action: str, length: int = 0, kind: int = 0, message_id: int = 0) -> N.Result:
+         with self.endpoint._lock:
+@@ -423,16 +546,20 @@
+             # Transfer is irrevocable even when the supplemental status is an error.
+             if r.outcome in (2, 4) or (action == "abandon" and r.status == 0):
+                 self.active = False; self.address = None; self.endpoint._pin = None
++                self.endpoint.try_close()
+             _check(r, action, self)
+             return r
+ 
+-    def __del__(self):
++    def request_cleanup(self):
++        self.cleanup_requested = True
++        self.cleanup()
++
++    def cleanup(self):
+         try:
+             if self.endpoint._pid != os.getpid() or not self.active or self.uncertain: return
+-            if self.view_pin:
+-                # This is an internal invariant failure, never permission to unpin
+-                # an exporter the destructor cannot account for.
+-                raise RuntimeError("last lease reference with an unexplained native pin")
++            # A collectible cycle can still contain a Py_buffer. Native unpin
++            # must wait for bf_releasebuffer, never for an assumed GC order.
++            if self.view_pin: return
+             try:
+                 self.finish("abort" if self.writing else "release")
+             except EliteError:
+@@ -440,6 +567,21 @@
+                     _check(N.lib.elite_retire(self.endpoint._ptr, 0), "finalizer retirement", self)
+                     self.finish("abandon")
+         except BaseException as exc: _retain_failure(self, exc)
++
++
++class _Pin:
++    """Public graph retention plus separately rooted native cleanup data."""
++    def __init__(self, endpoint, state):
++        self.endpoint = endpoint
++        self.state = state
++        self._finalizer = weakref.finalize(self, state.request_cleanup)
++
++    def __getattr__(self, name):
++        return getattr(self.state, name)
++
++    def _assert_live(self):
++        self.state._assert_live()
++
+ 
+ 
+ class _Lease:
+@@ -456,7 +598,7 @@
+                 self._pin._retain_view_pin()
+                 try:
+                     self._exporter = _elite_buffer.create(self._pin.address, self._pin.length,
+-                                                          not self._pin.writing, self._pin)
++                                                          not self._pin.writing, self._pin, self._pin.state)
+                 except BaseException:
+                     self._pin._drop_view_pin(); raise
+             return memoryview(self._exporter)
+--- a/bindings/python/elite_ringbuffer/_native.py
++++ b/bindings/python/elite_ringbuffer/_native.py
+@@ -108,7 +108,7 @@
+ lib = C.CDLL(str(LIBRARY_PATH), use_errno=True)
+ lib.elite_version_string.argtypes=[];lib.elite_version_string.restype=C.c_char_p
+ lib.elite_version_number.argtypes=[];lib.elite_version_number.restype=U32
+-if lib.elite_version_number() != 0x00010000:
++if lib.elite_version_number() != 0x00010001:
+     raise ImportError("native/binding release version mismatch")
+ lib.elite_local_layout.argtypes=[U32,U32];lib.elite_local_layout.restype=C.c_size_t
+ LOCAL_TYPES=(Result,Lease,WriteSpan,ReadSpan,Definition,Config,Grant,Receipt)
+--- a/include/elite_version.h
++++ b/include/elite_version.h
+@@ -3,6 +3,6 @@
+ #define ELITE_VERSION_H
+ #define ELITE_VERSION_MAJOR 1
+ #define ELITE_VERSION_MINOR 0
+-#define ELITE_VERSION_PATCH 0
+-#define ELITE_VERSION_STRING "1.0.0"
++#define ELITE_VERSION_PATCH 1
++#define ELITE_VERSION_STRING "1.0.1"
+ #endif
+--- a/src/elite_shm.c
++++ b/src/elite_shm.c
+@@ -63,7 +63,7 @@
+         unsigned v=0;
+         for(unsigned bit=0;bit<5;++bit) {
+             unsigned pos=group*5+bit;
+-            unsigned x=pos<128 ? (unsigned)((id[pos/8]>>(7-(pos%8)))&1u):0u;
++            unsigned x=pos<128 ? (((unsigned)id[pos/8] >> (7u - (pos % 8u))) & 1u):0u;
+             v=(v<<1)|x;
+         }
+         name[4+group]=alphabet[v];
+--- a/src/elite_version.c
++++ b/src/elite_version.c
+@@ -2,7 +2,7 @@
+ #include "elite_ringbuffer.h"
+ #include <string.h>
+ const char *elite_version_string(void) { return ELITE_VERSION_STRING; }
+-uint32_t elite_version_number(void) { return UINT32_C(0x00010000); }
++uint32_t elite_version_number(void) { return UINT32_C(0x00010001); }
+ size_t elite_local_layout(uint32_t type, uint32_t member)
+ {
+     switch (type) {
+--- a/tests/test_python_bindings.py
++++ b/tests/test_python_bindings.py
+@@ -141,8 +141,8 @@
+                 self.assertTrue(_elite_buffer.verify_pattern(m,987))
+                 with self.assertRaises((TypeError,BufferError)):_elite_buffer.fill_pattern(m,987)
+     def test_version_layouts(self):
+-        self.assertEqual(__version__,'1.0.0')
+-        self.assertEqual(N.lib.elite_version_string(),b'1.0.0')
++        self.assertEqual(__version__,'1.0.1')
++        self.assertEqual(N.lib.elite_version_string(),b'1.0.1')
+         for i,typ in enumerate(N.LOCAL_TYPES,1):
+             self.assertEqual(N.lib.elite_local_layout(i,0xffffffff),C.sizeof(typ))
+             for j,(name,_) in enumerate(typ._fields_):
+--- a/tools/check_python.py
++++ b/tools/check_python.py
+@@ -2,7 +2,11 @@
+ """Own the complete test process group; bound even failed child/control paths."""
+ import os,pathlib,signal,subprocess,sys
+ root=pathlib.Path(__file__).resolve().parents[1]
+-command=[sys.executable,str(root/'tests/test_python_bindings.py')]+sys.argv[1:]
++if '--hardening' in sys.argv:
++    command=[sys.executable, '-m', 'unittest', 'discover', '-s', str(root/'tests'),
++             '-p', 'test_*.py', '-v']
++else:
++    command=[sys.executable,str(root/'tests/test_python_bindings.py')]+sys.argv[1:]
+ def termination(signum,frame):
+     raise SystemExit(128+signum)
+ signal.signal(signal.SIGTERM,termination)
+--- a/tools/verify_release.py
++++ b/tools/verify_release.py
+@@ -1,44 +1,84 @@
+ #!/usr/bin/env python3
+-"""Verify source and full release manifests without external dependencies."""
++"""Verify hashes, full inventory, source coverage, and the current report.
++
++Default mode ignores only documented generated development artifacts. --strict
++is for a pristine source archive and rejects every unlisted file. Verification
++never rewrites a receipt, source, manifest, or report.
++"""
+ from __future__ import annotations
+-import argparse,hashlib,pathlib,re,sys
++import argparse
++import hashlib
++from pathlib import Path, PurePosixPath
++import re
++import sys
++# A verifier must not mutate a fresh source tree by importing local .pyc files.
++sys.dont_write_bytecode = True
++from release_manifest import REPORT, REQUIRED, files, source_member
+ 
+-def manifest(path: pathlib.Path) -> dict[str,str]:
+-    result={}
+-    for number,line in enumerate(path.read_text(encoding='utf-8').splitlines(),1):
+-        match=re.fullmatch(r'([0-9a-f]{64})  (.+)',line)
+-        if not match:raise ValueError(f'{path}:{number}: invalid manifest record')
+-        digest,name=match.groups();relative=pathlib.PurePosixPath(name)
+-        if relative.is_absolute() or '..' in relative.parts or '\\' in name or name in result:
+-            raise ValueError(f'unsafe/duplicate manifest name: {name}')
+-        result[name]=digest
+-    if not result:raise ValueError('empty manifest')
++
++def digest(path: Path) -> str:
++    with path.open('rb') as stream:
++        return hashlib.file_digest(stream, 'sha256').hexdigest()
++
++
++def manifest(path: Path) -> dict[str, str]:
++    result = {}
++    for number, line in enumerate(path.read_text(encoding='utf-8').splitlines(), 1):
++        match = re.fullmatch(r'([0-9a-f]{64})  (.+)', line)
++        if not match:
++            raise ValueError(f'{path.name}:{number}: invalid manifest record')
++        value, name = match.groups()
++        rel = PurePosixPath(name)
++        if (rel.is_absolute() or '..' in rel.parts or '\\' in name or
++                rel.as_posix() != name or name in result or name in {'.', ''}):
++            raise ValueError('unsafe/noncanonical/duplicate path: ' + name)
++        result[name] = value
++    if not result:
++        raise ValueError('empty manifest: ' + path.name)
+     return result
+ 
++
++def verify(root: Path, strict: bool = False) -> tuple[int, int]:
++    full = manifest(root/'MANIFEST.sha256')
++    sources = manifest(root/'SOURCE_MANIFEST.sha256')
++    actual = set(files(root, strict)) - {'MANIFEST.sha256'}
++    if actual != set(full):
++        raise ValueError(f'inventory mismatch: unlisted={sorted(actual-set(full))}; missing={sorted(set(full)-actual)}')
++    if not REQUIRED <= actual:
++        raise ValueError('required release files missing: ' + repr(sorted(REQUIRED-actual)))
++    for name, expected in full.items():
++        path = root/name
++        if not path.resolve().is_relative_to(root) or digest(path) != expected:
++            raise ValueError('hash/path mismatch: ' + name)
++    expected_sources = {name for name in actual if source_member(name)}
++    if set(sources) != expected_sources:
++        raise ValueError('source inventory does not cover the defined source policy')
++    for name, expected in sources.items():
++        if full[name] != expected:
++            raise ValueError('source hash disagrees: ' + name)
++    data = (root/REPORT).read_bytes()
++    matches = list(re.finditer(rb'(?m)^\*\*Canonical-SHA256:\*\* `([0-9a-f]{64})`$', data))
++    if len(matches) != 1:
++        raise ValueError('canonical report field missing or duplicated')
++    a, b = matches[0].span(1)
++    if hashlib.sha256(data[:a]+b'0'*64+data[b:]).hexdigest().encode() != matches[0][1]:
++        raise ValueError('canonical report hash mismatch')
++    return len(full), len(sources)
++
++
+ def main() -> int:
+-    parser=argparse.ArgumentParser();parser.add_argument('root',nargs='?',default='.')
+-    args=parser.parse_args();root=pathlib.Path(args.root).resolve()
+-    full=manifest(root/'MANIFEST.sha256');source=manifest(root/'SOURCE_MANIFEST.sha256')
+-    for name,digest in full.items():
+-        path=root/name
+-        if path.is_symlink() or not path.is_file() or not path.resolve().is_relative_to(root):
+-            raise ValueError(f'missing/unsafe file: {name}')
+-        h=hashlib.sha256()
+-        with path.open('rb') as stream:
+-            for block in iter(lambda:stream.read(1048576),b''):h.update(block)
+-        if h.hexdigest()!=digest:raise ValueError(f'hash mismatch: {name}')
+-    for name,digest in source.items():
+-        if full.get(name)!=digest:raise ValueError(f'source not covered identically: {name}')
+-    report=root/'08_Turn_08_Enterprise_Release_Report.md'
+-    data=report.read_bytes();pattern=rb'(?m)^\*\*Canonical-SHA256:\*\* `([0-9a-f]{64})`$'
+-    matches=list(re.finditer(pattern,data))
+-    if len(matches)!=1:raise ValueError('canonical header missing or repeated')
+-    a,b=matches[0].span(1)
+-    if hashlib.sha256(data[:a]+b'0'*64+data[b:]).hexdigest().encode()!=matches[0][1]:
+-        raise ValueError('canonical report hash mismatch')
+-    print(f'PASS: {len(full)} file hashes; {len(source)} source hashes; canonical report hash')
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument('root', nargs='?', default='.')
++    parser.add_argument('--strict', action='store_true')
++    args = parser.parse_args()
++    full, sources = verify(Path(args.root).resolve(strict=True), args.strict)
++    print(f'PASS: {full} file hashes; {sources} source hashes; complete inventory; canonical report hash')
+     return 0
+ 
+-if __name__=='__main__':
+-    try:sys.exit(main())
+-    except (ValueError,OSError) as exc:print('FAIL:',exc,file=sys.stderr);sys.exit(1)
++
++if __name__ == '__main__':
++    try:
++        raise SystemExit(main())
++    except (ValueError, OSError) as exc:
++        print('FAIL:', exc, file=sys.stderr)
++        raise SystemExit(1)

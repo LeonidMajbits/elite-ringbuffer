@@ -1,0 +1,78 @@
+[
+  {
+    "name": "clang_release_check",
+    "command": [
+      "make",
+      "CC=clang",
+      "CXX=clang++",
+      "BUILD=build/clang",
+      "release-check",
+      "benchmarks",
+      "check-pmc",
+      "check-topology",
+      "check-matrix"
+    ],
+    "cwd": "/mnt/data/Elite_RingBuffer_v1_1_0",
+    "start_utc": "2026-09-24T06:54:42Z",
+    "returncode": 0,
+    "wall_ns": 142567534313
+  },
+  {
+    "name": "gcc_release_check",
+    "command": [
+      "make",
+      "CC=gcc",
+      "CXX=g++",
+      "BUILD=build/gcc",
+      "release-check"
+    ],
+    "cwd": "/mnt/data/Elite_RingBuffer_v1_1_0",
+    "start_utc": "2026-09-24T06:57:04Z",
+    "returncode": 0,
+    "wall_ns": 113712852781
+  },
+  {
+    "name": "gcc_chaos_receipts",
+    "command": [
+      "python3",
+      "tools/run_chaos.py",
+      "--build",
+      "build/gcc",
+      "--out",
+      "evidence/turn15/gcc_chaos",
+      "--smoke",
+      "--trials",
+      "1",
+      "--messages",
+      "10000",
+      "--storm-messages",
+      "16000"
+    ],
+    "cwd": "/mnt/data/Elite_RingBuffer_v1_1_0",
+    "start_utc": "2026-09-24T06:58:58Z",
+    "returncode": 0,
+    "wall_ns": 1576954247
+  },
+  {
+    "name": "clang_chaos_receipts",
+    "command": [
+      "python3",
+      "tools/run_chaos.py",
+      "--build",
+      "build/clang",
+      "--out",
+      "evidence/turn15/clang_chaos",
+      "--smoke",
+      "--trials",
+      "1",
+      "--messages",
+      "10000",
+      "--storm-messages",
+      "16000"
+    ],
+    "cwd": "/mnt/data/Elite_RingBuffer_v1_1_0",
+    "start_utc": "2026-09-24T06:59:00Z",
+    "returncode": 0,
+    "wall_ns": 1171917354
+  }
+]

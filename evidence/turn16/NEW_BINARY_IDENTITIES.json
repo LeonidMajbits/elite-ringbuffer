@@ -1,0 +1,10 @@
+{
+  "build/gcc-seed/live_throughput_demo": {
+    "bytes": 241112,
+    "sha256": "ef66e4fcf971603a620c61b1c233fa48af9fc67c3bff7512ad189b5c6d39afb0"
+  },
+  "build/clang-seed/live_throughput_demo": {
+    "bytes": 208936,
+    "sha256": "1faa61c9c2b3ea1b976fafc6ebcb0bae00bb0751a1d2b8db914211481032419d"
+  }
+}

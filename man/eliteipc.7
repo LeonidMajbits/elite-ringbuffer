@@ -1,0 +1,166 @@
+.TH ELITEIPC 7 "2026-09-24" "ELITEIPC 1.1.0" "Miscellaneous Information"
+.SH NAME
+eliteipc \- ownership, deployment and failure model of ELITEIPC shared-memory IPC
+.SH DESCRIPTION
+ELITEIPC is a C11 CPU-to-CPU transport with SPSC and publish-first NCQ-SC64
+queues, fixed payload blocks, explicit zero-copy leases, and application-owned
+lifecycle management. It does not require a daemon or third-party native
+runtime. The optional Python binding adds a CPython exporter and ctypes
+calling interface, not a second queue algorithm.
+.SH ARCHITECTURE
+.nf
+SPSC:
+  producer -- payload then release(P) --> acquire(P) -- consumer
+  producer <-- acquire(C) <-- release(C) after final consumer read
+
+NCQ-SC64:
+  QF -> producer owns block -> construct -> publish completed ID -> QR
+  QF <- return after final read <- consumer owns block <---------- QR
+
+Management (not a payload path):
+  authority -> constructed grants -> registered process cohort
+  suspect -> retire/quarantine -> distinct successor -> fenced disposal
+.fi
+.PP
+QF and QR entries contain packed generation/index identities, not heap
+pointers. Reserve a payload before constructing it; never hold a blocking
+ready-queue position while user serialization runs. A paused publisher after
+entry installation leaves consumable data and helpable tail bookkeeping.
+.SH INVARIANTS
+.TP
+.B Exclusive ownership
+Every block is free, ready, exclusively held, transfer-owned or retained as
+uncertain responsibility. Historical array words are not additional live
+membership. Phase values alone are not allocation or recovery oracles.
+.TP
+.B Publication
+All required payload and metadata writes happen-before authorized reads
+through the correct release/acquire handoff.
+.TP
+.B Reclamation
+Every valid read alias ends before the release/acquire chain authorizes
+physical overwrite by a later producer. A mapping kept alive without its
+token kept reserved is not sufficient.
+.TP
+.B Linearization
+NCQ entry-install CAS publishes. Successful head CAS removes. Tail help is
+subsequent bookkeeping. A former owner must not touch a block after its
+transfer linearizes, even before the original function returns.
+.TP
+.B Identity
+No live generation resets or wraps counters, packed cycles, lease epochs or
+one-shot grant identities. Library version and wire ABI are distinct.
+.TP
+.B Lifetime
+Atomic construction precedes exposure. No concurrent truncation,
+reinitialization, unmapping or old-address redirection is permitted.
+.SH LAYOUT
+LE128-V1 has 2048-byte mode-specific headers, a 512-byte immutable prefix,
+128-byte descriptor/entry cells, 256-byte participant records and a
+16384-byte format quantum. Relative offsets permit unrelated mapping bases.
+Runtime bounds, canonical strides, CRC and compiled atomic representations
+are checked before normal operations.
+.PP
+Alignment isolates designated independent cells on admitted cache-line
+granularities. It cannot eliminate true sharing on one NCQ cursor, cache-set
+conflicts, prefetch traffic, CPU migration, or OS scheduling disturbances.
+The format is not a huge-page request or a GPU/DMA coherence protocol.
+.SH OPERATIONAL ENVELOPE
+Use trusted, registered participants on the same live host. Serialize each
+endpoint and the authority. End all aliases before transfer. Provide a
+schedulable authority and bounded application backpressure. A caller that
+retains a lease indefinitely consumes its capacity indefinitely.
+.PP
+SPSC polling try operations have the bounded algorithmic path defined by the
+admitted primitive model. NCQ is a lock-free reference, not wait-free for each
+caller. Empty/full observations are not scheduling errors by themselves.
+Per-caller starvation and long wall-clock delays remain possible.
+.PP
+The native baseline supports Linux and macOS. The optional experimental
+FreeBSD profile is POLL_ONLY and must pass its own native CI. An x86 Linux
+build, an ARM assembly listing, or a VM test is not native M3 Max evidence.
+.SH SIGNAL AND CRASH POLICY
+SIGKILL cannot execute cleanup. SIGSTOP is not death; signal delivery is
+not terminal wait evidence. Keep signal handlers out of queue, allocator,
+printf and cleanup code. Normal execution must handle interrupted OS calls.
+.PP
+Retirement prevents new cooperative admission, but does not cancel every
+already admitted CAS. A committed old-generation message may remain pending
+when a successor starts. Classify it as pending or uncertain, not delivered.
+.PP
+A timeout is suspicion. Do not reclaim a slot solely because its epoch or
+heartbeat appears old. A resumed process can still write through its existing
+pointer. Retain old backing, establish holder quiescence or terminal fencing,
+and use a physically distinct successor without redirecting old aliases.
+.PP
+The manager bounds storage at four objects and two quarantines. Exhausting
+that budget rejects admission rather than silently leaking unlimited
+replacements. Authority failure, unknown descendants, host power loss and
+malicious shared writes are separate failure domains.
+.PP
+The supplied chaos harness targets only its owned children. It reconciles
+final free/ready/retained partitions after terminal quiescence. It does not
+scan live ordinary descriptor bytes and reconstruct a supposedly safe owner.
+.SH PERFORMANCE REPORTING
+A performance record names the exact CPU/OS/compiler, timer, payload,
+participants, placement, workload, repetition and measurement interval.
+RTT is request construction through response validation and return; RTT/2 is
+not a direct one-way measurement. Inverse throughput is not latency.
+.PP
+The interactive demo shows directional Mmsg/s (two payload records per RTT)
+and exact window p50/p99 instrumented RTT. It has one outstanding request,
+no warmup or core pinning, and includes clock/read/validation work. Console
+and evidence output occur between windows and can perturb later windows.
+It is a demonstration, not the preregistered latency qualification lane.
+.PP
+The full benchmark tools retain raw ticks and exact message membership.
+Sanitizer, profiler and scheduling-hook results are never reported as
+production-speed measurements. PMCs are distinct from elapsed-time clocks;
+CNTVCT is not retired core cycles. Unsupported counters remain unavailable.
+.SH VERIFICATION AND CI
+The distribution separates artifact admission, finite control/handoff
+models, native concurrent tests, sanitizers, throughput, latency, counters,
+and chaos. Seven finite model spaces were exhausted in the retained formal
+campaign; larger configured spaces and external model-checker refinement
+remain separately documented. A finite run is not all future executions.
+.PP
+GitHub CI is correctness and build automation on hosted resources, not a
+machine-independent performance acceptance gate. TSan is scoped to a
+single-process, one-mapping thread adapter. Valgrind does not prove the
+shared-memory ownership protocol. FreeBSD QEMU is a guest portability lane,
+not bare-metal hardware qualification. Review action pins and transitive VM
+image/tool downloads before enabling untrusted pull requests.
+.SH BUILD AND INSTALL
+.nf
+cmake -S . -B build/cmake -DCMAKE_BUILD_TYPE=Release
+cmake --build build/cmake --parallel 2
+cmake --install build/cmake --prefix /your/versioned/prefix
+
+# Existing GNU Make pipeline:
+make CC=clang libraries python demo
+make CC=clang release-check check-seeding
+.fi
+.PP
+CMake exports elite::ringbuffer and any built elite::ringbuffer_static or
+elite::ringbuffer_shared targets. C++ consumers use the opaque C interface.
+Install into a fresh version-specific prefix, not over loaded libraries.
+The optional Python package is built by the existing Make target with its
+matching interpreter headers; it is not hidden inside the CMake export.
+.SH INTEGRITY AND PUBLICATION
+SHA-256 manifests bind bytes, not author identity or executed hardware.
+The sealed Turn 15 archive and the Turn 16 seeding derivative have different
+hashes even though their library version is the same. Never force-move a
+published tag or replace an existing release asset silently.
+.PP
+Homebrew/vcpkg recipes are seeding material. Their presence does not imply
+acceptance in a public package registry. Bind a reviewed public source URL
+to the actual downloaded archive digest before distribution. No signing key,
+GitHub secret, remote Git tag or published repository is created by this kit.
+.SH SEE ALSO
+.BR elite_ringbuffer (3),
+.BR mmap (2),
+.BR waitpid (2),
+.BR signal (7)
+.PP
+docs/SEEDING.md, docs/CI_MATRIX.md, docs/LIVE_DEMO.md,
+docs/HARDWARE_BOUNDS.md, docs/TRUST_CAPSULE.md.

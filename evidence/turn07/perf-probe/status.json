@@ -1,0 +1,18 @@
+{
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "scope": "SEPARATE_DIAGNOSTIC_NOT_LATENCY_QUALIFICATION",
+  "command": [
+    "build/native/bench_cache",
+    "--producers",
+    "4",
+    "--consumers",
+    "4",
+    "--count",
+    "100000",
+    "--warmup",
+    "0",
+    "--out",
+    "evidence/turn07/profile-cache"
+  ],
+  "status": "UNAVAILABLE_PERF"
+}

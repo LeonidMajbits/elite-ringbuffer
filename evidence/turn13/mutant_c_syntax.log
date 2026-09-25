@@ -1,0 +1,7 @@
+gcc -std=c11 -O1 -Wall -Wextra -Werror -pedantic -pthread -DMUT_PUB=1 formal/c11/spsc_handoff.c
+gcc -std=c11 -O1 -Wall -Wextra -Werror -pedantic -pthread -DMUT_REC=1 formal/c11/spsc_handoff.c
+gcc -std=c11 -O1 -Wall -Wextra -Werror -pedantic -pthread -DMUT_HANDOFF=1 formal/c11/ncq_handoff.c
+clang -std=c11 -O1 -Wall -Wextra -Werror -pedantic -pthread -DMUT_PUB=1 formal/c11/spsc_handoff.c
+clang -std=c11 -O1 -Wall -Wextra -Werror -pedantic -pthread -DMUT_REC=1 formal/c11/spsc_handoff.c
+clang -std=c11 -O1 -Wall -Wextra -Werror -pedantic -pthread -DMUT_HANDOFF=1 formal/c11/ncq_handoff.c
+PASS: six syntax/link checks only; mutants NOT EXECUTED natively

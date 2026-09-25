@@ -1,0 +1,86 @@
+[
+  {
+    "case": "spsc-write-0",
+    "command": [
+      "/opt/pyvenv/bin/python3",
+      "/mnt/data/turn10_work/elite-ringbuffer-1.0.1/repros/export_race.py",
+      "spsc",
+      "write"
+    ],
+    "returncode": -11,
+    "timed_out": false,
+    "child_reaped": true,
+    "named_cleanup": [
+      {
+        "name": "/el-shzxpytcrfhejnabfxq4ie77em",
+        "returncode": 0,
+        "errno": 0
+      }
+    ],
+    "safe_block_observed": false,
+    "invalid_export_observed": true
+  },
+  {
+    "case": "spsc-read-0",
+    "command": [
+      "/opt/pyvenv/bin/python3",
+      "/mnt/data/turn10_work/elite-ringbuffer-1.0.1/repros/export_race.py",
+      "spsc",
+      "read"
+    ],
+    "returncode": -11,
+    "timed_out": false,
+    "child_reaped": true,
+    "named_cleanup": [
+      {
+        "name": "/el-hmbd77sih5d43fconemrosq76y",
+        "returncode": 0,
+        "errno": 0
+      }
+    ],
+    "safe_block_observed": false,
+    "invalid_export_observed": true
+  },
+  {
+    "case": "ncq-write-0",
+    "command": [
+      "/opt/pyvenv/bin/python3",
+      "/mnt/data/turn10_work/elite-ringbuffer-1.0.1/repros/export_race.py",
+      "ncq",
+      "write"
+    ],
+    "returncode": -11,
+    "timed_out": false,
+    "child_reaped": true,
+    "named_cleanup": [
+      {
+        "name": "/el-g7rnrq7r5ffjxmen6mebivkdqe",
+        "returncode": 0,
+        "errno": 0
+      }
+    ],
+    "safe_block_observed": false,
+    "invalid_export_observed": true
+  },
+  {
+    "case": "ncq-read-0",
+    "command": [
+      "/opt/pyvenv/bin/python3",
+      "/mnt/data/turn10_work/elite-ringbuffer-1.0.1/repros/export_race.py",
+      "ncq",
+      "read"
+    ],
+    "returncode": -11,
+    "timed_out": false,
+    "child_reaped": true,
+    "named_cleanup": [
+      {
+        "name": "/el-24ai3akdznev3kkdq4vxk7repq",
+        "returncode": 0,
+        "errno": 0
+      }
+    ],
+    "safe_block_observed": false,
+    "invalid_export_observed": true
+  }
+]

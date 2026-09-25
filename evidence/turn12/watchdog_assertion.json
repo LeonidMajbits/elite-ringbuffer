@@ -1,0 +1,6 @@
+{
+  "expected_nonzero": true,
+  "exit": 1,
+  "complete_results": 0,
+  "scope": "deliberately oversized retention schedule; no completed result"
+}

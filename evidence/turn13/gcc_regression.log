@@ -1,0 +1,99 @@
+mkdir -p build/gcc
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -UNDEBUG -fPIE  -pie -o build/gcc/formal_spsc_handoff formal/c11/spsc_handoff.c -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -UNDEBUG -fPIE  -pie -o build/gcc/formal_ncq_handoff formal/c11/ncq_handoff.c -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -UNDEBUG -fPIE  -pie -o build/gcc/formal_ticket_atomicity formal/c11/ticket_atomicity.c -pthread
+build/gcc/formal_spsc_handoff
+build/gcc/formal_ncq_handoff
+build/gcc/formal_ticket_atomicity
+python3 tools/check_formal_binding.py
+PASS: 8 source files match the reviewed model binding
+python3 tests/test_formal.py
+test_alias_transfer_rejected (__main__.FormalTests.test_alias_transfer_rejected) ... ok
+test_all_structural_mutants (__main__.FormalTests.test_all_structural_mutants) ... ok
+test_budget_fails_closed (__main__.FormalTests.test_budget_fails_closed) ... ok
+test_counter_bounds (__main__.FormalTests.test_counter_bounds) ... ok
+test_duplicate_membership_rejected (__main__.FormalTests.test_duplicate_membership_rejected) ... ok
+test_fake_witness_rejected (__main__.FormalTests.test_fake_witness_rejected) ... ok
+test_gate_races (__main__.FormalTests.test_gate_races) ... ok
+test_hash_collision_does_not_merge (__main__.FormalTests.test_hash_collision_does_not_merge) ... ok
+test_hb_transitive_closure (__main__.FormalTests.test_hb_transitive_closure) ... ok
+test_inapplicable_mutation (__main__.FormalTests.test_inapplicable_mutation) ... ok
+test_initial_conservation (__main__.FormalTests.test_initial_conservation) ... ok
+test_invalid_capacity (__main__.FormalTests.test_invalid_capacity) ... ok
+test_ncq_complete (__main__.FormalTests.test_ncq_complete) ... ok
+test_ncq_reference_hb (__main__.FormalTests.test_ncq_reference_hb) ... ok
+test_ncq_relaxed_install_epoch_race (__main__.FormalTests.test_ncq_relaxed_install_epoch_race) ... ok
+test_ncq_relaxed_observation_epoch_race (__main__.FormalTests.test_ncq_relaxed_observation_epoch_race) ... ok
+test_negative_spsc_role (__main__.FormalTests.test_negative_spsc_role) ... ok
+test_nonprogress_cycle_detector (__main__.FormalTests.test_nonprogress_cycle_detector) ... ok
+test_overbooked_endpoints (__main__.FormalTests.test_overbooked_endpoints) ... ok
+test_progress_cycle_not_deadlock (__main__.FormalTests.test_progress_cycle_not_deadlock) ... ok
+test_relaxed_CAS_retains_atomicity (__main__.FormalTests.test_relaxed_CAS_retains_atomicity) ... ok
+test_source_anchors (__main__.FormalTests.test_source_anchors) ... ok
+test_spsc_complete (__main__.FormalTests.test_spsc_complete) ... ok
+test_spsc_publication_relaxed_races (__main__.FormalTests.test_spsc_publication_relaxed_races) ... ok
+test_spsc_ra_graphs (__main__.FormalTests.test_spsc_ra_graphs) ... ok
+test_spsc_recycle_relaxed_races (__main__.FormalTests.test_spsc_recycle_relaxed_races) ... ok
+test_stale_head_witness (__main__.FormalTests.test_stale_head_witness) ... ok
+test_stopped_writer_private (__main__.FormalTests.test_stopped_writer_private) ... ok
+test_stopped_writer_published (__main__.FormalTests.test_stopped_writer_published) ... ok
+test_tail_ahead_rejected (__main__.FormalTests.test_tail_ahead_rejected) ... ok
+test_time_cutoff (__main__.FormalTests.test_time_cutoff) ... ok
+test_wrap_witness (__main__.FormalTests.test_wrap_witness) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 1.116s
+
+OK
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_core.c -o build/gcc/elite_core.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_format.c -o build/gcc/elite_format.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_spsc.c -o build/gcc/elite_spsc.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_mpmc_ncq.c -o build/gcc/elite_mpmc_ncq.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_shm.c -o build/gcc/elite_shm.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_wait.c -o build/gcc/elite_wait.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_version.c -o build/gcc/elite_version.o
+ar rcs build/gcc/libelite_ringbuffer.a build/gcc/elite_core.o build/gcc/elite_format.o build/gcc/elite_spsc.o build/gcc/elite_mpmc_ncq.o build/gcc/elite_shm.o build/gcc/elite_wait.o build/gcc/elite_version.o
+gcc -march=x86-64 -mtune=generic  -shared -Wl,-soname,libelite_ringbuffer.so -o build/gcc/libelite_ringbuffer.so build/gcc/elite_core.o build/gcc/elite_format.o build/gcc/elite_spsc.o build/gcc/elite_mpmc_ncq.o build/gcc/elite_shm.o build/gcc/elite_wait.o build/gcc/elite_version.o -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc/test_core tests/test_core.c build/gcc/libelite_ringbuffer.a -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc/test_ipc tests/test_ipc.c build/gcc/libelite_ringbuffer.a -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc/example examples/local_roundtrip.c build/gcc/libelite_ringbuffer.a -pthread
+build/gcc/test_core
+parser_single_byte_mutations_rejected=512
+PASS core_groups=68 shared_header=2048 descriptor=128 participant=256
+build/gcc/test_ipc spsc 1 1 100000
+PASS native_spawn_ipc mode=SPSC producers=1 consumers=1 messages=100000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=23175471 (not_latency)
+build/gcc/test_ipc ncq 4 4 100000
+PASS native_spawn_ipc mode=NCQ-SC64 producers=4 consumers=4 messages=100000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=10230898 (not_latency)
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_core.c -o build/gcc/test_elite_core.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_format.c -o build/gcc/test_elite_format.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_spsc.c -o build/gcc/test_elite_spsc.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_mpmc_ncq.c -o build/gcc/test_elite_mpmc_ncq.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_shm.c -o build/gcc/test_elite_shm.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_wait.c -o build/gcc/test_elite_wait.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_version.c -o build/gcc/test_elite_version.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE -DELITE_TESTING  -pie -o build/gcc/test_adversarial tests/test_adversarial.c build/gcc/test_elite_core.o build/gcc/test_elite_format.o build/gcc/test_elite_spsc.o build/gcc/test_elite_mpmc_ncq.o build/gcc/test_elite_shm.o build/gcc/test_elite_wait.o build/gcc/test_elite_version.o -pthread
+build/gcc/test_adversarial
+PASS one_mapping_threads 2P2C messages=100000 exact_membership=yes
+PASS controlled publication point=2 healthy_lifecycles_while_paused=10000
+PASS controlled publication point=5 healthy_lifecycles_while_paused=10000
+PASS controlled stale_head discards_old_entry_after_101_competing_claims
+PASS controlled late_returner no_post_LP_descriptor_write
+PASS integrity mode=1 retained_corrupt_token_not_reclaimed
+PASS integrity mode=2 retained_corrupt_token_not_reclaimed
+PASS SPSC finite_wait wake_before_or_after_block and_retirement
+PASS adversarial_histories=8
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE -DELITE_TESTING  -pie -o build/gcc/test_limits tests/test_limits.c build/gcc/test_elite_core.o build/gcc/test_elite_format.o build/gcc/test_elite_spsc.o build/gcc/test_elite_mpmc_ncq.o build/gcc/test_elite_shm.o build/gcc/test_elite_wait.o build/gcc/test_elite_version.o -pthread
+build/gcc/test_limits
+PASS near_limit mode=1 limit=TICKET no_wrap_and_no_terminal_publication
+PASS near_limit mode=1 limit=EPOCH no_wrap_and_no_terminal_publication
+PASS near_limit mode=2 limit=TICKET no_wrap_and_no_terminal_publication
+PASS near_limit mode=2 limit=EPOCH no_wrap_and_no_terminal_publication
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE -DELITE_TESTING  -pie -o build/gcc/test_chaos tests/test_chaos.c build/gcc/test_elite_core.o build/gcc/test_elite_format.o build/gcc/test_elite_spsc.o build/gcc/test_elite_mpmc_ncq.o build/gcc/test_elite_shm.o build/gcc/test_elite_wait.o build/gcc/test_elite_version.o -pthread
+build/gcc/test_chaos
+PASS native_SIGKILL cut=MID_WRITE healthy_lifecycles_before_fencing=10000 no_token_theft=yes
+PASS native_SIGKILL cut=POST_PUBLICATION_PRE_TAIL healthy_lifecycles_before_fencing=10000 no_token_theft=yes
+PASS native_SIGSTOP_successor_SIGCONT old_writer_did_not_modify_successor
+PASS native_chaos_scenarios=3
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc/fuzz_prefix tests/fuzz_prefix.c build/gcc/libelite_ringbuffer.a -pthread
+build/gcc/fuzz_prefix 1000000
+PASS stable_prefix_corpus inputs=1000000 accepted_valid_mutations=89908 rejected=910092 seed=744125b77cc09301

@@ -1,0 +1,18 @@
+$ ['cmake', '--build', 'build/cmake-shared', '--parallel', '2']
+[1/17] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_format.c.o
+[2/17] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_core.c.o
+[3/17] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_spsc.c.o
+[4/17] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_mpmc_ncq.c.o
+[5/17] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_wait.c.o
+[6/17] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_version.c.o
+[7/17] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_shm.c.o
+[8/17] Linking C shared library libelite_ringbuffer.so.1.1.0
+[9/17] Creating library symlink libelite_ringbuffer.so.1 libelite_ringbuffer.so
+[10/17] Building C object CMakeFiles/live_throughput_demo.dir/examples/live_throughput_demo.c.o
+[11/17] Building C object CMakeFiles/test_portability.dir/tests/test_portability.c.o
+[12/17] Building C object CMakeFiles/test_ipc.dir/tests/test_ipc.c.o
+[13/17] Linking C executable live_throughput_demo
+[14/17] Linking C executable test_ipc
+[15/17] Linking C executable test_portability
+[16/17] Building C object CMakeFiles/test_core.dir/tests/test_core.c.o
+[17/17] Linking C executable test_core

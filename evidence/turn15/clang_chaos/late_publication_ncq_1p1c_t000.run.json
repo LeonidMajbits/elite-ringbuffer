@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/mnt/data/Elite_RingBuffer_v1_1_0/build/clang/chaos_multiprocess_hooks",
+    "late_publication",
+    "ncq",
+    "10000",
+    "1",
+    "1",
+    "1"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "wall_ns": 32282522,
+  "trace_sha256": "1b49e0aca02b1d7974336082602390b6dfb20fcfb90162115c0d2b708b6615b8",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

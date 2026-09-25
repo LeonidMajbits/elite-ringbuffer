@@ -1,0 +1,14 @@
+test_cli_is_read_only_in_pristine_tree (__main__.ReleaseIntegrityTests.test_cli_is_read_only_in_pristine_tree) ... ok
+test_deleted_audit_detected (__main__.ReleaseIntegrityTests.test_deleted_audit_detected) ... ok
+test_pristine_passes (__main__.ReleaseIntegrityTests.test_pristine_passes) ... ok
+test_required_license_edit_detected (__main__.ReleaseIntegrityTests.test_required_license_edit_detected) ... ok
+test_source_coverage_cannot_be_silently_dropped (__main__.ReleaseIntegrityTests.test_source_coverage_cannot_be_silently_dropped) ... ok
+test_strict_mode_rejects_build_overlay (__main__.ReleaseIntegrityTests.test_strict_mode_rejects_build_overlay) ... ok
+test_symlink_rejected (__main__.ReleaseIntegrityTests.test_symlink_rejected) ... ok
+test_unlisted_hidden_member_detected (__main__.ReleaseIntegrityTests.test_unlisted_hidden_member_detected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.884s
+
+OK
+EXIT_CODE=0

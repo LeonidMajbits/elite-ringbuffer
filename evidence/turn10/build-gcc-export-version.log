@@ -1,0 +1,2 @@
+python3 tools/build_python.py --cc "gcc" --build "build/gcc" 
+gcc -std=c11 -O3 -g -Wall -Wextra -Werror -pedantic -fPIC -isystem /usr/include/python3.13 -shared /mnt/data/turn10_work/elite-ringbuffer-1.0.1/bindings/python/elite_buffer.c -o /mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/gcc/python/_elite_buffer.cpython-313-x86_64-linux-gnu.so

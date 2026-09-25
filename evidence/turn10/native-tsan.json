@@ -1,0 +1,10 @@
+{
+  "command": [
+    "make",
+    "CC=gcc",
+    "tsan"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 3.0126821994781494,
+  "started_unix": 1790210124.8480954
+}

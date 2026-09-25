@@ -1,0 +1,20 @@
+{
+  "all_recorded_source_inputs_match_delivered": true,
+  "paths": [
+    "Makefile",
+    "benchmarks/bench_analyze.c",
+    "benchmarks/bench_cache.c",
+    "benchmarks/bench_common.c",
+    "benchmarks/bench_common.h",
+    "benchmarks/bench_latency.c",
+    "benchmarks/bench_throughput.c",
+    "include/elite_ringbuffer.h",
+    "src/elite_core.c",
+    "src/elite_format.c",
+    "src/elite_internal.h",
+    "src/elite_mpmc_ncq.c",
+    "src/elite_shm.c",
+    "src/elite_spsc.c",
+    "src/elite_wait.c"
+  ]
+}

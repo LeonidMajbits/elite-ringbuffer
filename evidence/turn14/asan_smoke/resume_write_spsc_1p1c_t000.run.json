@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/asan-chaos/chaos_multiprocess",
+    "resume_write",
+    "spsc",
+    "1000",
+    "1",
+    "1",
+    "1"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "wall_ns": 63934469,
+  "trace_sha256": "53b3444c465e872c355528aaf8719ac23caa9f662d10543aca2a7dc77b3b1b31",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

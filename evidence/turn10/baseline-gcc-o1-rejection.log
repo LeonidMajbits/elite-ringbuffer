@@ -1,0 +1,15 @@
+make: Entering directory '/mnt/data/turn10_work/elite-ringbuffer-1.0.0'
+mkdir -p build/negative-o1
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_core.c -o build/negative-o1/elite_core.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_format.c -o build/negative-o1/elite_format.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_spsc.c -o build/negative-o1/elite_spsc.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_mpmc_ncq.c -o build/negative-o1/elite_mpmc_ncq.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_shm.c -o build/negative-o1/elite_shm.o
+src/elite_shm.c: In function 'name_from_id':
+src/elite_shm.c:66:69: error: conversion to 'unsigned int' from 'int' may change the sign of the result [-Werror=sign-conversion]
+   66 |             unsigned x=pos<128 ? (unsigned)((id[pos/8]>>(7-(pos%8)))&1u):0u;
+      |                                                                     ^
+cc1: all warnings being treated as errors
+make: *** [Makefile:45: build/negative-o1/elite_shm.o] Error 1
+make: Leaving directory '/mnt/data/turn10_work/elite-ringbuffer-1.0.0'
+EXIT_CODE=2

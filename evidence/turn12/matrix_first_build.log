@@ -1,0 +1,33 @@
+python3 tools/cache_build_info.py --out "build/gcc/cache_build_info.h" --cc "gcc" --cppflags="-Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -Ibuild/gcc" --cflags="-std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE" --ldflags=" -pie" --ldlibs="-pthread"
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_core.c -o build/gcc/elite_core.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_format.c -o build/gcc/elite_format.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_spsc.c -o build/gcc/elite_spsc.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_mpmc_ncq.c -o build/gcc/elite_mpmc_ncq.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_shm.c -o build/gcc/elite_shm.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_wait.c -o build/gcc/elite_wait.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_version.c -o build/gcc/elite_version.o
+ar rcs build/gcc/libelite_ringbuffer.a build/gcc/elite_core.o build/gcc/elite_format.o build/gcc/elite_spsc.o build/gcc/elite_mpmc_ncq.o build/gcc/elite_shm.o build/gcc/elite_wait.o build/gcc/elite_version.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic  -shared -o build/gcc/libelite_matrix_bridge.so benchmarks/matrix_bridge.c benchmarks/bench_common.c build/gcc/libelite_ringbuffer.a -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -Ibuild/gcc -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc/bench_matrix benchmarks/bench_matrix.c benchmarks/bench_common.c benchmarks/bench_identity.c benchmarks/bench_ratio.c build/gcc/libelite_topology.a build/gcc/libelite_ringbuffer.a -pthread
+benchmarks/bench_matrix.c: In function 'trial':
+benchmarks/bench_matrix.c:117:5: error: this 'for' clause does not guard... [-Werror=misleading-indentation]
+  117 |     for(uint32_t i=0;i<k;++i)bench_write_all(b.child[i].command_fd,&cmd,sizeof(cmd));drain(&b,o->producers,1,B_WARM_DONE,r);
+      |     ^~~
+benchmarks/bench_matrix.c:117:86: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  117 |     for(uint32_t i=0;i<k;++i)bench_write_all(b.child[i].command_fd,&cmd,sizeof(cmd));drain(&b,o->producers,1,B_WARM_DONE,r);
+      |                                                                                      ^~~~~
+benchmarks/bench_matrix.c: In function 'main':
+benchmarks/bench_matrix.c:136:5: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+  136 |     if(argc==2&&!strcmp(argv[1],"--worker"))return worker();struct matrix_options m;memset(&m,0,sizeof(m));m.payload=64;m.burst=32;m.period_ns=100000;m.hold_every=16;m.max_bytes=UINT64_C(536870912);strcpy(m.locality,"unconstrained");
+      |     ^~
+benchmarks/bench_matrix.c:136:61: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  136 |     if(argc==2&&!strcmp(argv[1],"--worker"))return worker();struct matrix_options m;memset(&m,0,sizeof(m));m.payload=64;m.burst=32;m.period_ns=100000;m.hold_every=16;m.max_bytes=UINT64_C(536870912);strcpy(m.locality,"unconstrained");
+      |                                                             ^~~~~~
+benchmarks/bench_matrix.c:153:5: error: this 'for' clause does not guard... [-Werror=misleading-indentation]
+  153 |     for(unsigned i=0;i<m.base.trials;++i)trial(argv[0],&m,i);return 0;
+      |     ^~~
+benchmarks/bench_matrix.c:153:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  153 |     for(unsigned i=0;i<m.base.trials;++i)trial(argv[0],&m,i);return 0;
+      |                                                              ^~~~~~
+cc1: all warnings being treated as errors
+make: *** [Makefile:196: build/gcc/bench_matrix] Error 1

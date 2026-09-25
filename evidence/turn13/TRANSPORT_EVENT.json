@@ -1,0 +1,5 @@
+{
+  "event": "one container tool invocation returned TransportTimeoutError",
+  "outcome": "underlying owned release-check and receipt tests completed with retained files; subsequent source-level build-path failure and correction are recorded separately",
+  "no_result_inferred_from_transport_error": true
+}

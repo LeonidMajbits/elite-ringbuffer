@@ -1,0 +1,7 @@
+test_lost_acquisition_result_is_visible_and_retained (test_hardening_failures.FailureRecoveryTests.test_lost_acquisition_result_is_visible_and_retained) ... ok
+test_unraisable_hook_never_receives_freed_self (test_hardening_failures.FailureRecoveryTests.test_unraisable_hook_never_receives_freed_self) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.446s
+
+OK

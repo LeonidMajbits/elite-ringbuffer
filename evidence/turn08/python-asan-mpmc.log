@@ -1,0 +1,6 @@
+test_python_mpmc_two_producers_two_consumers (__main__.ProcessTests.test_python_mpmc_two_producers_two_consumers) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 10.606s
+
+OK

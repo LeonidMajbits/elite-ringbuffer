@@ -1,0 +1,87 @@
+COMMAND=['make', 'CC=clang', 'BUILD=build/clang', 'check-python-hardening']
+python3 tools/build_python.py --cc "clang" --build "build/clang" 
+clang -std=c11 -O3 -g -Wall -Wextra -Werror -pedantic -fPIC -isystem /usr/include/python3.13 -shared /mnt/data/turn10_work/elite-ringbuffer-1.0.1/bindings/python/elite_buffer.c -o /mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/clang/python/_elite_buffer.cpython-313-x86_64-linux-gnu.so
+ELITE_LIBRARY="/mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/clang/libelite_ringbuffer.so" PYTHONPATH="/mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/clang/python:/mnt/data/turn10_work/elite-ringbuffer-1.0.1/bindings/python" python3 tools/check_python.py --hardening
+test_callback_exception_rolls_back_pending_count (test_adversarial_races.ExportTransactionTests.test_callback_exception_rolls_back_pending_count) ... ok
+test_callback_failure_completes_requested_finalization (test_adversarial_races.ExportTransactionTests.test_callback_failure_completes_requested_finalization) ... ok
+test_callback_result_decref_is_inside_transaction (test_adversarial_races.ExportTransactionTests.test_callback_result_decref_is_inside_transaction) ... ok
+test_close_failure_can_retry_without_double_drop (test_adversarial_races.ExportTransactionTests.test_close_failure_can_retry_without_double_drop) ... ok
+test_close_is_serialized_during_cleanup_callback (test_adversarial_races.ExportTransactionTests.test_close_is_serialized_during_cleanup_callback) ... ok
+test_fillinfo_failure_completes_requested_finalization (test_adversarial_races.ExportTransactionTests.test_fillinfo_failure_completes_requested_finalization) ... ok
+test_fillinfo_readonly_failure_rolls_back (test_adversarial_races.ExportTransactionTests.test_fillinfo_readonly_failure_rolls_back) ... ok
+test_original_four_race_schedules (test_adversarial_races.ExportTransactionTests.test_original_four_race_schedules) ... ok
+test_pending_export_blocks_abort_and_close (test_adversarial_races.ExportTransactionTests.test_pending_export_blocks_abort_and_close) ... ok
+test_reentrant_close_rejected (test_adversarial_races.ExportTransactionTests.test_reentrant_close_rejected) ... ok
+test_successful_export_defers_requested_finalization (test_adversarial_races.ExportTransactionTests.test_successful_export_defers_requested_finalization) ... ok
+test_cross_object_cycles (test_gc_cycle.GCLifetimeTests.test_cross_object_cycles) ... ok
+test_cycle_ncq_read_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_read_endpoint) ... ok
+test_cycle_ncq_read_lease (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_read_lease) ... ok
+test_cycle_ncq_read_manager (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_read_manager) ... ok
+test_cycle_ncq_write_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_write_endpoint) ... ok
+test_cycle_ncq_write_lease (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_write_lease) ... ok
+test_cycle_ncq_write_manager (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_write_manager) ... ok
+test_cycle_spsc_read_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_read_endpoint) ... ok
+test_cycle_spsc_read_lease (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_read_lease) ... ok
+test_cycle_spsc_read_manager (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_read_manager) ... ok
+test_cycle_spsc_write_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_write_endpoint) ... ok
+test_cycle_spsc_write_lease (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_write_lease) ... ok
+test_cycle_spsc_write_manager (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_write_manager) ... ok
+test_downstream_ctypes_alias_keeps_pin (test_gc_cycle.GCLifetimeTests.test_downstream_ctypes_alias_keeps_pin) ... ok
+test_external_slice_prevents_reclamation (test_gc_cycle.GCLifetimeTests.test_external_slice_prevents_reclamation) ... ok
+test_finalizer_resurrects_live_view_without_revocation (test_gc_cycle.GCLifetimeTests.test_finalizer_resurrects_live_view_without_revocation) ... ok
+test_repeated_cycles_no_failures (test_gc_cycle.GCLifetimeTests.test_repeated_cycles_no_failures) ... ok
+test_two_independent_exports (test_gc_cycle.GCLifetimeTests.test_two_independent_exports) ... ok
+test_zero_length_export_still_pins (test_gc_cycle.GCLifetimeTests.test_zero_length_export_still_pins) ... ok
+test_lost_acquisition_result_is_visible_and_retained (test_hardening_failures.FailureRecoveryTests.test_lost_acquisition_result_is_visible_and_retained) ... ok
+test_unraisable_hook_never_receives_freed_self (test_hardening_failures.FailureRecoveryTests.test_unraisable_hook_never_receives_freed_self) ... ok
+test_bounds_before_narrowing (test_python_bindings.BindingTests.test_bounds_before_narrowing) ... ok
+test_busy_detach_and_manager (test_python_bindings.BindingTests.test_busy_detach_and_manager) ... ok
+test_cast_survives_root (test_python_bindings.BindingTests.test_cast_survives_root) ... ok
+test_context_abort (test_python_bindings.BindingTests.test_context_abort) ... ok
+test_crc_profile (test_python_bindings.BindingTests.test_crc_profile) ... ok
+test_ctypes_export_retains_slot (test_python_bindings.BindingTests.test_ctypes_export_retains_slot) ... ok
+test_direct_roundtrip (test_python_bindings.BindingTests.test_direct_roundtrip) ... ok
+test_duplicate_attach_cleanup_does_not_resolve_original (test_python_bindings.BindingTests.test_duplicate_attach_cleanup_does_not_resolve_original) ... ok
+test_duplicate_transfer (test_python_bindings.BindingTests.test_duplicate_transfer) ... ok
+test_epoch_advances_on_abort (test_python_bindings.BindingTests.test_epoch_advances_on_abort) ... ok
+test_explicit_copy (test_python_bindings.BindingTests.test_explicit_copy) ... ok
+test_exporter_without_views_retains_ability (test_python_bindings.BindingTests.test_exporter_without_views_retains_ability) ... ok
+test_gc_outer_lease_retained_by_alias (test_python_bindings.BindingTests.test_gc_outer_lease_retained_by_alias) ... ok
+test_gc_uncommitted_write_aborts (test_python_bindings.BindingTests.test_gc_uncommitted_write_aborts) ... ok
+test_multiple_roots (test_python_bindings.BindingTests.test_multiple_roots) ... ok
+test_pattern_helper_all_bytes (test_python_bindings.BindingTests.test_pattern_helper_all_bytes) ... ok
+test_read_context_exception_returns_token (test_python_bindings.BindingTests.test_read_context_exception_returns_token) ... ok
+test_readonly_exporter (test_python_bindings.BindingTests.test_readonly_exporter) ... ok
+test_received_mapping_survives_endpoint_name_drop (test_python_bindings.BindingTests.test_received_mapping_survives_endpoint_name_drop) ... ok
+test_retirement_does_not_revoke_alias (test_python_bindings.BindingTests.test_retirement_does_not_revoke_alias) ... ok
+test_role_rejected_before_attach (test_python_bindings.BindingTests.test_role_rejected_before_attach) ... ok
+test_slice_survives_root (test_python_bindings.BindingTests.test_slice_survives_root) ... ok
+test_threads_serialized_one_outstanding (test_python_bindings.BindingTests.test_threads_serialized_one_outstanding) ... ok
+test_timeout_is_not_lease_revocation (test_python_bindings.BindingTests.test_timeout_is_not_lease_revocation) ... ok
+test_version_layouts (test_python_bindings.BindingTests.test_version_layouts) ... ok
+test_zero_length (test_python_bindings.BindingTests.test_zero_length) ... ok
+test_binding_cleanup_registry_empty (test_python_bindings.ProcessTests.test_binding_cleanup_registry_empty) ... ok
+test_grant_encoding_rejects_missing_fields (test_python_bindings.ProcessTests.test_grant_encoding_rejects_missing_fields) ... ok
+test_inherited_handle_methods_reject (test_python_bindings.ProcessTests.test_inherited_handle_methods_reject) ... ok
+test_kill_leaks_token_but_whole_generation_cleans (test_python_bindings.ProcessTests.test_kill_leaks_token_but_whole_generation_cleans) ... ok
+test_normal_exit_closes_idle_generation (test_python_bindings.ProcessTests.test_normal_exit_closes_idle_generation) ... ok
+test_pause_resume_distinct_successor (test_python_bindings.ProcessTests.test_pause_resume_distinct_successor) ... ok
+test_python_mpmc_two_producers_two_consumers (test_python_bindings.ProcessTests.test_python_mpmc_two_producers_two_consumers) ... ok
+test_spawned_python_publication (test_python_bindings.ProcessTests.test_spawned_python_publication) ... ok
+test_throughput_driver (test_python_bindings.ProcessTests.test_throughput_driver) ... ok
+test_uncertain_python_return_never_blindly_retries (test_python_bindings.ProcessTests.test_uncertain_python_return_never_blindly_retries) ... ok
+test_cli_is_read_only_in_pristine_tree (test_release_integrity.ReleaseIntegrityTests.test_cli_is_read_only_in_pristine_tree) ... ok
+test_deleted_audit_detected (test_release_integrity.ReleaseIntegrityTests.test_deleted_audit_detected) ... ok
+test_pristine_passes (test_release_integrity.ReleaseIntegrityTests.test_pristine_passes) ... ok
+test_required_license_edit_detected (test_release_integrity.ReleaseIntegrityTests.test_required_license_edit_detected) ... ok
+test_source_coverage_cannot_be_silently_dropped (test_release_integrity.ReleaseIntegrityTests.test_source_coverage_cannot_be_silently_dropped) ... ok
+test_strict_mode_rejects_build_overlay (test_release_integrity.ReleaseIntegrityTests.test_strict_mode_rejects_build_overlay) ... ok
+test_symlink_rejected (test_release_integrity.ReleaseIntegrityTests.test_symlink_rejected) ... ok
+test_unlisted_hidden_member_detected (test_release_integrity.ReleaseIntegrityTests.test_unlisted_hidden_member_detected) ... ok
+
+----------------------------------------------------------------------
+Ran 76 tests in 46.106s
+
+OK
+
+EXIT_CODE=0

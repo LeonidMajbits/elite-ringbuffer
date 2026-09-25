@@ -1,0 +1,166 @@
+{
+  "primary_records": 160,
+  "primary_rmw_operations": 3000000000,
+  "rows": [
+    {
+      "compiler": "gcc",
+      "pmc_mode": "off",
+      "workers": 1,
+      "trials": 5,
+      "packed_median_rmw_per_second": 529025178.0011016,
+      "isolated_median_rmw_per_second": 530241305.39470685,
+      "median_paired_ratio": 0.968723292408249,
+      "pmc_status": "NOT_REQUESTED"
+    },
+    {
+      "compiler": "gcc",
+      "pmc_mode": "off",
+      "workers": 2,
+      "trials": 5,
+      "packed_median_rmw_per_second": 254008063.07954955,
+      "isolated_median_rmw_per_second": 977680626.7402104,
+      "median_paired_ratio": 3.849014141074817,
+      "pmc_status": "NOT_REQUESTED"
+    },
+    {
+      "compiler": "gcc",
+      "pmc_mode": "off",
+      "workers": 4,
+      "trials": 5,
+      "packed_median_rmw_per_second": 161829837.15613708,
+      "isolated_median_rmw_per_second": 1949125485.8682554,
+      "median_paired_ratio": 12.338275308517327,
+      "pmc_status": "NOT_REQUESTED"
+    },
+    {
+      "compiler": "gcc",
+      "pmc_mode": "off",
+      "workers": 8,
+      "trials": 5,
+      "packed_median_rmw_per_second": 184851212.95830664,
+      "isolated_median_rmw_per_second": 1913539492.6565769,
+      "median_paired_ratio": 10.538294635268741,
+      "pmc_status": "NOT_REQUESTED"
+    },
+    {
+      "compiler": "gcc",
+      "pmc_mode": "count",
+      "workers": 1,
+      "trials": 5,
+      "packed_median_rmw_per_second": 540391275.7070885,
+      "isolated_median_rmw_per_second": 570827017.6080726,
+      "median_paired_ratio": 1.0589243592498272,
+      "pmc_status": "UNSUPPORTED_EVENT"
+    },
+    {
+      "compiler": "gcc",
+      "pmc_mode": "count",
+      "workers": 2,
+      "trials": 5,
+      "packed_median_rmw_per_second": 291380045.8282536,
+      "isolated_median_rmw_per_second": 1017349367.437597,
+      "median_paired_ratio": 3.6427954355813097,
+      "pmc_status": "UNSUPPORTED_EVENT"
+    },
+    {
+      "compiler": "gcc",
+      "pmc_mode": "count",
+      "workers": 4,
+      "trials": 5,
+      "packed_median_rmw_per_second": 178540169.69475406,
+      "isolated_median_rmw_per_second": 1900368433.930128,
+      "median_paired_ratio": 10.643926446239766,
+      "pmc_status": "UNSUPPORTED_EVENT"
+    },
+    {
+      "compiler": "gcc",
+      "pmc_mode": "count",
+      "workers": 8,
+      "trials": 5,
+      "packed_median_rmw_per_second": 194587560.62241673,
+      "isolated_median_rmw_per_second": 2043840689.3629384,
+      "median_paired_ratio": 11.213015529459662,
+      "pmc_status": "UNSUPPORTED_EVENT"
+    },
+    {
+      "compiler": "clang",
+      "pmc_mode": "off",
+      "workers": 1,
+      "trials": 5,
+      "packed_median_rmw_per_second": 549883930.49995,
+      "isolated_median_rmw_per_second": 559223377.4161665,
+      "median_paired_ratio": 1.0155546734860563,
+      "pmc_status": "NOT_REQUESTED"
+    },
+    {
+      "compiler": "clang",
+      "pmc_mode": "off",
+      "workers": 2,
+      "trials": 5,
+      "packed_median_rmw_per_second": 240331927.23133776,
+      "isolated_median_rmw_per_second": 1055449518.060641,
+      "median_paired_ratio": 4.17968253630228,
+      "pmc_status": "NOT_REQUESTED"
+    },
+    {
+      "compiler": "clang",
+      "pmc_mode": "off",
+      "workers": 4,
+      "trials": 5,
+      "packed_median_rmw_per_second": 213546086.73699635,
+      "isolated_median_rmw_per_second": 2048161703.1857312,
+      "median_paired_ratio": 9.443654447925367,
+      "pmc_status": "NOT_REQUESTED"
+    },
+    {
+      "compiler": "clang",
+      "pmc_mode": "off",
+      "workers": 8,
+      "trials": 5,
+      "packed_median_rmw_per_second": 174936595.21508265,
+      "isolated_median_rmw_per_second": 2039559396.0232365,
+      "median_paired_ratio": 11.42945525551612,
+      "pmc_status": "NOT_REQUESTED"
+    },
+    {
+      "compiler": "clang",
+      "pmc_mode": "count",
+      "workers": 1,
+      "trials": 5,
+      "packed_median_rmw_per_second": 530102506.98198014,
+      "isolated_median_rmw_per_second": 544536555.8280659,
+      "median_paired_ratio": 1.0191498640640286,
+      "pmc_status": "UNSUPPORTED_EVENT"
+    },
+    {
+      "compiler": "clang",
+      "pmc_mode": "count",
+      "workers": 2,
+      "trials": 5,
+      "packed_median_rmw_per_second": 260044221.03987628,
+      "isolated_median_rmw_per_second": 1047915078.6386912,
+      "median_paired_ratio": 3.9444704157278685,
+      "pmc_status": "UNSUPPORTED_EVENT"
+    },
+    {
+      "compiler": "clang",
+      "pmc_mode": "count",
+      "workers": 4,
+      "trials": 5,
+      "packed_median_rmw_per_second": 215732427.50163457,
+      "isolated_median_rmw_per_second": 1986650897.9562726,
+      "median_paired_ratio": 9.013654350954198,
+      "pmc_status": "UNSUPPORTED_EVENT"
+    },
+    {
+      "compiler": "clang",
+      "pmc_mode": "count",
+      "workers": 8,
+      "trials": 5,
+      "packed_median_rmw_per_second": 220246006.19933042,
+      "isolated_median_rmw_per_second": 1883215852.8357205,
+      "median_paired_ratio": 9.100217868073706,
+      "pmc_status": "UNSUPPORTED_EVENT"
+    }
+  ]
+}

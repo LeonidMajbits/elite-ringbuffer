@@ -1,0 +1,37 @@
+[
+  {
+    "name": "mutant_split_head",
+    "property": "DOUBLE_ALLOCATION",
+    "steps": 8
+  },
+  {
+    "name": "mutant_stale_head_retry",
+    "property": "DOUBLE_ALLOCATION",
+    "steps": 9
+  },
+  {
+    "name": "mutant_overwrite_current",
+    "property": "OUT_OF_ORDER_PUBLICATION",
+    "steps": 25
+  },
+  {
+    "name": "mutant_tail_before_entry",
+    "property": "QUEUE_FRONTIER_ORDER",
+    "steps": 11
+  },
+  {
+    "name": "mutant_post_lp_write",
+    "property": "POST_LP_PAYLOAD_ACCESS",
+    "steps": 13
+  },
+  {
+    "name": "mutant_early_return",
+    "property": "RECLAIM_WITH_LIVE_ALIAS",
+    "steps": 21
+  },
+  {
+    "name": "spsc_publish_early",
+    "property": "SPSC_TORN_OR_UNCOMMITTED",
+    "steps": 4
+  }
+]

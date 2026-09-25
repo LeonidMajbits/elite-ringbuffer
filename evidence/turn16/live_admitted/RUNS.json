@@ -1,0 +1,86 @@
+{
+  "status": "PASS_WITHIN_SCOPE",
+  "conditions": [
+    {
+      "compiler": "gcc",
+      "mode": "spsc",
+      "argv": [
+        "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/gcc-seed/live_throughput_demo",
+        "--mode",
+        "spsc",
+        "--windows",
+        "5",
+        "--messages",
+        "20000",
+        "--plain",
+        "--json",
+        "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/evidence/turn16/live_admitted/gcc-spsc.jsonl"
+      ],
+      "exit": 0,
+      "replay_exit": 0,
+      "binary_sha256": "ef66e4fcf971603a620c61b1c233fa48af9fc67c3bff7512ad189b5c6d39afb0",
+      "trace_sha256": "f303772e6ea77c022e2f4be68ec487be9e677ef6814dbcdc6d2ede38c6e9dc57"
+    },
+    {
+      "compiler": "gcc",
+      "mode": "ncq",
+      "argv": [
+        "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/gcc-seed/live_throughput_demo",
+        "--mode",
+        "ncq",
+        "--windows",
+        "5",
+        "--messages",
+        "20000",
+        "--plain",
+        "--json",
+        "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/evidence/turn16/live_admitted/gcc-ncq.jsonl"
+      ],
+      "exit": 0,
+      "replay_exit": 0,
+      "binary_sha256": "ef66e4fcf971603a620c61b1c233fa48af9fc67c3bff7512ad189b5c6d39afb0",
+      "trace_sha256": "403fff6fdc14ec0fb37fa520368d67915614c2b0272cf1ce0017cd44a1b3ed9a"
+    },
+    {
+      "compiler": "clang",
+      "mode": "spsc",
+      "argv": [
+        "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/clang-seed/live_throughput_demo",
+        "--mode",
+        "spsc",
+        "--windows",
+        "5",
+        "--messages",
+        "20000",
+        "--plain",
+        "--json",
+        "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/evidence/turn16/live_admitted/clang-spsc.jsonl"
+      ],
+      "exit": 0,
+      "replay_exit": 0,
+      "binary_sha256": "1faa61c9c2b3ea1b976fafc6ebcb0bae00bb0751a1d2b8db914211481032419d",
+      "trace_sha256": "e79f2be62a5565a7198e130577cae1ca99c617f76c9230cf944266a7b4d22cef"
+    },
+    {
+      "compiler": "clang",
+      "mode": "ncq",
+      "argv": [
+        "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/clang-seed/live_throughput_demo",
+        "--mode",
+        "ncq",
+        "--windows",
+        "5",
+        "--messages",
+        "20000",
+        "--plain",
+        "--json",
+        "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/evidence/turn16/live_admitted/clang-ncq.jsonl"
+      ],
+      "exit": 0,
+      "replay_exit": 0,
+      "binary_sha256": "1faa61c9c2b3ea1b976fafc6ebcb0bae00bb0751a1d2b8db914211481032419d",
+      "trace_sha256": "a65f33491f1c6910cf254c3b146accfae7a53d094991319a2118a6f45a4f326b"
+    }
+  ],
+  "scope": "demonstration, no warmup, no placement, not controlled performance qualification"
+}

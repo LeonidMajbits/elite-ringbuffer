@@ -1,0 +1,7 @@
+{
+  "path": "/dev/shm/el-iwsp2qa76bbqpilwsjto4zmaku",
+  "purpose": "cleanup of failed first Python smoke, after its known worker cohort ended",
+  "existed": true,
+  "bytes": 98304,
+  "exists_after": false
+}

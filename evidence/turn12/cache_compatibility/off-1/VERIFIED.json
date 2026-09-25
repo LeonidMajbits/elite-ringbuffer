@@ -1,0 +1,34 @@
+[
+  {
+    "status": "PASS_ARITHMETIC_AND_COUNTER_RECONCILIATION",
+    "trial": 0,
+    "stride": 128,
+    "workers": 1,
+    "operations": 10000,
+    "elapsed_ns": 40000.0,
+    "operations_per_second": 250000000.0,
+    "pmc_status": "NOT_REQUESTED",
+    "virtual_timer_rate_compatible": null,
+    "coherence_causality": "NOT_ESTABLISHED",
+    "process_envelope_instructions_per_cycle": null,
+    "sysctl_matches_cntfrq": null,
+    "binary_bytes_checked": true,
+    "source_bytes_checked": true
+  },
+  {
+    "status": "PASS_ARITHMETIC_AND_COUNTER_RECONCILIATION",
+    "trial": 0,
+    "stride": 8,
+    "workers": 1,
+    "operations": 10000,
+    "elapsed_ns": 20781.0,
+    "operations_per_second": 481208796.49679995,
+    "pmc_status": "NOT_REQUESTED",
+    "virtual_timer_rate_compatible": null,
+    "coherence_causality": "NOT_ESTABLISHED",
+    "process_envelope_instructions_per_cycle": null,
+    "sysctl_matches_cntfrq": null,
+    "binary_bytes_checked": true,
+    "source_bytes_checked": true
+  }
+]

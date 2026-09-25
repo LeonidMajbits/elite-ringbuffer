@@ -1,0 +1,1 @@
+PASS native_spawn_ipc mode=NCQ-SC64 producers=16 consumers=16 messages=1000000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=131297174 (not_latency)

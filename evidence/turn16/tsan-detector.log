@@ -1,0 +1,21 @@
+$ ['build/tsan-seed/tsan_detector_control']
+==================
+WARNING: ThreadSanitizer: data race (pid=7309)
+  Read of size 4 at 0x5640a09a405c by thread T2:
+    #0 racy tests/tsan_detector_control.c:6 (tsan_detector_control+0x11dd) (BuildId: 47963790a30d1c8e49ba19263220292d6e0fcaa6)
+
+  Previous write of size 4 at 0x5640a09a405c by thread T1:
+    #0 racy tests/tsan_detector_control.c:6 (tsan_detector_control+0x1204) (BuildId: 47963790a30d1c8e49ba19263220292d6e0fcaa6)
+
+  Location is global 'value' of size 4 at 0x5640a09a405c (tsan_detector_control+0x405c)
+
+  Thread T2 (tid=7312, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x568a6) (BuildId: 99ef88596cb10a8ccf307fe1a9070f66a44b1624)
+    #1 main tests/tsan_detector_control.c:9 (tsan_detector_control+0x126d) (BuildId: 47963790a30d1c8e49ba19263220292d6e0fcaa6)
+
+  Thread T1 (tid=7311, finished) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x568a6) (BuildId: 99ef88596cb10a8ccf307fe1a9070f66a44b1624)
+    #1 main tests/tsan_detector_control.c:9 (tsan_detector_control+0x1246) (BuildId: 47963790a30d1c8e49ba19263220292d6e0fcaa6)
+
+SUMMARY: ThreadSanitizer: data race tests/tsan_detector_control.c:6 in racy
+==================

@@ -1,0 +1,19 @@
+$ ['ctest', '--test-dir', 'build/cmake-gcc-ninja', '--output-on-failure']
+Internal ctest changing into directory: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/cmake-gcc-ninja
+Test project /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/cmake-gcc-ninja
+    Start 1: native_spsc
+1/6 Test #1: native_spsc ......................   Passed    0.03 sec
+    Start 2: native_ncq
+2/6 Test #2: native_ncq .......................   Passed    0.05 sec
+    Start 3: platform_contract
+3/6 Test #3: platform_contract ................   Passed    0.01 sec
+    Start 4: native_core
+4/6 Test #4: native_core ......................   Passed    0.05 sec
+    Start 5: live_spsc
+5/6 Test #5: live_spsc ........................   Passed    0.02 sec
+    Start 6: live_ncq
+6/6 Test #6: live_ncq .........................   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 6
+
+Total Test time (real) =   0.20 sec

@@ -1,0 +1,28 @@
+{
+  "status": "PASS_WITHIN_SCOPE",
+  "scenario": "write_partial",
+  "mode": 1,
+  "messages": 10000,
+  "generations": 2,
+  "worker_processes": 4,
+  "signals_sent": 1,
+  "recovery": {
+    "basis": "terminal_notification",
+    "successor_all_attached_ns": 1971754,
+    "successor_first_validated_read_ns": 2042829
+  },
+  "inventories": {
+    "0": {
+      "spsc_cursors": [
+        0,
+        0
+      ]
+    },
+    "1": {
+      "spsc_cursors": [
+        10001,
+        10001
+      ]
+    }
+  }
+}

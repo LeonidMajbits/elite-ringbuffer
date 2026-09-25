@@ -1,0 +1,29 @@
+{
+  "mode": "spsc",
+  "messages": 256,
+  "warmup_messages": 32,
+  "producers": 1,
+  "consumers": 1,
+  "capacity": 32,
+  "payload_bytes": 64,
+  "checksum": 0,
+  "arrival": 1,
+  "burst": 32,
+  "period_ns": 10000,
+  "hold_ns": 100000,
+  "hold_every": 4,
+  "os_yield": 0,
+  "runtime": "python_gc",
+  "locality_request": "unconstrained",
+  "cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "qos": 0,
+  "id": "spsc-python-retained-gc",
+  "axis": "runtime",
+  "status": "RUN",
+  "resource_estimate_bytes": 67207168
+}

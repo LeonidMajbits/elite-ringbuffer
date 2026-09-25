@@ -1,0 +1,4 @@
+{
+  "resource_negative": "PASS_WITHIN_SCOPE",
+  "scope": "single_process_authority_and_live_lease_negative"
+}

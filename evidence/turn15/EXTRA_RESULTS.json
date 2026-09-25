@@ -1,0 +1,58 @@
+[
+  {
+    "name": "asan_build",
+    "command": [
+      "make",
+      "CC=gcc",
+      "BUILD=build/asan",
+      "OPT=-O1 -g -fno-omit-frame-pointer -fno-lto -fsanitize=address,undefined -fno-sanitize-recover=all",
+      "LDFLAGS=-fsanitize=address,undefined",
+      "all",
+      "chaos-multiprocess"
+    ],
+    "returncode": 0,
+    "wall_ns": 7926512793
+  },
+  {
+    "name": "asan_core",
+    "command": [
+      "build/asan/test_core"
+    ],
+    "returncode": 0,
+    "wall_ns": 65214531
+  },
+  {
+    "name": "asan_chaos",
+    "command": [
+      "python3",
+      "tools/run_chaos.py",
+      "--build",
+      "build/asan",
+      "--out",
+      "evidence/turn15/asan_chaos",
+      "--smoke",
+      "--trials",
+      "1",
+      "--messages",
+      "1000",
+      "--storm-messages",
+      "3200"
+    ],
+    "returncode": 0,
+    "wall_ns": 2193907652
+  },
+  {
+    "name": "install",
+    "command": [
+      "make",
+      "CC=clang",
+      "BUILD=build/clang",
+      "DESTDIR=/mnt/data/turn15_install_stage",
+      "PREFIX=/usr/local",
+      "install",
+      "install-python"
+    ],
+    "returncode": 0,
+    "wall_ns": 2081561217
+  }
+]

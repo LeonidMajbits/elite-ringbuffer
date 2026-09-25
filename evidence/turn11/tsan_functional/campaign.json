@@ -1,0 +1,109 @@
+{
+  "schema": "elite-cache-sweep-v2",
+  "status": "COMPLETE_VERIFIED_WITHIN_SCOPE",
+  "utc_started": "2026-09-24T02:02:38.673497+00:00",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "binary_sha256": "b786ab0dfe0a86379fb1c5800bd4db473d537d5c712e3f9492604dfe2f008068",
+  "argv": [
+    "tools/run_cache_profiling.py",
+    "--binary",
+    "build/pmc-tsan/bench_cache",
+    "--out",
+    "evidence/turn11/tsan_functional",
+    "--workers",
+    "4",
+    "--iterations",
+    "100000",
+    "--trials",
+    "2",
+    "--modes",
+    "off,count",
+    "--cpus",
+    "0,1,2,3"
+  ],
+  "runs": [
+    {
+      "command": [
+        "/mnt/data/Elite_RingBuffer_Turn_11/build/pmc-tsan/bench_cache",
+        "--producers",
+        "4",
+        "--consumers",
+        "4",
+        "--count",
+        "100000",
+        "--trials",
+        "2",
+        "--warmup",
+        "0",
+        "--pmc",
+        "off",
+        "--virtual-counter",
+        "off",
+        "--timeout",
+        "60",
+        "--out",
+        "/mnt/data/Elite_RingBuffer_Turn_11/evidence/turn11/tsan_functional/off-4",
+        "--qos",
+        "default",
+        "--cpus",
+        "0,1,2,3"
+      ],
+      "directory": "off-4",
+      "status": "PASS_RECEIPTS",
+      "exit_code": 0,
+      "paired_isolated_over_packed_ratios": [
+        3.910485129674371,
+        2.909560346458787
+      ],
+      "median_paired_ratio": 3.410022738066579,
+      "records": 4,
+      "pmc_statuses": [
+        "NOT_REQUESTED"
+      ],
+      "coherence_causality": "NOT_ESTABLISHED"
+    },
+    {
+      "command": [
+        "/mnt/data/Elite_RingBuffer_Turn_11/build/pmc-tsan/bench_cache",
+        "--producers",
+        "4",
+        "--consumers",
+        "4",
+        "--count",
+        "100000",
+        "--trials",
+        "2",
+        "--warmup",
+        "0",
+        "--pmc",
+        "count",
+        "--virtual-counter",
+        "off",
+        "--timeout",
+        "60",
+        "--out",
+        "/mnt/data/Elite_RingBuffer_Turn_11/evidence/turn11/tsan_functional/count-4",
+        "--qos",
+        "default",
+        "--cpus",
+        "0,1,2,3"
+      ],
+      "directory": "count-4",
+      "status": "PASS_RECEIPTS",
+      "exit_code": 0,
+      "paired_isolated_over_packed_ratios": [
+        3.629745531124029,
+        2.916094523191522
+      ],
+      "median_paired_ratio": 3.2729200271577756,
+      "records": 4,
+      "pmc_statuses": [
+        "UNSUPPORTED_EVENT"
+      ],
+      "coherence_causality": "NOT_ESTABLISHED"
+    }
+  ],
+  "interpretation": "counter control, not IPC; no inferred coherence invalidations",
+  "utc_finished": "2026-09-24T02:02:39.726143+00:00"
+}

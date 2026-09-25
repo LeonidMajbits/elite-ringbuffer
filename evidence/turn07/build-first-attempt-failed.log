@@ -1,0 +1,63 @@
+mkdir -p build/native
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_core.c -o build/native/elite_core.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_format.c -o build/native/elite_format.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_spsc.c -o build/native/elite_spsc.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_mpmc_ncq.c -o build/native/elite_mpmc_ncq.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_shm.c -o build/native/elite_shm.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_wait.c -o build/native/elite_wait.o
+ar rcs build/native/libelite_ringbuffer.a build/native/elite_core.o build/native/elite_format.o build/native/elite_spsc.o build/native/elite_mpmc_ncq.o build/native/elite_shm.o build/native/elite_wait.o
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/native/bench_latency benchmarks/bench_latency.c benchmarks/bench_common.c build/native/libelite_ringbuffer.a -pthread
+cc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/native/bench_throughput benchmarks/bench_throughput.c benchmarks/bench_common.c build/native/libelite_ringbuffer.a -pthread
+benchmarks/bench_throughput.c: In function 'main':
+benchmarks/bench_throughput.c:126:5: error: this 'for' clause does not guard... [-Werror=misleading-indentation]
+  126 |     for(uint32_t i=0;i<o.trials;++i)trial(argv[0],&o,i);return 0;
+      |     ^~~
+benchmarks/bench_throughput.c:126:57: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  126 |     for(uint32_t i=0;i<o.trials;++i)trial(argv[0],&o,i);return 0;
+      |                                                         ^~~~~~
+benchmarks/bench_common.c: In function 'bench_get_event':
+benchmarks/bench_common.c:346:9: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+  346 |         if(n<0&&errno==EINTR)continue;B_CHECK(n>=0);if(n==0)continue;
+      |         ^~
+In file included from benchmarks/bench_common.c:2:
+benchmarks/bench_common.h:24:20: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   24 | #define B_CHECK(x) do { if(!(x)) bench_fail(__FILE__,__LINE__,#x); } while(0)
+      |                    ^~
+benchmarks/bench_common.c:346:39: note: in expansion of macro 'B_CHECK'
+  346 |         if(n<0&&errno==EINTR)continue;B_CHECK(n>=0);if(n==0)continue;
+      |                                       ^~~~~~~
+benchmarks/bench_common.c:348:9: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+  348 |         if(got<0&&errno==EINTR)continue;B_CHECK(got>0);p+=(size_t)got;left-=(size_t)got;
+      |         ^~
+benchmarks/bench_common.h:24:20: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   24 | #define B_CHECK(x) do { if(!(x)) bench_fail(__FILE__,__LINE__,#x); } while(0)
+      |                    ^~
+benchmarks/bench_common.c:348:41: note: in expansion of macro 'B_CHECK'
+  348 |         if(got<0&&errno==EINTR)continue;B_CHECK(got>0);p+=(size_t)got;left-=(size_t)got;
+      |                                         ^~~~~~~
+cc1: all warnings being treated as errors
+benchmarks/bench_common.c: In function 'bench_get_event':
+benchmarks/bench_common.c:346:9: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+  346 |         if(n<0&&errno==EINTR)continue;B_CHECK(n>=0);if(n==0)continue;
+      |         ^~
+In file included from benchmarks/bench_common.c:2:
+benchmarks/bench_common.h:24:20: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   24 | #define B_CHECK(x) do { if(!(x)) bench_fail(__FILE__,__LINE__,#x); } while(0)
+      |                    ^~
+benchmarks/bench_common.c:346:39: note: in expansion of macro 'B_CHECK'
+  346 |         if(n<0&&errno==EINTR)continue;B_CHECK(n>=0);if(n==0)continue;
+      |                                       ^~~~~~~
+benchmarks/bench_common.c:348:9: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+  348 |         if(got<0&&errno==EINTR)continue;B_CHECK(got>0);p+=(size_t)got;left-=(size_t)got;
+      |         ^~
+benchmarks/bench_common.h:24:20: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   24 | #define B_CHECK(x) do { if(!(x)) bench_fail(__FILE__,__LINE__,#x); } while(0)
+      |                    ^~
+benchmarks/bench_common.c:348:41: note: in expansion of macro 'B_CHECK'
+  348 |         if(got<0&&errno==EINTR)continue;B_CHECK(got>0);p+=(size_t)got;left-=(size_t)got;
+      |                                         ^~~~~~~
+cc1: all warnings being treated as errors
+make: *** [Makefile:97: build/native/bench_latency] Error 1
+make: *** Waiting for unfinished jobs....
+cc1: all warnings being treated as errors
+make: *** [Makefile:99: build/native/bench_throughput] Error 1

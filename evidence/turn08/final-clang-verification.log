@@ -1,0 +1,54 @@
+make: Entering directory '/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08'
+build/clang/test_core
+parser_single_byte_mutations_rejected=512
+PASS core_groups=68 shared_header=2048 descriptor=128 participant=256
+build/clang/test_ipc spsc 1 1 100000
+PASS native_spawn_ipc mode=SPSC producers=1 consumers=1 messages=100000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=12270944 (not_latency)
+build/clang/test_ipc ncq 4 4 100000
+PASS native_spawn_ipc mode=NCQ-SC64 producers=4 consumers=4 messages=100000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=28446472 (not_latency)
+build/clang/cpp_example
+C++ opaque API 1.0.0: OK
+python3 tools/build_python.py --cc "clang" --build "build/clang" 
+clang -std=c11 -O3 -g -Wall -Wextra -Werror -pedantic -fPIC -isystem /usr/include/python3.13 -shared /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python/elite_buffer.c -o /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/build/clang/python/_elite_buffer.cpython-313-x86_64-linux-gnu.so
+ELITE_LIBRARY="/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/build/clang/libelite_ringbuffer.so" PYTHONPATH="/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/build/clang/python:/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/bindings/python" python3 tests/test_python_bindings.py
+test_bounds_before_narrowing (__main__.BindingTests.test_bounds_before_narrowing) ... ok
+test_busy_detach_and_manager (__main__.BindingTests.test_busy_detach_and_manager) ... ok
+test_cast_survives_root (__main__.BindingTests.test_cast_survives_root) ... ok
+test_context_abort (__main__.BindingTests.test_context_abort) ... ok
+test_crc_profile (__main__.BindingTests.test_crc_profile) ... ok
+test_direct_roundtrip (__main__.BindingTests.test_direct_roundtrip) ... ok
+test_duplicate_attach_cleanup_does_not_resolve_original (__main__.BindingTests.test_duplicate_attach_cleanup_does_not_resolve_original) ... ok
+test_duplicate_transfer (__main__.BindingTests.test_duplicate_transfer) ... ok
+test_epoch_advances_on_abort (__main__.BindingTests.test_epoch_advances_on_abort) ... ok
+test_explicit_copy (__main__.BindingTests.test_explicit_copy) ... ok
+test_exporter_without_views_retains_ability (__main__.BindingTests.test_exporter_without_views_retains_ability) ... ok
+test_gc_outer_lease_retained_by_alias (__main__.BindingTests.test_gc_outer_lease_retained_by_alias) ... ok
+test_gc_uncommitted_write_aborts (__main__.BindingTests.test_gc_uncommitted_write_aborts) ... ok
+test_multiple_roots (__main__.BindingTests.test_multiple_roots) ... ok
+test_pattern_helper_all_bytes (__main__.BindingTests.test_pattern_helper_all_bytes) ... ok
+test_read_context_exception_returns_token (__main__.BindingTests.test_read_context_exception_returns_token) ... ok
+test_readonly_exporter (__main__.BindingTests.test_readonly_exporter) ... ok
+test_received_mapping_survives_endpoint_name_drop (__main__.BindingTests.test_received_mapping_survives_endpoint_name_drop) ... ok
+test_retirement_does_not_revoke_alias (__main__.BindingTests.test_retirement_does_not_revoke_alias) ... ok
+test_role_rejected_before_attach (__main__.BindingTests.test_role_rejected_before_attach) ... ok
+test_slice_survives_root (__main__.BindingTests.test_slice_survives_root) ... ok
+test_threads_serialized_one_outstanding (__main__.BindingTests.test_threads_serialized_one_outstanding) ... ok
+test_timeout_is_not_lease_revocation (__main__.BindingTests.test_timeout_is_not_lease_revocation) ... ok
+test_version_layouts (__main__.BindingTests.test_version_layouts) ... ok
+test_zero_length (__main__.BindingTests.test_zero_length) ... ok
+test_binding_cleanup_registry_empty (__main__.ProcessTests.test_binding_cleanup_registry_empty) ... ok
+test_grant_encoding_rejects_missing_fields (__main__.ProcessTests.test_grant_encoding_rejects_missing_fields) ... ok
+test_inherited_handle_methods_reject (__main__.ProcessTests.test_inherited_handle_methods_reject) ... ok
+test_kill_leaks_token_but_whole_generation_cleans (__main__.ProcessTests.test_kill_leaks_token_but_whole_generation_cleans) ... ok
+test_normal_exit_closes_idle_generation (__main__.ProcessTests.test_normal_exit_closes_idle_generation) ... ok
+test_pause_resume_distinct_successor (__main__.ProcessTests.test_pause_resume_distinct_successor) ... ok
+test_python_mpmc_two_producers_two_consumers (__main__.ProcessTests.test_python_mpmc_two_producers_two_consumers) ... ok
+test_spawned_python_publication (__main__.ProcessTests.test_spawned_python_publication) ... ok
+test_throughput_driver (__main__.ProcessTests.test_throughput_driver) ... ok
+test_uncertain_python_return_never_blindly_retries (__main__.ProcessTests.test_uncertain_python_return_never_blindly_retries) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 17.480s
+
+OK
+make: Leaving directory '/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08'

@@ -1,0 +1,71 @@
+--- parent/bindings/python/elite_buffer.c
++++ v1.1.0/bindings/python/elite_buffer.c
+@@ -273,7 +273,7 @@
+     if (PyType_Ready(&BufferType)<0) return NULL;
+     PyObject *module=PyModule_Create(&module_definition);
+     if (module==NULL) return NULL;
+-    if (PyModule_AddIntConstant(module,"API_VERSION",0x00010001)<0) {
++    if (PyModule_AddIntConstant(module,"API_VERSION",0x00010100)<0) {
+         Py_DECREF(module);
+         return NULL;
+     }
+--- parent/bindings/python/elite_ringbuffer/__init__.py
++++ v1.1.0/bindings/python/elite_ringbuffer/__init__.py
+@@ -1,4 +1,4 @@
+-"""ELITEIPC 1.0.1: ctypes control/data API with tracked zero-copy memoryviews.
++"""ELITEIPC 1.1.0: ctypes control/data API with tracked zero-copy memoryviews.
+ 
+ Memoryviews retain both slot ownership and the mapped endpoint. Release every
+ view (including derived views) before commit/release. Context exits abort an
+@@ -26,10 +26,10 @@
+ except ImportError as exc:
+     raise ImportError("Build the tracked exporter with make python and add BUILD/python to PYTHONPATH") from exc
+ 
+-if getattr(_elite_buffer, "API_VERSION", None) != 0x00010001:
+-    raise ImportError("ELITE requires the matching 1.0.1 tracked exporter; rebuild make python")
+-
+-__version__ = "1.0.1"
++if getattr(_elite_buffer, "API_VERSION", None) != 0x00010100:
++    raise ImportError("ELITE requires the matching 1.1.0 tracked exporter; rebuild make python")
++
++__version__ = "1.1.0"
+ __all__ = ["EliteShm", "EliteSpscProducer", "EliteSpscConsumer", "EliteNcqProducer",
+            "EliteNcqConsumer", "WriteLease", "ReadLease", "EliteError", "BusyError",
+            "WouldBlock", "RetiredError", "cleanup_failures", "__version__"]
+--- parent/bindings/python/elite_ringbuffer/_native.py
++++ v1.1.0/bindings/python/elite_ringbuffer/_native.py
+@@ -108,7 +108,7 @@
+ lib = C.CDLL(str(LIBRARY_PATH), use_errno=True)
+ lib.elite_version_string.argtypes=[];lib.elite_version_string.restype=C.c_char_p
+ lib.elite_version_number.argtypes=[];lib.elite_version_number.restype=U32
+-if lib.elite_version_number() != 0x00010001:
++if lib.elite_version_number() != 0x00010100:
+     raise ImportError("native/binding release version mismatch")
+ lib.elite_local_layout.argtypes=[U32,U32];lib.elite_local_layout.restype=C.c_size_t
+ LOCAL_TYPES=(Result,Lease,WriteSpan,ReadSpan,Definition,Config,Grant,Receipt)
+--- parent/include/elite_version.h
++++ v1.1.0/include/elite_version.h
+@@ -2,7 +2,9 @@
+ #ifndef ELITE_VERSION_H
+ #define ELITE_VERSION_H
+ #define ELITE_VERSION_MAJOR 1
+-#define ELITE_VERSION_MINOR 0
+-#define ELITE_VERSION_PATCH 1
+-#define ELITE_VERSION_STRING "1.0.1"
++#define ELITE_VERSION_MINOR 1
++#define ELITE_VERSION_PATCH 0
++#define ELITE_VERSION_STRING "1.1.0"
++#define ELITE_VERSION_NUMBER 0x00010100u
++#define ELITE_RELEASE_TAG "v1.1.0"
+ #endif
+--- parent/src/elite_version.c
++++ v1.1.0/src/elite_version.c
+@@ -2,7 +2,7 @@
+ #include "elite_ringbuffer.h"
+ #include <string.h>
+ const char *elite_version_string(void) { return ELITE_VERSION_STRING; }
+-uint32_t elite_version_number(void) { return UINT32_C(0x00010001); }
++uint32_t elite_version_number(void) { return ELITE_VERSION_NUMBER; }
+ size_t elite_local_layout(uint32_t type, uint32_t member)
+ {
+     switch (type) {

@@ -1,0 +1,131 @@
+mkdir -p build/gcc-chaos
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_core.c -o build/gcc-chaos/elite_core.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_format.c -o build/gcc-chaos/elite_format.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_spsc.c -o build/gcc-chaos/elite_spsc.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_mpmc_ncq.c -o build/gcc-chaos/elite_mpmc_ncq.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_shm.c -o build/gcc-chaos/elite_shm.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_wait.c -o build/gcc-chaos/elite_wait.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_version.c -o build/gcc-chaos/elite_version.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_core.c -o build/gcc-chaos/test_elite_core.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_format.c -o build/gcc-chaos/test_elite_format.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_spsc.c -o build/gcc-chaos/test_elite_spsc.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_mpmc_ncq.c -o build/gcc-chaos/test_elite_mpmc_ncq.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_shm.c -o build/gcc-chaos/test_elite_shm.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_wait.c -o build/gcc-chaos/test_elite_wait.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -DELITE_TESTING -MMD -MP -c src/elite_version.c -o build/gcc-chaos/test_elite_version.o
+ar rcs build/gcc-chaos/libelite_ringbuffer.a build/gcc-chaos/elite_core.o build/gcc-chaos/elite_format.o build/gcc-chaos/elite_spsc.o build/gcc-chaos/elite_mpmc_ncq.o build/gcc-chaos/elite_shm.o build/gcc-chaos/elite_wait.o build/gcc-chaos/elite_version.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Itests -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc-chaos/chaos_multiprocess tests/test_chaos_multiprocess.c build/gcc-chaos/libelite_ringbuffer.a -pthread
+tests/test_chaos_multiprocess.c: In function 'io_read':
+tests/test_chaos_multiprocess.c:60:9: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+   60 |         if(got<0&&errno==EINTR)continue;CHECK(got>=0);if(got==0)continue;
+      |         ^~
+In file included from tests/test_chaos_multiprocess.c:7:
+tests/test_support.h:12:18: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   12 | #define CHECK(x) do { if(!(x)) {fprintf(stderr,"FAIL %s:%d: %s\n",__FILE__,__LINE__,#x); exit(1);} } while(0)
+      |                  ^~
+tests/test_chaos_multiprocess.c:60:41: note: in expansion of macro 'CHECK'
+   60 |         if(got<0&&errno==EINTR)continue;CHECK(got>=0);if(got==0)continue;
+      |                                         ^~~~~
+tests/test_chaos_multiprocess.c: In function 'cut_pause':
+tests/test_chaos_multiprocess.c:97:5: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+   97 |     if(hook_once)return;hook_once=1;
+      |     ^~
+tests/test_chaos_multiprocess.c:97:25: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   97 |     if(hook_once)return;hook_once=1;
+      |                         ^~~~~~~~~
+tests/test_chaos_multiprocess.c: In function 'command_available':
+tests/test_chaos_multiprocess.c:115:5: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+  115 |     if(n<0&&errno==EINTR)return 0;CHECK(n>=0);
+      |     ^~
+tests/test_support.h:12:18: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   12 | #define CHECK(x) do { if(!(x)) {fprintf(stderr,"FAIL %s:%d: %s\n",__FILE__,__LINE__,#x); exit(1);} } while(0)
+      |                  ^~
+tests/test_chaos_multiprocess.c:115:35: note: in expansion of macro 'CHECK'
+  115 |     if(n<0&&errno==EINTR)return 0;CHECK(n>=0);
+      |                                   ^~~~~
+tests/test_chaos_multiprocess.c:116:5: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+  116 |     if(n==0)return 0;io_read(STDIN_FILENO,cmd,sizeof(*cmd));return 1;
+      |     ^~
+tests/test_chaos_multiprocess.c:116:22: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  116 |     if(n==0)return 0;io_read(STDIN_FILENO,cmd,sizeof(*cmd));return 1;
+      |                      ^~~~~~~
+tests/test_chaos_multiprocess.c: In function 'receive_event':
+tests/test_chaos_multiprocess.c:230:5: error: this 'for' clause does not guard... [-Werror=misleading-indentation]
+  230 |     for(unsigned i=0;i<8;++i)printf("%s%"PRIu64,i?",":"",e.data[i]);printf("]");event_end();
+      |     ^~~
+tests/test_chaos_multiprocess.c:230:69: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  230 |     for(unsigned i=0;i<8;++i)printf("%s%"PRIu64,i?",":"",e.data[i]);printf("]");event_end();
+      |                                                                     ^~~~~~
+tests/test_chaos_multiprocess.c:238:9: error: this 'for' clause does not guard... [-Werror=misleading-indentation]
+  238 |         for(size_t i=0;i<w->bitmap_bytes;++i)printf("%02x",w->bitmap[i]);printf("\"");event_end();
+      |         ^~~
+tests/test_chaos_multiprocess.c:238:74: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  238 |         for(size_t i=0;i<w->bitmap_bytes;++i)printf("%02x",w->bitmap[i]);printf("\"");event_end();
+      |                                                                          ^~~~~~
+tests/test_chaos_multiprocess.c: In function 'finish_worker':
+tests/test_chaos_multiprocess.c:293:5: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+  293 |     if(w->reaped)return;command(w,CH_EXIT,0,0,0);
+      |     ^~
+tests/test_chaos_multiprocess.c:293:25: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  293 |     if(w->reaped)return;command(w,CH_EXIT,0,0,0);
+      |                         ^~~~~~~
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Itests -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE -DELITE_TESTING  -pie -o build/gcc-chaos/chaos_multiprocess_hooks tests/test_chaos_multiprocess.c build/gcc-chaos/test_elite_core.o build/gcc-chaos/test_elite_format.o build/gcc-chaos/test_elite_spsc.o build/gcc-chaos/test_elite_mpmc_ncq.o build/gcc-chaos/test_elite_shm.o build/gcc-chaos/test_elite_wait.o build/gcc-chaos/test_elite_version.o -pthread
+tests/test_chaos_multiprocess.c: In function 'io_read':
+tests/test_chaos_multiprocess.c:60:9: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+   60 |         if(got<0&&errno==EINTR)continue;CHECK(got>=0);if(got==0)continue;
+      |         ^~
+In file included from tests/test_chaos_multiprocess.c:7:
+tests/test_support.h:12:18: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   12 | #define CHECK(x) do { if(!(x)) {fprintf(stderr,"FAIL %s:%d: %s\n",__FILE__,__LINE__,#x); exit(1);} } while(0)
+      |                  ^~
+tests/test_chaos_multiprocess.c:60:41: note: in expansion of macro 'CHECK'
+   60 |         if(got<0&&errno==EINTR)continue;CHECK(got>=0);if(got==0)continue;
+      |                                         ^~~~~
+tests/test_chaos_multiprocess.c: In function 'cut_pause':
+tests/test_chaos_multiprocess.c:97:5: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+   97 |     if(hook_once)return;hook_once=1;
+      |     ^~
+tests/test_chaos_multiprocess.c:97:25: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   97 |     if(hook_once)return;hook_once=1;
+      |                         ^~~~~~~~~
+tests/test_chaos_multiprocess.c: In function 'command_available':
+tests/test_chaos_multiprocess.c:115:5: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+  115 |     if(n<0&&errno==EINTR)return 0;CHECK(n>=0);
+      |     ^~
+tests/test_support.h:12:18: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   12 | #define CHECK(x) do { if(!(x)) {fprintf(stderr,"FAIL %s:%d: %s\n",__FILE__,__LINE__,#x); exit(1);} } while(0)
+      |                  ^~
+tests/test_chaos_multiprocess.c:115:35: note: in expansion of macro 'CHECK'
+  115 |     if(n<0&&errno==EINTR)return 0;CHECK(n>=0);
+      |                                   ^~~~~
+tests/test_chaos_multiprocess.c:116:5: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+  116 |     if(n==0)return 0;io_read(STDIN_FILENO,cmd,sizeof(*cmd));return 1;
+      |     ^~
+tests/test_chaos_multiprocess.c:116:22: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  116 |     if(n==0)return 0;io_read(STDIN_FILENO,cmd,sizeof(*cmd));return 1;
+      |                      ^~~~~~~
+tests/test_chaos_multiprocess.c: In function 'receive_event':
+tests/test_chaos_multiprocess.c:230:5: error: this 'for' clause does not guard... [-Werror=misleading-indentation]
+  230 |     for(unsigned i=0;i<8;++i)printf("%s%"PRIu64,i?",":"",e.data[i]);printf("]");event_end();
+      |     ^~~
+tests/test_chaos_multiprocess.c:230:69: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  230 |     for(unsigned i=0;i<8;++i)printf("%s%"PRIu64,i?",":"",e.data[i]);printf("]");event_end();
+      |                                                                     ^~~~~~
+tests/test_chaos_multiprocess.c:238:9: error: this 'for' clause does not guard... [-Werror=misleading-indentation]
+  238 |         for(size_t i=0;i<w->bitmap_bytes;++i)printf("%02x",w->bitmap[i]);printf("\"");event_end();
+      |         ^~~
+tests/test_chaos_multiprocess.c:238:74: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  238 |         for(size_t i=0;i<w->bitmap_bytes;++i)printf("%02x",w->bitmap[i]);printf("\"");event_end();
+      |                                                                          ^~~~~~
+tests/test_chaos_multiprocess.c: In function 'finish_worker':
+tests/test_chaos_multiprocess.c:293:5: error: this 'if' clause does not guard... [-Werror=misleading-indentation]
+  293 |     if(w->reaped)return;command(w,CH_EXIT,0,0,0);
+      |     ^~
+tests/test_chaos_multiprocess.c:293:25: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+  293 |     if(w->reaped)return;command(w,CH_EXIT,0,0,0);
+      |                         ^~~~~~~
+cc1: all warnings being treated as errors
+make: *** [Makefile:245: build/gcc-chaos/chaos_multiprocess] Error 1
+make: *** Waiting for unfinished jobs....
+cc1: all warnings being treated as errors
+make: *** [Makefile:247: build/gcc-chaos/chaos_multiprocess_hooks] Error 1

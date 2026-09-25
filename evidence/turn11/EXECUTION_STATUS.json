@@ -1,0 +1,49 @@
+{
+  "scope": "Turn11 only; historical folders retain their original evidence status",
+  "parent_sha256": "e1a5e4e89a1ed210fa049538b1e4cbaf5cf4a4e7f69528e399416fe454fbdb79",
+  "primary_campaigns": [
+    "gcc_admitted",
+    "clang_admitted"
+  ],
+  "primary_complete_records": 160,
+  "primary_reconciled_rmw_operations": 3000000000,
+  "raw_replay": "PASS; binary and compile-input source bytes checked",
+  "hardware_perf": "UNSUPPORTED_EVENT; ENOENT on each of three group leaders; six requested event values unavailable",
+  "darwin": "NOT_RUN; no Apple SDK compilation or native execution this turn",
+  "compiler_builds": {
+    "GCC": "PASS",
+    "Clang": "PASS"
+  },
+  "verifier_unit_tests": {
+    "passed": 39,
+    "log": "verifier_final_tests.log"
+  },
+  "synthetic_backend": {
+    "passed_scenarios": 8,
+    "hardware_result": false
+  },
+  "ratio_differential": {
+    "cases_per_compiler": 1004,
+    "passed": true
+  },
+  "native_record_mutations": {
+    "rejected": 18,
+    "exit_code": 1,
+    "optimized_python": true
+  },
+  "watchdog": {
+    "native_exit_code": 1,
+    "complete_record": false
+  },
+  "native_regression": "PASS GCC and Clang native sections; logs retained",
+  "python_baseline": {
+    "passed": 36,
+    "log": "python_baseline.log"
+  },
+  "broader_python_hardening": "INCOMPLETE; outer 120s invocation timeout during repeated-cycle test; not counted as PASS",
+  "ASan_UBSan": "PASS named C PMC/backend and final cache-control lanes; leak detection enabled for these C lanes",
+  "TSan": "PASS final one-process threaded cache-control lane; no IPC/Python certification",
+  "causal_coherence_attribution": "NOT_ESTABLISHED",
+  "publication_claim": "A09-05 missing denominator fixed for new v2 receipts; old opaque records are not reconstructed",
+  "intermediate_runs": "Preserved, not pooled into primary campaign summary"
+}

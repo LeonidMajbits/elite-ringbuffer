@@ -1,0 +1,132 @@
+{
+  "files": 21,
+  "all_byte_identical": true,
+  "entries": [
+    {
+      "file": "bindings/python/README.md",
+      "parent": "aa05ba096b9fb0085371b6d864e277e60738ffa890d587d5b65a8acf4fd83cd3",
+      "current": "aa05ba096b9fb0085371b6d864e277e60738ffa890d587d5b65a8acf4fd83cd3",
+      "equal": true
+    },
+    {
+      "file": "bindings/python/bench_python.py",
+      "parent": "0a800f315b356ebc5951707841f1d97a9b722fcff00b8ab60fb28447b36a16c2",
+      "current": "0a800f315b356ebc5951707841f1d97a9b722fcff00b8ab60fb28447b36a16c2",
+      "equal": true
+    },
+    {
+      "file": "bindings/python/elite_buffer.c",
+      "parent": "cac0be1931832b0d5fca895ce263c18370a68ff1d134e45325431e97a2d28a21",
+      "current": "cac0be1931832b0d5fca895ce263c18370a68ff1d134e45325431e97a2d28a21",
+      "equal": true
+    },
+    {
+      "file": "bindings/python/elite_ringbuffer/__init__.py",
+      "parent": "efa8378a642bd92a3aa4154de5284e070ac95ef7139af335c59629eeff80dd12",
+      "current": "efa8378a642bd92a3aa4154de5284e070ac95ef7139af335c59629eeff80dd12",
+      "equal": true
+    },
+    {
+      "file": "bindings/python/elite_ringbuffer/_native.py",
+      "parent": "85b3e2d0785e423c754a1a8cbba7e8338132d3cc339edc78ac0bab37dab0b23c",
+      "current": "85b3e2d0785e423c754a1a8cbba7e8338132d3cc339edc78ac0bab37dab0b23c",
+      "equal": true
+    },
+    {
+      "file": "bindings/python/matrix_worker.py",
+      "parent": "945dd4849e5a4b880ac58d1f9dda982b733f4c7a64cef9c36abcc6f377a0190b",
+      "current": "945dd4849e5a4b880ac58d1f9dda982b733f4c7a64cef9c36abcc6f377a0190b",
+      "equal": true
+    },
+    {
+      "file": "include/elite_api.h",
+      "parent": "3f4aa4180d48a6010af5c78f4059f5583ba74be38afdd756e6ce2d3130dd9153",
+      "current": "3f4aa4180d48a6010af5c78f4059f5583ba74be38afdd756e6ce2d3130dd9153",
+      "equal": true
+    },
+    {
+      "file": "include/elite_pmc.h",
+      "parent": "6f2d0c90d1939468ca4fd1ce73327469d3aed1d785411ae538089fab3fb568ca",
+      "current": "6f2d0c90d1939468ca4fd1ce73327469d3aed1d785411ae538089fab3fb568ca",
+      "equal": true
+    },
+    {
+      "file": "include/elite_ringbuffer.h",
+      "parent": "34c899d40e491874a199bc41b58a3a5d8c524dd70d4bbde0ad7dc42792ed3f5b",
+      "current": "34c899d40e491874a199bc41b58a3a5d8c524dd70d4bbde0ad7dc42792ed3f5b",
+      "equal": true
+    },
+    {
+      "file": "include/elite_topology.h",
+      "parent": "dba22a94aa3e35222e50528a4069e21306f839f7f02f5d05f6a4ab90e258ae7b",
+      "current": "dba22a94aa3e35222e50528a4069e21306f839f7f02f5d05f6a4ab90e258ae7b",
+      "equal": true
+    },
+    {
+      "file": "include/elite_version.h",
+      "parent": "dcf9507750104c44c53daea9ed3cc36ac694c3812cf507dea9de039fdeedd2f1",
+      "current": "dcf9507750104c44c53daea9ed3cc36ac694c3812cf507dea9de039fdeedd2f1",
+      "equal": true
+    },
+    {
+      "file": "src/elite_core.c",
+      "parent": "0796eec66cb0a9b7d3085ee309bc81f01d4e32bd3c2d5560b17c5aea53f2cc29",
+      "current": "0796eec66cb0a9b7d3085ee309bc81f01d4e32bd3c2d5560b17c5aea53f2cc29",
+      "equal": true
+    },
+    {
+      "file": "src/elite_format.c",
+      "parent": "c2d476cb01aca60b4419133b9c039aa2590bfc5fab725475cb513b62bb8bee31",
+      "current": "c2d476cb01aca60b4419133b9c039aa2590bfc5fab725475cb513b62bb8bee31",
+      "equal": true
+    },
+    {
+      "file": "src/elite_internal.h",
+      "parent": "c10de31f4b1ee4ae636d3023fcf1eb6dffeb2097d89db127718df6633b12e74f",
+      "current": "c10de31f4b1ee4ae636d3023fcf1eb6dffeb2097d89db127718df6633b12e74f",
+      "equal": true
+    },
+    {
+      "file": "src/elite_mpmc_ncq.c",
+      "parent": "540715143bf5f9b90477f212e52dfa60bebeb55e0bc88b983f8a71affc11cec9",
+      "current": "540715143bf5f9b90477f212e52dfa60bebeb55e0bc88b983f8a71affc11cec9",
+      "equal": true
+    },
+    {
+      "file": "src/elite_pmc.c",
+      "parent": "d7c583fac0bd966a20e006f56ee947d4a1eac73b0ba7d4f1d918cac971cfe4f3",
+      "current": "d7c583fac0bd966a20e006f56ee947d4a1eac73b0ba7d4f1d918cac971cfe4f3",
+      "equal": true
+    },
+    {
+      "file": "src/elite_shm.c",
+      "parent": "ab55901b6c0384e3a1d4a177aa702c946ff4942d0ca88df06c8f2965910aa00e",
+      "current": "ab55901b6c0384e3a1d4a177aa702c946ff4942d0ca88df06c8f2965910aa00e",
+      "equal": true
+    },
+    {
+      "file": "src/elite_spsc.c",
+      "parent": "fac8a92d5a71c8475769586b2744ed39a99b57cb29e9704efcacbec59c84e774",
+      "current": "fac8a92d5a71c8475769586b2744ed39a99b57cb29e9704efcacbec59c84e774",
+      "equal": true
+    },
+    {
+      "file": "src/elite_topology.c",
+      "parent": "10d0fe668c12fa6bb2b6cec578cd291c70de15524de286d930197237639dd0b4",
+      "current": "10d0fe668c12fa6bb2b6cec578cd291c70de15524de286d930197237639dd0b4",
+      "equal": true
+    },
+    {
+      "file": "src/elite_version.c",
+      "parent": "c213bb1baabd249aa3f00d0df7b84861a62f07c65fb5c1818750b2ad53e4e257",
+      "current": "c213bb1baabd249aa3f00d0df7b84861a62f07c65fb5c1818750b2ad53e4e257",
+      "equal": true
+    },
+    {
+      "file": "src/elite_wait.c",
+      "parent": "7b48360855807165ad3d35ab53cc5a214c7285ce5812e687ae3bc243c4949adc",
+      "current": "7b48360855807165ad3d35ab53cc5a214c7285ce5812e687ae3bc243c4949adc",
+      "equal": true
+    }
+  ]
+}

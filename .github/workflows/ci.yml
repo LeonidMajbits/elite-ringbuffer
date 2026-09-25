@@ -1,0 +1,120 @@
+name: native-ci
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ubuntu:
+    name: ubuntu-${{ matrix.lane }}-${{ matrix.cc }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {lane: native, cc: gcc, os: ubuntu-24.04}
+          - {lane: native, cc: clang, os: ubuntu-24.04}
+          - {lane: asan, cc: gcc, os: ubuntu-24.04}
+          - {lane: tsan, cc: gcc, os: ubuntu-22.04}
+          - {lane: valgrind, cc: gcc, os: ubuntu-24.04}
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
+        with:
+          python-version: '3.13'
+      - name: Development tools (not native runtime dependencies)
+        run: sudo apt-get update && sudo apt-get install -y build-essential clang cmake ninja-build valgrind mandoc pkg-config ruby
+      - name: Native and scoped diagnostic lane
+        env:
+          LANE: ${{ matrix.lane }}
+          COMPILER: ${{ matrix.cc }}
+        run: python3 ci/run_lane.py --lane "$LANE" --cc "$COMPILER" --out build/ci-evidence
+      - name: Manual-page lint
+        if: matrix.lane == 'native'
+        run: mandoc -Tlint -Werror man/elite_ringbuffer.3 man/eliteipc.7
+      - name: Preserve logs, including failed lanes
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: ubuntu-${{ matrix.lane }}-${{ matrix.cc }}-${{ github.run_attempt }}
+          path: build/ci-evidence
+          if-no-files-found: error
+          retention-days: 14
+  macos-arm64:
+    name: macos-native-arm64
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
+        with:
+          python-version: '3.13'
+      - name: Require native Apple Silicon, not Rosetta
+        run: test "$(uname -m)" = arm64 && clang --version && xcrun --show-sdk-version
+      - name: Development tools
+        run: brew install cmake ninja mandoc
+      - run: python3 ci/run_lane.py --lane native --cc clang --out build/ci-evidence
+      - name: Manual-page lint
+        run: mandoc -Tlint -Werror man/elite_ringbuffer.3 man/eliteipc.7
+      - name: Build and test a local tap recipe from this exact source
+        env:
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 tools/build_release_archive.py --archive "$RUNNER_TEMP/source.zip" --capsule "$RUNNER_TEMP/source-capsule.json"
+          python3 tools/seed_packages.py --repository "$REPOSITORY" --archive "$RUNNER_TEMP/source.zip" --local --out "$RUNNER_TEMP/recipe"
+          brew tap-new eliteipc/ci
+          cp "$RUNNER_TEMP/recipe/elite-ringbuffer.rb" "$(brew --repo eliteipc/ci)/Formula/elite-ringbuffer.rb"
+          brew install --build-from-source eliteipc/ci/elite-ringbuffer
+          brew test eliteipc/ci/elite-ringbuffer
+      - if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: macos-arm64-${{ github.run_attempt }}
+          path: build/ci-evidence
+          if-no-files-found: error
+          retention-days: 14
+  freebsd:
+    name: freebsd-14.4-amd64-poll-only
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+      - name: FreeBSD guest; experimental target admission
+        uses: vmactions/freebsd-vm@77ed28d336d03fe19a3f4f7266c1d2c4714dd79d # v1.5.2
+        with:
+          release: '14.4'
+          arch: x86_64
+          usesh: true
+          mem: '4096'
+          cpu: '2'
+          sync: rsync
+          copyback: true
+          disable-cache: true
+          debug-on-error: false
+          prepare: pkg install -y cmake ninja python313 pkgconf
+          run: |
+            set -eu
+            uname -a
+            freebsd-version
+            python3.13 ci/run_lane.py --lane freebsd --cc cc --out build/ci-evidence
+            mandoc -Tlint -Werror man/elite_ringbuffer.3 man/eliteipc.7
+      - if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: freebsd-14.4-${{ github.run_attempt }}
+          path: build/ci-evidence
+          if-no-files-found: error
+          retention-days: 14

@@ -1,0 +1,31 @@
+{
+  "status": "PASS_WITHIN_EXECUTED_SCOPE",
+  "full_discovery_tests_per_compiler": 345,
+  "new_live_tests": 12,
+  "new_seeding_tests": 16,
+  "primary_live_roundtrips": 400000,
+  "primary_live_directional_records": 800000,
+  "formal_baselines": 7,
+  "formal_states": 2158499,
+  "formal_transitions": 5700615,
+  "cmake_configurations": 4,
+  "cmake_tests_per_configuration": 6,
+  "production_source_items": 20,
+  "unchanged_production_source_items": 19,
+  "not_run": [
+    "hosted GitHub Actions",
+    "Apple native Turn16",
+    "FreeBSD native/guest",
+    "Valgrind",
+    "Homebrew installation",
+    "vcpkg installation",
+    "mandoc/groff",
+    "actionlint"
+  ],
+  "retained_initial_failures": [
+    "new demo warning",
+    "CMake generator conflict",
+    "install helper executable name",
+    "old formal receipt/source binding mismatch"
+  ]
+}

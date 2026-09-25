@@ -1,0 +1,1 @@
+HARNESS_FAILED pid=1487 benchmarks/bench_common.c:119 (o->capacity&(o->capacity-1))==0 && o->producers+o->consumers<=BENCH_MAX_WORKERS errno=0

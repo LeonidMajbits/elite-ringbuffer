@@ -1,0 +1,1 @@
+PASS GOODPUT SPSC 1P/1C messages=100000000 msg/s=9480193 payload_GB/s=0.606732 exact_membership=yes tokens_returned=yes

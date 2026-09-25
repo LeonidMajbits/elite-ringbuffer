@@ -1,0 +1,12 @@
+[
+  {
+    "manifest": "evidence/turn11/gcc_admitted/RUN_MANIFEST.sha256",
+    "entries": 113,
+    "status": "PASS"
+  },
+  {
+    "manifest": "evidence/turn11/clang_admitted/RUN_MANIFEST.sha256",
+    "entries": 113,
+    "status": "PASS"
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "description": "Hashes bind manually reviewed projection to native source; no automatic refinement proof is claimed",
+  "files": {
+    "src/elite_spsc.c": {
+      "sha256": "fac8a92d5a71c8475769586b2744ed39a99b57cb29e9704efcacbec59c84e774",
+      "anchors": [
+        "elite_store_release_u64(&c->spsc->published.value,next)",
+        "elite_load_acquire_u64(&c->spsc->reclaimed.value)",
+        "elite_store_release_u64(&c->spsc->reclaimed.value,next)"
+      ]
+    },
+    "src/elite_mpmc_ncq.c": {
+      "sha256": "540715143bf5f9b90477f212e52dfa60bebeb55e0bc88b983f8a71affc11cec9",
+      "anchors": [
+        "memory_order_seq_cst,memory_order_seq_cst",
+        "if(t>=limit)",
+        "if(h>=limit)",
+        "if(epoch>=c->info.epoch_ceiling)",
+        "if(cycle<n || old_cycle!=cycle-n) continue;"
+      ]
+    },
+    "src/elite_core.c": {
+      "sha256": "0796eec66cb0a9b7d3085ee309bc81f01d4e32bd3c2d5560b17c5aea53f2cc29",
+      "anchors": [
+        "uint64_t epoch = d->epoch;",
+        "uint64_t s = elite_load_acquire_u64(&d->status_word);"
+      ]
+    },
+    "src/elite_internal.h": {
+      "sha256": "c10de31f4b1ee4ae636d3023fcf1eb6dffeb2097d89db127718df6633b12e74f",
+      "anchors": []
+    },
+    "include/elite_ringbuffer.h": {
+      "sha256": "3c63f7eff0d0d58f581946ad764fb79aafb07c026e14ab7df802d12fec7d064f",
+      "anchors": [],
+      "pre_release_review": {
+        "previous_sha256": "34c899d40e491874a199bc41b58a3a5d8c524dd70d4bbde0ad7dc42792ed3f5b",
+        "change": "Only the first-line copyright comment changes from Leonid Majbits to Leonid Majbits. Declarations, assertions, helpers, field values, and all preprocessed tokens are unchanged.",
+        "scope": "Manual byte-diff review, not a new C11 model-checker result; historical evidence is not rewritten."
+      }
+    },
+    "src/elite_format.c": {
+      "sha256": "433195b980aac406187b028852ef70cdfce923b08c7bf8a4fc569df1b62e07fd",
+      "anchors": [],
+      "turn16_review": "Only opt-in FreeBSD admission and FreeBSD-only rejection of parkable mode added; Linux preprocessed token stream unchanged. See docs/FREEBSD_PORT.patch and evidence/turn16."
+    },
+    "src/elite_shm.c": {
+      "sha256": "ab55901b6c0384e3a1d4a177aa702c946ff4942d0ca88df06c8f2965910aa00e",
+      "anchors": []
+    },
+    "src/elite_wait.c": {
+      "sha256": "7b48360855807165ad3d35ab53cc5a214c7285ce5812e687ae3bc243c4949adc",
+      "anchors": []
+    }
+  }
+}

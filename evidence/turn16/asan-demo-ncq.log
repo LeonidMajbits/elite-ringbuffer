@@ -1,0 +1,7 @@
+$ ['build/asan-seed/live_throughput_demo', '--mode', 'ncq', '--windows', '2', '--messages', '1000', '--plain']
+ELITEIPC 1.1.0 | NCQ-SC64 | two processes / two POSIX rings / 64B
+Directional rate counts 2 records per RTT. p50/p99 are RAW RTT, not one-way.
+No warmup, no CPU pinning, no latency certification. q+Enter or Ctrl-C to stop.
+[################................]   1/2    0.119 Mmsg/s  p50=4695 ns  p99=113600 ns RTT  checked=1000
+[################################]   2/2    0.163 Mmsg/s  p50=4343 ns  p99=68993 ns RTT  checked=2000
+COMPLETE roundtrips=2000 directional_records=4000 checked_windows=2 leases_ended=yes objects_destroyed=yes

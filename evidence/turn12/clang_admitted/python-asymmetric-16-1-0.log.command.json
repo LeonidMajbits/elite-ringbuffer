@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/opt/pyvenv/bin/python3",
+    "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/matrix_worker.py",
+    "--config",
+    "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/evidence/turn12/clang_admitted/python-asymmetric-16-1.config.json",
+    "--build",
+    "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/build/clang",
+    "--out",
+    "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/evidence/turn12/clang_admitted/python-asymmetric-16-1/run-000",
+    "--timeout",
+    "120"
+  ],
+  "cwd": "/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12",
+  "watchdog_seconds": 130
+}

@@ -1,0 +1,7 @@
+mkdir -p build/formal-asan
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -UNDEBUG -fPIE -fsanitize=address,undefined -pie -o build/formal-asan/formal_spsc_handoff formal/c11/spsc_handoff.c -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -UNDEBUG -fPIE -fsanitize=address,undefined -pie -o build/formal-asan/formal_ncq_handoff formal/c11/ncq_handoff.c -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O1 -g -fno-omit-frame-pointer -fsanitize=address,undefined -fno-sanitize-recover=all -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -UNDEBUG -fPIE -fsanitize=address,undefined -pie -o build/formal-asan/formal_ticket_atomicity formal/c11/ticket_atomicity.c -pthread
+build/formal-asan/formal_spsc_handoff
+build/formal-asan/formal_ncq_handoff
+build/formal-asan/formal_ticket_atomicity

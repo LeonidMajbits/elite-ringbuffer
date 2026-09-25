@@ -1,0 +1,19 @@
+{
+  "command": [
+    "make",
+    "-j2",
+    "CC=clang",
+    "BUILD=build/clang-asan",
+    "OPT=-O1 -g -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-lto -fsanitize=address,undefined -fno-sanitize-recover=all",
+    "LDFLAGS=-fsanitize=address,undefined",
+    "PY_SANITIZE=address,undefined",
+    "libraries",
+    "python",
+    "build/clang-asan/test_core",
+    "build/clang-asan/test_adversarial",
+    "build/clang-asan/fuzz_prefix"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 6.327889442443848,
+  "started_unix": 1790209959.822498
+}

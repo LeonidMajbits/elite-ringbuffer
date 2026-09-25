@@ -1,0 +1,3 @@
+PASS MATRIX ncq 1/16 count=20000 payload=64 trial=0
+PASS MATRIX ncq 1/16 count=20000 payload=64 trial=1
+PASS MATRIX ncq 1/16 count=20000 payload=64 trial=2

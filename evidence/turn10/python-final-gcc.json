@@ -1,0 +1,11 @@
+{
+  "command": [
+    "make",
+    "CC=gcc",
+    "BUILD=build/gcc",
+    "check-python-hardening"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 48.915680170059204,
+  "started_unix": 1790210124.8528738
+}

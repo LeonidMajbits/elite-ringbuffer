@@ -1,0 +1,46 @@
+mkdir -p build/clang
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_core.c -o build/clang/elite_core.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_format.c -o build/clang/elite_format.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_spsc.c -o build/clang/elite_spsc.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_mpmc_ncq.c -o build/clang/elite_mpmc_ncq.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_shm.c -o build/clang/elite_shm.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_wait.c -o build/clang/elite_wait.o
+ar rcs build/clang/libelite_ringbuffer.a build/clang/elite_core.o build/clang/elite_format.o build/clang/elite_spsc.o build/clang/elite_mpmc_ncq.o build/clang/elite_shm.o build/clang/elite_wait.o
+clang -march=x86-64 -mtune=generic  -shared -o build/clang/libelite_ringbuffer.so build/clang/elite_core.o build/clang/elite_format.o build/clang/elite_spsc.o build/clang/elite_mpmc_ncq.o build/clang/elite_shm.o build/clang/elite_wait.o -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/clang/bench_latency benchmarks/bench_latency.c benchmarks/bench_common.c build/clang/libelite_ringbuffer.a -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/clang/bench_throughput benchmarks/bench_throughput.c benchmarks/bench_common.c build/clang/libelite_ringbuffer.a -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/clang/bench_cache benchmarks/bench_cache.c benchmarks/bench_common.c build/clang/libelite_ringbuffer.a -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/clang/bench_analyze benchmarks/bench_analyze.c benchmarks/bench_common.c build/clang/libelite_ringbuffer.a -pthread
+benchmarks/bench_common.c:113:25: error: implicit conversion turns string literal into bool: 'char[15]' to 'bool' [-Werror,-Wstring-conversion]
+  113 |         } else B_CHECK(!"unknown option");
+      |                        ~^~~~~~~~~~~~~~~~
+benchmarks/bench_common.h:24:30: note: expanded from macro 'B_CHECK'
+   24 | #define B_CHECK(x) do { if(!(x)) bench_fail(__FILE__,__LINE__,#x); } while(0)
+      |                              ^
+1 error generated.
+make: *** [Makefile:103: build/clang/bench_cache] Error 1
+make: *** Waiting for unfinished jobs....
+benchmarks/bench_common.c:113:25: error: implicit conversion turns string literal into bool: 'char[15]' to 'bool' [-Werror,-Wstring-conversion]
+  113 |         } else B_CHECK(!"unknown option");
+      |                        ~^~~~~~~~~~~~~~~~
+benchmarks/bench_common.h:24:30: note: expanded from macro 'B_CHECK'
+   24 | #define B_CHECK(x) do { if(!(x)) bench_fail(__FILE__,__LINE__,#x); } while(0)
+      |                              ^
+benchmarks/bench_common.c:113:25: error: implicit conversion turns string literal into bool: 'char[15]' to 'bool' [-Werror,-Wstring-conversion]
+  113 |         } else B_CHECK(!"unknown option");
+      |                        ~^~~~~~~~~~~~~~~~
+benchmarks/bench_common.h:24:30: note: expanded from macro 'B_CHECK'
+   24 | #define B_CHECK(x) do { if(!(x)) bench_fail(__FILE__,__LINE__,#x); } while(0)
+      |                              ^
+1 error generated.
+make: *** [Makefile:97: build/clang/bench_latency] Error 1
+1 error generated.
+make: *** [Makefile:105: build/clang/bench_analyze] Error 1
+benchmarks/bench_common.c:113:25: error: implicit conversion turns string literal into bool: 'char[15]' to 'bool' [-Werror,-Wstring-conversion]
+  113 |         } else B_CHECK(!"unknown option");
+      |                        ~^~~~~~~~~~~~~~~~
+benchmarks/bench_common.h:24:30: note: expanded from macro 'B_CHECK'
+   24 | #define B_CHECK(x) do { if(!(x)) bench_fail(__FILE__,__LINE__,#x); } while(0)
+      |                              ^
+1 error generated.
+make: *** [Makefile:99: build/clang/bench_throughput] Error 1

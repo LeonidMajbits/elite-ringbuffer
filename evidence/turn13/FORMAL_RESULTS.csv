@@ -1,0 +1,8 @@
+name,model,capacity,producers,consumers,reservations,abort,states,transitions,terminals,max_shortest_depth,nonterminal_deadends,nonprogress_cycle
+spsc_n2_eight,spsc-control-ownership,2,1,1,8,True,84174,180721,1502,108,0,False
+spsc_n4_six,spsc-control-ownership,4,1,1,6,True,41287,87889,328,80,0,False
+ncq_n2_eight,ncq-sc64,2,1,1,8,True,764188,1523287,3619,220,0,False
+ncq_n4_2p2c,ncq-sc64,4,2,2,1,True,166858,613040,38,62,0,False
+ncq_n4_2p1c,ncq-sc64,4,2,1,2,False,185290,521812,26,113,0,False
+ncq_n4_1p2c,ncq-sc64,4,1,2,4,True,749844,2160826,316,115,0,False
+ncq_n8_2p2c,ncq-sc64,8,2,2,1,True,166858,613040,38,62,0,False

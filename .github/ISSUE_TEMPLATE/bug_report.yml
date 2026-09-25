@@ -1,0 +1,29 @@
+name: Reproducible defect
+description: Report a bounded correctness or integration witness without secrets
+title: "[bug] "
+body:
+  - type: markdown
+    attributes:
+      value: Use SECURITY.md for sensitive memory-safety reports. Do not include private payloads or credentials.
+  - type: input
+    id: version
+    attributes:
+      label: Source version and archive or commit identity
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: OS, architecture, compiler, flags and runtime
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction, expected outcome and observed outcome
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized logs and exact test scope

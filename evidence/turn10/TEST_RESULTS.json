@@ -1,0 +1,133 @@
+{
+  "evidence_scope": "Linux x86-64 / CPython 3.13.5; native Apple candidate not run",
+  "lanes": [
+    {
+      "command": [
+        "make",
+        "CC=gcc",
+        "BUILD=build/gcc",
+        "check-python-hardening"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 44.18058466911316,
+      "started_unix": 1790210307.376027,
+      "lane": "python-release-gcc",
+      "log": "evidence/turn10/python-release-gcc.log",
+      "log_sha256": "e2763e9a399bdf04c755f65284576dbb0e484ced7c0f8da5cdaaebfeb886979a",
+      "unittest_summaries": [
+        [
+          "76",
+          "40.805"
+        ]
+      ]
+    },
+    {
+      "command": [
+        "make",
+        "CC=clang",
+        "BUILD=build/clang",
+        "check-python-hardening"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 49.859496116638184,
+      "started_unix": 1790210369.2110863,
+      "lane": "python-release-clang",
+      "log": "evidence/turn10/python-release-clang.log",
+      "log_sha256": "bc6429c02ec03b3c31508a03e446c009d56d1e4478d2f80d7642d59d7d96c01f",
+      "unittest_summaries": [
+        [
+          "76",
+          "46.106"
+        ]
+      ]
+    },
+    {
+      "command": [
+        "bash",
+        "-lc",
+        "env LD_PRELOAD=$(clang -print-file-name=libclang_rt.asan-x86_64.so) PYTHONMALLOC=malloc ASAN_OPTIONS=detect_leaks=0:halt_on_error=1:abort_on_error=1 UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 ELITE_TEST_TIMEOUT_SCALE=3 ELITE_LIBRARY=\"$PWD/build/clang-asan/libelite_ringbuffer.so\" PYTHONPATH=\"$PWD/build/clang-asan/python:$PWD/bindings/python\" python3 tools/check_python.py --hardening"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 101.5950243473053,
+      "started_unix": 1790210307.615861,
+      "lane": "python-release-clang-asan",
+      "log": "evidence/turn10/python-release-clang-asan.log",
+      "log_sha256": "3756cdbd75001b5691a5f2adbacfe08195c9c7c2cf71ce57c791e81073834f7e",
+      "unittest_summaries": [
+        [
+          "76",
+          "94.604"
+        ]
+      ]
+    },
+    {
+      "command": [
+        "make",
+        "-j2",
+        "CC=clang",
+        "CXX=clang++",
+        "BUILD=build/clang",
+        "libraries",
+        "python",
+        "check",
+        "check-hooks",
+        "limits",
+        "chaos",
+        "fuzz",
+        "check-bench-tools",
+        "check-cpp"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 7.94540810585022,
+      "started_unix": 1790209927.7839212,
+      "lane": "native-clang",
+      "log": "evidence/turn10/native-clang.log",
+      "log_sha256": "b223fc5ecd12d1e1fa5d91e111d4f59d6c64d41b604275d2fa810708decefaea",
+      "unittest_summaries": []
+    },
+    {
+      "command": [
+        "bash",
+        "-lc",
+        "export ASAN_OPTIONS=detect_leaks=1:halt_on_error=1:abort_on_error=1 UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1; build/gcc-asan/test_core && build/gcc-asan/test_adversarial && build/gcc-asan/fuzz_prefix 1000000"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 7.935544490814209,
+      "started_unix": 1790209981.2430933,
+      "lane": "native-gcc-asan",
+      "log": "evidence/turn10/native-gcc-asan.log",
+      "log_sha256": "5e43890e6521c25a1aef536646d42e2efd2379d1b20c2d2ecd433bdff5d44fe0",
+      "unittest_summaries": []
+    },
+    {
+      "command": [
+        "make",
+        "CC=gcc",
+        "tsan"
+      ],
+      "returncode": 0,
+      "elapsed_seconds": 3.0126821994781494,
+      "started_unix": 1790210124.8480954,
+      "lane": "native-tsan",
+      "log": "evidence/turn10/native-tsan.log",
+      "log_sha256": "caf4ace65e5e447021a24c3f92675819d28b4ca446eb39292a75aec46eabd60e",
+      "unittest_summaries": []
+    }
+  ],
+  "incomplete_external_window_attempts": [
+    "races-suite-initial.log",
+    "python-full-gcc.log",
+    "python-full-gcc-retry.log"
+  ],
+  "baseline_negative_controls": {
+    "export_races": 4,
+    "all_returncodes": -11,
+    "gcc_o1_returncode": 2,
+    "gc_retained_endpoint": true,
+    "manifest_mismatch": ".gitignore"
+  },
+  "sanitizer_leak_scope": {
+    "native_gcc_asan": "detect_leaks=1",
+    "python_clang_asan": "detect_leaks=0; lifetime/orphan assertions separate"
+  }
+}

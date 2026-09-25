@@ -1,0 +1,1 @@
+HARNESS_FAILED pid=1490 benchmarks/bench_common.c:120 o->capacity>=o->producers+o->consumers && o->count%o->producers==0 && o->warmup%o->producers==0 errno=0

@@ -1,0 +1,8 @@
+{
+  "name": "elite-ringbuffer",
+  "version-semver": "1.1.0",
+  "description": "C11 zero-copy SPSC and NCQ-SC64 POSIX IPC; admitted Linux/macOS targets",
+  "license": "MIT",
+  "supports": "(linux | osx) & (x64 | arm64)",
+  "dependencies": []
+}

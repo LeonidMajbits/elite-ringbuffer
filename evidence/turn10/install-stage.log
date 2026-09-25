@@ -1,0 +1,12 @@
+install -d "/mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/install-stage/elite-1.0.1/include" "/mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/install-stage/elite-1.0.1/lib"
+install -m 644 include/elite_ringbuffer.h include/elite_api.h include/elite_version.h "/mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/install-stage/elite-1.0.1/include/"
+install -m 644 build/gcc/libelite_ringbuffer.a build/gcc/libelite_ringbuffer.so "/mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/install-stage/elite-1.0.1/lib/"
+python3 tools/build_python.py --cc "gcc" --build "build/gcc" 
+gcc -std=c11 -O3 -g -Wall -Wextra -Werror -pedantic -fPIC -isystem /usr/include/python3.13 -shared /mnt/data/turn10_work/elite-ringbuffer-1.0.1/bindings/python/elite_buffer.c -o /mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/gcc/python/_elite_buffer.cpython-313-x86_64-linux-gnu.so
+python3 tools/install_python.py --build "build/gcc" --prefix "/mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/install-stage/elite-1.0.1"
+Python package and matching native library installed to /mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/install-stage/elite-1.0.1/lib/python3.13/site-packages
+Use this CPython version; add that directory to PYTHONPATH when needed.
+EXIT_CODE=0
+spsc (42, 99) 42
+ncq (42, 99) 42
+INSTALLED_EXAMPLE_EXIT_CODE=0

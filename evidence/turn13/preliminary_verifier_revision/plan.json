@@ -1,0 +1,131 @@
+{
+  "schema": "elite-formal-plan-v1",
+  "baseline": [
+    [
+      "spsc_n2_eight",
+      [
+        "--model",
+        "spsc",
+        "--capacity",
+        "2",
+        "--producers",
+        "1",
+        "--consumers",
+        "1",
+        "--operations",
+        "8"
+      ]
+    ],
+    [
+      "spsc_n4_six",
+      [
+        "--model",
+        "spsc",
+        "--capacity",
+        "4",
+        "--producers",
+        "1",
+        "--consumers",
+        "1",
+        "--operations",
+        "6"
+      ]
+    ],
+    [
+      "ncq_n2_eight",
+      [
+        "--capacity",
+        "2",
+        "--producers",
+        "1",
+        "--consumers",
+        "1",
+        "--operations",
+        "8"
+      ]
+    ],
+    [
+      "ncq_n4_2p2c",
+      [
+        "--capacity",
+        "4",
+        "--producers",
+        "2",
+        "--consumers",
+        "2",
+        "--operations",
+        "1"
+      ]
+    ],
+    [
+      "ncq_n4_2p1c",
+      [
+        "--capacity",
+        "4",
+        "--producers",
+        "2",
+        "--consumers",
+        "1",
+        "--operations",
+        "2",
+        "--no-abort"
+      ]
+    ],
+    [
+      "ncq_n4_1p2c",
+      [
+        "--capacity",
+        "4",
+        "--producers",
+        "1",
+        "--consumers",
+        "2",
+        "--operations",
+        "4"
+      ]
+    ],
+    [
+      "ncq_n8_2p2c",
+      [
+        "--capacity",
+        "8",
+        "--producers",
+        "2",
+        "--consumers",
+        "2",
+        "--operations",
+        "1"
+      ]
+    ]
+  ],
+  "negative": [
+    "split_head",
+    "stale_head_retry",
+    "overwrite_current",
+    "tail_before_entry",
+    "post_lp_write",
+    "early_return"
+  ],
+  "states_cap": 1200000,
+  "time_budget_per_exploration_seconds": 120,
+  "scope": "finite data-plane models plus separate handoff graphs and boundary proofs",
+  "extended": false,
+  "source_sha256": {
+    "formal/README.md": "8c62520c8b9bbf880c9444447661cfb84d17fa120f583491cc5777b1ffe448c8",
+    "formal/SOURCE_BINDING.json": "100105b003620728557e050805fb48e55a6177746e3bc2047cacfeae01c42fa3",
+    "formal/boundaries.py": "e68adba18a0e00c7074de21c07f1f66b5962d6a5c8c12ffce81d084da95636a5",
+    "formal/c11/ncq_handoff.c": "f469acee0a18f344cf31c626b75beb5d4c82bcbe5a8b7366ec6352b011725687",
+    "formal/c11/spsc_handoff.c": "0dd98a78d94f287ad9d09f2ee11b4b86b2ac0ac4cc55144d660dbd75079601f4",
+    "formal/c11/ticket_atomicity.c": "c22305acca513c2e0e855fd9727645a7f99824e511423a783f63254bfacfd25b",
+    "formal/explore.py": "cea69b68a4b34d1cfd00286d885a55fe1871da02c50aad09a3e5d398c33d051a",
+    "formal/handoff.py": "fe83e8b211ac5c6323d739da2c2a7acc7f5d63f7067274fd6fb08347c1ec27b7",
+    "formal/models/ncq.py": "629c7793af5ed6337bb0f1596956be9b79abdb90bcc7ad743aa2ee645a66f4ae",
+    "formal/models/spsc.py": "bb567a8ba651e92b419aee08eb383ddff74b3dbaf20af7e0c5f3be88a286dbdd",
+    "formal/ncq_sc64.pml": "8008651597c400c050bb961b9b39f1dc4ef6ccd0d2ba29c910f5601cad715c8d",
+    "formal/spsc_ownership.pml": "01af499f5a13ed6b9c29939d2ee055de6def1c03990140ec5887e53cf4719f93",
+    "formal/targeted.py": "6edd42746e95c1b55305d91953e9cddf0ab7e814942f447f694e02d641af43f8",
+    "tools/check_formal_binding.py": "5c2d6b91ec8bc79c3eb3eefe8f65ea5a93b18dea24949772517dc60dd4274c1b",
+    "tools/run_formal.py": "fd7a8483b8e638e59f39f48f9652eb5e5c32052c11232e24c3f7b5811c4aecd9",
+    "tools/verify_formal_results.py": "2d375453d8239898f8631575833ba3c0ec96661c4245b5a95e5ee05cde26c3e5"
+  }
+}

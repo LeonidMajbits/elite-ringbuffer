@@ -1,0 +1,33 @@
+python3 tools/cache_build_info.py --out "build/gcc/cache_build_info.h" --cc "gcc" --cppflags="-Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -Ibuild/gcc" --cflags="-std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE" --ldflags=" -pie" --ldlibs="-pthread"
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_topology.c -o build/gcc/elite_topology.o
+ar rcs build/gcc/libelite_topology.a build/gcc/elite_topology.o
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -Ibuild/gcc -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc/bench_matrix benchmarks/bench_matrix.c benchmarks/bench_common.c benchmarks/bench_identity.c benchmarks/bench_ratio.c build/gcc/libelite_topology.a build/gcc/libelite_ringbuffer.a -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc/bench_topology benchmarks/bench_topology.c build/gcc/libelite_topology.a -pthread
+make: Nothing to be done for 'libraries'.
+python3 tools/build_python.py --cc "gcc" --build "build/gcc" 
+gcc -std=c11 -O3 -g -Wall -Wextra -Werror -pedantic -fPIC -isystem /usr/include/python3.13 -shared /mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/bindings/python/elite_buffer.c -o /mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/build/gcc/python/_elite_buffer.cpython-313-x86_64-linux-gnu.so
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic  tests/test_topology.c build/gcc/libelite_topology.a  -pthread -o build/gcc/test_topology
+build/gcc/test_topology
+PASS topology parser: sparse IDs, bounds, duplicate rejection, units, overflow, nulls
+ELITE_TOPOLOGY_BINARY=/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/build/gcc/bench_topology python3 tests/test_topology.py
+test_cgroup_resource_budget (__main__.Fixtures.test_cgroup_resource_budget) ... ok
+test_conflicting_nodes (__main__.Fixtures.test_conflicting_nodes) ... ok
+test_escape_cgroup_rejected (__main__.Fixtures.test_escape_cgroup_rejected) ... ok
+test_limit_no_truncation (__main__.Fixtures.test_limit_no_truncation) ... ok
+test_malformed_cpu_list (__main__.Fixtures.test_malformed_cpu_list) ... ok
+test_memory_unknown (__main__.Fixtures.test_memory_unknown) ... ok
+test_missing_cache_is_partial (__main__.Fixtures.test_missing_cache_is_partial) ... ok
+test_no_live_claim_from_fixture (__main__.Fixtures.test_no_live_claim_from_fixture) ... ok
+test_no_node_guess (__main__.Fixtures.test_no_node_guess) ... ok
+test_no_per_cpu_pe_fabrication (__main__.Fixtures.test_no_per_cpu_pe_fabrication) ... ok
+test_oversized_mountinfo (__main__.Fixtures.test_oversized_mountinfo) ... ok
+test_sparse_numa_and_smt (__main__.Fixtures.test_sparse_numa_and_smt) ... ok
+test_topology_not_residency (__main__.Fixtures.test_topology_not_residency) ... ok
+test_unlimited_is_not_zero (__main__.Fixtures.test_unlimited_is_not_zero) ... ok
+test_v1_not_unlimited (__main__.Fixtures.test_v1_not_unlimited) ... ok
+test_visible_ancestor_quota (__main__.Fixtures.test_visible_ancestor_quota) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.108s
+
+OK

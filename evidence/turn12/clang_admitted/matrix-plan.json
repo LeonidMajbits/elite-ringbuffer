@@ -1,0 +1,2095 @@
+{
+  "schema": "elite-matrix-plan-v1",
+  "axes": {
+    "locality": [
+      "unconstrained",
+      "same_l2",
+      "cross_numa",
+      "intra_perf",
+      "perf_to_efficiency"
+    ],
+    "population": [
+      "1/1",
+      "2/2",
+      "4/4",
+      "8/8",
+      "16/1",
+      "1/16",
+      "16/16"
+    ],
+    "pool_size": [
+      "small",
+      "l2_exceeding_candidate",
+      "llc_exceeding_candidate"
+    ],
+    "arrival": [
+      "closed_loop",
+      "saturation",
+      "fixed_rate",
+      "bursts"
+    ],
+    "retention": [
+      "immediate",
+      "held_view",
+      "all_tokens_retained"
+    ],
+    "runtime": [
+      "native_c",
+      "python_helper",
+      "python_bytecode",
+      "python_gc"
+    ],
+    "os_faults": [
+      "observed_host_quota",
+      "yield_requests",
+      "host_pressure_requires_isolated_host"
+    ],
+    "integrity": [
+      "NONE",
+      "CRC64",
+      "owned_corruption_existing_adversarial_lane"
+    ]
+  },
+  "coverage": "predeclared contrast design; NOT full Cartesian qualification",
+  "trials": 3,
+  "resource_budget_bytes": 536870912,
+  "hardware_topology": {
+    "schema": "elite-hardware-topology-v1",
+    "source_kind": "LIVE_OS_VISIBLE",
+    "platform": "Linux",
+    "architecture": "x86_64",
+    "kernel": "6.18.44",
+    "model": "AMD EPYC 9V74 80-Core Processor",
+    "environment": "TOPOLOGY_VIRTUALIZED_CONTAINER",
+    "cgroup_status": "V2_VISIBLE_ANCESTORS_ONLY",
+    "partial": false,
+    "container_marker": false,
+    "hypervisor_flag": true,
+    "translated": false,
+    "translation_error": 0,
+    "observation_errors": 0,
+    "max_cpu_id_exclusive": 1024,
+    "scope": "cache/core records for affinity-eligible CPUs; node maps and online CPUs are OS-visible, not physical attestation",
+    "worker_cluster_mapping": "NOT_ESTABLISHED",
+    "host_cluster_class": "TOPOLOGY_CLUSTER_UNKNOWN",
+    "page_bytes": {
+      "value": 4096,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "physical_memory_bytes": {
+      "value": 6236913664,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "physical_cpus": {
+      "value": 5,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "logical_cpus": {
+      "value": 5,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "memory_frequency_hz": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "memory_channels": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "system_l3_bytes": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "cache_line_bytes": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "online_cpus": {
+      "status": "OBSERVED",
+      "error": 0,
+      "cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "allowed_cpus": {
+      "status": "OBSERVED",
+      "error": 0,
+      "cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "cpus": [
+      {
+        "cpu_id": 0,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 1,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 1,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            1
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 2,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 2,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            2
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 3,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 3,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            3
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 4,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 4,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            4
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                4
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                4
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                4
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": 0,
+        "cpus": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    ],
+    "perflevels": [],
+    "cgroups": [
+      {
+        "path": "/sys/fs/cgroup",
+        "quota_unlimited": false,
+        "memory_unlimited": false,
+        "quota_us": {
+          "value": 400000,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "period_us": {
+          "value": 100000,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "memory_max": {
+          "value": 4294967296,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "memory_current": {
+          "value": 619339776,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cpus_effective": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "mems_effective": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0
+          ]
+        }
+      }
+    ]
+  },
+  "cells": [
+    {
+      "mode": "spsc",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 0,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "spsc-closed-small",
+      "axis": "arrival",
+      "status": "RUN",
+      "resource_estimate_bytes": 69734400
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-pop-1-1",
+      "axis": "population",
+      "status": "RUN",
+      "resource_estimate_bytes": 69767168
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 2,
+      "consumers": 2,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-pop-2-2",
+      "axis": "population",
+      "status": "RUN",
+      "resource_estimate_bytes": 70247168
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 4,
+      "consumers": 4,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-pop-4-4",
+      "axis": "population",
+      "status": "RUN",
+      "resource_estimate_bytes": 71207168
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 8,
+      "consumers": 8,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-pop-8-8",
+      "axis": "population",
+      "status": "RUN",
+      "resource_estimate_bytes": 73127168
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 16,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-pop-16-1",
+      "axis": "population",
+      "status": "RUN",
+      "resource_estimate_bytes": 69767168
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 16,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-pop-1-16",
+      "axis": "population",
+      "status": "RUN",
+      "resource_estimate_bytes": 76967168
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 16,
+      "consumers": 16,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-pop-16-16",
+      "axis": "population",
+      "status": "RUN",
+      "resource_estimate_bytes": 76967168
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 0,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-closed-small",
+      "axis": "arrival",
+      "status": "RUN",
+      "resource_estimate_bytes": 69767168
+    },
+    {
+      "mode": "spsc",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "spsc-saturation-small",
+      "axis": "population",
+      "status": "RUN",
+      "resource_estimate_bytes": 69734400
+    },
+    {
+      "mode": "ncq",
+      "messages": 2048,
+      "warmup_messages": 64,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 2,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-fixed-rate",
+      "axis": "arrival",
+      "status": "RUN",
+      "resource_estimate_bytes": 67469312
+    },
+    {
+      "mode": "ncq",
+      "messages": 2048,
+      "warmup_messages": 64,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 3,
+      "burst": 32,
+      "period_ns": 320000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-bursts",
+      "axis": "arrival",
+      "status": "RUN",
+      "resource_estimate_bytes": 67469312
+    },
+    {
+      "mode": "spsc",
+      "messages": 1024,
+      "warmup_messages": 64,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 2,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 100000,
+      "hold_every": 1,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "spsc-retained",
+      "axis": "retention",
+      "status": "RUN",
+      "resource_estimate_bytes": 67305472
+    },
+    {
+      "mode": "spsc",
+      "messages": 1024,
+      "warmup_messages": 64,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 4096,
+      "checksum": 1,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "spsc-crc64",
+      "axis": "integrity",
+      "status": "RUN",
+      "resource_estimate_bytes": 67420160
+    },
+    {
+      "mode": "spsc",
+      "messages": 1024,
+      "warmup_messages": 16,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 8,
+      "payload_bytes": 1048576,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "spsc-helper-c-1m",
+      "axis": "runtime",
+      "status": "RUN",
+      "resource_estimate_bytes": 75677696
+    },
+    {
+      "mode": "spsc",
+      "messages": 1024,
+      "warmup_messages": 16,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 8,
+      "payload_bytes": 1048576,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "python_helper",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "spsc-python-1m",
+      "axis": "runtime",
+      "status": "RUN",
+      "resource_estimate_bytes": 75677696
+    },
+    {
+      "mode": "spsc",
+      "messages": 512,
+      "warmup_messages": 32,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 0,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "python_bytecode",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "spsc-python-bytecode",
+      "axis": "runtime",
+      "status": "RUN",
+      "resource_estimate_bytes": 67239936
+    },
+    {
+      "mode": "spsc",
+      "messages": 256,
+      "warmup_messages": 32,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 100000,
+      "hold_every": 4,
+      "os_yield": 0,
+      "runtime": "python_gc",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "spsc-python-retained-gc",
+      "axis": "runtime",
+      "status": "RUN",
+      "resource_estimate_bytes": 67207168
+    },
+    {
+      "mode": "spsc",
+      "messages": 16,
+      "warmup_messages": 2,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 2,
+      "payload_bytes": 67108864,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "spsc-llc-candidate",
+      "axis": "pool_size",
+      "status": "RUN",
+      "resource_estimate_bytes": 201377792
+    },
+    {
+      "mode": "ncq",
+      "messages": 1024,
+      "warmup_messages": 64,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 2,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 100000,
+      "hold_every": 1,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-retained",
+      "axis": "retention",
+      "status": "RUN",
+      "resource_estimate_bytes": 67338240
+    },
+    {
+      "mode": "ncq",
+      "messages": 1024,
+      "warmup_messages": 64,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 4096,
+      "checksum": 1,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-crc64",
+      "axis": "integrity",
+      "status": "RUN",
+      "resource_estimate_bytes": 67452928
+    },
+    {
+      "mode": "ncq",
+      "messages": 1024,
+      "warmup_messages": 16,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 8,
+      "payload_bytes": 1048576,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-helper-c-1m",
+      "axis": "runtime",
+      "status": "RUN",
+      "resource_estimate_bytes": 75710464
+    },
+    {
+      "mode": "ncq",
+      "messages": 1024,
+      "warmup_messages": 16,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 8,
+      "payload_bytes": 1048576,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "python_helper",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-python-1m",
+      "axis": "runtime",
+      "status": "RUN",
+      "resource_estimate_bytes": 75710464
+    },
+    {
+      "mode": "ncq",
+      "messages": 512,
+      "warmup_messages": 32,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 0,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "python_bytecode",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-python-bytecode",
+      "axis": "runtime",
+      "status": "RUN",
+      "resource_estimate_bytes": 67272704
+    },
+    {
+      "mode": "ncq",
+      "messages": 256,
+      "warmup_messages": 32,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 100000,
+      "hold_every": 4,
+      "os_yield": 0,
+      "runtime": "python_gc",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-python-retained-gc",
+      "axis": "runtime",
+      "status": "RUN",
+      "resource_estimate_bytes": 67239936
+    },
+    {
+      "mode": "ncq",
+      "messages": 16,
+      "warmup_messages": 2,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 2,
+      "payload_bytes": 67108864,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-llc-candidate",
+      "axis": "pool_size",
+      "status": "RUN",
+      "resource_estimate_bytes": 201410560
+    },
+    {
+      "mode": "ncq",
+      "messages": 4096,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 1024,
+      "payload_bytes": 4096,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-l2-candidate",
+      "axis": "pool_size",
+      "status": "RUN",
+      "resource_estimate_bytes": 72253440
+    },
+    {
+      "mode": "ncq",
+      "messages": 4096,
+      "warmup_messages": 1024,
+      "producers": 4,
+      "consumers": 4,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 1,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "ncq-yield-requests",
+      "axis": "os_faults",
+      "status": "RUN",
+      "resource_estimate_bytes": 68026368
+    },
+    {
+      "mode": "ncq",
+      "messages": 512,
+      "warmup_messages": 32,
+      "producers": 1,
+      "consumers": 16,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "python_helper",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "python-asymmetric-1-16",
+      "axis": "population",
+      "status": "RUN",
+      "resource_estimate_bytes": 67457024
+    },
+    {
+      "mode": "ncq",
+      "messages": 512,
+      "warmup_messages": 32,
+      "producers": 16,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "python_helper",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "python-asymmetric-16-1",
+      "axis": "population",
+      "status": "RUN",
+      "resource_estimate_bytes": 67272704
+    },
+    {
+      "mode": "spsc",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 0,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "same_l2",
+      "cpus": [
+        0,
+        1
+      ],
+      "qos": 0,
+      "id": "reported-same-l2",
+      "axis": "locality",
+      "status": "RUN",
+      "resource_estimate_bytes": 69734400
+    },
+    {
+      "mode": "spsc",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 0,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "cross_numa",
+      "cpus": [
+        0
+      ],
+      "qos": 0,
+      "id": "reported-cross-numa",
+      "axis": "locality",
+      "status": "SKIP_UNSUPPORTED",
+      "resource_estimate_bytes": 69734400,
+      "reason": "Fewer than two NUMA nodes in eligible CPU mapping"
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "intra_perf",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "intra_perf",
+      "axis": "locality",
+      "status": "SKIP_UNSUPPORTED",
+      "resource_estimate_bytes": 69767168,
+      "reason": "Aggregate perflevel geometry does not expose an enforced per-worker P/E map"
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "perf_to_efficiency",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "perf_to_efficiency",
+      "axis": "locality",
+      "status": "SKIP_UNSUPPORTED",
+      "resource_estimate_bytes": 69767168,
+      "reason": "Aggregate perflevel geometry does not expose an enforced per-worker P/E map"
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "all-tokens-retained",
+      "axis": "retention",
+      "status": "SKIP_UNSUPPORTED",
+      "resource_estimate_bytes": 69767168,
+      "reason": "A concurrent all-token lease fixture requires a separate barrier schedule; not fabricated from periodic retention"
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "host-memory-pressure",
+      "axis": "os_faults",
+      "status": "SKIP_UNSUPPORTED",
+      "resource_estimate_bytes": 69767168,
+      "reason": "System pressure is not injected into an unisolated host; quota and fault observations are retained"
+    },
+    {
+      "mode": "ncq",
+      "messages": 20000,
+      "warmup_messages": 1024,
+      "producers": 1,
+      "consumers": 1,
+      "capacity": 32,
+      "payload_bytes": 64,
+      "checksum": 0,
+      "arrival": 1,
+      "burst": 32,
+      "period_ns": 10000,
+      "hold_ns": 0,
+      "hold_every": 16,
+      "os_yield": 0,
+      "runtime": "native_c",
+      "locality_request": "unconstrained",
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "qos": 0,
+      "id": "owned-corruption",
+      "axis": "integrity",
+      "status": "SKIP_UNSUPPORTED",
+      "resource_estimate_bytes": 69767168,
+      "reason": "Run the existing test_adversarial integrity negative lane; no success-throughput result is manufactured"
+    }
+  ]
+}

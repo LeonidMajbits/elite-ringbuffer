@@ -1,0 +1,1 @@
+HARNESS_FAILED pid=9196 benchmarks/bench_common.c:359 !interrupted && bench_watch_ns()<b->deadline_ns errno=2

@@ -1,0 +1,3 @@
+$ ['build/asan-seed/test_core']
+parser_single_byte_mutations_rejected=512
+PASS core_groups=68 shared_header=2048 descriptor=128 participant=256

@@ -1,0 +1,1 @@
+{"status":"INCOMPLETE","command":"formal/explore.py --capacity 4 --producers 2 --consumers 2 --operations 2 --no-abort --max-states 1000000 --seconds 65","outer_timeout_seconds":90,"result_file_produced":false,"cause_beyond_outer_timeout":"not established","included_in_primary_results":false}

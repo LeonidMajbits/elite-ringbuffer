@@ -1,0 +1,7 @@
+VERIFIED_RAW_WITHIN_SCOPE /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_07_Linux_100M_Run/goodput-ncq-1/trial-000/result.json
+VERIFIED_RAW_WITHIN_SCOPE /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_07_Linux_100M_Run/goodput-ncq-2/trial-000/result.json
+VERIFIED_RAW_WITHIN_SCOPE /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_07_Linux_100M_Run/goodput-ncq-4/trial-000/result.json
+VERIFIED_RAW_WITHIN_SCOPE /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_07_Linux_100M_Run/goodput-ncq-8/trial-000/result.json
+VERIFIED_RAW_WITHIN_SCOPE /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_07_Linux_100M_Run/goodput-spsc-1/trial-000/result.json
+VERIFIED_RAW_WITHIN_SCOPE /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_07_Linux_100M_Run/rtt-ncq/trial-000/result.json
+VERIFIED_RAW_WITHIN_SCOPE /mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_07_Linux_100M_Run/rtt-spsc/trial-000/result.json

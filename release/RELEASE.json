@@ -1,0 +1,18 @@
+{
+  "schema": "elite-source-release-v1",
+  "version": "1.1.0",
+  "tag_name": "v1.1.0",
+  "wire_abi": "0x00010000",
+  "stage": "release_candidate",
+  "release_date": "2026-09-24",
+  "parent_archive_sha256": "e06484c745af29c5d74e6f0a548824dd40b015265020e80614675d39d376fec5",
+  "parent_archive_bytes": 48040449,
+  "signature_status": "UNSIGNED_SHA256_RECEIPT",
+  "git_tag_created_by_packaging": false,
+  "lab_commit_reported": "a9bf0f7",
+  "lab_git_object_verified": false,
+  "archive_root": "elite-ringbuffer-1.1.0",
+  "archive_timestamp_utc": "2026-09-24T00:00:00Z",
+  "license": "MIT",
+  "qualification": "PASS_WITHIN_DECLARED_EXECUTED_SCOPE; no universal performance or full V1-V8 certification"
+}

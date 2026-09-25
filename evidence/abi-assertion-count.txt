@@ -1,0 +1,2 @@
+Preprocessed GCC C11 public-header _Static_assert statements: 103
+All compile successfully in final-gcc and final-clang build logs.

@@ -1,0 +1,5 @@
+write_claim_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+read_claim_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+late_publication_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+resume_write_ncq_1p1c_t000: PASS_WITHIN_SCOPE messages=20000
+FAIL/INCOMPLETE: resumed transfer status/outcome

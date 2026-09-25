@@ -1,0 +1,4 @@
+CACHE v2 workers=1 stride=8 trial=0 RMW/s=67436567.479 pmc=NOT_REQUESTED (not IPC)
+CACHE v2 workers=1 stride=128 trial=0 RMW/s=524463604.848 pmc=NOT_REQUESTED (not IPC)
+CACHE v2 workers=1 stride=128 trial=1 RMW/s=472728304.134 pmc=NOT_REQUESTED (not IPC)
+CACHE v2 workers=1 stride=8 trial=1 RMW/s=430963893.845 pmc=NOT_REQUESTED (not IPC)

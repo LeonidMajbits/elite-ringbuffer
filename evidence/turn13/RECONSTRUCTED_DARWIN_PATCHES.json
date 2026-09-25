@@ -1,0 +1,17 @@
+{
+  "tools/verify_release.py": {
+    "before": "94f789d35f3b843179834b3472b907b6306ab2670a36f31b109dc7628618d9f3",
+    "credit": "reconstructed user-reported Darwin fixes; not fetched Git commit 4dd9bbc",
+    "after": "09e59026622f6e5042c058cd63725c1983d1a25a0b0ad91974dd3a8490f3c241"
+  },
+  "tests/test_release_integrity.py": {
+    "before": "86de307b84f57dcd0551ecdc9545606b9645df7cb34b0ff0a3ff810963b65232",
+    "credit": "reconstructed user-reported Darwin fixes; not fetched Git commit 4dd9bbc",
+    "after": "a6e69a5eac245fc87ef72f46dbf23125f2349d653830a8aca9e7b1a4171f1195"
+  },
+  "Makefile": {
+    "before": "ae4c0d2d58d7886c9cd389ada2721c2c776f009cb6cdec693718a88ad781e9e5",
+    "credit": "reconstructed user-reported Darwin fixes; not fetched Git commit 4dd9bbc",
+    "after": "9ce77cfdecdde4ae768c06f682e046fc2faf996f2357b3f9272a9a66f9e1c6a8"
+  }
+}

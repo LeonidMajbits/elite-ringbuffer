@@ -1,0 +1,7 @@
+parser_single_byte_mutations_rejected=512
+PASS core_groups=68 shared_header=2048 descriptor=128 participant=256
+message 42: OK
+PASS native_spawn_ipc mode=PARKABLE_SPSC producers=1 consumers=1 messages=100000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=13910808 (not_latency)
+PASS native_spawn_ipc mode=SPSC producers=1 consumers=1 messages=100000000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=14237911235 (not_latency)
+
+NCQ 16P/16C 100M attempt: INCOMPLETE; outer container call exceeded 200 seconds, no completion result available. No loss-free or throughput conclusion.

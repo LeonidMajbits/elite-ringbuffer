@@ -1,0 +1,10 @@
+prefix=${pcfiledir}/@ELITE_PC_PREFIX_REL@
+exec_prefix=${prefix}
+libdir=${prefix}/@CMAKE_INSTALL_LIBDIR@
+includedir=${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+Name: elite_ringbuffer
+Description: C11 zero-copy SPSC and NCQ-SC64 POSIX IPC
+Version: @PROJECT_VERSION@
+Libs: -L${libdir} -lelite_ringbuffer
+Libs.private: @ELITE_PC_PRIVATE@
+Cflags: -I${includedir}

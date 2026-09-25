@@ -1,0 +1,11 @@
+{
+  "command": [
+    "make",
+    "CC=clang",
+    "BUILD=build/clang",
+    "check-python-hardening"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 50.010008811950684,
+  "started_unix": 1790210155.0020385
+}

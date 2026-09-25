@@ -1,0 +1,10 @@
+{
+  "command": [
+    "bash",
+    "-lc",
+    "make CC=clang BUILD=build/clang-asan OPT='-O1 -g -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-lto -fsanitize=address,undefined -fno-sanitize-recover=all' LDFLAGS='-fsanitize=address,undefined' PY_SANITIZE=address,undefined libraries python && env LD_PRELOAD=$(clang -print-file-name=libclang_rt.asan-x86_64.so) PYTHONMALLOC=malloc ASAN_OPTIONS=detect_leaks=0:halt_on_error=1:abort_on_error=1 UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 ELITE_TEST_TIMEOUT_SCALE=3 ELITE_LIBRARY=\"$PWD/build/clang-asan/libelite_ringbuffer.so\" PYTHONPATH=\"$PWD/build/clang-asan/python:$PWD/bindings/python\" python3 tools/check_python.py --hardening"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 103.28826332092285,
+  "started_unix": 1790210154.875199
+}

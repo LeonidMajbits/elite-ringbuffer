@@ -1,0 +1,3 @@
+SHM_NAME=/el-hmbd77sih5d43fconemrosq76y
+{"mode": "spsc", "kind": "read", "transfer_blocked": false, "closed": true, "active": false, "exports": 1, "errors": []}
+{"new_view_length": 8, "readonly": true}

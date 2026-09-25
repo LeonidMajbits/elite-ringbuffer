@@ -1,0 +1,31 @@
+{
+  "schema": "elite-formal-explorer-v1",
+  "model": "spsc-control-ownership",
+  "config": {
+    "capacity": 4,
+    "reservations": 6,
+    "mutation": "none",
+    "allow_abort": true,
+    "snapshots": "every nondecreasing stale/current cursor within actual frontier",
+    "memory_scope": "control-state overapproximation, not a C11 weak-memory simulation"
+  },
+  "status": "PASS_WITHIN_SCOPE",
+  "cutoff": null,
+  "states": 41287,
+  "transitions": 87889,
+  "terminals": 328,
+  "max_shortest_depth": 80,
+  "frontier_remaining": 0,
+  "exhaustive": true,
+  "time_seconds": 0.6487877540000682,
+  "state_sequence_sha256": "b599b09771e08d62432867a8d11f2f0c57659b76e17f3712cd0f64c0ced8b9ae",
+  "legal_head_ahead_of_tail_reached": false,
+  "no_progress_analysis": {
+    "algorithm": "exact topological elimination of nonprogress edges",
+    "residue_states": 0,
+    "cycle_exists": false,
+    "progress": "queue LP or empty/operation response; not application throughput",
+    "scheduler": "active transition sequences only; no implicit stutter"
+  },
+  "witness": null
+}

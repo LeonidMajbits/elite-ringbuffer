@@ -1,0 +1,40 @@
+[  4%] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_core.c.o
+[  8%] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_format.c.o
+[ 12%] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_core.c.o
+[ 16%] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_format.c.o
+[ 20%] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_spsc.c.o
+[ 25%] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_spsc.c.o
+[ 29%] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_mpmc_ncq.c.o
+[ 33%] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_mpmc_ncq.c.o
+[ 37%] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_shm.c.o
+[ 41%] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_shm.c.o
+[ 45%] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_wait.c.o
+[ 50%] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_wait.c.o
+[ 58%] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_version.c.o
+[ 58%] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_version.c.o
+[ 62%] Linking C shared library libelite_ringbuffer.so
+[ 66%] Linking C static library libelite_ringbuffer.a
+[ 66%] Built target elite_ringbuffer_static
+[ 66%] Built target elite_ringbuffer_shared
+[ 70%] Building C object CMakeFiles/live_throughput_demo.dir/examples/live_throughput_demo.c.o
+[ 75%] Building C object CMakeFiles/test_portability.dir/tests/test_portability.c.o
+[ 79%] Building C object CMakeFiles/test_ipc.dir/tests/test_ipc.c.o
+[ 83%] Building C object CMakeFiles/test_core.dir/tests/test_core.c.o
+/mnt/data/turn16_work/elite-ringbuffer-1.1.0/examples/live_throughput_demo.c: In function 'main':
+/mnt/data/turn16_work/elite-ringbuffer-1.1.0/examples/live_throughput_demo.c:247:9: error: this 'for' clause does not guard... [-Werror=misleading-indentation]
+  247 |         for(unsigned k=0;k<32;++k)bar[k]=k<filled?'#':'.';bar[32]='\0';
+      |         ^~~
+/mnt/data/turn16_work/elite-ringbuffer-1.1.0/examples/live_throughput_demo.c:247:59: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  247 |         for(unsigned k=0;k<32;++k)bar[k]=k<filled?'#':'.';bar[32]='\0';
+      |                                                           ^~~
+[ 87%] Linking C executable test_portability
+[ 87%] Built target test_portability
+cc1: all warnings being treated as errors
+gmake[2]: *** [CMakeFiles/live_throughput_demo.dir/build.make:79: CMakeFiles/live_throughput_demo.dir/examples/live_throughput_demo.c.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:166: CMakeFiles/live_throughput_demo.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+[ 91%] Linking C executable test_ipc
+[ 91%] Built target test_ipc
+[ 95%] Linking C executable test_core
+[ 95%] Built target test_core
+gmake: *** [Makefile:146: all] Error 2

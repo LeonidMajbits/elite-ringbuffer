@@ -1,0 +1,199 @@
+{
+  "schema": "elite-formal-explorer-v1",
+  "model": "spsc-control-ownership",
+  "config": {
+    "capacity": 2,
+    "reservations": 1,
+    "mutation": "publish_early",
+    "allow_abort": true,
+    "snapshots": "every nondecreasing stale/current cursor within actual frontier",
+    "memory_scope": "control-state overapproximation, not a C11 weak-memory simulation"
+  },
+  "status": "FAIL_WITNESS",
+  "cutoff": null,
+  "states": 12,
+  "transitions": 16,
+  "terminals": 0,
+  "max_shortest_depth": 4,
+  "frontier_remaining": 5,
+  "exhaustive": false,
+  "time_seconds": 0.0002483539999502682,
+  "state_sequence_sha256": "04f409e668983ba836964f5e70e6bea247e5e2fb9153fb9d7880cf4805e60bcb",
+  "legal_head_ahead_of_tail_reached": false,
+  "no_progress_analysis": null,
+  "witness": {
+    "property": "SPSC_TORN_OR_UNCOMMITTED",
+    "details": {
+      "ticket": 0
+    },
+    "steps": [
+      {
+        "event": "P: cached reclamation covers reserve",
+        "state": {
+          "published": 0,
+          "reclaimed": 0,
+          "producer_pc": 2,
+          "consumer_pc": 0,
+          "cached_c": 0,
+          "cached_p": 0,
+          "left": 1,
+          "epochs": [
+            0,
+            0
+          ],
+          "word0": [
+            0,
+            0
+          ],
+          "word1": [
+            0,
+            0
+          ],
+          "committed": [
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            0
+          ],
+          "read0": 0,
+          "producer_done": false
+        }
+      },
+      {
+        "event": "P: private reservation and epoch advance",
+        "state": {
+          "published": 0,
+          "reclaimed": 0,
+          "producer_pc": 3,
+          "consumer_pc": 0,
+          "cached_c": 0,
+          "cached_p": 0,
+          "left": 0,
+          "epochs": [
+            1,
+            0
+          ],
+          "word0": [
+            0,
+            0
+          ],
+          "word1": [
+            0,
+            0
+          ],
+          "committed": [
+            0,
+            0
+          ],
+          "owners": [
+            1,
+            0
+          ],
+          "read0": 0,
+          "producer_done": false
+        }
+      },
+      {
+        "event": "P: ordinary word0 write",
+        "state": {
+          "published": 0,
+          "reclaimed": 0,
+          "producer_pc": 4,
+          "consumer_pc": 0,
+          "cached_c": 0,
+          "cached_p": 0,
+          "left": 0,
+          "epochs": [
+            1,
+            0
+          ],
+          "word0": [
+            1,
+            0
+          ],
+          "word1": [
+            0,
+            0
+          ],
+          "committed": [
+            0,
+            0
+          ],
+          "owners": [
+            1,
+            0
+          ],
+          "read0": 0,
+          "producer_done": false
+        }
+      },
+      {
+        "event": "P: MUTANT publication before second word",
+        "state": {
+          "published": 1,
+          "reclaimed": 0,
+          "producer_pc": 6,
+          "consumer_pc": 0,
+          "cached_c": 0,
+          "cached_p": 0,
+          "left": 0,
+          "epochs": [
+            1,
+            0
+          ],
+          "word0": [
+            1,
+            0
+          ],
+          "word1": [
+            0,
+            0
+          ],
+          "committed": [
+            1,
+            0
+          ],
+          "owners": [
+            2,
+            0
+          ],
+          "read0": 0,
+          "producer_done": false
+        }
+      }
+    ],
+    "initial": {
+      "published": 0,
+      "reclaimed": 0,
+      "producer_pc": 0,
+      "consumer_pc": 0,
+      "cached_c": 0,
+      "cached_p": 0,
+      "left": 1,
+      "epochs": [
+        0,
+        0
+      ],
+      "word0": [
+        0,
+        0
+      ],
+      "word1": [
+        0,
+        0
+      ],
+      "committed": [
+        0,
+        0
+      ],
+      "owners": [
+        0,
+        0
+      ],
+      "read0": 0,
+      "producer_done": false
+    }
+  }
+}

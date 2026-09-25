@@ -1,0 +1,2 @@
+$ ['python3', 'tools/verify_formal_results.py', 'evidence/turn16/formal_admitted']
+PASS: campaign/source integrity; 7 structural witnesses and all auxiliary results replayed; 0 baseline searches re-executed

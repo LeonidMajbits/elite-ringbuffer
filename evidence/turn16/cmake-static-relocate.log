@@ -1,0 +1,77 @@
+$ ['python3', 'tools/check_cmake_install.py', '--build', 'build/cmake-static', '--work', 'build/static-relocate']
+-- Install configuration: "Release"
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/bin/live_throughput_demo
+-- Set non-toolchain portion of runtime path of "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/bin/live_throughput_demo" to "$ORIGIN/../lib"
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/lib/libelite_ringbuffer.a
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/include/elite_ringbuffer.h
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/include/elite_api.h
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/include/elite_version.h
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/share/man/man3/elite_ringbuffer.3
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/share/man/man7/eliteipc.7
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/share/elite_ringbuffer/LICENSE
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/share/elite_ringbuffer/NOTICE.md
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/lib/cmake/elite_ringbuffer/elite_ringbufferTargets.cmake
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/lib/cmake/elite_ringbuffer/elite_ringbufferTargets-release.cmake
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/lib/cmake/elite_ringbuffer/elite_ringbufferConfig.cmake
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/lib/cmake/elite_ringbuffer/elite_ringbufferConfigVersion.cmake
+-- Installing: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/original-prefix/lib/pkgconfig/elite_ringbuffer.pc
+-- The C compiler identification is GNU 14.2.0
+-- The CXX compiler identification is GNU 14.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (2.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/consumer
+[ 25%] Building C object CMakeFiles/consumer.dir/consumer.c.o
+[ 50%] Building CXX object CMakeFiles/consumer_cpp.dir/consumer.cpp.o
+[ 75%] Linking C executable consumer
+[100%] Linking CXX executable consumer_cpp
+[100%] Built target consumer
+[100%] Built target consumer_cpp
+Traceback (most recent call last):
+  File "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/tools/check_cmake_install.py", line 31, in <module>
+    if __name__=='__main__':sys.exit(main())
+                                     ~~~~^^
+  File "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/tools/check_cmake_install.py", line 19, in main
+    run([w/'consumer/consumer_c']);run([w/'consumer/consumer_cpp'])
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/turn16_work/elite-ringbuffer-1.1.0/tools/check_cmake_install.py", line 15, in run
+    def run(args,env=None):subprocess.run([str(x) for x in args],check=True,timeout=120,env=env)
+                           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1857, in _execute_child
+    self._posix_spawn(args, executable, env, restore_signals, close_fds,
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      p2cread, p2cwrite,
+                      ^^^^^^^^^^^^^^^^^^
+                      c2pread, c2pwrite,
+                      ^^^^^^^^^^^^^^^^^^
+                      errread, errwrite)
+                      ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1801, in _posix_spawn
+    self.pid = os.posix_spawn(executable, args, env, **kwargs)
+               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/turn16_work/elite-ringbuffer-1.1.0/build/static-relocate/consumer/consumer_c'

@@ -1,0 +1,189 @@
+{
+  "schema": "elite-cache-sweep-v2",
+  "status": "COMPLETE_VERIFIED_WITHIN_SCOPE",
+  "utc_started": "2026-09-24T02:02:21.846608+00:00",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "binary_sha256": "6d70b6d27f12e2289ea5d447450fb5cef9e990e4b7f26d330959eab0c10e2992",
+  "argv": [
+    "tools/run_cache_profiling.py",
+    "--binary",
+    "build/pmc-asan/bench_cache",
+    "--out",
+    "evidence/turn11/asan_functional",
+    "--workers",
+    "1,4",
+    "--iterations",
+    "100000",
+    "--trials",
+    "2",
+    "--modes",
+    "off,count",
+    "--cpus",
+    "0,1,2,3"
+  ],
+  "runs": [
+    {
+      "command": [
+        "/mnt/data/Elite_RingBuffer_Turn_11/build/pmc-asan/bench_cache",
+        "--producers",
+        "1",
+        "--consumers",
+        "1",
+        "--count",
+        "100000",
+        "--trials",
+        "2",
+        "--warmup",
+        "0",
+        "--pmc",
+        "off",
+        "--virtual-counter",
+        "off",
+        "--timeout",
+        "60",
+        "--out",
+        "/mnt/data/Elite_RingBuffer_Turn_11/evidence/turn11/asan_functional/off-1",
+        "--qos",
+        "default",
+        "--cpus",
+        "0,1,2,3"
+      ],
+      "directory": "off-1",
+      "status": "PASS_RECEIPTS",
+      "exit_code": 0,
+      "paired_isolated_over_packed_ratios": [
+        7.777139680391879,
+        1.0969093023475687
+      ],
+      "median_paired_ratio": 4.437024491369724,
+      "records": 4,
+      "pmc_statuses": [
+        "NOT_REQUESTED"
+      ],
+      "coherence_causality": "NOT_ESTABLISHED"
+    },
+    {
+      "command": [
+        "/mnt/data/Elite_RingBuffer_Turn_11/build/pmc-asan/bench_cache",
+        "--producers",
+        "4",
+        "--consumers",
+        "4",
+        "--count",
+        "100000",
+        "--trials",
+        "2",
+        "--warmup",
+        "0",
+        "--pmc",
+        "off",
+        "--virtual-counter",
+        "off",
+        "--timeout",
+        "60",
+        "--out",
+        "/mnt/data/Elite_RingBuffer_Turn_11/evidence/turn11/asan_functional/off-4",
+        "--qos",
+        "default",
+        "--cpus",
+        "0,1,2,3"
+      ],
+      "directory": "off-4",
+      "status": "PASS_RECEIPTS",
+      "exit_code": 0,
+      "paired_isolated_over_packed_ratios": [
+        14.471188716353662,
+        9.068303930834121
+      ],
+      "median_paired_ratio": 11.769746323593893,
+      "records": 4,
+      "pmc_statuses": [
+        "NOT_REQUESTED"
+      ],
+      "coherence_causality": "NOT_ESTABLISHED"
+    },
+    {
+      "command": [
+        "/mnt/data/Elite_RingBuffer_Turn_11/build/pmc-asan/bench_cache",
+        "--producers",
+        "1",
+        "--consumers",
+        "1",
+        "--count",
+        "100000",
+        "--trials",
+        "2",
+        "--warmup",
+        "0",
+        "--pmc",
+        "count",
+        "--virtual-counter",
+        "off",
+        "--timeout",
+        "60",
+        "--out",
+        "/mnt/data/Elite_RingBuffer_Turn_11/evidence/turn11/asan_functional/count-1",
+        "--qos",
+        "default",
+        "--cpus",
+        "0,1,2,3"
+      ],
+      "directory": "count-1",
+      "status": "PASS_RECEIPTS",
+      "exit_code": 0,
+      "paired_isolated_over_packed_ratios": [
+        3.176606518506611,
+        0.8722722664495006
+      ],
+      "median_paired_ratio": 2.024439392478056,
+      "records": 4,
+      "pmc_statuses": [
+        "UNSUPPORTED_EVENT"
+      ],
+      "coherence_causality": "NOT_ESTABLISHED"
+    },
+    {
+      "command": [
+        "/mnt/data/Elite_RingBuffer_Turn_11/build/pmc-asan/bench_cache",
+        "--producers",
+        "4",
+        "--consumers",
+        "4",
+        "--count",
+        "100000",
+        "--trials",
+        "2",
+        "--warmup",
+        "0",
+        "--pmc",
+        "count",
+        "--virtual-counter",
+        "off",
+        "--timeout",
+        "60",
+        "--out",
+        "/mnt/data/Elite_RingBuffer_Turn_11/evidence/turn11/asan_functional/count-4",
+        "--qos",
+        "default",
+        "--cpus",
+        "0,1,2,3"
+      ],
+      "directory": "count-4",
+      "status": "PASS_RECEIPTS",
+      "exit_code": 0,
+      "paired_isolated_over_packed_ratios": [
+        17.56469339928065,
+        3.831027890005886
+      ],
+      "median_paired_ratio": 10.697860644643267,
+      "records": 4,
+      "pmc_statuses": [
+        "UNSUPPORTED_EVENT"
+      ],
+      "coherence_causality": "NOT_ESTABLISHED"
+    }
+  ],
+  "interpretation": "counter control, not IPC; no inferred coherence invalidations",
+  "utc_finished": "2026-09-24T02:02:24.025092+00:00"
+}

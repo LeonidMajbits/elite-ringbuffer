@@ -1,0 +1,8 @@
+condition,count,scope,metric,p50,p90,p99,p99_9,p99_99,max,messages_per_second,payload_GB_per_second
+goodput-ncq-1,100000000,"Linux x86-64, one trial",validated goodput,,,,,,,7669928.661786,0.490875434
+goodput-ncq-2,100000000,"Linux x86-64, one trial",validated goodput,,,,,,,4659155.018317,0.298185921
+goodput-ncq-4,100000000,"Linux x86-64, one trial",validated goodput,,,,,,,3370411.000846,0.215706304
+goodput-ncq-8,100000000,"Linux x86-64, one trial",validated goodput,,,,,,,3575175.821867,0.228811253
+goodput-spsc-1,100000000,"Linux x86-64, one trial",validated goodput,,,,,,,9480193.239454,0.606732367
+rtt-ncq,100000000,"Linux x86-64, one trial",instrumented RTT ns,805,896,1060,43247,410436,145048128,,
+rtt-spsc,100000000,"Linux x86-64, one trial",instrumented RTT ns,660,791,864,20924,277748,213535770,,

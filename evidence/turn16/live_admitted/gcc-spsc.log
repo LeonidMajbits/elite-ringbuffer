@@ -1,0 +1,9 @@
+ELITEIPC 1.1.0 | SPSC | two processes / two POSIX rings / 64B
+Directional rate counts 2 records per RTT. p50/p99 are RAW RTT, not one-way.
+No warmup, no CPU pinning, no latency certification. q+Enter or Ctrl-C to stop.
+[######..........................]   1/5    2.159 Mmsg/s  p50=746 ns  p99=978 ns RTT  checked=20000
+[############....................]   2/5    2.391 Mmsg/s  p50=735 ns  p99=977 ns RTT  checked=40000
+[###################.............]   3/5    2.263 Mmsg/s  p50=742 ns  p99=993 ns RTT  checked=60000
+[#########################.......]   4/5    2.436 Mmsg/s  p50=733 ns  p99=974 ns RTT  checked=80000
+[################################]   5/5    2.197 Mmsg/s  p50=739 ns  p99=1675 ns RTT  checked=100000
+COMPLETE roundtrips=100000 directional_records=200000 checked_windows=5 leases_ended=yes objects_destroyed=yes

@@ -1,0 +1,28 @@
+{
+  "schema": "elite-formal-explorer-v1",
+  "model": "ncq-sc64",
+  "config": {
+    "capacity": 4,
+    "producers": 2,
+    "consumers": 2,
+    "reservations_per_producer": 1,
+    "mutation": "none",
+    "allow_abort": true,
+    "atomic_model": "SC",
+    "initialization": "QF full; QR empty; construction precedes exposure"
+  },
+  "status": "INCOMPLETE",
+  "cutoff": "state_budget",
+  "states": 5,
+  "transitions": 5,
+  "terminals": 0,
+  "max_shortest_depth": 1,
+  "frontier_remaining": 3,
+  "exhaustive": false,
+  "nonterminal_deadends": 0,
+  "time_seconds": 0.00022611900021729525,
+  "state_sequence_sha256": "64e065249124f1d9b805d34e8f9ff6b9e8976d37ab5e43481e1ad6fdecb6b2f5",
+  "legal_head_ahead_of_tail_reached": false,
+  "no_progress_analysis": null,
+  "witness": null
+}

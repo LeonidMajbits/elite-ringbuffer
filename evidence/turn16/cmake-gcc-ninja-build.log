@@ -1,0 +1,25 @@
+[1/25] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_format.c.o
+[2/25] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_core.c.o
+[3/25] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_spsc.c.o
+[4/25] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_mpmc_ncq.c.o
+[5/25] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_wait.c.o
+[6/25] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_version.c.o
+[7/25] Building C object CMakeFiles/elite_ringbuffer_shared.dir/src/elite_shm.c.o
+[8/25] Linking C shared library libelite_ringbuffer.so.1.1.0
+[9/25] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_core.c.o
+[10/25] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_format.c.o
+[11/25] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_spsc.c.o
+[12/25] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_mpmc_ncq.c.o
+[13/25] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_wait.c.o
+[14/25] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_version.c.o
+[15/25] Creating library symlink libelite_ringbuffer.so.1 libelite_ringbuffer.so
+[16/25] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_shm.c.o
+[17/25] Building C object CMakeFiles/live_throughput_demo.dir/examples/live_throughput_demo.c.o
+[18/25] Building C object CMakeFiles/test_portability.dir/tests/test_portability.c.o
+[19/25] Building C object CMakeFiles/test_ipc.dir/tests/test_ipc.c.o
+[20/25] Linking C static library libelite_ringbuffer.a
+[21/25] Linking C executable live_throughput_demo
+[22/25] Linking C executable test_ipc
+[23/25] Linking C executable test_portability
+[24/25] Building C object CMakeFiles/test_core.dir/tests/test_core.c.o
+[25/25] Linking C executable test_core

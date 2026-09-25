@@ -1,0 +1,90 @@
+mkdir -p build/clang12
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -MMD -MP -c src/elite_topology.c -o build/clang12/elite_topology.o
+ar rcs build/clang12/libelite_topology.a build/clang12/elite_topology.o
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/clang12/test_topology tests/test_topology.c build/clang12/libelite_topology.a -pthread
+clang -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/clang12/bench_topology benchmarks/bench_topology.c build/clang12/libelite_topology.a -pthread
+build/clang12/test_topology
+PASS topology parser: sparse IDs, bounds, duplicate rejection, units, overflow, nulls
+ELITE_TOPOLOGY_BINARY=/mnt/data/turn12_work/elite-ringbuffer-1.0.1-turn12/build/clang12/bench_topology python3 tests/test_topology.py
+test_ambiguous_node_not_certified (__main__.Fixtures.test_ambiguous_node_not_certified) ... ok
+test_cgroup_resource_budget (__main__.Fixtures.test_cgroup_resource_budget) ... ok
+test_conflicting_nodes (__main__.Fixtures.test_conflicting_nodes) ... ok
+test_escape_cgroup_rejected (__main__.Fixtures.test_escape_cgroup_rejected) ... ok
+test_known_cross_numa_shape (__main__.Fixtures.test_known_cross_numa_shape) ... ok
+test_limit_no_truncation (__main__.Fixtures.test_limit_no_truncation) ... ok
+test_malformed_cpu_list (__main__.Fixtures.test_malformed_cpu_list) ... ok
+test_memory_unknown (__main__.Fixtures.test_memory_unknown) ... ok
+test_missing_cache_is_partial (__main__.Fixtures.test_missing_cache_is_partial) ... ok
+test_no_live_claim_from_fixture (__main__.Fixtures.test_no_live_claim_from_fixture) ... ok
+test_no_node_guess (__main__.Fixtures.test_no_node_guess) ... ok
+test_no_per_cpu_pe_fabrication (__main__.Fixtures.test_no_per_cpu_pe_fabrication) ... ok
+test_not_instruction_only_l2 (__main__.Fixtures.test_not_instruction_only_l2) ... ok
+test_oversized_mountinfo (__main__.Fixtures.test_oversized_mountinfo) ... ok
+test_same_data_l2 (__main__.Fixtures.test_same_data_l2) ... ok
+test_sparse_numa_and_smt (__main__.Fixtures.test_sparse_numa_and_smt) ... ok
+test_topology_not_residency (__main__.Fixtures.test_topology_not_residency) ... ok
+test_unlimited_is_not_zero (__main__.Fixtures.test_unlimited_is_not_zero) ... ok
+test_v1_not_unlimited (__main__.Fixtures.test_v1_not_unlimited) ... ok
+test_visible_ancestor_quota (__main__.Fixtures.test_visible_ancestor_quota) ... ok
+test_wrong_same_numa (__main__.Fixtures.test_wrong_same_numa) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.153s
+
+OK
+python3 tests/test_matrix_results.py
+test_bad_plan_hash (__main__.CampaignTests.test_bad_plan_hash) ... ok
+test_changed_plan_workload (__main__.CampaignTests.test_changed_plan_workload) ... ok
+test_duplicate_plan (__main__.CampaignTests.test_duplicate_plan) ... ok
+test_invented_completed_count (__main__.CampaignTests.test_invented_completed_count) ... ok
+test_manifest_guards_inventory (__main__.CampaignTests.test_manifest_guards_inventory) ... ok
+test_missing_completion (__main__.CampaignTests.test_missing_completion) ... ok
+test_missing_trial (__main__.CampaignTests.test_missing_trial) ... ok
+test_renamed_trial (__main__.CampaignTests.test_renamed_trial) ... ok
+test_skip_without_reason (__main__.CampaignTests.test_skip_without_reason) ... ok
+test_valid_campaign (__main__.CampaignTests.test_valid_campaign) ... ok
+test_affinity_lie (__main__.RecordTests.test_affinity_lie) ... ok
+test_bad_capacity (__main__.RecordTests.test_bad_capacity) ... ok
+test_bad_read_timestamp (__main__.RecordTests.test_bad_read_timestamp) ... ok
+test_bandwidth (__main__.RecordTests.test_bandwidth) ... ok
+test_boolean_arrival (__main__.RecordTests.test_boolean_arrival) ... ok
+test_cli_under_optimized_python (__main__.RecordTests.test_cli_under_optimized_python) ... ok
+test_duplicate_free_token (__main__.RecordTests.test_duplicate_free_token) ... ok
+test_duplicate_json_key (__main__.RecordTests.test_duplicate_json_key) ... ok
+test_duplicate_membership (__main__.RecordTests.test_duplicate_membership) ... ok
+test_duplicate_worker (__main__.RecordTests.test_duplicate_worker) ... ok
+test_elapsed (__main__.RecordTests.test_elapsed) ... ok
+test_eligible_scope (__main__.RecordTests.test_eligible_scope) ... ok
+test_epoch_mismatch (__main__.RecordTests.test_epoch_mismatch) ... ok
+test_external_binary (__main__.RecordTests.test_external_binary) ... ok
+test_fixed_schedule_not_closed_loop (__main__.RecordTests.test_fixed_schedule_not_closed_loop) ... ok
+test_geometry (__main__.RecordTests.test_geometry) ... ok
+test_invented_cross_numa (__main__.RecordTests.test_invented_cross_numa) ... ok
+test_invented_pe (__main__.RecordTests.test_invented_pe) ... ok
+test_invented_residency (__main__.RecordTests.test_invented_residency) ... ok
+test_invented_uncertainty (__main__.RecordTests.test_invented_uncertainty) ... ok
+test_max_integer (__main__.RecordTests.test_max_integer) ... ok
+test_missing_membership (__main__.RecordTests.test_missing_membership) ... ok
+test_missing_worker (__main__.RecordTests.test_missing_worker) ... ok
+test_negative_tick (__main__.RecordTests.test_negative_tick) ... ok
+test_no_final_tokens (__main__.RecordTests.test_no_final_tokens) ... ok
+test_nonfinite (__main__.RecordTests.test_nonfinite) ... ok
+test_rate (__main__.RecordTests.test_rate) ... ok
+test_retained_phase (__main__.RecordTests.test_retained_phase) ... ok
+test_retention_not_omitted (__main__.RecordTests.test_retention_not_omitted) ... ok
+test_runtime (__main__.RecordTests.test_runtime) ... ok
+test_shifted_offer (__main__.RecordTests.test_shifted_offer) ... ok
+test_synthetic_hardware (__main__.RecordTests.test_synthetic_hardware) ... ok
+test_truncated_trace (__main__.RecordTests.test_truncated_trace) ... ok
+test_valid (__main__.RecordTests.test_valid) ... ok
+test_warmup_reset (__main__.RecordTests.test_warmup_reset) ... ok
+test_wrong_quantile (__main__.RecordTests.test_wrong_quantile) ... ok
+test_wrong_sample_count (__main__.RecordTests.test_wrong_sample_count) ... ok
+test_wrong_segment (__main__.RecordTests.test_wrong_segment) ... ok
+test_wrong_union (__main__.RecordTests.test_wrong_union) ... ok
+test_zero_timebase (__main__.RecordTests.test_zero_timebase) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 0.760s
+
+OK

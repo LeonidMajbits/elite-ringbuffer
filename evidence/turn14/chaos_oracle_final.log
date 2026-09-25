@@ -1,0 +1,55 @@
+test_all_saved_native_fixtures (__main__.ChaosOracleTests.test_all_saved_native_fixtures) ... ok
+test_async_dropped_pending_message (__main__.ChaosOracleTests.test_async_dropped_pending_message) ... ok
+test_async_is_not_zero_loss (__main__.ChaosOracleTests.test_async_is_not_zero_loss) ... ok
+test_async_orphan_unrecorded (__main__.ChaosOracleTests.test_async_orphan_unrecorded) ... ok
+test_bad_gate_bits (__main__.ChaosOracleTests.test_bad_gate_bits) ... ok
+test_bad_gate_count (__main__.ChaosOracleTests.test_bad_gate_count) ... ok
+test_bool_integer (__main__.ChaosOracleTests.test_bool_integer) ... ok
+test_child_future_clock (__main__.ChaosOracleTests.test_child_future_clock) ... ok
+test_child_sequence (__main__.ChaosOracleTests.test_child_sequence) ... ok
+test_cli_optimized_rejects_mutant (__main__.ChaosOracleTests.test_cli_optimized_rejects_mutant) ... ok
+test_clock_reverse (__main__.ChaosOracleTests.test_clock_reverse) ... ok
+test_count_wrong (__main__.ChaosOracleTests.test_count_wrong) ... ok
+test_duplicate_free_token (__main__.ChaosOracleTests.test_duplicate_free_token) ... ok
+test_duplicate_json_keys (__main__.ChaosOracleTests.test_duplicate_json_keys) ... ok
+test_early_timeout (__main__.ChaosOracleTests.test_early_timeout) ... ok
+test_exit_signal_wrong (__main__.ChaosOracleTests.test_exit_signal_wrong) ... ok
+test_false_hook_claim (__main__.ChaosOracleTests.test_false_hook_claim) ... ok
+test_foreign_pid (__main__.ChaosOracleTests.test_foreign_pid) ... ok
+test_free_epoch_bad (__main__.ChaosOracleTests.test_free_epoch_bad) ... ok
+test_header_corruption (__main__.ChaosOracleTests.test_header_corruption) ... ok
+test_illegal_resumed_commit (__main__.ChaosOracleTests.test_illegal_resumed_commit) ... ok
+test_incomplete_campaign (__main__.ChaosOracleTests.test_incomplete_campaign) ... ok
+test_late_publication_omitted (__main__.ChaosOracleTests.test_late_publication_omitted) ... ok
+test_loss_hidden_by_count (__main__.ChaosOracleTests.test_loss_hidden_by_count) ... ok
+test_missing_completion (__main__.ChaosOracleTests.test_missing_completion) ... ok
+test_missing_name_cleanup (__main__.ChaosOracleTests.test_missing_name_cleanup) ... ok
+test_nohook_storm_with_hooks (__main__.ChaosOracleTests.test_nohook_storm_with_hooks) ... ok
+test_nonfinite (__main__.ChaosOracleTests.test_nonfinite) ... ok
+test_orphan_identity_changed (__main__.ChaosOracleTests.test_orphan_identity_changed) ... ok
+test_orphan_phase_corruption (__main__.ChaosOracleTests.test_orphan_phase_corruption) ... ok
+test_premature_destruction_allowed (__main__.ChaosOracleTests.test_premature_destruction_allowed) ... ok
+test_resource_budget (__main__.ChaosOracleTests.test_resource_budget) ... ok
+test_reused_parent_address (__main__.ChaosOracleTests.test_reused_parent_address) ... ok
+test_reused_session (__main__.ChaosOracleTests.test_reused_session) ... ok
+test_sequence_gap (__main__.ChaosOracleTests.test_sequence_gap) ... ok
+test_spsc_reclamation_lie (__main__.ChaosOracleTests.test_spsc_reclamation_lie) ... ok
+test_spsc_status_mutation (__main__.ChaosOracleTests.test_spsc_status_mutation) ... ok
+test_standard_population (__main__.ChaosOracleTests.test_standard_population) ... ok
+test_stop_not_terminal (__main__.ChaosOracleTests.test_stop_not_terminal) ... ok
+test_storm_no_deliveries (__main__.ChaosOracleTests.test_storm_no_deliveries) ... ok
+test_timeout_custody (__main__.ChaosOracleTests.test_timeout_custody) ... ok
+test_timeout_does_not_fence (__main__.ChaosOracleTests.test_timeout_does_not_fence) ... ok
+test_timeout_does_not_reclaim (__main__.ChaosOracleTests.test_timeout_does_not_reclaim) ... ok
+test_too_large_frontier (__main__.ChaosOracleTests.test_too_large_frontier) ... ok
+test_uncommitted_sentinel_delivered (__main__.ChaosOracleTests.test_uncommitted_sentinel_delivered) ... ok
+test_unknown_campaign_profile (__main__.ChaosOracleTests.test_unknown_campaign_profile) ... ok
+test_unreaped_complete (__main__.ChaosOracleTests.test_unreaped_complete) ... ok
+test_wrong_hook_cut (__main__.ChaosOracleTests.test_wrong_hook_cut) ... ok
+test_wrong_live_cycle (__main__.ChaosOracleTests.test_wrong_live_cycle) ... ok
+test_wrong_snapshot_scope (__main__.ChaosOracleTests.test_wrong_snapshot_scope) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 0.765s
+
+OK

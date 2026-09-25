@@ -1,0 +1,1 @@
+{"schema":"elite-cache-campaign-v2","status":"COMPLETE","trials":5,"expected_records":10,"workers":1,"iterations_per_worker":5000000,"binary_sha256":"e423fbbf31ae2f31c3943847de45acf088db5dda1de35bbdf48e64e45d68b89e","pmc_mode":"count"}

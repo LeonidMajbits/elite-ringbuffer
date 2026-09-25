@@ -1,0 +1,14 @@
+
+elite_pmc.o:
+                 U __errno_location
+                 U __isoc23_fscanf
+                 U calloc
+                 U close
+                 U fclose
+                 U fopen
+                 U free
+                 U getrusage
+                 U ioctl
+                 U pthread_self
+                 U read
+                 U syscall

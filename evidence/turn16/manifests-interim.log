@@ -1,0 +1,2 @@
+$ ['python3', 'tools/regenerate_manifests.py']
+GENERATED full/source records: (8031, 151)

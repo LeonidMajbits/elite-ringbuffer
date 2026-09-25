@@ -1,0 +1,260 @@
+[
+  {
+    "name": "formal-current-replay",
+    "command": [
+      "python3",
+      "tools/verify_formal_results.py",
+      "evidence/turn16/formal_admitted"
+    ],
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 4939983426,
+    "log_sha256": "633ff715a4db4ee9127bd63cb9387fce6f3125ce997a323b4d80e08c2199e9ca"
+  },
+  {
+    "name": "gcc-release-check-final",
+    "command": [
+      "make",
+      "CC=gcc",
+      "CXX=g++",
+      "BUILD=build/gcc-seed",
+      "release-check",
+      "check-seeding"
+    ],
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 161489308921,
+    "log_sha256": "176e41851a40c69b57a83ee40a7ffa7997aa6549ac6e01a9d066fa27cf56eb7b"
+  },
+  {
+    "name": "clang-release-check-final",
+    "command": [
+      "make",
+      "CC=clang",
+      "CXX=clang++",
+      "BUILD=build/clang-seed",
+      "release-check",
+      "check-seeding"
+    ],
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 157041573095,
+    "log_sha256": "aff127c20b12c0495828d9e81db67c3a46edef297ed188fcaafb318a5cdf1e0b"
+  },
+  {
+    "name": "cmake-shared-configure",
+    "command": [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "build/cmake-shared",
+      "-G",
+      "Ninja",
+      "-DCMAKE_C_COMPILER=gcc",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DELITE_BUILD_STATIC=OFF",
+      "-DELITE_BUILD_TESTS=ON"
+    ],
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 1173097089,
+    "log_sha256": "778ab3f07840ab5dea6c631a81b72fdda62645cb3ef2deb55b0d56accb837243"
+  },
+  {
+    "name": "cmake-shared-build",
+    "command": [
+      "cmake",
+      "--build",
+      "build/cmake-shared",
+      "--parallel",
+      "2"
+    ],
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 2587572322,
+    "log_sha256": "9177c4aba936afe589f17c52c34d443db78b9cb2fcdae2831fb5b00cd59ee14f"
+  },
+  {
+    "name": "cmake-shared-ctest",
+    "command": [
+      "ctest",
+      "--test-dir",
+      "build/cmake-shared",
+      "--output-on-failure"
+    ],
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 319382940,
+    "log_sha256": "1200f1aafd4f8710baa877c8b622c98f5dd1c67cadde0934ba310187fd406961"
+  },
+  {
+    "name": "cmake-shared-relocate",
+    "command": [
+      "python3",
+      "tools/check_cmake_install.py",
+      "--build",
+      "build/cmake-shared",
+      "--work",
+      "build/shared-relocate"
+    ],
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 4840677144,
+    "log_sha256": "7e5684c0595dc1072362c80b3b211c033b73888dad4488b3bcdcacb717a5c560"
+  },
+  {
+    "name": "asan-build",
+    "command": [
+      "make",
+      "CC=gcc",
+      "BUILD=build/asan-seed",
+      "OPT=-O1 -g -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-lto -fsanitize=address,undefined -fno-sanitize-recover=all",
+      "LDFLAGS=-fsanitize=address,undefined",
+      "all",
+      "demo",
+      "build/asan-seed/test_adversarial"
+    ],
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 11011316695,
+    "log_sha256": "852cf886bdc93efd87af9027840b92d8ce01725507b58ce469f16503afdee895"
+  },
+  {
+    "name": "asan-core",
+    "command": [
+      "build/asan-seed/test_core"
+    ],
+    "environment_overrides": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 216526952,
+    "log_sha256": "0444f01f9e715976ca109c52de11d412314d9191cfad810de4feae1494359827"
+  },
+  {
+    "name": "asan-adversarial",
+    "command": [
+      "build/asan-seed/test_adversarial"
+    ],
+    "environment_overrides": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 316812110,
+    "log_sha256": "d801c1bd3298fce13d6ac145ec5d09e7245d61a74cb4d3f284763a13d02e47af"
+  },
+  {
+    "name": "asan-demo-spsc",
+    "command": [
+      "build/asan-seed/live_throughput_demo",
+      "--mode",
+      "spsc",
+      "--windows",
+      "2",
+      "--messages",
+      "1000",
+      "--plain"
+    ],
+    "environment_overrides": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 216083230,
+    "log_sha256": "9ce0b512ff7484a6bd9d031d3d0d4b47e3fdd9df6eea978a9d0a83dcbe5cccd7"
+  },
+  {
+    "name": "asan-demo-ncq",
+    "command": [
+      "build/asan-seed/live_throughput_demo",
+      "--mode",
+      "ncq",
+      "--windows",
+      "2",
+      "--messages",
+      "1000",
+      "--plain"
+    ],
+    "environment_overrides": {
+      "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+      "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"
+    },
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 216172466,
+    "log_sha256": "ebf282a65816a45b80303c493b57ec5b58c7d8a6255ebd6cc1e641f2c3cebd94"
+  },
+  {
+    "name": "tsan-build",
+    "command": [
+      "make",
+      "CC=gcc",
+      "BUILD=build/tsan-seed",
+      "OPT=-O1 -g -fno-omit-frame-pointer -fno-lto -fsanitize=thread",
+      "LDFLAGS=-fsanitize=thread",
+      "build/tsan-seed/test_adversarial",
+      "build/tsan-seed/tsan_detector_control"
+    ],
+    "environment_overrides": {},
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 3029943312,
+    "log_sha256": "0a99784ea235be7e942c29bfbae41fa1222b83f76090155aae32571201f22197"
+  },
+  {
+    "name": "tsan-detector",
+    "command": [
+      "build/tsan-seed/tsan_detector_control"
+    ],
+    "environment_overrides": {
+      "TSAN_OPTIONS": "halt_on_error=1:exitcode=66:force_seq_cst_atomics=0:report_atomic_races=1:ignore_interceptors_accesses=0:ignore_noninstrumented_modules=0"
+    },
+    "exit": 66,
+    "expected": 66,
+    "timed_out": false,
+    "duration_ns": 166157506,
+    "log_sha256": "da624ee381bc322ca1d0c19670fb8b24e4dda882004af530a0d9aade321aa2ef"
+  },
+  {
+    "name": "tsan-adversarial",
+    "command": [
+      "build/tsan-seed/test_adversarial",
+      "threads"
+    ],
+    "environment_overrides": {
+      "TSAN_OPTIONS": "halt_on_error=1:exitcode=66:force_seq_cst_atomics=0:report_atomic_races=1:ignore_interceptors_accesses=0:ignore_noninstrumented_modules=0"
+    },
+    "exit": 0,
+    "expected": 0,
+    "timed_out": false,
+    "duration_ns": 921878301,
+    "log_sha256": "f26864048706ed7a54241c6fb5a61e1ebb23e38f81cd7df201ce0f3e97c741a5"
+  }
+]

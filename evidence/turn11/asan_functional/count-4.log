@@ -1,0 +1,4 @@
+CACHE v2 workers=4 stride=8 trial=0 RMW/s=95131887.281 pmc=UNSUPPORTED_EVENT (not IPC)
+CACHE v2 workers=4 stride=128 trial=0 RMW/s=1670962432.587 pmc=UNSUPPORTED_EVENT (not IPC)
+CACHE v2 workers=4 stride=128 trial=1 RMW/s=551376580.555 pmc=UNSUPPORTED_EVENT (not IPC)
+CACHE v2 workers=4 stride=8 trial=1 RMW/s=143923927.569 pmc=UNSUPPORTED_EVENT (not IPC)

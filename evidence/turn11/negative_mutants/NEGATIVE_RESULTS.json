@@ -1,0 +1,113 @@
+{
+  "status": "PASS_EXPECTED_REJECTIONS",
+  "tests": [
+    {
+      "case": "delta",
+      "exit_code": 1,
+      "stderr": "FAIL: delta_ticks: expected 94709841\n",
+      "expected": 1
+    },
+    {
+      "case": "duration",
+      "exit_code": 1,
+      "stderr": "FAIL: elapsed_ns: differs by more than one binary64 ULP\n",
+      "expected": 1
+    },
+    {
+      "case": "rate",
+      "exit_code": 1,
+      "stderr": "FAIL: operations_per_second: differs by more than one binary64 ULP\n",
+      "expected": 1
+    },
+    {
+      "case": "workers",
+      "exit_code": 1,
+      "stderr": "FAIL: total_operations: expected 25000000\n",
+      "expected": 1
+    },
+    {
+      "case": "lost_rmw",
+      "exit_code": 1,
+      "stderr": "FAIL: worker[0].counter: expected 5000000\n",
+      "expected": 1
+    },
+    {
+      "case": "extra_rmw",
+      "exit_code": 1,
+      "stderr": "FAIL: worker[0].counter: expected 5000000\n",
+      "expected": 1
+    },
+    {
+      "case": "end",
+      "exit_code": 1,
+      "stderr": "FAIL: delta_ticks: expected 94709842\n",
+      "expected": 1
+    },
+    {
+      "case": "denom_zero",
+      "exit_code": 1,
+      "stderr": "FAIL: denom: invalid integer\n",
+      "expected": 1
+    },
+    {
+      "case": "source_identity",
+      "exit_code": 1,
+      "stderr": "FAIL: source snapshot digest: expected '0000000000000000000000000000000000000000000000000000000000000000'\n",
+      "expected": 1
+    },
+    {
+      "case": "invalid_pmc",
+      "exit_code": 1,
+      "stderr": "FAIL: worker[0].pmc.groups[0]: malformed native counter evidence\n",
+      "expected": 1
+    },
+    {
+      "case": "false_coherence",
+      "exit_code": 1,
+      "stderr": "FAIL: generic LLC miss count is not invalidation traffic\n",
+      "expected": 1
+    },
+    {
+      "case": "float_counter",
+      "exit_code": 1,
+      "stderr": "FAIL: worker[0].counter: invalid integer\n",
+      "expected": 1
+    },
+    {
+      "case": "boolean_counter",
+      "exit_code": 1,
+      "stderr": "FAIL: worker[0].counter: invalid integer\n",
+      "expected": 1
+    },
+    {
+      "case": "bad_worker_delta",
+      "exit_code": 1,
+      "stderr": "FAIL: worker[0].delta: expected 94705828\n",
+      "expected": 1
+    },
+    {
+      "case": "fake_pinning",
+      "exit_code": 1,
+      "stderr": "FAIL: worker[0].P core claim: expected 'NOT_ESTABLISHED'\n",
+      "expected": 1
+    },
+    {
+      "case": "nan_duration",
+      "exit_code": 1,
+      "stderr": "FAIL: nonfinite JSON constant: NaN\n",
+      "expected": 1
+    },
+    {
+      "case": "outside_two_ulp",
+      "exit_code": 1,
+      "stderr": "FAIL: elapsed_ns: differs by more than one binary64 ULP\n",
+      "expected": 1
+    },
+    {
+      "case": "duplicate_key",
+      "exit_code": 1,
+      "stderr": "FAIL: duplicate JSON key: schema\n",
+      "expected": 1
+    }
+  ]
+}

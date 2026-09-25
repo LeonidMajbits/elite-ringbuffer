@@ -1,0 +1,17 @@
+$ ['cmake', '--build', 'build/cmake-static', '--parallel', '2']
+[1/16] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_format.c.o
+[2/16] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_core.c.o
+[3/16] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_spsc.c.o
+[4/16] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_mpmc_ncq.c.o
+[5/16] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_wait.c.o
+[6/16] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_version.c.o
+[7/16] Building C object CMakeFiles/elite_ringbuffer_static.dir/src/elite_shm.c.o
+[8/16] Linking C static library libelite_ringbuffer.a
+[9/16] Building C object CMakeFiles/live_throughput_demo.dir/examples/live_throughput_demo.c.o
+[10/16] Building C object CMakeFiles/test_portability.dir/tests/test_portability.c.o
+[11/16] Building C object CMakeFiles/test_ipc.dir/tests/test_ipc.c.o
+[12/16] Linking C executable live_throughput_demo
+[13/16] Linking C executable test_ipc
+[14/16] Linking C executable test_portability
+[15/16] Building C object CMakeFiles/test_core.dir/tests/test_core.c.o
+[16/16] Linking C executable test_core

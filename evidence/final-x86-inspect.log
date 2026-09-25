@@ -1,0 +1,3 @@
+objdump -dr build/final-gcc/elite_spsc.o > build/final-gcc/spsc-disassembly.txt
+objdump -dr build/final-gcc/elite_mpmc_ncq.o > build/final-gcc/ncq-disassembly.txt
+nm -u build/final-gcc/libelite_ringbuffer.a > build/final-gcc/undefined-symbols.txt

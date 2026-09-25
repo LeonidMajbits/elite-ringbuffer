@@ -1,0 +1,22 @@
+{
+  "status": "PASS_WITHIN_SCOPE",
+  "messages": 20000,
+  "runtime": "native_c",
+  "mode": "ncq",
+  "locality": "UNQUALIFIED_LOCALITY",
+  "cache_bounds": {
+    "payload_pool_bytes": 4096,
+    "segment_bytes": 98304,
+    "min_observed_l2_bytes": 1048576,
+    "reported_selected_llc_sum_bytes": 33554432,
+    "pool_capacity_below_all_reported_l2": true,
+    "pool_capacity_above_reported_llc_sum": false,
+    "cache_residency": "NOT_ESTABLISHED",
+    "dram_saturation": "NOT_ESTABLISHED"
+  },
+  "finite_run_token_accounting": "COMPLETE",
+  "universal_deadlock_freedom": "NOT_PROVED",
+  "one_way_metrology_qualification": "NOT_QUALIFIED",
+  "messages_per_second": 1682432.6023808608,
+  "p99_offered_ns": 16790
+}

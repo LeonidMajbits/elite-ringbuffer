@@ -1,0 +1,2097 @@
+{
+  "mode": "spsc",
+  "messages": 512,
+  "warmup_messages": 32,
+  "producers": 1,
+  "consumers": 1,
+  "capacity": 32,
+  "payload_bytes": 64,
+  "checksum": 0,
+  "arrival": 0,
+  "burst": 32,
+  "period_ns": 10000,
+  "hold_ns": 0,
+  "hold_every": 16,
+  "os_yield": 0,
+  "runtime": "python_bytecode",
+  "locality_request": "unconstrained",
+  "schema": "elite-matrix-v1",
+  "status": "PASS_WITHIN_SCOPE",
+  "t0": 1424284063427,
+  "end": 1424302602090,
+  "delta_ticks": 18538663,
+  "timebase_numer": 1,
+  "timebase_denom": 1,
+  "clock": "CLOCK_MONOTONIC_RAW",
+  "segment_bytes": 65536,
+  "elapsed_ns": 18538663.0,
+  "messages_per_second": 27617.957130996987,
+  "delivered_GB_per_second": 0.0017675492563838072,
+  "hardware_topology": {
+    "schema": "elite-hardware-topology-v1",
+    "source_kind": "LIVE_OS_VISIBLE",
+    "platform": "Linux",
+    "architecture": "x86_64",
+    "kernel": "6.18.44",
+    "model": "AMD EPYC 9V74 80-Core Processor",
+    "environment": "TOPOLOGY_VIRTUALIZED_CONTAINER",
+    "cgroup_status": "V2_VISIBLE_ANCESTORS_ONLY",
+    "partial": false,
+    "container_marker": false,
+    "hypervisor_flag": true,
+    "translated": false,
+    "translation_error": 0,
+    "observation_errors": 0,
+    "max_cpu_id_exclusive": 1024,
+    "scope": "cache/core records for affinity-eligible CPUs; node maps and online CPUs are OS-visible, not physical attestation",
+    "worker_cluster_mapping": "NOT_ESTABLISHED",
+    "host_cluster_class": "TOPOLOGY_CLUSTER_UNKNOWN",
+    "page_bytes": {
+      "value": 4096,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "physical_memory_bytes": {
+      "value": 6236913664,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "physical_cpus": {
+      "value": 5,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "logical_cpus": {
+      "value": 5,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "memory_frequency_hz": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "memory_channels": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "system_l3_bytes": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "cache_line_bytes": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "online_cpus": {
+      "status": "OBSERVED",
+      "error": 0,
+      "cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "allowed_cpus": {
+      "status": "OBSERVED",
+      "error": 0,
+      "cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "cpus": [
+      {
+        "cpu_id": 0,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 1,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 1,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            1
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 2,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 2,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            2
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 3,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 3,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            3
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 4,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 4,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            4
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                4
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                4
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                4
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": 0,
+        "cpus": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    ],
+    "perflevels": [],
+    "cgroups": [
+      {
+        "path": "/sys/fs/cgroup",
+        "quota_unlimited": false,
+        "memory_unlimited": false,
+        "quota_us": {
+          "value": 400000,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "period_us": {
+          "value": 100000,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "memory_max": {
+          "value": 4294967296,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "memory_current": {
+          "value": 739434496,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cpus_effective": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "mems_effective": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0
+          ]
+        }
+      }
+    ]
+  },
+  "hardware_topology_after": {
+    "schema": "elite-hardware-topology-v1",
+    "source_kind": "LIVE_OS_VISIBLE",
+    "platform": "Linux",
+    "architecture": "x86_64",
+    "kernel": "6.18.44",
+    "model": "AMD EPYC 9V74 80-Core Processor",
+    "environment": "TOPOLOGY_VIRTUALIZED_CONTAINER",
+    "cgroup_status": "V2_VISIBLE_ANCESTORS_ONLY",
+    "partial": false,
+    "container_marker": false,
+    "hypervisor_flag": true,
+    "translated": false,
+    "translation_error": 0,
+    "observation_errors": 0,
+    "max_cpu_id_exclusive": 1024,
+    "scope": "cache/core records for affinity-eligible CPUs; node maps and online CPUs are OS-visible, not physical attestation",
+    "worker_cluster_mapping": "NOT_ESTABLISHED",
+    "host_cluster_class": "TOPOLOGY_CLUSTER_UNKNOWN",
+    "page_bytes": {
+      "value": 4096,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "physical_memory_bytes": {
+      "value": 6236913664,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "physical_cpus": {
+      "value": 5,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "logical_cpus": {
+      "value": 5,
+      "status": "OBSERVED",
+      "error": 0
+    },
+    "memory_frequency_hz": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "memory_channels": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "system_l3_bytes": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "cache_line_bytes": {
+      "value": null,
+      "status": "UNAVAILABLE",
+      "error": 95
+    },
+    "online_cpus": {
+      "status": "OBSERVED",
+      "error": 0,
+      "cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "allowed_cpus": {
+      "status": "OBSERVED",
+      "error": 0,
+      "cpus": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "cpus": [
+      {
+        "cpu_id": 0,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 1,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 1,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            1
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 2,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 2,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            2
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 3,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 3,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            3
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                2,
+                3
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "cpu_id": 4,
+        "numa_node": 0,
+        "package_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "die_id": {
+          "value": 0,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "core_id": {
+          "value": 4,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cluster_id": {
+          "value": 65535,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "smt_siblings": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            4
+          ]
+        },
+        "caches": [
+          {
+            "index": 0,
+            "type": "Data",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                4
+              ]
+            }
+          },
+          {
+            "index": 1,
+            "type": "Instruction",
+            "level": {
+              "value": 1,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 32768,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                4
+              ]
+            }
+          },
+          {
+            "index": 2,
+            "type": "Unified",
+            "level": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 1048576,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 2,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                4
+              ]
+            }
+          },
+          {
+            "index": 3,
+            "type": "Unified",
+            "level": {
+              "value": 3,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "bytes": {
+              "value": 33554432,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "line_bytes": {
+              "value": 64,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "id": {
+              "value": 0,
+              "status": "OBSERVED",
+              "error": 0
+            },
+            "shared_cpus": {
+              "status": "OBSERVED",
+              "error": 0,
+              "cpus": [
+                0,
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "node_id": 0,
+        "cpus": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      }
+    ],
+    "perflevels": [],
+    "cgroups": [
+      {
+        "path": "/sys/fs/cgroup",
+        "quota_unlimited": false,
+        "memory_unlimited": false,
+        "quota_us": {
+          "value": 400000,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "period_us": {
+          "value": 100000,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "memory_max": {
+          "value": 4294967296,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "memory_current": {
+          "value": 739860480,
+          "status": "OBSERVED",
+          "error": 0
+        },
+        "cpus_effective": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "mems_effective": {
+          "status": "OBSERVED",
+          "error": 0,
+          "cpus": [
+            0
+          ]
+        }
+      }
+    ]
+  },
+  "workers_info": [
+    {
+      "index": 0,
+      "count": 512,
+      "start_tick": 1424284064894,
+      "end_tick": 1424302200818,
+      "empty_polls": 27168,
+      "placement": {
+        "requested_cpu": 0,
+        "affinity_error": 0,
+        "verified_cpu_before": 0,
+        "verified_cpu_after": 0,
+        "affinity_enforced": true,
+        "darwin_affinity_tag": 0,
+        "tag_set_error": 0,
+        "tag_get_error": 0,
+        "tag_readback": -1,
+        "qos_request": 0,
+        "qos_error": 0,
+        "p_core_pinning": "NOT_ESTABLISHED"
+      },
+      "resources": {
+        "user_us": 18128,
+        "system_us": 0,
+        "minor_faults": 2,
+        "major_faults": 0,
+        "voluntary_context_switches": 0,
+        "involuntary_context_switches": 0
+      }
+    },
+    {
+      "index": 1,
+      "count": 512,
+      "start_tick": 1424284065000,
+      "end_tick": 1424302602090,
+      "empty_polls": 1414,
+      "placement": {
+        "requested_cpu": 1,
+        "affinity_error": 0,
+        "verified_cpu_before": 1,
+        "verified_cpu_after": 1,
+        "affinity_enforced": true,
+        "darwin_affinity_tag": 0,
+        "tag_set_error": 0,
+        "tag_get_error": 0,
+        "tag_readback": -1,
+        "qos_request": 0,
+        "qos_error": 0,
+        "p_core_pinning": "NOT_ESTABLISHED"
+      },
+      "resources": {
+        "user_us": 10575,
+        "system_us": 7801,
+        "minor_faults": 2,
+        "major_faults": 0,
+        "voluntary_context_switches": 0,
+        "involuntary_context_switches": 1
+      }
+    }
+  ],
+  "physical_cache_residency": "NOT_ESTABLISHED",
+  "absolute_clock_uncertainty": "NOT_QUALIFIED",
+  "memory_placement": "INITIALIZER_FIRST_TOUCH_NOT_VERIFIED",
+  "exact_membership": true,
+  "all_tokens_returned": true,
+  "no_payload_in_control_channel": true,
+  "warmup_same_generation": true,
+  "trace_format": "little-endian-u64-triples",
+  "binary_sha256": "17b78e0a93175e86f9ac03141924fd7a7f0c0c52e66b34bfa0de20ffef989df1",
+  "binary_bytes": 6812336,
+  "runtime_identity": {
+    "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+    "interpreter": "/opt/pyvenv/bin/python3",
+    "exporter_sha256": "1f05bab82888e552b52cbd68f0aac865eeded56f0aff5b7a4b9f57270220c7fe",
+    "native_library_sha256": "39a57cd842fea670fd25acb059adc2d27e6b4343755d80bfb9e30d45a9119027",
+    "bridge_sha256": "b2301b6a234381f3b95e9ce2b7494cf61edc4489bc7d81fa2b23847bd78a06cb",
+    "caller_source_sha256": "945dd4849e5a4b880ac58d1f9dda982b733f4c7a64cef9c36abcc6f377a0190b"
+  },
+  "native_latency": {
+    "samples": 512,
+    "zeros": 0,
+    "minimum_nonzero_ticks": 22368,
+    "raw_tick_quantiles": {
+      "p50": 27396,
+      "p90": 29850,
+      "p99": 82819,
+      "p99_9": 218441,
+      "p99_99": 218441,
+      "max": 218441
+    },
+    "nanoseconds_ceiling": {
+      "p50": 27396,
+      "p90": 29850,
+      "p99": 82819,
+      "p99_9": 218441,
+      "p99_99": 218441,
+      "max": 218441
+    }
+  },
+  "offered_latency": {
+    "samples": 512,
+    "zeros": 0,
+    "minimum_nonzero_ticks": 22529,
+    "raw_tick_quantiles": {
+      "p50": 27607,
+      "p90": 30101,
+      "p99": 83019,
+      "p99_9": 218631,
+      "p99_99": 218631,
+      "max": 218631
+    },
+    "nanoseconds_ceiling": {
+      "p50": 27607,
+      "p90": 30101,
+      "p99": 83019,
+      "p99_9": 218631,
+      "p99_99": 218631,
+      "max": 218631
+    }
+  },
+  "returned_latency": {
+    "samples": 512,
+    "zeros": 0,
+    "minimum_nonzero_ticks": 26424,
+    "raw_tick_quantiles": {
+      "p50": 31602,
+      "p90": 34487,
+      "p99": 92974,
+      "p99_9": 229197,
+      "p99_99": 229197,
+      "max": 229197
+    },
+    "nanoseconds_ceiling": {
+      "p50": 31602,
+      "p90": 34487,
+      "p99": 92974,
+      "p99_9": 229197,
+      "p99_99": 229197,
+      "max": 229197
+    }
+  }
+}

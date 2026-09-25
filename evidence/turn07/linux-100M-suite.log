@@ -1,0 +1,7 @@
+RUN rtt-spsc
+RUN rtt-ncq
+RUN goodput-spsc-1
+RUN goodput-ncq-1
+RUN goodput-ncq-2
+RUN goodput-ncq-4
+RUN goodput-ncq-8

@@ -1,0 +1,194 @@
+[
+  {
+    "name": "manifests-interim",
+    "command": [
+      "python3",
+      "tools/regenerate_manifests.py"
+    ],
+    "exit": 0,
+    "timed_out": false,
+    "duration_ns": 3180326078,
+    "log_sha256": "07adfc1b35c1de3d6d3921b836bbaf1280b5357dd8b6e66a96b716a24230be53"
+  },
+  {
+    "name": "gcc-release-check",
+    "command": [
+      "make",
+      "CC=gcc",
+      "CXX=g++",
+      "BUILD=build/gcc-seed",
+      "release-check",
+      "check-seeding"
+    ],
+    "exit": 2,
+    "timed_out": false,
+    "duration_ns": 125160093193,
+    "log_sha256": "f3ce00ebccee9c6c77759ee065f3a1625708475b10c5c866cf2e879ef8902ce1"
+  },
+  {
+    "name": "clang-release-check",
+    "command": [
+      "make",
+      "CC=clang",
+      "CXX=clang++",
+      "BUILD=build/clang-seed",
+      "release-check",
+      "check-seeding"
+    ],
+    "exit": 2,
+    "timed_out": false,
+    "duration_ns": 119061129298,
+    "log_sha256": "b5f79fc7d0226a1176c54749c0bfacb7f5e96354b28756ef088388a333925ca6"
+  },
+  {
+    "name": "cmake-gcc-ctest",
+    "command": [
+      "ctest",
+      "--test-dir",
+      "build/cmake-gcc-ninja",
+      "--output-on-failure"
+    ],
+    "exit": 0,
+    "timed_out": false,
+    "duration_ns": 265815871,
+    "log_sha256": "d970fa01354d608305404dbef82a5a92e96643400d1d3f526dad708361c0b795"
+  },
+  {
+    "name": "cmake-gcc-relocate",
+    "command": [
+      "python3",
+      "tools/check_cmake_install.py",
+      "--build",
+      "build/cmake-gcc-ninja",
+      "--work",
+      "build/gcc-relocate"
+    ],
+    "exit": 1,
+    "timed_out": false,
+    "duration_ns": 4344468868,
+    "log_sha256": "dceffd5cd419cfa265cb1b5028ebf9589983ff4d80fd6286639b831a567e30a9"
+  },
+  {
+    "name": "cmake-clang-configure",
+    "command": [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "build/cmake-clang",
+      "-G",
+      "Ninja",
+      "-DCMAKE_C_COMPILER=clang",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DELITE_BUILD_TESTS=ON"
+    ],
+    "exit": 0,
+    "timed_out": false,
+    "duration_ns": 1627477527,
+    "log_sha256": "8dd5e28806a415be9a9d64337fc71e2952a53c169c18d66a1a242e0363a94d4d"
+  },
+  {
+    "name": "cmake-clang-build",
+    "command": [
+      "cmake",
+      "--build",
+      "build/cmake-clang",
+      "--parallel",
+      "2"
+    ],
+    "exit": 0,
+    "timed_out": false,
+    "duration_ns": 3736566489,
+    "log_sha256": "42a40fd04388ecc029fc3fff5357b914afb5b95a94f57f89eccec0175b384ac1"
+  },
+  {
+    "name": "cmake-clang-ctest",
+    "command": [
+      "ctest",
+      "--test-dir",
+      "build/cmake-clang",
+      "--output-on-failure"
+    ],
+    "exit": 0,
+    "timed_out": false,
+    "duration_ns": 273960754,
+    "log_sha256": "94ee657027160b025a83dba3fd72a11578726751772524ad6cfb35e1b0ffcf5a"
+  },
+  {
+    "name": "cmake-clang-relocate",
+    "command": [
+      "python3",
+      "tools/check_cmake_install.py",
+      "--build",
+      "build/cmake-clang",
+      "--work",
+      "build/clang-relocate"
+    ],
+    "exit": 1,
+    "timed_out": false,
+    "duration_ns": 4499465188,
+    "log_sha256": "f995f5d09141f3f0985885cd89b9b7c41f50643fb46e990e073722546938e0de"
+  },
+  {
+    "name": "cmake-static-configure",
+    "command": [
+      "cmake",
+      "-S",
+      ".",
+      "-B",
+      "build/cmake-static",
+      "-G",
+      "Ninja",
+      "-DCMAKE_C_COMPILER=gcc",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DELITE_BUILD_SHARED=OFF",
+      "-DELITE_BUILD_TESTS=ON"
+    ],
+    "exit": 0,
+    "timed_out": false,
+    "duration_ns": 1074363766,
+    "log_sha256": "e7ed58b35e5903cbdfaeb4f2e32e6ff23d5f5f51920c817b34a913bea77ac025"
+  },
+  {
+    "name": "cmake-static-build",
+    "command": [
+      "cmake",
+      "--build",
+      "build/cmake-static",
+      "--parallel",
+      "2"
+    ],
+    "exit": 0,
+    "timed_out": false,
+    "duration_ns": 2582344202,
+    "log_sha256": "aedc535d3c21c5bdfba6af6e07c286cd33ec2df013affbed5cc3e5d9e7bdcdd6"
+  },
+  {
+    "name": "cmake-static-ctest",
+    "command": [
+      "ctest",
+      "--test-dir",
+      "build/cmake-static",
+      "--output-on-failure"
+    ],
+    "exit": 0,
+    "timed_out": false,
+    "duration_ns": 273802993,
+    "log_sha256": "1554a77845b81bca2d05e38e65379d289181e6d5af82244112c90ca419c34fb0"
+  },
+  {
+    "name": "cmake-static-relocate",
+    "command": [
+      "python3",
+      "tools/check_cmake_install.py",
+      "--build",
+      "build/cmake-static",
+      "--work",
+      "build/static-relocate"
+    ],
+    "exit": 1,
+    "timed_out": false,
+    "duration_ns": 4592204509,
+    "log_sha256": "0eb8261e76543fb7913593f2849ab353c4a3a860a5583311198a64f806760ba9"
+  }
+]

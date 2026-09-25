@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/mnt/data/Elite_RingBuffer_v1_1_0/build/asan/chaos_multiprocess_hooks",
+    "write_claim",
+    "ncq",
+    "1000",
+    "1",
+    "1",
+    "1"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "wall_ns": 114398838,
+  "trace_sha256": "1535e801022e9b5872b43d4342b62b68910176c2fc62c61c0fb50a9413d06281",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

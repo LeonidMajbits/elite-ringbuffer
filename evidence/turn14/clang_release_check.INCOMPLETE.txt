@@ -1,0 +1,1 @@
+INCOMPLETE: outer container execution window expired at 200 seconds. No complete release-check exit status was obtained. The log ends during test_valid_all_auxiliary_replay. A follow-up process inspection found no remaining matching test cohort. This is not a diagnosed memory-safety failure or a passing full-suite result.

@@ -1,0 +1,1 @@
+PASS negative controls=10 (5 CLI, watchdog, duplicate bitmap, invalid RTT, incomplete campaign, Python -O)

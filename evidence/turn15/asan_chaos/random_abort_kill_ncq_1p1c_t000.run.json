@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/mnt/data/Elite_RingBuffer_v1_1_0/build/asan/chaos_multiprocess",
+    "random_abort_kill",
+    "ncq",
+    "1000",
+    "1",
+    "1",
+    "1"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "wall_ns": 114682286,
+  "trace_sha256": "a1d4b6ca97e8f828eba64efec6ea7229fedc16ab7e3e1109493cb8a6fd4217ba",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,562 @@
+
+build/final-gcc/elite_mpmc_ncq.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <el_ncq_enqueue>:
+   0:	55                   	push   %rbp
+   1:	49 89 f8             	mov    %rdi,%r8
+   4:	41 89 f1             	mov    %esi,%r9d
+   7:	48 89 e5             	mov    %rsp,%rbp
+   a:	41 57                	push   %r15
+   c:	49 89 d7             	mov    %rdx,%r15
+   f:	41 56                	push   %r14
+  11:	41 55                	push   %r13
+  13:	41 54                	push   %r12
+  15:	53                   	push   %rbx
+  16:	48 8b bf 28 02 00 00 	mov    0x228(%rdi),%rdi
+  1d:	49 8b 98 50 02 00 00 	mov    0x250(%r8),%rbx
+  24:	49 8b 80 58 02 00 00 	mov    0x258(%r8),%rax
+  2b:	40 84 f6             	test   %sil,%sil
+  2e:	0f 84 ec 00 00 00    	je     120 <el_ncq_enqueue+0x120>
+  34:	48 81 c7 80 03 00 00 	add    $0x380,%rdi
+  3b:	4d 8b 58 40          	mov    0x40(%r8),%r11
+  3f:	4d 8b a0 90 00 00 00 	mov    0x90(%r8),%r12
+  46:	4c 89 45 c8          	mov    %r8,-0x38(%rbp)
+  4a:	4d 89 da             	mov    %r11,%r10
+  4d:	4d 8d 6b ff          	lea    -0x1(%r11),%r13
+  51:	49 f7 da             	neg    %r10
+  54:	48 8b 0f             	mov    (%rdi),%rcx
+  57:	4c 39 e1             	cmp    %r12,%rcx
+  5a:	0f 83 a0 00 00 00    	jae    100 <el_ncq_enqueue+0x100>
+  60:	48 89 ca             	mov    %rcx,%rdx
+  63:	48 89 ce             	mov    %rcx,%rsi
+  66:	4c 21 ea             	and    %r13,%rdx
+  69:	4c 21 d6             	and    %r10,%rsi
+  6c:	48 c1 e2 07          	shl    $0x7,%rdx
+  70:	48 01 da             	add    %rbx,%rdx
+  73:	48 8b 02             	mov    (%rdx),%rax
+  76:	49 89 c6             	mov    %rax,%r14
+  79:	4d 21 d6             	and    %r10,%r14
+  7c:	4c 39 f6             	cmp    %r14,%rsi
+  7f:	74 67                	je     e8 <el_ncq_enqueue+0xe8>
+  81:	4c 39 de             	cmp    %r11,%rsi
+  84:	72 ce                	jb     54 <el_ncq_enqueue+0x54>
+  86:	49 89 f0             	mov    %rsi,%r8
+  89:	4d 29 d8             	sub    %r11,%r8
+  8c:	4d 39 f0             	cmp    %r14,%r8
+  8f:	75 c3                	jne    54 <el_ncq_enqueue+0x54>
+  91:	4c 09 fe             	or     %r15,%rsi
+  94:	f0 48 0f b1 32       	lock cmpxchg %rsi,(%rdx)
+  99:	75 b9                	jne    54 <el_ncq_enqueue+0x54>
+  9b:	48 8d 51 01          	lea    0x1(%rcx),%rdx
+  9f:	48 89 c8             	mov    %rcx,%rax
+  a2:	f0 48 0f b1 17       	lock cmpxchg %rdx,(%rdi)
+  a7:	48 bf 00 00 00 00 ff 	movabs $0xffffffff00000000,%rdi
+  ae:	ff ff ff 
+  b1:	5b                   	pop    %rbx
+  b2:	41 5c                	pop    %r12
+  b4:	41 5d                	pop    %r13
+  b6:	41 5e                	pop    %r14
+  b8:	41 5f                	pop    %r15
+  ba:	5d                   	pop    %rbp
+  bb:	41 80 f9 01          	cmp    $0x1,%r9b
+  bf:	19 c9                	sbb    %ecx,%ecx
+  c1:	31 c0                	xor    %eax,%eax
+  c3:	31 d2                	xor    %edx,%edx
+  c5:	48 89 c6             	mov    %rax,%rsi
+  c8:	83 e1 fe             	and    $0xfffffffe,%ecx
+  cb:	48 21 fe             	and    %rdi,%rsi
+  ce:	48 89 f0             	mov    %rsi,%rax
+  d1:	8d 71 04             	lea    0x4(%rcx),%esi
+  d4:	48 c1 e6 20          	shl    $0x20,%rsi
+  d8:	89 c1                	mov    %eax,%ecx
+  da:	48 09 f1             	or     %rsi,%rcx
+  dd:	48 89 c8             	mov    %rcx,%rax
+  e0:	c3                   	ret
+  e1:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+  e8:	48 8d 51 01          	lea    0x1(%rcx),%rdx
+  ec:	48 89 c8             	mov    %rcx,%rax
+  ef:	f0 48 0f b1 17       	lock cmpxchg %rdx,(%rdi)
+  f4:	48 8b 0f             	mov    (%rdi),%rcx
+  f7:	4c 39 e1             	cmp    %r12,%rcx
+  fa:	0f 82 60 ff ff ff    	jb     60 <el_ncq_enqueue+0x60>
+ 100:	4c 8b 45 c8          	mov    -0x38(%rbp),%r8
+ 104:	ba 02 00 00 00       	mov    $0x2,%edx
+ 109:	be 09 00 00 00       	mov    $0x9,%esi
+ 10e:	4c 89 c7             	mov    %r8,%rdi
+ 111:	5b                   	pop    %rbx
+ 112:	41 5c                	pop    %r12
+ 114:	41 5d                	pop    %r13
+ 116:	41 5e                	pop    %r14
+ 118:	41 5f                	pop    %r15
+ 11a:	5d                   	pop    %rbp
+ 11b:	e9 00 00 00 00       	jmp    120 <el_ncq_enqueue+0x120>
+			11c: R_X86_64_PLT32	el_fail-0x4
+ 120:	48 81 c7 80 04 00 00 	add    $0x480,%rdi
+ 127:	48 89 c3             	mov    %rax,%rbx
+ 12a:	e9 0c ff ff ff       	jmp    3b <el_ncq_enqueue+0x3b>
+ 12f:	90                   	nop
+
+0000000000000130 <el_ncq_dequeue>:
+ 130:	55                   	push   %rbp
+ 131:	48 89 e5             	mov    %rsp,%rbp
+ 134:	41 56                	push   %r14
+ 136:	41 55                	push   %r13
+ 138:	41 54                	push   %r12
+ 13a:	49 89 d4             	mov    %rdx,%r12
+ 13d:	53                   	push   %rbx
+ 13e:	89 f3                	mov    %esi,%ebx
+ 140:	48 8b 8f 28 02 00 00 	mov    0x228(%rdi),%rcx
+ 147:	4c 8b 9f 50 02 00 00 	mov    0x250(%rdi),%r11
+ 14e:	48 8b 87 58 02 00 00 	mov    0x258(%rdi),%rax
+ 155:	40 84 f6             	test   %sil,%sil
+ 158:	0f 84 aa 00 00 00    	je     208 <el_ncq_dequeue+0xd8>
+ 15e:	48 81 c1 00 03 00 00 	add    $0x300,%rcx
+ 165:	4c 8b 47 40          	mov    0x40(%rdi),%r8
+ 169:	4c 8b 8f 90 00 00 00 	mov    0x90(%rdi),%r9
+ 170:	4c 89 c6             	mov    %r8,%rsi
+ 173:	4d 8d 50 ff          	lea    -0x1(%r8),%r10
+ 177:	48 f7 de             	neg    %rsi
+ 17a:	48 8b 01             	mov    (%rcx),%rax
+ 17d:	49 39 c1             	cmp    %rax,%r9
+ 180:	0f 82 9a 00 00 00    	jb     220 <el_ncq_dequeue+0xf0>
+ 186:	48 89 c2             	mov    %rax,%rdx
+ 189:	49 89 c5             	mov    %rax,%r13
+ 18c:	4c 21 d2             	and    %r10,%rdx
+ 18f:	49 21 f5             	and    %rsi,%r13
+ 192:	48 c1 e2 07          	shl    $0x7,%rdx
+ 196:	4c 01 da             	add    %r11,%rdx
+ 199:	48 8b 12             	mov    (%rdx),%rdx
+ 19c:	49 89 d6             	mov    %rdx,%r14
+ 19f:	49 21 f6             	and    %rsi,%r14
+ 1a2:	4d 39 f5             	cmp    %r14,%r13
+ 1a5:	74 39                	je     1e0 <el_ncq_dequeue+0xb0>
+ 1a7:	4d 39 c5             	cmp    %r8,%r13
+ 1aa:	72 ce                	jb     17a <el_ncq_dequeue+0x4a>
+ 1ac:	4d 29 c5             	sub    %r8,%r13
+ 1af:	4d 39 f5             	cmp    %r14,%r13
+ 1b2:	75 c6                	jne    17a <el_ncq_dequeue+0x4a>
+ 1b4:	0f b6 db             	movzbl %bl,%ebx
+ 1b7:	31 c9                	xor    %ecx,%ecx
+ 1b9:	31 d2                	xor    %edx,%edx
+ 1bb:	48 bf 00 00 00 00 ff 	movabs $0xffffffff00000000,%rdi
+ 1c2:	ff ff ff 
+ 1c5:	48 8d 73 01          	lea    0x1(%rbx),%rsi
+ 1c9:	48 21 f9             	and    %rdi,%rcx
+ 1cc:	48 09 f1             	or     %rsi,%rcx
+ 1cf:	89 c9                	mov    %ecx,%ecx
+ 1d1:	48 89 c8             	mov    %rcx,%rax
+ 1d4:	eb 25                	jmp    1fb <el_ncq_dequeue+0xcb>
+ 1d6:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+ 1dd:	00 00 00 
+ 1e0:	4c 39 c8             	cmp    %r9,%rax
+ 1e3:	74 52                	je     237 <el_ncq_dequeue+0x107>
+ 1e5:	4c 8d 68 01          	lea    0x1(%rax),%r13
+ 1e9:	f0 4c 0f b1 29       	lock cmpxchg %r13,(%rcx)
+ 1ee:	75 8a                	jne    17a <el_ncq_dequeue+0x4a>
+ 1f0:	4c 21 d2             	and    %r10,%rdx
+ 1f3:	31 c0                	xor    %eax,%eax
+ 1f5:	49 89 14 24          	mov    %rdx,(%r12)
+ 1f9:	31 d2                	xor    %edx,%edx
+ 1fb:	5b                   	pop    %rbx
+ 1fc:	41 5c                	pop    %r12
+ 1fe:	41 5d                	pop    %r13
+ 200:	41 5e                	pop    %r14
+ 202:	5d                   	pop    %rbp
+ 203:	c3                   	ret
+ 204:	0f 1f 40 00          	nopl   0x0(%rax)
+ 208:	48 81 c1 00 04 00 00 	add    $0x400,%rcx
+ 20f:	49 89 c3             	mov    %rax,%r11
+ 212:	e9 4e ff ff ff       	jmp    165 <el_ncq_dequeue+0x35>
+ 217:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+ 21e:	00 00 
+ 220:	ba 04 00 00 00       	mov    $0x4,%edx
+ 225:	be 0a 00 00 00       	mov    $0xa,%esi
+ 22a:	5b                   	pop    %rbx
+ 22b:	41 5c                	pop    %r12
+ 22d:	41 5d                	pop    %r13
+ 22f:	41 5e                	pop    %r14
+ 231:	5d                   	pop    %rbp
+ 232:	e9 00 00 00 00       	jmp    237 <el_ncq_dequeue+0x107>
+			233: R_X86_64_PLT32	el_fail-0x4
+ 237:	ba 02 00 00 00       	mov    $0x2,%edx
+ 23c:	be 09 00 00 00       	mov    $0x9,%esi
+ 241:	eb e7                	jmp    22a <el_ncq_dequeue+0xfa>
+ 243:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+ 24a:	00 00 00 00 
+ 24e:	66 90                	xchg   %ax,%ax
+
+0000000000000250 <el_ncq_reserve>:
+ 250:	55                   	push   %rbp
+ 251:	48 89 e5             	mov    %rsp,%rbp
+ 254:	41 57                	push   %r15
+ 256:	41 56                	push   %r14
+ 258:	41 55                	push   %r13
+ 25a:	49 89 f5             	mov    %rsi,%r13
+ 25d:	be 01 00 00 00       	mov    $0x1,%esi
+ 262:	41 54                	push   %r12
+ 264:	49 89 d4             	mov    %rdx,%r12
+ 267:	48 8d 55 c8          	lea    -0x38(%rbp),%rdx
+ 26b:	53                   	push   %rbx
+ 26c:	48 89 fb             	mov    %rdi,%rbx
+ 26f:	48 83 ec 18          	sub    $0x18,%rsp
+ 273:	48 c7 45 c8 00 00 00 	movq   $0x0,-0x38(%rbp)
+ 27a:	00 
+ 27b:	e8 00 00 00 00       	call   280 <el_ncq_reserve+0x30>
+			27c: R_X86_64_PLT32	el_ncq_dequeue-0x4
+ 280:	85 c0                	test   %eax,%eax
+ 282:	74 14                	je     298 <el_ncq_reserve+0x48>
+ 284:	48 83 c4 18          	add    $0x18,%rsp
+ 288:	5b                   	pop    %rbx
+ 289:	41 5c                	pop    %r12
+ 28b:	41 5d                	pop    %r13
+ 28d:	41 5e                	pop    %r14
+ 28f:	41 5f                	pop    %r15
+ 291:	5d                   	pop    %rbp
+ 292:	c3                   	ret
+ 293:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+ 298:	48 8b 75 c8          	mov    -0x38(%rbp),%rsi
+ 29c:	31 d2                	xor    %edx,%edx
+ 29e:	b9 01 00 00 00       	mov    $0x1,%ecx
+ 2a3:	48 89 df             	mov    %rbx,%rdi
+ 2a6:	e8 00 00 00 00       	call   2ab <el_ncq_reserve+0x5b>
+			2a7: R_X86_64_PLT32	el_begin_token-0x4
+ 2ab:	f3 0f 6f 83 68 02 00 	movdqu 0x268(%rbx),%xmm0
+ 2b2:	00 
+ 2b3:	4c 8b 75 c8          	mov    -0x38(%rbp),%r14
+ 2b7:	41 0f 11 45 00       	movups %xmm0,0x0(%r13)
+ 2bc:	f3 0f 6f 83 78 02 00 	movdqu 0x278(%rbx),%xmm0
+ 2c3:	00 
+ 2c4:	49 c1 e6 07          	shl    $0x7,%r14
+ 2c8:	4c 03 b3 48 02 00 00 	add    0x248(%rbx),%r14
+ 2cf:	41 0f 11 45 10       	movups %xmm0,0x10(%r13)
+ 2d4:	f3 0f 6f 83 88 02 00 	movdqu 0x288(%rbx),%xmm0
+ 2db:	00 
+ 2dc:	41 0f 11 45 20       	movups %xmm0,0x20(%r13)
+ 2e1:	f3 0f 6f 83 98 02 00 	movdqu 0x298(%rbx),%xmm0
+ 2e8:	00 
+ 2e9:	41 0f 11 45 30       	movups %xmm0,0x30(%r13)
+ 2ee:	f3 0f 6f 83 a8 02 00 	movdqu 0x2a8(%rbx),%xmm0
+ 2f5:	00 
+ 2f6:	41 0f 11 45 40       	movups %xmm0,0x40(%r13)
+ 2fb:	49 8b 56 08          	mov    0x8(%r14),%rdx
+ 2ff:	48 89 d0             	mov    %rdx,%rax
+ 302:	48 c1 e8 02          	shr    $0x2,%rax
+ 306:	83 e2 03             	and    $0x3,%edx
+ 309:	0f 85 b1 00 00 00    	jne    3c0 <el_ncq_reserve+0x170>
+ 30f:	49 39 06             	cmp    %rax,(%r14)
+ 312:	0f 85 a8 00 00 00    	jne    3c0 <el_ncq_reserve+0x170>
+ 318:	48 39 83 98 00 00 00 	cmp    %rax,0x98(%rbx)
+ 31f:	0f 82 9b 00 00 00    	jb     3c0 <el_ncq_reserve+0x170>
+ 325:	0f 84 bd 00 00 00    	je     3e8 <el_ncq_reserve+0x198>
+ 32b:	4c 8d 78 01          	lea    0x1(%rax),%r15
+ 32f:	48 89 df             	mov    %rbx,%rdi
+ 332:	4d 89 3e             	mov    %r15,(%r14)
+ 335:	4c 89 fe             	mov    %r15,%rsi
+ 338:	e8 00 00 00 00       	call   33d <el_ncq_reserve+0xed>
+			339: R_X86_64_PLT32	el_set_epoch-0x4
+ 33d:	f3 0f 6f 83 68 02 00 	movdqu 0x268(%rbx),%xmm0
+ 344:	00 
+ 345:	4a 8d 04 bd 01 00 00 	lea    0x1(,%r15,4),%rax
+ 34c:	00 
+ 34d:	31 d2                	xor    %edx,%edx
+ 34f:	41 0f 11 45 00       	movups %xmm0,0x0(%r13)
+ 354:	f3 0f 6f 83 78 02 00 	movdqu 0x278(%rbx),%xmm0
+ 35b:	00 
+ 35c:	41 0f 11 45 10       	movups %xmm0,0x10(%r13)
+ 361:	f3 0f 6f 83 88 02 00 	movdqu 0x288(%rbx),%xmm0
+ 368:	00 
+ 369:	41 0f 11 45 20       	movups %xmm0,0x20(%r13)
+ 36e:	f3 0f 6f 83 98 02 00 	movdqu 0x298(%rbx),%xmm0
+ 375:	00 
+ 376:	41 0f 11 45 30       	movups %xmm0,0x30(%r13)
+ 37b:	f3 0f 6f 83 a8 02 00 	movdqu 0x2a8(%rbx),%xmm0
+ 382:	00 
+ 383:	41 0f 11 45 40       	movups %xmm0,0x40(%r13)
+ 388:	49 89 46 08          	mov    %rax,0x8(%r14)
+ 38c:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+ 390:	48 0f af 43 58       	imul   0x58(%rbx),%rax
+ 395:	48 03 83 60 02 00 00 	add    0x260(%rbx),%rax
+ 39c:	49 89 04 24          	mov    %rax,(%r12)
+ 3a0:	8b 43 48             	mov    0x48(%rbx),%eax
+ 3a3:	41 89 44 24 08       	mov    %eax,0x8(%r12)
+ 3a8:	48 b8 00 00 00 00 01 	movabs $0x100000000,%rax
+ 3af:	00 00 00 
+ 3b2:	e9 cd fe ff ff       	jmp    284 <el_ncq_reserve+0x34>
+ 3b7:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+ 3be:	00 00 
+ 3c0:	48 89 df             	mov    %rbx,%rdi
+ 3c3:	ba 01 00 00 00       	mov    $0x1,%edx
+ 3c8:	be 0a 00 00 00       	mov    $0xa,%esi
+ 3cd:	e8 00 00 00 00       	call   3d2 <el_ncq_reserve+0x182>
+			3ce: R_X86_64_PLT32	el_fail-0x4
+ 3d2:	48 83 c4 18          	add    $0x18,%rsp
+ 3d6:	5b                   	pop    %rbx
+ 3d7:	41 5c                	pop    %r12
+ 3d9:	41 5d                	pop    %r13
+ 3db:	41 5e                	pop    %r14
+ 3dd:	41 5f                	pop    %r15
+ 3df:	5d                   	pop    %rbp
+ 3e0:	c3                   	ret
+ 3e1:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+ 3e8:	be 09 00 00 00       	mov    $0x9,%esi
+ 3ed:	48 89 df             	mov    %rbx,%rdi
+ 3f0:	ba 02 00 00 00       	mov    $0x2,%edx
+ 3f5:	e8 00 00 00 00       	call   3fa <el_ncq_reserve+0x1aa>
+			3f6: R_X86_64_PLT32	el_fail-0x4
+ 3fa:	e9 85 fe ff ff       	jmp    284 <el_ncq_reserve+0x34>
+ 3ff:	90                   	nop
+
+0000000000000400 <el_ncq_commit>:
+ 400:	55                   	push   %rbp
+ 401:	48 89 e5             	mov    %rsp,%rbp
+ 404:	41 54                	push   %r12
+ 406:	53                   	push   %rbx
+ 407:	48 89 fb             	mov    %rdi,%rbx
+ 40a:	48 83 ec 10          	sub    $0x10,%rsp
+ 40e:	4c 8b a7 d0 02 00 00 	mov    0x2d0(%rdi),%r12
+ 415:	48 8b 87 d8 02 00 00 	mov    0x2d8(%rdi),%rax
+ 41c:	49 c1 e4 07          	shl    $0x7,%r12
+ 420:	4c 03 a7 48 02 00 00 	add    0x248(%rdi),%r12
+ 427:	49 39 04 24          	cmp    %rax,(%r12)
+ 42b:	75 1c                	jne    449 <el_ncq_commit+0x49>
+ 42d:	49 8b 44 24 08       	mov    0x8(%r12),%rax
+ 432:	48 8b bf d8 02 00 00 	mov    0x2d8(%rdi),%rdi
+ 439:	48 c1 e7 02          	shl    $0x2,%rdi
+ 43d:	49 89 f8             	mov    %rdi,%r8
+ 440:	49 83 c8 01          	or     $0x1,%r8
+ 444:	49 39 c0             	cmp    %rax,%r8
+ 447:	74 1f                	je     468 <el_ncq_commit+0x68>
+ 449:	48 83 c4 10          	add    $0x10,%rsp
+ 44d:	48 89 df             	mov    %rbx,%rdi
+ 450:	ba 01 00 00 00       	mov    $0x1,%edx
+ 455:	be 0a 00 00 00       	mov    $0xa,%esi
+ 45a:	5b                   	pop    %rbx
+ 45b:	41 5c                	pop    %r12
+ 45d:	5d                   	pop    %rbp
+ 45e:	e9 00 00 00 00       	jmp    463 <el_ncq_commit+0x63>
+			45f: R_X86_64_PLT32	el_fail-0x4
+ 463:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+ 468:	31 c0                	xor    %eax,%eax
+ 46a:	83 7b 30 01          	cmpl   $0x1,0x30(%rbx)
+ 46e:	41 89 74 24 10       	mov    %esi,0x10(%r12)
+ 473:	41 89 54 24 14       	mov    %edx,0x14(%r12)
+ 478:	49 89 4c 24 20       	mov    %rcx,0x20(%r12)
+ 47d:	74 59                	je     4d8 <el_ncq_commit+0xd8>
+ 47f:	49 89 44 24 18       	mov    %rax,0x18(%r12)
+ 484:	48 83 cf 02          	or     $0x2,%rdi
+ 488:	31 f6                	xor    %esi,%esi
+ 48a:	49 89 7c 24 08       	mov    %rdi,0x8(%r12)
+ 48f:	48 89 df             	mov    %rbx,%rdi
+ 492:	48 8b 93 d0 02 00 00 	mov    0x2d0(%rbx),%rdx
+ 499:	e8 00 00 00 00       	call   49e <el_ncq_commit+0x9e>
+			49a: R_X86_64_PLT32	el_ncq_enqueue-0x4
+ 49e:	48 89 c1             	mov    %rax,%rcx
+ 4a1:	48 c1 e9 20          	shr    $0x20,%rcx
+ 4a5:	83 f9 02             	cmp    $0x2,%ecx
+ 4a8:	74 0e                	je     4b8 <el_ncq_commit+0xb8>
+ 4aa:	48 83 c4 10          	add    $0x10,%rsp
+ 4ae:	5b                   	pop    %rbx
+ 4af:	41 5c                	pop    %r12
+ 4b1:	5d                   	pop    %rbp
+ 4b2:	c3                   	ret
+ 4b3:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+ 4b8:	48 89 df             	mov    %rbx,%rdi
+ 4bb:	48 89 55 e0          	mov    %rdx,-0x20(%rbp)
+ 4bf:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+ 4c3:	e8 00 00 00 00       	call   4c8 <el_ncq_commit+0xc8>
+			4c4: R_X86_64_PLT32	el_end_token-0x4
+ 4c8:	48 8b 55 e0          	mov    -0x20(%rbp),%rdx
+ 4cc:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 4d0:	eb d8                	jmp    4aa <el_ncq_commit+0xaa>
+ 4d2:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+ 4d8:	48 8b bb d0 02 00 00 	mov    0x2d0(%rbx),%rdi
+ 4df:	89 f6                	mov    %esi,%esi
+ 4e1:	48 0f af 7b 58       	imul   0x58(%rbx),%rdi
+ 4e6:	48 03 bb 60 02 00 00 	add    0x260(%rbx),%rdi
+ 4ed:	e8 00 00 00 00       	call   4f2 <el_ncq_commit+0xf2>
+			4ee: R_X86_64_PLT32	elite_crc64-0x4
+ 4f2:	48 8b b3 d8 02 00 00 	mov    0x2d8(%rbx),%rsi
+ 4f9:	48 8d 3c b5 00 00 00 	lea    0x0(,%rsi,4),%rdi
+ 500:	00 
+ 501:	e9 79 ff ff ff       	jmp    47f <el_ncq_commit+0x7f>
+ 506:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+ 50d:	00 00 00 
+
+0000000000000510 <el_ncq_borrow>:
+ 510:	55                   	push   %rbp
+ 511:	48 89 e5             	mov    %rsp,%rbp
+ 514:	41 55                	push   %r13
+ 516:	49 89 f5             	mov    %rsi,%r13
+ 519:	31 f6                	xor    %esi,%esi
+ 51b:	41 54                	push   %r12
+ 51d:	49 89 d4             	mov    %rdx,%r12
+ 520:	48 8d 55 d8          	lea    -0x28(%rbp),%rdx
+ 524:	53                   	push   %rbx
+ 525:	48 89 fb             	mov    %rdi,%rbx
+ 528:	48 83 ec 18          	sub    $0x18,%rsp
+ 52c:	48 c7 45 d8 00 00 00 	movq   $0x0,-0x28(%rbp)
+ 533:	00 
+ 534:	e8 00 00 00 00       	call   539 <el_ncq_borrow+0x29>
+			535: R_X86_64_PLT32	el_ncq_dequeue-0x4
+ 539:	85 c0                	test   %eax,%eax
+ 53b:	75 62                	jne    59f <el_ncq_borrow+0x8f>
+ 53d:	48 8b 75 d8          	mov    -0x28(%rbp),%rsi
+ 541:	31 d2                	xor    %edx,%edx
+ 543:	48 89 df             	mov    %rbx,%rdi
+ 546:	b9 02 00 00 00       	mov    $0x2,%ecx
+ 54b:	e8 00 00 00 00       	call   550 <el_ncq_borrow+0x40>
+			54c: R_X86_64_PLT32	el_begin_token-0x4
+ 550:	4c 89 e2             	mov    %r12,%rdx
+ 553:	4c 89 ee             	mov    %r13,%rsi
+ 556:	48 89 df             	mov    %rbx,%rdi
+ 559:	f3 0f 6f 83 68 02 00 	movdqu 0x268(%rbx),%xmm0
+ 560:	00 
+ 561:	41 0f 11 45 00       	movups %xmm0,0x0(%r13)
+ 566:	f3 0f 6f 83 78 02 00 	movdqu 0x278(%rbx),%xmm0
+ 56d:	00 
+ 56e:	41 0f 11 45 10       	movups %xmm0,0x10(%r13)
+ 573:	f3 0f 6f 83 88 02 00 	movdqu 0x288(%rbx),%xmm0
+ 57a:	00 
+ 57b:	41 0f 11 45 20       	movups %xmm0,0x20(%r13)
+ 580:	f3 0f 6f 83 98 02 00 	movdqu 0x298(%rbx),%xmm0
+ 587:	00 
+ 588:	41 0f 11 45 30       	movups %xmm0,0x30(%r13)
+ 58d:	f3 0f 6f 83 a8 02 00 	movdqu 0x2a8(%rbx),%xmm0
+ 594:	00 
+ 595:	41 0f 11 45 40       	movups %xmm0,0x40(%r13)
+ 59a:	e8 00 00 00 00       	call   59f <el_ncq_borrow+0x8f>
+			59b: R_X86_64_PLT32	el_read_metadata-0x4
+ 59f:	48 83 c4 18          	add    $0x18,%rsp
+ 5a3:	5b                   	pop    %rbx
+ 5a4:	41 5c                	pop    %r12
+ 5a6:	41 5d                	pop    %r13
+ 5a8:	5d                   	pop    %rbp
+ 5a9:	c3                   	ret
+ 5aa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000005b0 <el_ncq_release>:
+ 5b0:	55                   	push   %rbp
+ 5b1:	48 89 e5             	mov    %rsp,%rbp
+ 5b4:	41 55                	push   %r13
+ 5b6:	41 54                	push   %r12
+ 5b8:	53                   	push   %rbx
+ 5b9:	48 83 ec 18          	sub    $0x18,%rsp
+ 5bd:	48 8b 87 d0 02 00 00 	mov    0x2d0(%rdi),%rax
+ 5c4:	48 8b b7 d8 02 00 00 	mov    0x2d8(%rdi),%rsi
+ 5cb:	48 c1 e0 07          	shl    $0x7,%rax
+ 5cf:	48 03 87 48 02 00 00 	add    0x248(%rdi),%rax
+ 5d6:	48 39 30             	cmp    %rsi,(%rax)
+ 5d9:	75 1f                	jne    5fa <el_ncq_release+0x4a>
+ 5db:	48 8b 70 08          	mov    0x8(%rax),%rsi
+ 5df:	48 8b 9f d8 02 00 00 	mov    0x2d8(%rdi),%rbx
+ 5e6:	48 8d 14 9d 00 00 00 	lea    0x0(,%rbx,4),%rdx
+ 5ed:	00 
+ 5ee:	48 89 d1             	mov    %rdx,%rcx
+ 5f1:	48 83 c9 03          	or     $0x3,%rcx
+ 5f5:	48 39 ce             	cmp    %rcx,%rsi
+ 5f8:	74 36                	je     630 <el_ncq_release+0x80>
+ 5fa:	ba 01 00 00 00       	mov    $0x1,%edx
+ 5ff:	be 0a 00 00 00       	mov    $0xa,%esi
+ 604:	e8 00 00 00 00       	call   609 <el_ncq_release+0x59>
+			605: R_X86_64_PLT32	el_fail-0x4
+ 609:	48 89 c3             	mov    %rax,%rbx
+ 60c:	48 c1 eb 20          	shr    $0x20,%rbx
+ 610:	41 89 dc             	mov    %ebx,%r12d
+ 613:	49 c1 e4 20          	shl    $0x20,%r12
+ 617:	89 c1                	mov    %eax,%ecx
+ 619:	48 83 c4 18          	add    $0x18,%rsp
+ 61d:	4c 09 e1             	or     %r12,%rcx
+ 620:	5b                   	pop    %rbx
+ 621:	41 5c                	pop    %r12
+ 623:	48 89 c8             	mov    %rcx,%rax
+ 626:	41 5d                	pop    %r13
+ 628:	5d                   	pop    %rbp
+ 629:	c3                   	ret
+ 62a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+ 630:	be 01 00 00 00       	mov    $0x1,%esi
+ 635:	48 89 50 08          	mov    %rdx,0x8(%rax)
+ 639:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+ 63d:	48 8b 97 d0 02 00 00 	mov    0x2d0(%rdi),%rdx
+ 644:	e8 00 00 00 00       	call   649 <el_ncq_release+0x99>
+			645: R_X86_64_PLT32	el_ncq_enqueue-0x4
+ 649:	48 8b 7d d8          	mov    -0x28(%rbp),%rdi
+ 64d:	49 89 c5             	mov    %rax,%r13
+ 650:	48 c1 e8 20          	shr    $0x20,%rax
+ 654:	48 89 d3             	mov    %rdx,%rbx
+ 657:	83 f8 04             	cmp    $0x4,%eax
+ 65a:	41 89 c4             	mov    %eax,%r12d
+ 65d:	74 11                	je     670 <el_ncq_release+0xc0>
+ 65f:	4c 89 e8             	mov    %r13,%rax
+ 662:	48 89 da             	mov    %rbx,%rdx
+ 665:	eb ac                	jmp    613 <el_ncq_release+0x63>
+ 667:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+ 66e:	00 00 
+ 670:	e8 00 00 00 00       	call   675 <el_ncq_release+0xc5>
+			671: R_X86_64_PLT32	el_end_token-0x4
+ 675:	eb e8                	jmp    65f <el_ncq_release+0xaf>
+ 677:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+ 67e:	00 00 
+
+0000000000000680 <el_ncq_abort>:
+ 680:	55                   	push   %rbp
+ 681:	48 89 e5             	mov    %rsp,%rbp
+ 684:	41 55                	push   %r13
+ 686:	41 54                	push   %r12
+ 688:	53                   	push   %rbx
+ 689:	48 83 ec 18          	sub    $0x18,%rsp
+ 68d:	48 8b 87 d0 02 00 00 	mov    0x2d0(%rdi),%rax
+ 694:	48 8b b7 d8 02 00 00 	mov    0x2d8(%rdi),%rsi
+ 69b:	48 c1 e0 07          	shl    $0x7,%rax
+ 69f:	48 03 87 48 02 00 00 	add    0x248(%rdi),%rax
+ 6a6:	48 39 30             	cmp    %rsi,(%rax)
+ 6a9:	75 1f                	jne    6ca <el_ncq_abort+0x4a>
+ 6ab:	48 8b 70 08          	mov    0x8(%rax),%rsi
+ 6af:	48 8b 9f d8 02 00 00 	mov    0x2d8(%rdi),%rbx
+ 6b6:	48 8d 14 9d 00 00 00 	lea    0x0(,%rbx,4),%rdx
+ 6bd:	00 
+ 6be:	48 89 d1             	mov    %rdx,%rcx
+ 6c1:	48 83 c9 01          	or     $0x1,%rcx
+ 6c5:	48 39 ce             	cmp    %rcx,%rsi
+ 6c8:	74 36                	je     700 <el_ncq_abort+0x80>
+ 6ca:	ba 01 00 00 00       	mov    $0x1,%edx
+ 6cf:	be 0a 00 00 00       	mov    $0xa,%esi
+ 6d4:	e8 00 00 00 00       	call   6d9 <el_ncq_abort+0x59>
+			6d5: R_X86_64_PLT32	el_fail-0x4
+ 6d9:	48 89 c3             	mov    %rax,%rbx
+ 6dc:	48 c1 eb 20          	shr    $0x20,%rbx
+ 6e0:	41 89 dc             	mov    %ebx,%r12d
+ 6e3:	49 c1 e4 20          	shl    $0x20,%r12
+ 6e7:	89 c1                	mov    %eax,%ecx
+ 6e9:	48 83 c4 18          	add    $0x18,%rsp
+ 6ed:	4c 09 e1             	or     %r12,%rcx
+ 6f0:	5b                   	pop    %rbx
+ 6f1:	41 5c                	pop    %r12
+ 6f3:	48 89 c8             	mov    %rcx,%rax
+ 6f6:	41 5d                	pop    %r13
+ 6f8:	5d                   	pop    %rbp
+ 6f9:	c3                   	ret
+ 6fa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+ 700:	be 01 00 00 00       	mov    $0x1,%esi
+ 705:	48 89 50 08          	mov    %rdx,0x8(%rax)
+ 709:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+ 70d:	48 8b 97 d0 02 00 00 	mov    0x2d0(%rdi),%rdx
+ 714:	e8 00 00 00 00       	call   719 <el_ncq_abort+0x99>
+			715: R_X86_64_PLT32	el_ncq_enqueue-0x4
+ 719:	48 8b 7d d8          	mov    -0x28(%rbp),%rdi
+ 71d:	49 89 c5             	mov    %rax,%r13
+ 720:	48 c1 e8 20          	shr    $0x20,%rax
+ 724:	48 89 d3             	mov    %rdx,%rbx
+ 727:	83 f8 04             	cmp    $0x4,%eax
+ 72a:	41 89 c4             	mov    %eax,%r12d
+ 72d:	74 11                	je     740 <el_ncq_abort+0xc0>
+ 72f:	4c 89 e8             	mov    %r13,%rax
+ 732:	48 89 da             	mov    %rbx,%rdx
+ 735:	eb ac                	jmp    6e3 <el_ncq_abort+0x63>
+ 737:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+ 73e:	00 00 
+ 740:	e8 00 00 00 00       	call   745 <el_ncq_abort+0xc5>
+			741: R_X86_64_PLT32	el_end_token-0x4
+ 745:	eb e8                	jmp    72f <el_ncq_abort+0xaf>

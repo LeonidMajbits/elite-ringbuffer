@@ -1,0 +1,53 @@
+python3 tools/cache_build_info.py --out "build/gcc/cache_build_info.h" --cc "gcc" --cppflags="-Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -Ibuild/gcc" --cflags="-std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE" --ldflags=" -pie" --ldlibs="-pthread"
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -Ibuild/gcc -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc/bench_cache benchmarks/bench_cache.c benchmarks/bench_common.c benchmarks/bench_identity.c benchmarks/bench_ratio.c build/gcc/libelite_pmc.a build/gcc/libelite_ringbuffer.a -pthread
+gcc -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L -D_DEFAULT_SOURCE -Ibenchmarks -Ibuild/gcc -std=c11 -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef -fPIC -pthread -march=x86-64 -mtune=generic -fPIE  -pie -o build/gcc/test_pmc tests/test_pmc.c benchmarks/bench_identity.c build/gcc/libelite_pmc.a -pthread
+build/gcc/test_pmc_backend
+PASS synthetic perf backend: 8 setup/read/enable/disable/denial/multiplex/error cases; no fake hardware evidence
+build/gcc/test_pmc
+PASS PMC decoder/errors/lifecycle/thread ownership, CPU snapshots, SHA256 empty/abc/million-a
+python3 -m unittest discover -s tests -p 'test_cache_provenance.py' -v
+test_all_supported_reordered_ids (test_cache_provenance.ProvenanceTests.test_all_supported_reordered_ids) ... ok
+test_binary_hash_format (test_cache_provenance.ProvenanceTests.test_binary_hash_format) ... ok
+test_bool_is_not_integer (test_cache_provenance.ProvenanceTests.test_bool_is_not_integer) ... ok
+test_cache_not_coherence (test_cache_provenance.ProvenanceTests.test_cache_not_coherence) ... ok
+test_campaign_missing_record (test_cache_provenance.ProvenanceTests.test_campaign_missing_record) ... ok
+test_cli_malformed_and_optimized (test_cache_provenance.ProvenanceTests.test_cli_malformed_and_optimized) ... ok
+test_counter_duplicate (test_cache_provenance.ProvenanceTests.test_counter_duplicate) ... ok
+test_counter_loss (test_cache_provenance.ProvenanceTests.test_counter_loss) ... ok
+test_duplicate_event_id (test_cache_provenance.ProvenanceTests.test_duplicate_event_id) ... ok
+test_elapsed_mismatch (test_cache_provenance.ProvenanceTests.test_elapsed_mismatch) ... ok
+test_external_binary_and_source (test_cache_provenance.ProvenanceTests.test_external_binary_and_source) ... ok
+test_fractional_mach_timebase (test_cache_provenance.ProvenanceTests.test_fractional_mach_timebase) ... ok
+test_incomplete_native_PMC_state (test_cache_provenance.ProvenanceTests.test_incomplete_native_PMC_state) ... ok
+test_invalid_frame_rejected (test_cache_provenance.ProvenanceTests.test_invalid_frame_rejected) ... ok
+test_max_worker_end (test_cache_provenance.ProvenanceTests.test_max_worker_end) ... ok
+test_missing_worker (test_cache_provenance.ProvenanceTests.test_missing_worker) ... ok
+test_multiplex_incorrect_estimate (test_cache_provenance.ProvenanceTests.test_multiplex_incorrect_estimate) ... ok
+test_multiplex_scaling (test_cache_provenance.ProvenanceTests.test_multiplex_scaling) ... ok
+test_never_scheduled (test_cache_provenance.ProvenanceTests.test_never_scheduled) ... ok
+test_never_scheduled_nonzero (test_cache_provenance.ProvenanceTests.test_never_scheduled_nonzero) ... ok
+test_no_false_p_core_pinning (test_cache_provenance.ProvenanceTests.test_no_false_p_core_pinning) ... ok
+test_no_infinity (test_cache_provenance.ProvenanceTests.test_no_infinity) ... ok
+test_no_nan (test_cache_provenance.ProvenanceTests.test_no_nan) ... ok
+test_no_unsupported_metrics (test_cache_provenance.ProvenanceTests.test_no_unsupported_metrics) ... ok
+test_no_zero_invented_for_unavailable_event (test_cache_provenance.ProvenanceTests.test_no_zero_invented_for_unavailable_event) ... ok
+test_one_ulp_admitted (test_cache_provenance.ProvenanceTests.test_one_ulp_admitted) ... ok
+test_paranoid_classification_not_guessed (test_cache_provenance.ProvenanceTests.test_paranoid_classification_not_guessed) ... ok
+test_process_accounting_decrease (test_cache_provenance.ProvenanceTests.test_process_accounting_decrease) ... ok
+test_rate_mismatch (test_cache_provenance.ProvenanceTests.test_rate_mismatch) ... ok
+test_raw_u64_subtraction_above_binary64_precision (test_cache_provenance.ProvenanceTests.test_raw_u64_subtraction_above_binary64_precision) ... ok
+test_running_exceeds_enabled (test_cache_provenance.ProvenanceTests.test_running_exceeds_enabled) ... ok
+test_source_snapshot_digest (test_cache_provenance.ProvenanceTests.test_source_snapshot_digest) ... ok
+test_t0_wrap (test_cache_provenance.ProvenanceTests.test_t0_wrap) ... ok
+test_timer_correlation_does_not_assume_frequency (test_cache_provenance.ProvenanceTests.test_timer_correlation_does_not_assume_frequency) ... ok
+test_total_operations (test_cache_provenance.ProvenanceTests.test_total_operations) ... ok
+test_two_ulp_rejected (test_cache_provenance.ProvenanceTests.test_two_ulp_rejected) ... ok
+test_worker_delta (test_cache_provenance.ProvenanceTests.test_worker_delta) ... ok
+test_zero_timebase (test_cache_provenance.ProvenanceTests.test_zero_timebase) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 1.267s
+
+OK
+python3 tools/check_cache_math.py --binary build/gcc/test_ratio
+{"status": "PASS", "synthetic_ratio_cases": 1004, "zero_denominator_rejected": true, "seed": 1111, "maximum_error_bound": "one binary64 ULP"}

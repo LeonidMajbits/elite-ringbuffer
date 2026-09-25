@@ -1,0 +1,20 @@
+test_changed_boundary_witness (__main__.ReceiptTests.test_changed_boundary_witness) ... ok
+test_changed_handoff_edge (__main__.ReceiptTests.test_changed_handoff_edge) ... ok
+test_changed_targeted_trace (__main__.ReceiptTests.test_changed_targeted_trace) ... ok
+test_claim_full_qualification (__main__.ReceiptTests.test_claim_full_qualification) ... ok
+test_duplicate_keys (__main__.ReceiptTests.test_duplicate_keys) ... ok
+test_external_tool_claim (__main__.ReceiptTests.test_external_tool_claim) ... ok
+test_fabricated_mutant_transition (__main__.ReceiptTests.test_fabricated_mutant_transition) ... ok
+test_incomplete_as_pass (__main__.ReceiptTests.test_incomplete_as_pass) ... ok
+test_laundered_expected_exit (__main__.ReceiptTests.test_laundered_expected_exit) ... ok
+test_missing_case (__main__.ReceiptTests.test_missing_case) ... ok
+test_numeric_infinity (__main__.ReceiptTests.test_numeric_infinity) ... ok
+test_python_optimized_cli_rejects (__main__.ReceiptTests.test_python_optimized_cli_rejects) ... ok
+test_removed_source_identity (__main__.ReceiptTests.test_removed_source_identity) ... ok
+test_valid_all_auxiliary_replay (__main__.ReceiptTests.test_valid_all_auxiliary_replay) ... ok
+test_wrong_bound (__main__.ReceiptTests.test_wrong_bound) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 11.113s
+
+OK

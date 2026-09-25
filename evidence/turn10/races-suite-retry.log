@@ -1,0 +1,13 @@
+test_callback_exception_rolls_back_pending_count (test_adversarial_races.ExportTransactionTests.test_callback_exception_rolls_back_pending_count) ... ok
+test_callback_result_decref_is_inside_transaction (test_adversarial_races.ExportTransactionTests.test_callback_result_decref_is_inside_transaction) ... ok
+test_close_failure_can_retry_without_double_drop (test_adversarial_races.ExportTransactionTests.test_close_failure_can_retry_without_double_drop) ... ok
+test_close_is_serialized_during_cleanup_callback (test_adversarial_races.ExportTransactionTests.test_close_is_serialized_during_cleanup_callback) ... ok
+test_fillinfo_readonly_failure_rolls_back (test_adversarial_races.ExportTransactionTests.test_fillinfo_readonly_failure_rolls_back) ... ok
+test_original_four_race_schedules (test_adversarial_races.ExportTransactionTests.test_original_four_race_schedules) ... ok
+test_pending_export_blocks_abort_and_close (test_adversarial_races.ExportTransactionTests.test_pending_export_blocks_abort_and_close) ... ok
+test_reentrant_close_rejected (test_adversarial_races.ExportTransactionTests.test_reentrant_close_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 11.758s
+
+OK

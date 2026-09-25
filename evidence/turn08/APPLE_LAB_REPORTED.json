@@ -1,0 +1,45 @@
+{
+  "status": "LAB_REPORTED",
+  "source": "User Turn8 commission,2026-09-23; no raw Apple trace or machine/toolchain manifest supplied",
+  "reported_all_seven_100M_conditions_replayed": true,
+  "actual_SoC": "NOT_SUPPLIED",
+  "CPU_count": "NOT_SUPPLIED",
+  "QoS": "user-initiated",
+  "P_core_pinning": "NOT_ESTABLISHED",
+  "compiler_SDK_binary_hashes": "NOT_SUPPLIED",
+  "RTT_ns": {
+    "spsc": {
+      "p50": 250,
+      "p90": 250,
+      "p99": 625,
+      "p99_9": 750,
+      "p99_99": 7210,
+      "max": 1330000
+    },
+    "ncq": {
+      "p50": 375,
+      "p90": 542,
+      "p99": 1250,
+      "p99_9": 1580,
+      "p99_99": 11880,
+      "max": 1840000
+    }
+  },
+  "goodput_messages_s": {
+    "spsc_1_1": 32066903,
+    "ncq_1_1": 26599872,
+    "ncq_2_2": null,
+    "ncq_4_4": null,
+    "ncq_8_8": 4105985
+  },
+  "cache_control_RMW_s": {
+    "stride8": 35500000,
+    "stride128": 4039638957
+  },
+  "rounding": "Apple p99.99/max were reported in rounded microseconds/milliseconds; converted here to ns for comparison. Missing2/2 and4/4 rates remain null.",
+  "reported_Darwin_changes": [
+    "_DARWIN_C_SOURCE",
+    "skip fchmod for Apple POSIX shm; creation0600"
+  ],
+  "Turn08_new_Python_native_Apple_execution": "NOT_RUN"
+}

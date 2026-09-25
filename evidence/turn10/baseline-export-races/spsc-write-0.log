@@ -1,0 +1,3 @@
+SHM_NAME=/el-shzxpytcrfhejnabfxq4ie77em
+{"mode": "spsc", "kind": "write", "transfer_blocked": false, "closed": true, "active": false, "exports": 1, "errors": []}
+{"new_view_length": 64, "readonly": false}

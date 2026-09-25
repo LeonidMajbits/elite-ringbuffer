@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/mnt/data/elite_turn14_work/elite-ringbuffer-1.0.1-turn14/build/gcc-chaos/chaos_resources"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "wall_ns": 1384974,
+  "trace_sha256": "61a9534cdf1324e66b4dd11d7f5f2e75394d68f816595d8a41f6b6e3ecd809da",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

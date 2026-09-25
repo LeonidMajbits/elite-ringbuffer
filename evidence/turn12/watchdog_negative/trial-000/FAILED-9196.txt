@@ -1,0 +1,5 @@
+HARNESS_FAILED
+benchmarks/bench_common.c:359
+!interrupted && bench_watch_ns()<b->deadline_ns
+errno=2
+No complete-run success or loss count is certified.

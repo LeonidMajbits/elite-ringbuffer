@@ -1,0 +1,6 @@
+{
+  "compiled_binary_detector_positive_control": true,
+  "compiled_binary_magic_hits": [],
+  "private_key_filename_hits": [],
+  "scope": "initial executable/archive magic and filenames only; not a complete credential audit"
+}

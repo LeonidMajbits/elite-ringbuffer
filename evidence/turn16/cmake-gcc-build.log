@@ -1,0 +1,8 @@
+[ 33%] Built target elite_ringbuffer_shared
+[ 66%] Built target elite_ringbuffer_static
+[ 75%] Built target test_core
+[ 83%] Built target test_ipc
+[ 91%] Built target test_portability
+[ 95%] Building C object CMakeFiles/live_throughput_demo.dir/examples/live_throughput_demo.c.o
+[100%] Linking C executable live_throughput_demo
+[100%] Built target live_throughput_demo

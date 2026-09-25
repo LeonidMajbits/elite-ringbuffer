@@ -1,0 +1,24 @@
+test_cross_object_cycles (test_gc_cycle.GCLifetimeTests.test_cross_object_cycles) ... ok
+test_cycle_ncq_read_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_read_endpoint) ... ok
+test_cycle_ncq_read_lease (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_read_lease) ... ok
+test_cycle_ncq_read_manager (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_read_manager) ... ok
+test_cycle_ncq_write_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_write_endpoint) ... ok
+test_cycle_ncq_write_lease (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_write_lease) ... ok
+test_cycle_ncq_write_manager (test_gc_cycle.GCLifetimeTests.test_cycle_ncq_write_manager) ... ok
+test_cycle_spsc_read_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_read_endpoint) ... ok
+test_cycle_spsc_read_lease (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_read_lease) ... ok
+test_cycle_spsc_read_manager (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_read_manager) ... ok
+test_cycle_spsc_write_endpoint (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_write_endpoint) ... ok
+test_cycle_spsc_write_lease (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_write_lease) ... ok
+test_cycle_spsc_write_manager (test_gc_cycle.GCLifetimeTests.test_cycle_spsc_write_manager) ... ok
+test_downstream_ctypes_alias_keeps_pin (test_gc_cycle.GCLifetimeTests.test_downstream_ctypes_alias_keeps_pin) ... ok
+test_external_slice_prevents_reclamation (test_gc_cycle.GCLifetimeTests.test_external_slice_prevents_reclamation) ... ok
+test_finalizer_resurrects_live_view_without_revocation (test_gc_cycle.GCLifetimeTests.test_finalizer_resurrects_live_view_without_revocation) ... ok
+test_repeated_cycles_no_failures (test_gc_cycle.GCLifetimeTests.test_repeated_cycles_no_failures) ... ok
+test_two_independent_exports (test_gc_cycle.GCLifetimeTests.test_two_independent_exports) ... ok
+test_zero_length_export_still_pins (test_gc_cycle.GCLifetimeTests.test_zero_length_export_still_pins) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 15.737s
+
+OK

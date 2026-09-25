@@ -1,0 +1,105 @@
+{
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "executable": "/opt/pyvenv/bin/python3",
+  "native_library": "/mnt/data/Elite_Systems_LockFree_RingBuffer_Turn_08/build/clang/libelite_ringbuffer.so",
+  "native_sha256": "3379a5147cad3666db1690262efe6ef30bd9b3ee25fabb26e8ae03b7157f7477",
+  "clock": "time.perf_counter_ns; per-process monotonic clock; start/end only",
+  "repetitions": 1,
+  "conditions": [
+    {
+      "mode": "spsc",
+      "messages": 10000,
+      "warmup": 1000,
+      "payload_bytes": 4096,
+      "capacity": 1024,
+      "elapsed_seconds": 0.440503189,
+      "messages_per_second": 22701.31124975806,
+      "delivered_GB_per_second": 0.09298457087900901,
+      "oracle": "exact sequential identity and native comparison of every payload byte",
+      "workload": "Python per-message ctypes calls + native direct pattern fill/check through memoryviews",
+      "records": [
+        {
+          "start_ns": 670124945943,
+          "entry_ns": 670125260003,
+          "end_ns": 670565422609,
+          "count": 10000,
+          "write": true,
+          "receipt": {
+            "session_id": "052daede992846eeb415d6ba235bef07",
+            "endpoint_id": "6f3b39792ae54c35a8a5e98aa653f22f",
+            "process_incarnation_id": "f6fe7a6a53904259aace32d19149faab",
+            "endpoint_index": 0,
+            "local_cleanup_complete": 1,
+            "owns_grant_claim": 1
+          },
+          "cleanup_failures": []
+        },
+        {
+          "start_ns": 670124945943,
+          "entry_ns": 670125250841,
+          "end_ns": 670565449132,
+          "count": 10000,
+          "write": false,
+          "receipt": {
+            "session_id": "052daede992846eeb415d6ba235bef07",
+            "endpoint_id": "593cbeb7c9794d8b9c807574a467797f",
+            "process_incarnation_id": "ef2663fbeb2d4decb280f6d91d82a3f3",
+            "endpoint_index": 1,
+            "local_cleanup_complete": 1,
+            "owns_grant_claim": 1
+          },
+          "cleanup_failures": []
+        }
+      ],
+      "status": "PASS_WITHIN_SCOPE"
+    },
+    {
+      "mode": "ncq",
+      "messages": 10000,
+      "warmup": 1000,
+      "payload_bytes": 4096,
+      "capacity": 1024,
+      "elapsed_seconds": 0.255440128,
+      "messages_per_second": 39148.116931729695,
+      "delivered_GB_per_second": 0.16035068695236485,
+      "oracle": "exact sequential identity and native comparison of every payload byte",
+      "workload": "Python per-message ctypes calls + native direct pattern fill/check through memoryviews",
+      "records": [
+        {
+          "start_ns": 672679444249,
+          "entry_ns": 672679652805,
+          "end_ns": 672934384080,
+          "count": 10000,
+          "write": true,
+          "receipt": {
+            "session_id": "c42cf331285043c597a4e5b5ceb03f77",
+            "endpoint_id": "d04e2d21febc4e6fa8b62caf98b73f54",
+            "process_incarnation_id": "9167aa395d9c445fa4c31c9c8db1338b",
+            "endpoint_index": 0,
+            "local_cleanup_complete": 1,
+            "owns_grant_claim": 1
+          },
+          "cleanup_failures": []
+        },
+        {
+          "start_ns": 672679444249,
+          "entry_ns": 672679630591,
+          "end_ns": 672934884377,
+          "count": 10000,
+          "write": false,
+          "receipt": {
+            "session_id": "c42cf331285043c597a4e5b5ceb03f77",
+            "endpoint_id": "00beeec7370b47f396e290b247b7581e",
+            "process_incarnation_id": "effddc0145894503b861c1f26386f6e6",
+            "endpoint_index": 1,
+            "local_cleanup_complete": 1,
+            "owns_grant_claim": 1
+          },
+          "cleanup_failures": []
+        }
+      ],
+      "status": "PASS_WITHIN_SCOPE"
+    }
+  ]
+}

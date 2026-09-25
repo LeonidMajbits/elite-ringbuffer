@@ -1,0 +1,13 @@
+{
+  "command": [
+    "env",
+    "ELITE_LIBRARY=/mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/clang/libelite_ringbuffer.so",
+    "PYTHONPATH=/mnt/data/turn10_work/elite-ringbuffer-1.0.1/build/clang/python:/mnt/data/turn10_work/elite-ringbuffer-1.0.1/bindings/python",
+    "python3",
+    "tools/check_python.py",
+    "--hardening"
+  ],
+  "returncode": 0,
+  "elapsed_seconds": 50.85795331001282,
+  "started_unix": 1790209981.0573912
+}

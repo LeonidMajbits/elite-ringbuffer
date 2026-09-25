@@ -1,0 +1,25 @@
+test_bool_integer_substitution (__main__.CapsuleTests.test_bool_integer_substitution) ... ok
+test_capsule_modified_rate_claim (__main__.CapsuleTests.test_capsule_modified_rate_claim) ... ok
+test_changed_member (__main__.CapsuleTests.test_changed_member) ... ok
+test_cli_optimized_rejects (__main__.CapsuleTests.test_cli_optimized_rejects) ... ok
+test_deterministic_pack (__main__.CapsuleTests.test_deterministic_pack) ... ok
+test_duplicate_archive_member (__main__.CapsuleTests.test_duplicate_archive_member) ... /usr/lib/python3.13/zipfile/__init__.py:1642: UserWarning: Duplicate name: 'elite-ringbuffer-1.1.0/.gitignore'
+  return self._open_to_write(zinfo, force_zip64=force_zip64)
+ok
+test_duplicate_json (__main__.CapsuleTests.test_duplicate_json) ... ok
+test_escape (__main__.CapsuleTests.test_escape) ... ok
+test_generated_file (__main__.CapsuleTests.test_generated_file) ... ok
+test_missing_member (__main__.CapsuleTests.test_missing_member) ... ok
+test_no_overwrite (__main__.CapsuleTests.test_no_overwrite) ... ok
+test_regeneration_does_not_forge_canonical (__main__.CapsuleTests.test_regeneration_does_not_forge_canonical) ... ok
+test_rehashed_wrong_header (__main__.CapsuleTests.test_rehashed_wrong_header) ... ok
+test_signature_is_not_invented (__main__.CapsuleTests.test_signature_is_not_invented) ... ok
+test_source_policy_agreement (__main__.CapsuleTests.test_source_policy_agreement) ... ok
+test_symlink (__main__.CapsuleTests.test_symlink) ... ok
+test_valid_with_external_pin (__main__.CapsuleTests.test_valid_with_external_pin) ... ok
+test_wrong_pin (__main__.CapsuleTests.test_wrong_pin) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.580s
+
+OK

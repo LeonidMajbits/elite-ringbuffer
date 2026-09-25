@@ -1,0 +1,1 @@
+PASS native_spawn_ipc mode=PARKABLE_SPSC producers=1 consumers=1 messages=100000 bytes_each=64 duplicates=0 missing=0 bad_payloads=0 all_tokens_returned=yes controller_elapsed_ns=14688326 (not_latency)

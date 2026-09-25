@@ -1,0 +1,21 @@
+==================
+WARNING: ThreadSanitizer: data race (pid=1164)
+  Read of size 4 at 0x556b31125068 by thread T1:
+    #0 race tests/tsan_negative.c:10 (negative+0x120b) (BuildId: 50a42fb0c03c72c7d35a39b74d3c0036c4fdc796)
+
+  Previous write of size 4 at 0x556b31125068 by thread T2:
+    #0 race tests/tsan_negative.c:10 (negative+0x121c) (BuildId: 50a42fb0c03c72c7d35a39b74d3c0036c4fdc796)
+
+  Location is global 'raced' of size 4 at 0x556b31125068 (negative+0x4068)
+
+  Thread T1 (tid=1166, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x568a6) (BuildId: 99ef88596cb10a8ccf307fe1a9070f66a44b1624)
+    #1 main tests/tsan_negative.c:15 (negative+0x127f) (BuildId: 50a42fb0c03c72c7d35a39b74d3c0036c4fdc796)
+
+  Thread T2 (tid=1167, running) created by main thread at:
+    #0 pthread_create ../../../../src/libsanitizer/tsan/tsan_interceptors_posix.cpp:1022 (libtsan.so.2+0x568a6) (BuildId: 99ef88596cb10a8ccf307fe1a9070f66a44b1624)
+    #1 main tests/tsan_negative.c:15 (negative+0x12a6) (BuildId: 50a42fb0c03c72c7d35a39b74d3c0036c4fdc796)
+
+SUMMARY: ThreadSanitizer: data race tests/tsan_negative.c:10 in race
+==================
+expected_exit=66 actual_exit=66

@@ -1,0 +1,129 @@
+{
+  "parent_zip_sha256": "81c4ed6e42f62328b79777bb603558f9f721a99e3da1a1734fda78a9d113a01d",
+  "files": [
+    {
+      "path": "bindings/python/bench_python.py",
+      "parent_sha256": "0a800f315b356ebc5951707841f1d97a9b722fcff00b8ab60fb28447b36a16c2",
+      "current_sha256": "0a800f315b356ebc5951707841f1d97a9b722fcff00b8ab60fb28447b36a16c2",
+      "unchanged": true
+    },
+    {
+      "path": "bindings/python/elite_buffer.c",
+      "parent_sha256": "18471b67b120b2589af34c6df10297f39788e053d9dbcb511218747082e1ca6f",
+      "current_sha256": "18471b67b120b2589af34c6df10297f39788e053d9dbcb511218747082e1ca6f",
+      "unchanged": true
+    },
+    {
+      "path": "bindings/python/elite_ringbuffer/__init__.py",
+      "parent_sha256": "729d91bb771b11e5f5212e420edd5a20f0581fb2381d4c6b1f13df88d9efe2ef",
+      "current_sha256": "729d91bb771b11e5f5212e420edd5a20f0581fb2381d4c6b1f13df88d9efe2ef",
+      "unchanged": true
+    },
+    {
+      "path": "bindings/python/elite_ringbuffer/_native.py",
+      "parent_sha256": "797facde23db4f4dd9b5d7efeea7169a90e988da87faaf8a10301e67b1f367bd",
+      "current_sha256": "797facde23db4f4dd9b5d7efeea7169a90e988da87faaf8a10301e67b1f367bd",
+      "unchanged": true
+    },
+    {
+      "path": "bindings/python/matrix_worker.py",
+      "parent_sha256": "945dd4849e5a4b880ac58d1f9dda982b733f4c7a64cef9c36abcc6f377a0190b",
+      "current_sha256": "945dd4849e5a4b880ac58d1f9dda982b733f4c7a64cef9c36abcc6f377a0190b",
+      "unchanged": true
+    },
+    {
+      "path": "include/elite_api.h",
+      "parent_sha256": "3f4aa4180d48a6010af5c78f4059f5583ba74be38afdd756e6ce2d3130dd9153",
+      "current_sha256": "3f4aa4180d48a6010af5c78f4059f5583ba74be38afdd756e6ce2d3130dd9153",
+      "unchanged": true
+    },
+    {
+      "path": "include/elite_pmc.h",
+      "parent_sha256": "6f2d0c90d1939468ca4fd1ce73327469d3aed1d785411ae538089fab3fb568ca",
+      "current_sha256": "6f2d0c90d1939468ca4fd1ce73327469d3aed1d785411ae538089fab3fb568ca",
+      "unchanged": true
+    },
+    {
+      "path": "include/elite_ringbuffer.h",
+      "parent_sha256": "34c899d40e491874a199bc41b58a3a5d8c524dd70d4bbde0ad7dc42792ed3f5b",
+      "current_sha256": "34c899d40e491874a199bc41b58a3a5d8c524dd70d4bbde0ad7dc42792ed3f5b",
+      "unchanged": true
+    },
+    {
+      "path": "include/elite_topology.h",
+      "parent_sha256": "dba22a94aa3e35222e50528a4069e21306f839f7f02f5d05f6a4ab90e258ae7b",
+      "current_sha256": "dba22a94aa3e35222e50528a4069e21306f839f7f02f5d05f6a4ab90e258ae7b",
+      "unchanged": true
+    },
+    {
+      "path": "include/elite_version.h",
+      "parent_sha256": "f3f023da473253429d3e53e6fe0d432f75ba667197e0afe126e0f1290bd5a5b6",
+      "current_sha256": "f3f023da473253429d3e53e6fe0d432f75ba667197e0afe126e0f1290bd5a5b6",
+      "unchanged": true
+    },
+    {
+      "path": "src/elite_core.c",
+      "parent_sha256": "0796eec66cb0a9b7d3085ee309bc81f01d4e32bd3c2d5560b17c5aea53f2cc29",
+      "current_sha256": "0796eec66cb0a9b7d3085ee309bc81f01d4e32bd3c2d5560b17c5aea53f2cc29",
+      "unchanged": true
+    },
+    {
+      "path": "src/elite_format.c",
+      "parent_sha256": "c2d476cb01aca60b4419133b9c039aa2590bfc5fab725475cb513b62bb8bee31",
+      "current_sha256": "433195b980aac406187b028852ef70cdfce923b08c7bf8a4fc569df1b62e07fd",
+      "unchanged": false
+    },
+    {
+      "path": "src/elite_internal.h",
+      "parent_sha256": "c10de31f4b1ee4ae636d3023fcf1eb6dffeb2097d89db127718df6633b12e74f",
+      "current_sha256": "c10de31f4b1ee4ae636d3023fcf1eb6dffeb2097d89db127718df6633b12e74f",
+      "unchanged": true
+    },
+    {
+      "path": "src/elite_mpmc_ncq.c",
+      "parent_sha256": "540715143bf5f9b90477f212e52dfa60bebeb55e0bc88b983f8a71affc11cec9",
+      "current_sha256": "540715143bf5f9b90477f212e52dfa60bebeb55e0bc88b983f8a71affc11cec9",
+      "unchanged": true
+    },
+    {
+      "path": "src/elite_pmc.c",
+      "parent_sha256": "d7c583fac0bd966a20e006f56ee947d4a1eac73b0ba7d4f1d918cac971cfe4f3",
+      "current_sha256": "d7c583fac0bd966a20e006f56ee947d4a1eac73b0ba7d4f1d918cac971cfe4f3",
+      "unchanged": true
+    },
+    {
+      "path": "src/elite_shm.c",
+      "parent_sha256": "ab55901b6c0384e3a1d4a177aa702c946ff4942d0ca88df06c8f2965910aa00e",
+      "current_sha256": "ab55901b6c0384e3a1d4a177aa702c946ff4942d0ca88df06c8f2965910aa00e",
+      "unchanged": true
+    },
+    {
+      "path": "src/elite_spsc.c",
+      "parent_sha256": "fac8a92d5a71c8475769586b2744ed39a99b57cb29e9704efcacbec59c84e774",
+      "current_sha256": "fac8a92d5a71c8475769586b2744ed39a99b57cb29e9704efcacbec59c84e774",
+      "unchanged": true
+    },
+    {
+      "path": "src/elite_topology.c",
+      "parent_sha256": "10d0fe668c12fa6bb2b6cec578cd291c70de15524de286d930197237639dd0b4",
+      "current_sha256": "10d0fe668c12fa6bb2b6cec578cd291c70de15524de286d930197237639dd0b4",
+      "unchanged": true
+    },
+    {
+      "path": "src/elite_version.c",
+      "parent_sha256": "9d9a320c602c2da75b06795b7b2ad6a846ff4cef3940ff87e18ae04db5fc13ae",
+      "current_sha256": "9d9a320c602c2da75b06795b7b2ad6a846ff4cef3940ff87e18ae04db5fc13ae",
+      "unchanged": true
+    },
+    {
+      "path": "src/elite_wait.c",
+      "parent_sha256": "7b48360855807165ad3d35ab53cc5a214c7285ce5812e687ae3bc243c4949adc",
+      "current_sha256": "7b48360855807165ad3d35ab53cc5a214c7285ce5812e687ae3bc243c4949adc",
+      "unchanged": true
+    }
+  ],
+  "unchanged_count": 19,
+  "changed": [
+    "src/elite_format.c"
+  ]
+}

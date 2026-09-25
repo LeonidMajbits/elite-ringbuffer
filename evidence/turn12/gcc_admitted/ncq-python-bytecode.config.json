@@ -1,0 +1,29 @@
+{
+  "mode": "ncq",
+  "messages": 512,
+  "warmup_messages": 32,
+  "producers": 1,
+  "consumers": 1,
+  "capacity": 32,
+  "payload_bytes": 64,
+  "checksum": 0,
+  "arrival": 0,
+  "burst": 32,
+  "period_ns": 10000,
+  "hold_ns": 0,
+  "hold_every": 16,
+  "os_yield": 0,
+  "runtime": "python_bytecode",
+  "locality_request": "unconstrained",
+  "cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "qos": 0,
+  "id": "ncq-python-bytecode",
+  "axis": "runtime",
+  "status": "RUN",
+  "resource_estimate_bytes": 67272704
+}

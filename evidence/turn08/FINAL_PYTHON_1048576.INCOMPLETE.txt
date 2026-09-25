@@ -1,0 +1,1 @@
+INCOMPLETE: combined verification/benchmark invocation reached its45s outer budget during the1MiB benchmark. No final1MiB JSON was produced; prior completed64/4096-byte outputs are retained.

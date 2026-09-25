@@ -1,0 +1,2 @@
+SHM_NAME=/el-36wljrriifb2lm6gd2eur765ea
+{"mode": "spsc", "kind": "read", "transfer_blocked": true, "closed": false, "active": true, "exports": 1, "errors": []}

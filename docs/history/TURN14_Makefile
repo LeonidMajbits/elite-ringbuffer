@@ -1,0 +1,255 @@
+# C11/POSIX core, no external runtime libraries. GNU make on Linux/macOS.
+CC ?= cc
+AR ?= ar
+BUILD ?= build/native
+OPT ?= -O3 -g -DNDEBUG -fno-omit-frame-pointer -fno-lto
+WARN = -Wall -Wextra -Werror -pedantic -Wconversion -Wsign-conversion -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wformat=2 -Wundef
+CPPFLAGS += -Iinclude -Isrc -D_POSIX_C_SOURCE=200809L
+CFLAGS += -std=c11 $(OPT) $(WARN) -fPIC
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+  ELITE_ARCH_FLAGS ?= -arch arm64 -mmacosx-version-min=14.4
+  CPPFLAGS += -D_DARWIN_C_SOURCE
+  SOEXT = dylib
+  SHARED = -dynamiclib -install_name @rpath/libelite_ringbuffer.dylib -compatibility_version 1.0.0 -current_version 1.0.1
+  OBJDUMP ?= xcrun llvm-objdump
+  # Requested mnemonic profile. No changes to source memory orders.
+  ELITE_STRICT_LDAR ?= 1
+  ifeq ($(ELITE_STRICT_LDAR),1)
+    CFLAGS += -Xclang -target-feature -Xclang -rcpc
+  endif
+else
+  CPPFLAGS += -D_DEFAULT_SOURCE
+  ifeq ($(shell uname -m),aarch64)
+    ELITE_ARCH_FLAGS ?= -march=armv8-a -mtune=generic
+  else
+    ELITE_ARCH_FLAGS ?= -march=x86-64 -mtune=generic
+  endif
+  OBJDUMP ?= objdump
+  EXE_CFLAGS = -fPIE
+  EXE_LDFLAGS = -pie
+  CFLAGS += -pthread
+  LDLIBS += -pthread
+  SOEXT = so
+  SHARED = -shared -Wl,-soname,libelite_ringbuffer.so
+endif
+CFLAGS += $(ELITE_ARCH_FLAGS)
+SOURCES = src/elite_core.c src/elite_format.c src/elite_spsc.c src/elite_mpmc_ncq.c src/elite_shm.c src/elite_wait.c src/elite_version.c
+OBJECTS = $(patsubst src/%.c,$(BUILD)/%.o,$(SOURCES))
+TEST_OBJECTS = $(patsubst src/%.c,$(BUILD)/test_%.o,$(SOURCES))
+.PHONY: all check check-hooks clean asan tsan inspect
+all: $(BUILD)/libelite_ringbuffer.a $(BUILD)/libelite_ringbuffer.$(SOEXT) $(BUILD)/test_core $(BUILD)/test_ipc $(BUILD)/example
+$(BUILD):
+	mkdir -p $@
+$(BUILD)/%.o: src/%.c include/elite_ringbuffer.h include/elite_api.h include/elite_version.h src/elite_internal.h | $(BUILD)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -MMD -MP -c $< -o $@
+$(BUILD)/test_%.o: src/%.c include/elite_ringbuffer.h include/elite_api.h include/elite_version.h src/elite_internal.h | $(BUILD)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -DELITE_TESTING -MMD -MP -c $< -o $@
+$(BUILD)/libelite_ringbuffer.a: $(OBJECTS)
+	$(AR) rcs $@ $^
+$(BUILD)/libelite_ringbuffer.$(SOEXT): $(OBJECTS)
+	$(CC) $(ELITE_ARCH_FLAGS) $(LDFLAGS) $(SHARED) -o $@ $^ $(LDLIBS)
+$(BUILD)/test_core: tests/test_core.c $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $< $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+$(BUILD)/test_ipc: tests/test_ipc.c $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $< $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+$(BUILD)/test_adversarial: tests/test_adversarial.c $(TEST_OBJECTS)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXE_CFLAGS) -DELITE_TESTING $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $^ $(LDLIBS)
+$(BUILD)/example: examples/local_roundtrip.c $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $< $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+check: all
+	$(BUILD)/test_core
+	$(BUILD)/test_ipc spsc 1 1 100000
+	$(BUILD)/test_ipc ncq 4 4 100000
+check-hooks: $(BUILD)/test_adversarial
+	$(BUILD)/test_adversarial
+asan:
+	$(MAKE) BUILD=build/asan OPT='-O1 -g -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-lto -fsanitize=address,undefined -fno-sanitize-recover=all' LDFLAGS='-fsanitize=address,undefined' all check-hooks
+	ASAN_OPTIONS=halt_on_error=1:abort_on_error=1 UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 build/asan/test_core
+# Thread-only one-mapping evidence must NOT be relabeled as interprocess proof.
+tsan:
+	$(MAKE) BUILD=build/tsan OPT='-O1 -g -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-lto -fsanitize=thread' LDFLAGS='-fsanitize=thread' build/tsan/test_adversarial
+	TSAN_OPTIONS=halt_on_error=1:exitcode=66:force_seq_cst_atomics=0:report_atomic_races=1:ignore_interceptors_accesses=0:ignore_noninstrumented_modules=0 build/tsan/test_adversarial threads
+inspect: all
+	$(OBJDUMP) -dr $(BUILD)/elite_spsc.o > $(BUILD)/spsc-disassembly.txt
+	$(OBJDUMP) -dr $(BUILD)/elite_mpmc_ncq.o > $(BUILD)/ncq-disassembly.txt
+	nm -u $(BUILD)/libelite_ringbuffer.a > $(BUILD)/undefined-symbols.txt
+clean:
+	rm -rf build
+-include $(OBJECTS:.o=.d) $(TEST_OBJECTS:.o=.d)
+$(BUILD)/test_chaos: tests/test_chaos.c $(TEST_OBJECTS)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXE_CFLAGS) -DELITE_TESTING $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $^ $(LDLIBS)
+$(BUILD)/fuzz_prefix: tests/fuzz_prefix.c $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $< $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+.PHONY: chaos fuzz
+chaos: $(BUILD)/test_chaos
+	$(BUILD)/test_chaos
+fuzz: $(BUILD)/fuzz_prefix
+	$(BUILD)/fuzz_prefix 1000000
+$(BUILD)/test_limits: tests/test_limits.c $(TEST_OBJECTS)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXE_CFLAGS) -DELITE_TESTING $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $^ $(LDLIBS)
+.PHONY: limits
+limits: $(BUILD)/test_limits
+	$(BUILD)/test_limits
+
+# Turn 7: distinct native benchmark executables, no hooks/sanitizers by default.
+BENCH_COMMON = benchmarks/bench_common.c src/elite_topology.c
+$(BUILD)/bench_latency: benchmarks/bench_latency.c $(BENCH_COMMON) benchmarks/bench_common.h $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) -Ibenchmarks $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ benchmarks/bench_latency.c $(BENCH_COMMON) $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+$(BUILD)/bench_throughput: benchmarks/bench_throughput.c $(BENCH_COMMON) benchmarks/bench_common.h $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) -Ibenchmarks $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ benchmarks/bench_throughput.c $(BENCH_COMMON) $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+.PHONY: benchmarks
+benchmarks: $(BUILD)/bench_latency $(BUILD)/bench_throughput
+# PMC code is a separate diagnostic archive. The ring library is unchanged.
+.PHONY: cache-build-force
+cache-build-force:
+$(BUILD)/cache_build_info.h: cache-build-force tools/cache_build_info.py | $(BUILD)
+	$(PYTHON) tools/cache_build_info.py --out "$@" --cc "$(CC)" --cppflags="$(CPPFLAGS) -Ibenchmarks -I$(BUILD)" --cflags="$(CFLAGS) $(EXE_CFLAGS)" --ldflags="$(LDFLAGS) $(EXE_LDFLAGS)" --ldlibs="$(LDLIBS)"
+$(BUILD)/elite_pmc.o: src/elite_pmc.c include/elite_pmc.h | $(BUILD)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -MMD -MP -c $< -o $@
+$(BUILD)/libelite_pmc.a: $(BUILD)/elite_pmc.o
+	$(AR) rcs $@ $^
+$(BUILD)/bench_cache: benchmarks/bench_cache.c $(BENCH_COMMON) benchmarks/bench_common.h benchmarks/bench_identity.c benchmarks/bench_identity.h benchmarks/bench_ratio.c benchmarks/bench_ratio.h $(BUILD)/cache_build_info.h $(BUILD)/libelite_pmc.a $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) -Ibenchmarks -I$(BUILD) $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ benchmarks/bench_cache.c $(BENCH_COMMON) benchmarks/bench_identity.c benchmarks/bench_ratio.c $(BUILD)/libelite_pmc.a $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+$(BUILD)/bench_analyze: benchmarks/bench_analyze.c $(BENCH_COMMON) benchmarks/bench_common.h $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) -Ibenchmarks $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ benchmarks/bench_analyze.c $(BENCH_COMMON) $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+$(BUILD)/test_benchmark_tools: tests/test_benchmark_tools.c $(BENCH_COMMON) benchmarks/bench_common.h $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) -Ibenchmarks $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ tests/test_benchmark_tools.c $(BENCH_COMMON) $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+benchmarks: $(BUILD)/bench_cache $(BUILD)/bench_analyze $(BUILD)/test_benchmark_tools
+.PHONY: check-bench-tools
+check-bench-tools: $(BUILD)/test_benchmark_tools
+	$(BUILD)/test_benchmark_tools
+
+# Turn 8: versioned release, opaque C++ interface and optional Python exporter.
+PYTHON ?= python3
+PREFIX ?= /usr/local
+DESTDIR ?=
+CXX ?= c++
+.PHONY: libraries install install-python python check-python check-cpp
+libraries: $(BUILD)/libelite_ringbuffer.a $(BUILD)/libelite_ringbuffer.$(SOEXT)
+python: libraries
+	$(PYTHON) tools/build_python.py --cc "$(CC)" --build "$(BUILD)" $(if $(PY_SANITIZE),--sanitize "$(PY_SANITIZE)",)
+check-python: python
+	ELITE_LIBRARY="$(abspath $(BUILD)/libelite_ringbuffer.$(SOEXT))" PYTHONPATH="$(abspath $(BUILD)/python):$(abspath bindings/python)" $(PYTHON) tools/check_python.py
+$(BUILD)/cpp_example: examples/cpp_roundtrip.cpp include/elite_api.h $(BUILD)/libelite_ringbuffer.a
+	$(CXX) -std=c++20 -O3 -Wall -Wextra -Werror -pedantic -Iinclude $(ELITE_ARCH_FLAGS) $(LDFLAGS) -o $@ $< $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+check-cpp: $(BUILD)/cpp_example
+	$(BUILD)/cpp_example
+install: libraries
+	install -d "$(DESTDIR)$(PREFIX)/include" "$(DESTDIR)$(PREFIX)/lib"
+	install -m 644 include/elite_ringbuffer.h include/elite_api.h include/elite_version.h "$(DESTDIR)$(PREFIX)/include/"
+	install -m 644 $(BUILD)/libelite_ringbuffer.a $(BUILD)/libelite_ringbuffer.$(SOEXT) "$(DESTDIR)$(PREFIX)/lib/"
+# Source-tree Python: PYTHONPATH=$(BUILD)/python:bindings/python; no pip dependency.
+install-python: python
+	$(PYTHON) tools/install_python.py --build "$(BUILD)" --prefix "$(DESTDIR)$(PREFIX)"
+
+.PHONY: release-check
+release-check: check check-hooks limits chaos fuzz check-bench-tools check-cpp check-python
+
+# Hardened Python regression: original 36 plus races, cyclic GC, and failure probes.
+.PHONY: check-python-hardening
+check-python-hardening: python topology
+	ELITE_TOPOLOGY_BINARY="$(abspath $(BUILD)/bench_topology)" ELITE_LIBRARY="$(abspath $(BUILD)/libelite_ringbuffer.$(SOEXT))" PYTHONPATH="$(abspath $(BUILD)/python):$(abspath bindings/python)" $(PYTHON) tools/check_python.py --hardening
+release-check: check-python-hardening
+
+# Turn 11: optional profiler and independent provenance oracles.
+.PHONY: pmc check-pmc
+pmc: $(BUILD)/libelite_pmc.a
+$(BUILD)/test_pmc: tests/test_pmc.c benchmarks/bench_identity.c benchmarks/bench_identity.h $(BUILD)/cache_build_info.h $(BUILD)/libelite_pmc.a
+	$(CC) $(CPPFLAGS) -Ibenchmarks -I$(BUILD) $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ tests/test_pmc.c benchmarks/bench_identity.c $(BUILD)/libelite_pmc.a $(LDLIBS)
+check-pmc: $(BUILD)/test_pmc
+	$(BUILD)/test_pmc
+	$(PYTHON) -m unittest discover -s tests -p 'test_cache_provenance.py' -v
+	$(PYTHON) tools/check_cache_math.py --binary $(BUILD)/test_ratio
+ifeq ($(UNAME_S),Linux)
+$(BUILD)/test_pmc_backend: tests/test_pmc_backend.c $(BUILD)/libelite_pmc.a
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -Wl,--wrap=syscall,--wrap=read,--wrap=ioctl,--wrap=close -o $@ $< $(BUILD)/libelite_pmc.a $(LDLIBS)
+check-pmc: check-pmc-backend
+.PHONY: check-pmc-backend
+check-pmc-backend: $(BUILD)/test_pmc_backend
+	$(BUILD)/test_pmc_backend
+endif
+-include $(BUILD)/elite_pmc.d
+
+$(BUILD)/test_ratio: tests/test_ratio.c benchmarks/bench_ratio.c benchmarks/bench_ratio.h | $(BUILD)
+	$(CC) $(CPPFLAGS) -Ibenchmarks $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ tests/test_ratio.c benchmarks/bench_ratio.c $(LDLIBS)
+check-pmc: $(BUILD)/test_ratio
+
+.PHONY: install-pmc
+install-pmc: pmc
+	install -d "$(DESTDIR)$(PREFIX)/include" "$(DESTDIR)$(PREFIX)/lib"
+	install -m 644 include/elite_pmc.h "$(DESTDIR)$(PREFIX)/include/"
+	install -m 644 $(BUILD)/libelite_pmc.a "$(DESTDIR)$(PREFIX)/lib/"
+
+# Turn 12: optional topology discovery; not linked into the core IPC library.
+$(BUILD)/elite_topology.o: src/elite_topology.c include/elite_topology.h | $(BUILD)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -MMD -MP -c $< -o $@
+$(BUILD)/libelite_topology.a: $(BUILD)/elite_topology.o
+	$(AR) rcs $@ $^
+$(BUILD)/bench_topology: benchmarks/bench_topology.c $(BUILD)/libelite_topology.a
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $^ $(LDLIBS)
+.PHONY: topology
+topology: $(BUILD)/bench_topology
+
+# Matrix IPC callers link topology diagnostics, never into the production core.
+$(BUILD)/bench_matrix: benchmarks/bench_matrix.c $(BENCH_COMMON) benchmarks/bench_common.h benchmarks/bench_identity.c benchmarks/bench_ratio.c $(BUILD)/cache_build_info.h $(BUILD)/libelite_topology.a $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) -Ibenchmarks -I$(BUILD) $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ benchmarks/bench_matrix.c $(BENCH_COMMON) benchmarks/bench_identity.c benchmarks/bench_ratio.c $(BUILD)/libelite_topology.a $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+$(BUILD)/libelite_matrix_bridge.$(SOEXT): benchmarks/matrix_bridge.c $(BENCH_COMMON) $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) -Ibenchmarks $(CFLAGS) $(LDFLAGS) $(if $(filter Darwin,$(UNAME_S)),-dynamiclib,-shared) -o $@ benchmarks/matrix_bridge.c $(BENCH_COMMON) $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+.PHONY: matrix
+matrix: $(BUILD)/bench_matrix $(BUILD)/bench_topology $(BUILD)/libelite_matrix_bridge.$(SOEXT)
+
+$(BUILD)/test_topology: tests/test_topology.c $(BUILD)/libelite_topology.a | $(BUILD)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $< $(BUILD)/libelite_topology.a $(LDLIBS)
+.PHONY: check-topology check-matrix
+check-topology: $(BUILD)/test_topology $(BUILD)/bench_topology
+	$(BUILD)/test_topology
+	ELITE_TOPOLOGY_BINARY=$(abspath $(BUILD))/bench_topology $(PYTHON) tests/test_topology.py
+check-matrix:
+	$(PYTHON) tests/test_matrix_results.py
+
+benchmarks: matrix
+-include $(BUILD)/elite_topology.d
+.PHONY: install-topology
+install-topology: $(BUILD)/libelite_topology.a
+	install -d "$(DESTDIR)$(PREFIX)/include" "$(DESTDIR)$(PREFIX)/lib"
+	install -m 644 include/elite_topology.h "$(DESTDIR)$(PREFIX)/include/"
+	install -m 644 $(BUILD)/libelite_topology.a "$(DESTDIR)$(PREFIX)/lib/"
+
+# Turn 13: formal tools are development-only and never linked into the IPC core.
+.PHONY: check-formal formal formal-extended check-formal-c
+$(BUILD)/formal_%: formal/c11/%.c | $(BUILD)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -UNDEBUG $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $< $(LDLIBS)
+check-formal-c: $(BUILD)/formal_spsc_handoff $(BUILD)/formal_ncq_handoff $(BUILD)/formal_ticket_atomicity
+	$(BUILD)/formal_spsc_handoff
+	$(BUILD)/formal_ncq_handoff
+	$(BUILD)/formal_ticket_atomicity
+check-formal: check-formal-c
+	$(PYTHON) tools/check_formal_binding.py
+	$(PYTHON) tests/test_formal.py
+formal: check-formal
+	$(PYTHON) tools/run_formal.py --out $(BUILD)/formal-run
+	$(PYTHON) tools/verify_formal_results.py $(BUILD)/formal-run
+formal-extended: check-formal
+	$(PYTHON) tools/run_formal.py --extended --out $(BUILD)/formal-extended
+release-check: check-formal
+
+.PHONY: check-formal-results
+check-formal-results:
+	$(PYTHON) tests/test_formal_results.py
+release-check: check-formal-results
+
+# Turn 14: separate process-chaos executables; no changes to production surface.
+.PHONY: chaos-multiprocess check-chaos-multiprocess
+$(BUILD)/chaos_multiprocess: tests/test_chaos_multiprocess.c tests/chaos_protocol.h tests/test_support.h $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) -Itests $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $< $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+$(BUILD)/chaos_multiprocess_hooks: tests/test_chaos_multiprocess.c tests/chaos_protocol.h tests/test_support.h $(TEST_OBJECTS)
+	$(CC) $(CPPFLAGS) -Itests $(CFLAGS) $(EXE_CFLAGS) -DELITE_TESTING $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $< $(TEST_OBJECTS) $(LDLIBS)
+chaos-multiprocess: $(BUILD)/chaos_multiprocess $(BUILD)/chaos_multiprocess_hooks
+$(BUILD)/chaos_resources: tests/test_chaos_resources.c tests/test_support.h $(BUILD)/libelite_ringbuffer.a
+	$(CC) $(CPPFLAGS) -Itests $(CFLAGS) $(EXE_CFLAGS) $(LDFLAGS) $(EXE_LDFLAGS) -o $@ $< $(BUILD)/libelite_ringbuffer.a $(LDLIBS)
+chaos-multiprocess: $(BUILD)/chaos_resources
+check-chaos-multiprocess: chaos-multiprocess
+	$(PYTHON) tests/test_chaos_results.py
+	$(PYTHON) tools/check_chaos.py --build $(BUILD)
+release-check: check-chaos-multiprocess

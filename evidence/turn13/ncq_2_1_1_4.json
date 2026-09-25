@@ -1,0 +1,33 @@
+{
+  "schema": "elite-formal-explorer-v1",
+  "model": "ncq-sc64",
+  "config": {
+    "capacity": 2,
+    "producers": 1,
+    "consumers": 1,
+    "reservations_per_producer": 4,
+    "mutation": "none",
+    "allow_abort": true,
+    "atomic_model": "SC",
+    "initialization": "QF full; QR empty; construction precedes exposure"
+  },
+  "status": "PASS_WITHIN_SCOPE",
+  "cutoff": null,
+  "states": 18005,
+  "transitions": 35326,
+  "terminals": 97,
+  "max_shortest_depth": 112,
+  "frontier_remaining": 0,
+  "exhaustive": true,
+  "time_seconds": 0.5033464670000285,
+  "state_sequence_sha256": "a8e771d8877edf0a41d418b218f59ce203a6181d7fb55b22ecc1f9b2b7e644a5",
+  "legal_head_ahead_of_tail_reached": true,
+  "no_progress_analysis": {
+    "algorithm": "exact topological elimination of nonprogress edges",
+    "residue_states": 0,
+    "cycle_exists": false,
+    "progress": "queue LP or empty/operation response; not application throughput",
+    "scheduler": "active transition sequences only; no implicit stutter"
+  },
+  "witness": null
+}

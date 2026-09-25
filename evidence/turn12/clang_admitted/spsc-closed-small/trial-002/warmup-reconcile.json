@@ -1,0 +1,1 @@
+{"status":"PASS_WITHIN_SCOPE","publications":1024,"capacity":32,"segment_bytes":65536,"all_tokens_returned":true,"designated_cell_isolation_64_128":true,"universal_no_false_sharing":false,"published":1024,"reclaimed":1024}

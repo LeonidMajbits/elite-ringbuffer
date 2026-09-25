@@ -1,0 +1,1 @@
+FAIL tests/test_chaos_multiprocess.c:47: !interrupted && (deadline==0 || test_now()<deadline)

@@ -1,0 +1,31 @@
+{
+  "schema": "elite-formal-campaign-v1",
+  "status": "INCOMPLETE_OR_FAILED",
+  "source_unchanged": true,
+  "records": 18,
+  "record_names": [
+    "spsc_n2_eight",
+    "spsc_n4_six",
+    "ncq_n2_eight",
+    "ncq_n4_2p2c",
+    "ncq_n4_2p1c",
+    "ncq_n4_1p2c",
+    "ncq_n8_2p2c",
+    "mutant_split_head",
+    "mutant_stale_head_retry",
+    "mutant_overwrite_current",
+    "mutant_tail_before_entry",
+    "mutant_post_lp_write",
+    "mutant_early_return",
+    "spsc_publish_early",
+    "cutoff_control",
+    "handoff",
+    "boundaries",
+    "targeted"
+  ],
+  "baseline_population": 7,
+  "negative_expectations": 8,
+  "external_spin_executed": false,
+  "external_genmc_executed": false,
+  "full_turn5_v1_qualification": false
+}

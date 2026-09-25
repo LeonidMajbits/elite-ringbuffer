@@ -1,0 +1,7 @@
+test_binding_cleanup_registry_empty (__main__.ProcessTests.test_binding_cleanup_registry_empty) ... ok
+test_grant_encoding_rejects_missing_fields (__main__.ProcessTests.test_grant_encoding_rejects_missing_fields) ... ok
+test_inherited_handle_methods_reject (__main__.ProcessTests.test_inherited_handle_methods_reject) ... ok
+test_kill_leaks_token_but_whole_generation_cleans (__main__.ProcessTests.test_kill_leaks_token_but_whole_generation_cleans) ... ok
+test_normal_exit_closes_idle_generation (__main__.ProcessTests.test_normal_exit_closes_idle_generation) ... ok
+test_pause_resume_distinct_successor (__main__.ProcessTests.test_pause_resume_distinct_successor) ... ok
+test_python_mpmc_two_producers_two_consumers (__main__.ProcessTests.test_python_mpmc_two_producers_two_consumers) ... 

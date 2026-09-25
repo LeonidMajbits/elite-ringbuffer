@@ -1,0 +1,21 @@
+test_bad_repository (test_seeding.PackageSeed.test_bad_repository) ... ok
+test_credentials_refused (test_seeding.PackageSeed.test_credentials_refused) ... ok
+test_local_formula (test_seeding.PackageSeed.test_local_formula) ... ok
+test_no_overwrite (test_seeding.PackageSeed.test_no_overwrite) ... ok
+test_plain_http_refused (test_seeding.PackageSeed.test_plain_http_refused) ... ok
+test_public_formula (test_seeding.PackageSeed.test_public_formula) ... ok
+test_wrong_source_version (test_seeding.PackageSeed.test_wrong_source_version) ... ok
+test_complete_cmake_export (test_seeding.SeedingSurface.test_complete_cmake_export) ... ok
+test_man_pages_sections_and_contracts (test_seeding.SeedingSurface.test_man_pages_sections_and_contracts) ... ok
+test_manual_references_actual_api (test_seeding.SeedingSurface.test_manual_references_actual_api) ... ok
+test_matrix_scopes (test_seeding.SeedingSurface.test_matrix_scopes) ... ok
+test_ruby_syntax (test_seeding.SeedingSurface.test_ruby_syntax) ... ok
+test_source_manifest_policy_covers_seeding (test_seeding.SeedingSurface.test_source_manifest_policy_covers_seeding) ... ok
+test_vcpkg_metadata (test_seeding.SeedingSurface.test_vcpkg_metadata) ... ok
+test_workflow_no_write_or_privileged_pr_trigger (test_seeding.SeedingSurface.test_workflow_no_write_or_privileged_pr_trigger) ... ok
+test_workflow_pins (test_seeding.SeedingSurface.test_workflow_pins) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.095s
+
+OK

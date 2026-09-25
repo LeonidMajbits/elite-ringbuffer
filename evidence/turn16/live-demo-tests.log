@@ -1,0 +1,15 @@
+test_bad_arguments (test_live_demo.LiveNative.test_bad_arguments) ... ok
+test_cancel_between_records (test_live_demo.LiveNative.test_cancel_between_records) ... ok
+test_existing_file_refused (test_live_demo.LiveNative.test_existing_file_refused) ... ok
+test_modes (test_live_demo.LiveNative.test_modes) ... ok
+test_cancelled_not_complete (test_live_demo.LiveOracle.test_cancelled_not_complete) ... ok
+test_duplicate_key (test_live_demo.LiveOracle.test_duplicate_key) ... ok
+test_exact_rational_and_large_ticks (test_live_demo.LiveOracle.test_exact_rational_and_large_ticks) ... ok
+test_mutations (test_live_demo.LiveOracle.test_mutations) ... ok
+test_optimized_python_rejects (test_live_demo.LiveOracle.test_optimized_python_rejects) ... ok
+test_truncated (test_live_demo.LiveOracle.test_truncated) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 4.691s
+
+OK

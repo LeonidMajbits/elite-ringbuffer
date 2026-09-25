@@ -1,0 +1,9 @@
+{
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "gcc": "gcc (Debian 14.2.0-19) 14.2.0",
+  "clang": "clang version 17.0.0 (https://github.com/swiftlang/llvm-project.git 10999b6d034fe318f3d56c83bddb6572593a8bb0)",
+  "spin": "not installed; outbound download attempts unsuccessful",
+  "parent_sha256": "b970be9a985870dc98c92eeab04b9acd470f09c99fd503bf77bd7720b3e10e93",
+  "lab_claim_receipt_arithmetic": "31 x 3 = 93, not 90; raw Apple trial inventory not supplied here; no added qualification inferred"
+}

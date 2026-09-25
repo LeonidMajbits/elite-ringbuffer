@@ -1,0 +1,1 @@
+PASS GOODPUT NCQ-SC64 4P/4C messages=10000 msg/s=1418291 payload_GB/s=0.090771 exact_membership=yes tokens_returned=yes

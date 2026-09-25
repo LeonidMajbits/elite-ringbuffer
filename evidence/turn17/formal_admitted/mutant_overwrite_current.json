@@ -1,0 +1,2971 @@
+{
+  "schema": "elite-formal-explorer-v1",
+  "model": "ncq-sc64",
+  "config": {
+    "capacity": 4,
+    "producers": 2,
+    "consumers": 2,
+    "reservations_per_producer": 1,
+    "mutation": "overwrite_current",
+    "allow_abort": false,
+    "atomic_model": "SC",
+    "initialization": "QF full; QR empty; construction precedes exposure"
+  },
+  "status": "FAIL_WITNESS",
+  "cutoff": null,
+  "states": 9830,
+  "transitions": 32804,
+  "terminals": 0,
+  "max_shortest_depth": 25,
+  "frontier_remaining": 1448,
+  "exhaustive": false,
+  "nonterminal_deadends": 0,
+  "time_seconds": 0.7058394030000272,
+  "state_sequence_sha256": "b8f4c27b247124691c00415bc055aeb21e6967cfca8c138a3192505da3d9b49c",
+  "legal_head_ahead_of_tail_reached": true,
+  "no_progress_analysis": null,
+  "witness": {
+    "property": "OUT_OF_ORDER_PUBLICATION",
+    "details": {
+      "ticket": 4,
+      "U": 5
+    },
+    "steps": [
+      {
+        "event": "0: begin dequeue Q0",
+        "state": {
+          "heads": [
+            0,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 1,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "0: load Q0.head",
+        "state": {
+          "heads": [
+            0,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 2,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "0: load Q0.entry current generation",
+        "state": {
+          "heads": [
+            0,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 4,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "0: Q0 HEAD CAS success ticket 0, token 0 [dequeue LP]",
+        "state": {
+          "heads": [
+            1,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 5,
+              "ticket": 0,
+              "entry": 0,
+              "block": 0,
+              "epoch": 0,
+              "left": 1,
+              "owns": true,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "0: owned epoch mirror 1",
+        "state": {
+          "heads": [
+            1,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 6,
+              "ticket": 0,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "0: release RESERVED",
+        "state": {
+          "heads": [
+            1,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 7,
+              "ticket": 0,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "0: ordinary write word0=1",
+        "state": {
+          "heads": [
+            1,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 8,
+              "ticket": 0,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "0: ordinary write word1=1",
+        "state": {
+          "heads": [
+            1,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 9,
+              "ticket": 0,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "0: release COMMITTED; not queue membership",
+        "state": {
+          "heads": [
+            1,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 20,
+              "ticket": 0,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "0: load Q1.tail",
+        "state": {
+          "heads": [
+            1,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 21,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "0: one-older entry; prepare install",
+        "state": {
+          "heads": [
+            1,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: begin dequeue Q0",
+        "state": {
+          "heads": [
+            1,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 1,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: load Q0.head",
+        "state": {
+          "heads": [
+            1,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 2,
+              "ticket": 1,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: load Q0.entry current generation",
+        "state": {
+          "heads": [
+            1,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            -1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 4,
+              "ticket": 1,
+              "entry": 1,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: Q0 HEAD CAS success ticket 1, token 1 [dequeue LP]",
+        "state": {
+          "heads": [
+            2,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 5,
+              "ticket": 0,
+              "entry": 0,
+              "block": 1,
+              "epoch": 0,
+              "left": 1,
+              "owns": true,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: owned epoch mirror 1",
+        "state": {
+          "heads": [
+            2,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 6,
+              "ticket": 0,
+              "entry": 0,
+              "block": 1,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: release RESERVED",
+        "state": {
+          "heads": [
+            2,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 7,
+              "ticket": 0,
+              "entry": 0,
+              "block": 1,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: ordinary write word0=2",
+        "state": {
+          "heads": [
+            2,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 8,
+              "ticket": 0,
+              "entry": 0,
+              "block": 1,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: ordinary write word1=2",
+        "state": {
+          "heads": [
+            2,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 9,
+              "ticket": 0,
+              "entry": 0,
+              "block": 1,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: release COMMITTED; not queue membership",
+        "state": {
+          "heads": [
+            2,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 20,
+              "ticket": 0,
+              "entry": 0,
+              "block": 1,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: load Q1.tail",
+        "state": {
+          "heads": [
+            2,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 21,
+              "ticket": 4,
+              "entry": 0,
+              "block": 1,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: one-older entry; prepare install",
+        "state": {
+          "heads": [
+            2,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            4
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "owners": [
+            0,
+            1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 1,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "0: Q1 ENTRY CAS success ticket 4, token 0 [publication LP]",
+        "state": {
+          "heads": [
+            2,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            5
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "owners": [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 23,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": false,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 0,
+              "block": 1,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: MUTANT: adopt winner entry as replacement expected",
+        "state": {
+          "heads": [
+            2,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            5
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "owners": [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 23,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": false,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 4,
+              "block": 1,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      },
+      {
+        "event": "1: installation at 4",
+        "state": {
+          "heads": [
+            2,
+            4
+          ],
+          "tails": [
+            4,
+            4
+          ],
+          "frontiers": [
+            4,
+            5
+          ],
+          "entries": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            0,
+            0,
+            0
+          ],
+          "epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "phases": [
+            2,
+            2,
+            0,
+            0
+          ],
+          "status_epochs": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "word0": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "word1": [
+            1,
+            2,
+            0,
+            0
+          ],
+          "owners": [
+            -2,
+            1,
+            -1,
+            -1
+          ],
+          "actors": [
+            {
+              "pc": 23,
+              "ticket": 4,
+              "entry": 0,
+              "block": 0,
+              "epoch": 1,
+              "left": 0,
+              "owns": false,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 22,
+              "ticket": 4,
+              "entry": 4,
+              "block": 1,
+              "epoch": 1,
+              "left": 0,
+              "owns": true,
+              "queue": 1,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            },
+            {
+              "pc": 0,
+              "ticket": 0,
+              "entry": 0,
+              "block": -1,
+              "epoch": 0,
+              "left": 1,
+              "owns": false,
+              "queue": 0,
+              "alias": false,
+              "read": 0
+            }
+          ]
+        }
+      }
+    ],
+    "initial": {
+      "heads": [
+        0,
+        4
+      ],
+      "tails": [
+        4,
+        4
+      ],
+      "frontiers": [
+        4,
+        4
+      ],
+      "entries": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "epochs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "phases": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "status_epochs": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "word0": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "word1": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "owners": [
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "actors": [
+        {
+          "pc": 0,
+          "ticket": 0,
+          "entry": 0,
+          "block": -1,
+          "epoch": 0,
+          "left": 1,
+          "owns": false,
+          "queue": 0,
+          "alias": false,
+          "read": 0
+        },
+        {
+          "pc": 0,
+          "ticket": 0,
+          "entry": 0,
+          "block": -1,
+          "epoch": 0,
+          "left": 1,
+          "owns": false,
+          "queue": 0,
+          "alias": false,
+          "read": 0
+        },
+        {
+          "pc": 0,
+          "ticket": 0,
+          "entry": 0,
+          "block": -1,
+          "epoch": 0,
+          "left": 1,
+          "owns": false,
+          "queue": 0,
+          "alias": false,
+          "read": 0
+        },
+        {
+          "pc": 0,
+          "ticket": 0,
+          "entry": 0,
+          "block": -1,
+          "epoch": 0,
+          "left": 1,
+          "owns": false,
+          "queue": 0,
+          "alias": false,
+          "read": 0
+        }
+      ]
+    }
+  }
+}

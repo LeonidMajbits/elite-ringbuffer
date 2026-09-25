@@ -1,0 +1,9 @@
+RUN off 1
+RUN off 2
+RUN off 4
+RUN off 8
+RUN count 1
+RUN count 2
+RUN count 4
+RUN count 8
+COMPLETE_VERIFIED_WITHIN_SCOPE

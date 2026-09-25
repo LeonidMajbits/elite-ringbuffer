@@ -1,0 +1,17 @@
+{
+  "status": "COMPLETE",
+  "plan_sha256": "e832e945eaddcd943c009f1e7b6480326a9212acde532299affbb946e9604906",
+  "cases": [
+    "write_claim_ncq_1p1c_t000",
+    "read_claim_ncq_1p1c_t000",
+    "late_publication_ncq_1p1c_t000",
+    "resume_write_ncq_1p1c_t000",
+    "resume_read_ncq_1p1c_t000",
+    "resume_write_spsc_1p1c_t000",
+    "resume_read_spsc_1p1c_t000",
+    "random_abort_kill_ncq_1p1c_t000",
+    "storm_ncq_4p4c_t000",
+    "resources_t000"
+  ],
+  "messages": 156000
+}

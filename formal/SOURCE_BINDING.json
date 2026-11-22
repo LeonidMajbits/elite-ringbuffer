@@ -45,8 +45,13 @@
       "turn16_review": "Only opt-in FreeBSD admission and FreeBSD-only rejection of parkable mode added; Linux preprocessed token stream unchanged. See docs/FREEBSD_PORT.patch and evidence/turn16."
     },
     "src/elite_shm.c": {
-      "sha256": "ab55901b6c0384e3a1d4a177aa702c946ff4942d0ca88df06c8f2965910aa00e",
-      "anchors": []
+      "sha256": "bf97c8776a917ebb0d6b6750c8c29e5289b0d880d7a18203339747eee2625213",
+      "anchors": [],
+      "portability_include_review": {
+        "previous_sha256": "ab55901b6c0384e3a1d4a177aa702c946ff4942d0ca88df06c8f2965910aa00e",
+        "change": "Added only the direct <signal.h> include required to declare siginfo_t for the existing FreeBSD waitid path; all function bodies, concurrency operations and reviewed anchors remain unchanged.",
+        "scope": "Manual byte-diff review plus native CI lane checks; not a new refinement proof or historical model-checker execution. Historical evidence remains unchanged."
+      }
     },
     "src/elite_wait.c": {
       "sha256": "7b48360855807165ad3d35ab53cc5a214c7285ce5812e687ae3bc243c4949adc",

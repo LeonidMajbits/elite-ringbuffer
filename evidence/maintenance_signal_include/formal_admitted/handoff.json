@@ -1,0 +1,2436 @@
+{
+  "schema": "elite-handoff-fragment-v1",
+  "status": "PASS",
+  "scope": "finite handoff skeletons, not full ISO-C11/RC11 model checking",
+  "results": [
+    {
+      "name": "spsc_ra_fragment",
+      "capacity": 2,
+      "messages": 4,
+      "publication": "release",
+      "reclamation": "release",
+      "candidates": 288,
+      "consistent": 18,
+      "violating": 0,
+      "status": "PASS_WITHIN_SCOPE",
+      "events": [
+        {
+          "name": "init_P",
+          "thread": -1,
+          "loc": "P",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_C",
+          "thread": -1,
+          "loc": "C",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_epoch_0",
+          "thread": -1,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_x_0",
+          "thread": -1,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_y_0",
+          "thread": -1,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_epoch_1",
+          "thread": -1,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_x_1",
+          "thread": -1,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_y_1",
+          "thread": -1,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_0",
+          "thread": 0,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_x_0",
+          "thread": 0,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_y_0",
+          "thread": 0,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_publish_0",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_epoch_1",
+          "thread": 0,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_x_1",
+          "thread": 0,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_y_1",
+          "thread": 0,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_publish_1",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_acquire_C_for_2",
+          "thread": 0,
+          "loc": "C",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_2",
+          "thread": 0,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_x_2",
+          "thread": 0,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_y_2",
+          "thread": 0,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_publish_2",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_acquire_C_for_3",
+          "thread": 0,
+          "loc": "C",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_3",
+          "thread": 0,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_x_3",
+          "thread": 0,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_y_3",
+          "thread": 0,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_publish_3",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_acquire_P_for_0",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_0",
+          "thread": 1,
+          "loc": "epoch0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_x_0",
+          "thread": 1,
+          "loc": "x0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_y_0",
+          "thread": 1,
+          "loc": "y0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_reclaim_0",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_acquire_P_for_1",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_1",
+          "thread": 1,
+          "loc": "epoch1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_x_1",
+          "thread": 1,
+          "loc": "x1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_y_1",
+          "thread": 1,
+          "loc": "y1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_reclaim_1",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_acquire_P_for_2",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_2",
+          "thread": 1,
+          "loc": "epoch0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_x_2",
+          "thread": 1,
+          "loc": "x0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_y_2",
+          "thread": 1,
+          "loc": "y0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_reclaim_2",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_acquire_P_for_3",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_3",
+          "thread": 1,
+          "loc": "epoch1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_x_3",
+          "thread": 1,
+          "loc": "x1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_y_3",
+          "thread": 1,
+          "loc": "y1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_reclaim_3",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 4,
+          "message": 3
+        }
+      ],
+      "witness": null
+    },
+    {
+      "name": "spsc_ra_fragment",
+      "capacity": 2,
+      "messages": 4,
+      "publication": "relaxed",
+      "reclamation": "release",
+      "candidates": 288,
+      "consistent": 18,
+      "violating": 18,
+      "status": "FAIL_WITNESS",
+      "events": [
+        {
+          "name": "init_P",
+          "thread": -1,
+          "loc": "P",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_C",
+          "thread": -1,
+          "loc": "C",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_epoch_0",
+          "thread": -1,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_x_0",
+          "thread": -1,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_y_0",
+          "thread": -1,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_epoch_1",
+          "thread": -1,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_x_1",
+          "thread": -1,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_y_1",
+          "thread": -1,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_0",
+          "thread": 0,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_x_0",
+          "thread": 0,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_y_0",
+          "thread": 0,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_publish_0",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_epoch_1",
+          "thread": 0,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_x_1",
+          "thread": 0,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_y_1",
+          "thread": 0,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_publish_1",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_acquire_C_for_2",
+          "thread": 0,
+          "loc": "C",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_2",
+          "thread": 0,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_x_2",
+          "thread": 0,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_y_2",
+          "thread": 0,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_publish_2",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_acquire_C_for_3",
+          "thread": 0,
+          "loc": "C",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_3",
+          "thread": 0,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_x_3",
+          "thread": 0,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_y_3",
+          "thread": 0,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_publish_3",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_acquire_P_for_0",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_0",
+          "thread": 1,
+          "loc": "epoch0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_x_0",
+          "thread": 1,
+          "loc": "x0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_y_0",
+          "thread": 1,
+          "loc": "y0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_reclaim_0",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_acquire_P_for_1",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_1",
+          "thread": 1,
+          "loc": "epoch1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_x_1",
+          "thread": 1,
+          "loc": "x1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_y_1",
+          "thread": 1,
+          "loc": "y1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_reclaim_1",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_acquire_P_for_2",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_2",
+          "thread": 1,
+          "loc": "epoch0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_x_2",
+          "thread": 1,
+          "loc": "x0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_y_2",
+          "thread": 1,
+          "loc": "y0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_reclaim_2",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_acquire_P_for_3",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_3",
+          "thread": 1,
+          "loc": "epoch1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_x_3",
+          "thread": 1,
+          "loc": "x1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_y_3",
+          "thread": 1,
+          "loc": "y1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_reclaim_3",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 4,
+          "message": 3
+        }
+      ],
+      "witness": {
+        "races": [
+          [
+            "P_epoch_0",
+            "C_epoch_0"
+          ],
+          [
+            "P_epoch_0",
+            "C_epoch_2"
+          ],
+          [
+            "P_x_0",
+            "C_x_0"
+          ],
+          [
+            "P_x_0",
+            "C_x_2"
+          ],
+          [
+            "P_y_0",
+            "C_y_0"
+          ],
+          [
+            "P_y_0",
+            "C_y_2"
+          ],
+          [
+            "P_epoch_1",
+            "C_epoch_1"
+          ],
+          [
+            "P_epoch_1",
+            "C_epoch_3"
+          ],
+          [
+            "P_x_1",
+            "C_x_1"
+          ],
+          [
+            "P_x_1",
+            "C_x_3"
+          ],
+          [
+            "P_y_1",
+            "C_y_1"
+          ],
+          [
+            "P_y_1",
+            "C_y_3"
+          ],
+          [
+            "P_epoch_2",
+            "C_epoch_2"
+          ],
+          [
+            "P_x_2",
+            "C_x_2"
+          ],
+          [
+            "P_y_2",
+            "C_y_2"
+          ],
+          [
+            "P_epoch_3",
+            "C_epoch_3"
+          ],
+          [
+            "P_x_3",
+            "C_x_3"
+          ],
+          [
+            "P_y_3",
+            "C_y_3"
+          ]
+        ],
+        "wrong_values": [],
+        "reads_from": {
+          "C_acquire_P_for_0": "P_publish_0",
+          "C_acquire_P_for_1": "P_publish_1",
+          "C_acquire_P_for_2": "P_publish_2",
+          "C_acquire_P_for_3": "P_publish_3",
+          "P_acquire_C_for_2": "C_reclaim_0",
+          "P_acquire_C_for_3": "C_reclaim_1"
+        },
+        "synchronizes_with": [
+          [
+            "C_reclaim_0",
+            "P_acquire_C_for_2"
+          ],
+          [
+            "C_reclaim_1",
+            "P_acquire_C_for_3"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "spsc_ra_fragment",
+      "capacity": 2,
+      "messages": 4,
+      "publication": "release",
+      "reclamation": "relaxed",
+      "candidates": 288,
+      "consistent": 18,
+      "violating": 18,
+      "status": "FAIL_WITNESS",
+      "events": [
+        {
+          "name": "init_P",
+          "thread": -1,
+          "loc": "P",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_C",
+          "thread": -1,
+          "loc": "C",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_epoch_0",
+          "thread": -1,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_x_0",
+          "thread": -1,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_y_0",
+          "thread": -1,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_epoch_1",
+          "thread": -1,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_x_1",
+          "thread": -1,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_y_1",
+          "thread": -1,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_0",
+          "thread": 0,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_x_0",
+          "thread": 0,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_y_0",
+          "thread": 0,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_publish_0",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_epoch_1",
+          "thread": 0,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_x_1",
+          "thread": 0,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_y_1",
+          "thread": 0,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_publish_1",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_acquire_C_for_2",
+          "thread": 0,
+          "loc": "C",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_2",
+          "thread": 0,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_x_2",
+          "thread": 0,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_y_2",
+          "thread": 0,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_publish_2",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_acquire_C_for_3",
+          "thread": 0,
+          "loc": "C",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_3",
+          "thread": 0,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_x_3",
+          "thread": 0,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_y_3",
+          "thread": 0,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_publish_3",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_acquire_P_for_0",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_0",
+          "thread": 1,
+          "loc": "epoch0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_x_0",
+          "thread": 1,
+          "loc": "x0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_y_0",
+          "thread": 1,
+          "loc": "y0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_reclaim_0",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_acquire_P_for_1",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_1",
+          "thread": 1,
+          "loc": "epoch1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_x_1",
+          "thread": 1,
+          "loc": "x1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_y_1",
+          "thread": 1,
+          "loc": "y1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_reclaim_1",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_acquire_P_for_2",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_2",
+          "thread": 1,
+          "loc": "epoch0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_x_2",
+          "thread": 1,
+          "loc": "x0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_y_2",
+          "thread": 1,
+          "loc": "y0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_reclaim_2",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_acquire_P_for_3",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_3",
+          "thread": 1,
+          "loc": "epoch1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_x_3",
+          "thread": 1,
+          "loc": "x1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_y_3",
+          "thread": 1,
+          "loc": "y1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_reclaim_3",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 4,
+          "message": 3
+        }
+      ],
+      "witness": {
+        "races": [
+          [
+            "P_epoch_2",
+            "C_epoch_0"
+          ],
+          [
+            "P_x_2",
+            "C_x_0"
+          ],
+          [
+            "P_y_2",
+            "C_y_0"
+          ],
+          [
+            "P_epoch_3",
+            "C_epoch_1"
+          ],
+          [
+            "P_x_3",
+            "C_x_1"
+          ],
+          [
+            "P_y_3",
+            "C_y_1"
+          ]
+        ],
+        "wrong_values": [],
+        "reads_from": {
+          "C_acquire_P_for_0": "P_publish_0",
+          "C_acquire_P_for_1": "P_publish_1",
+          "C_acquire_P_for_2": "P_publish_2",
+          "C_acquire_P_for_3": "P_publish_3",
+          "P_acquire_C_for_2": "C_reclaim_0",
+          "P_acquire_C_for_3": "C_reclaim_1"
+        },
+        "synchronizes_with": [
+          [
+            "P_publish_0",
+            "C_acquire_P_for_0"
+          ],
+          [
+            "P_publish_1",
+            "C_acquire_P_for_1"
+          ],
+          [
+            "P_publish_2",
+            "C_acquire_P_for_2"
+          ],
+          [
+            "P_publish_3",
+            "C_acquire_P_for_3"
+          ]
+        ]
+      }
+    },
+    {
+      "name": "spsc_ra_fragment",
+      "capacity": 2,
+      "messages": 5,
+      "publication": "release",
+      "reclamation": "release",
+      "candidates": 7200,
+      "consistent": 54,
+      "violating": 0,
+      "status": "PASS_WITHIN_SCOPE",
+      "events": [
+        {
+          "name": "init_P",
+          "thread": -1,
+          "loc": "P",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_C",
+          "thread": -1,
+          "loc": "C",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_epoch_0",
+          "thread": -1,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_x_0",
+          "thread": -1,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_y_0",
+          "thread": -1,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_epoch_1",
+          "thread": -1,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_x_1",
+          "thread": -1,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_y_1",
+          "thread": -1,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_0",
+          "thread": 0,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_x_0",
+          "thread": 0,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_y_0",
+          "thread": 0,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_publish_0",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "P_epoch_1",
+          "thread": 0,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_x_1",
+          "thread": 0,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_y_1",
+          "thread": 0,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_publish_1",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "P_acquire_C_for_2",
+          "thread": 0,
+          "loc": "C",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_2",
+          "thread": 0,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_x_2",
+          "thread": 0,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_y_2",
+          "thread": 0,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_publish_2",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "P_acquire_C_for_3",
+          "thread": 0,
+          "loc": "C",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_3",
+          "thread": 0,
+          "loc": "epoch1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_x_3",
+          "thread": 0,
+          "loc": "x1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_y_3",
+          "thread": 0,
+          "loc": "y1",
+          "kind": "W",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_publish_3",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "P_acquire_C_for_4",
+          "thread": 0,
+          "loc": "C",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch_4",
+          "thread": 0,
+          "loc": "epoch0",
+          "kind": "W",
+          "order": "plain",
+          "value": 5,
+          "message": 4
+        },
+        {
+          "name": "P_x_4",
+          "thread": 0,
+          "loc": "x0",
+          "kind": "W",
+          "order": "plain",
+          "value": 5,
+          "message": 4
+        },
+        {
+          "name": "P_y_4",
+          "thread": 0,
+          "loc": "y0",
+          "kind": "W",
+          "order": "plain",
+          "value": 5,
+          "message": 4
+        },
+        {
+          "name": "P_publish_4",
+          "thread": 0,
+          "loc": "P",
+          "kind": "W",
+          "order": "release",
+          "value": 5,
+          "message": 4
+        },
+        {
+          "name": "C_acquire_P_for_0",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_0",
+          "thread": 1,
+          "loc": "epoch0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_x_0",
+          "thread": 1,
+          "loc": "x0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_y_0",
+          "thread": 1,
+          "loc": "y0",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_reclaim_0",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 1,
+          "message": 0
+        },
+        {
+          "name": "C_acquire_P_for_1",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_1",
+          "thread": 1,
+          "loc": "epoch1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_x_1",
+          "thread": 1,
+          "loc": "x1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_y_1",
+          "thread": 1,
+          "loc": "y1",
+          "kind": "R",
+          "order": "plain",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_reclaim_1",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 2,
+          "message": 1
+        },
+        {
+          "name": "C_acquire_P_for_2",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_2",
+          "thread": 1,
+          "loc": "epoch0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_x_2",
+          "thread": 1,
+          "loc": "x0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_y_2",
+          "thread": 1,
+          "loc": "y0",
+          "kind": "R",
+          "order": "plain",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_reclaim_2",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 3,
+          "message": 2
+        },
+        {
+          "name": "C_acquire_P_for_3",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_3",
+          "thread": 1,
+          "loc": "epoch1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_x_3",
+          "thread": 1,
+          "loc": "x1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_y_3",
+          "thread": 1,
+          "loc": "y1",
+          "kind": "R",
+          "order": "plain",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_reclaim_3",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 4,
+          "message": 3
+        },
+        {
+          "name": "C_acquire_P_for_4",
+          "thread": 1,
+          "loc": "P",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_4",
+          "thread": 1,
+          "loc": "epoch0",
+          "kind": "R",
+          "order": "plain",
+          "value": 5,
+          "message": 4
+        },
+        {
+          "name": "C_x_4",
+          "thread": 1,
+          "loc": "x0",
+          "kind": "R",
+          "order": "plain",
+          "value": 5,
+          "message": 4
+        },
+        {
+          "name": "C_y_4",
+          "thread": 1,
+          "loc": "y0",
+          "kind": "R",
+          "order": "plain",
+          "value": 5,
+          "message": 4
+        },
+        {
+          "name": "C_reclaim_4",
+          "thread": 1,
+          "loc": "C",
+          "kind": "W",
+          "order": "release",
+          "value": 5,
+          "message": 4
+        }
+      ],
+      "witness": null
+    },
+    {
+      "name": "ncq_first_ready_handoff_fragment",
+      "entry_store": "seq_cst",
+      "entry_load": "seq_cst",
+      "candidates": 1,
+      "consistent": 1,
+      "status": "PASS_WITHIN_SCOPE",
+      "events": [
+        {
+          "name": "init_entry",
+          "thread": -1,
+          "loc": "entry",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_status",
+          "thread": -1,
+          "loc": "status",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_epoch",
+          "thread": -1,
+          "loc": "epoch",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_payload",
+          "thread": -1,
+          "loc": "payload",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch",
+          "thread": 0,
+          "loc": "epoch",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": -1
+        },
+        {
+          "name": "P_payload",
+          "thread": 0,
+          "loc": "payload",
+          "kind": "W",
+          "order": "plain",
+          "value": 7,
+          "message": -1
+        },
+        {
+          "name": "P_COMMITTED",
+          "thread": 0,
+          "loc": "status",
+          "kind": "W",
+          "order": "release",
+          "value": 6,
+          "message": -1
+        },
+        {
+          "name": "P_entry_install",
+          "thread": 0,
+          "loc": "entry",
+          "kind": "W",
+          "order": "seq_cst",
+          "value": 2,
+          "message": -1
+        },
+        {
+          "name": "C_entry_observe",
+          "thread": 1,
+          "loc": "entry",
+          "kind": "R",
+          "order": "seq_cst",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_BEFORE_status",
+          "thread": 1,
+          "loc": "epoch",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": -1
+        },
+        {
+          "name": "C_status_validate",
+          "thread": 1,
+          "loc": "status",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_payload",
+          "thread": 1,
+          "loc": "payload",
+          "kind": "R",
+          "order": "plain",
+          "value": 7,
+          "message": -1
+        }
+      ],
+      "witness": null,
+      "conclusion": "later status acquire cannot retroactively order the earlier ordinary epoch read"
+    },
+    {
+      "name": "ncq_first_ready_handoff_fragment",
+      "entry_store": "relaxed",
+      "entry_load": "seq_cst",
+      "candidates": 1,
+      "consistent": 1,
+      "status": "FAIL_WITNESS",
+      "events": [
+        {
+          "name": "init_entry",
+          "thread": -1,
+          "loc": "entry",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_status",
+          "thread": -1,
+          "loc": "status",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_epoch",
+          "thread": -1,
+          "loc": "epoch",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_payload",
+          "thread": -1,
+          "loc": "payload",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch",
+          "thread": 0,
+          "loc": "epoch",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": -1
+        },
+        {
+          "name": "P_payload",
+          "thread": 0,
+          "loc": "payload",
+          "kind": "W",
+          "order": "plain",
+          "value": 7,
+          "message": -1
+        },
+        {
+          "name": "P_COMMITTED",
+          "thread": 0,
+          "loc": "status",
+          "kind": "W",
+          "order": "release",
+          "value": 6,
+          "message": -1
+        },
+        {
+          "name": "P_entry_install",
+          "thread": 0,
+          "loc": "entry",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 2,
+          "message": -1
+        },
+        {
+          "name": "C_entry_observe",
+          "thread": 1,
+          "loc": "entry",
+          "kind": "R",
+          "order": "seq_cst",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_BEFORE_status",
+          "thread": 1,
+          "loc": "epoch",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": -1
+        },
+        {
+          "name": "C_status_validate",
+          "thread": 1,
+          "loc": "status",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_payload",
+          "thread": 1,
+          "loc": "payload",
+          "kind": "R",
+          "order": "plain",
+          "value": 7,
+          "message": -1
+        }
+      ],
+      "witness": {
+        "races": [
+          [
+            "P_epoch",
+            "C_epoch_BEFORE_status"
+          ]
+        ],
+        "wrong_values": [],
+        "reads_from": {
+          "C_entry_observe": "P_entry_install",
+          "C_status_validate": "P_COMMITTED"
+        },
+        "synchronizes_with": [
+          [
+            "P_COMMITTED",
+            "C_status_validate"
+          ]
+        ]
+      },
+      "conclusion": "later status acquire cannot retroactively order the earlier ordinary epoch read"
+    },
+    {
+      "name": "ncq_first_ready_handoff_fragment",
+      "entry_store": "seq_cst",
+      "entry_load": "relaxed",
+      "candidates": 1,
+      "consistent": 1,
+      "status": "FAIL_WITNESS",
+      "events": [
+        {
+          "name": "init_entry",
+          "thread": -1,
+          "loc": "entry",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_status",
+          "thread": -1,
+          "loc": "status",
+          "kind": "W",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_epoch",
+          "thread": -1,
+          "loc": "epoch",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "init_payload",
+          "thread": -1,
+          "loc": "payload",
+          "kind": "W",
+          "order": "plain",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "P_epoch",
+          "thread": 0,
+          "loc": "epoch",
+          "kind": "W",
+          "order": "plain",
+          "value": 1,
+          "message": -1
+        },
+        {
+          "name": "P_payload",
+          "thread": 0,
+          "loc": "payload",
+          "kind": "W",
+          "order": "plain",
+          "value": 7,
+          "message": -1
+        },
+        {
+          "name": "P_COMMITTED",
+          "thread": 0,
+          "loc": "status",
+          "kind": "W",
+          "order": "release",
+          "value": 6,
+          "message": -1
+        },
+        {
+          "name": "P_entry_install",
+          "thread": 0,
+          "loc": "entry",
+          "kind": "W",
+          "order": "seq_cst",
+          "value": 2,
+          "message": -1
+        },
+        {
+          "name": "C_entry_observe",
+          "thread": 1,
+          "loc": "entry",
+          "kind": "R",
+          "order": "relaxed",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_epoch_BEFORE_status",
+          "thread": 1,
+          "loc": "epoch",
+          "kind": "R",
+          "order": "plain",
+          "value": 1,
+          "message": -1
+        },
+        {
+          "name": "C_status_validate",
+          "thread": 1,
+          "loc": "status",
+          "kind": "R",
+          "order": "acquire",
+          "value": 0,
+          "message": -1
+        },
+        {
+          "name": "C_payload",
+          "thread": 1,
+          "loc": "payload",
+          "kind": "R",
+          "order": "plain",
+          "value": 7,
+          "message": -1
+        }
+      ],
+      "witness": {
+        "races": [
+          [
+            "P_epoch",
+            "C_epoch_BEFORE_status"
+          ]
+        ],
+        "wrong_values": [],
+        "reads_from": {
+          "C_entry_observe": "P_entry_install",
+          "C_status_validate": "P_COMMITTED"
+        },
+        "synchronizes_with": [
+          [
+            "P_COMMITTED",
+            "C_status_validate"
+          ]
+        ]
+      },
+      "conclusion": "later status acquire cannot retroactively order the earlier ordinary epoch read"
+    },
+    {
+      "name": "strong_CAS_single_location_modification_order",
+      "status": "PASS_WITHIN_SCOPE",
+      "orders": [
+        "seq_cst",
+        "relaxed"
+      ],
+      "histories": [
+        {
+          "order": "seq_cst",
+          "history": [
+            {
+              "actor": 0,
+              "expected": 0,
+              "observed": 0,
+              "success": true
+            },
+            {
+              "actor": 1,
+              "expected": 0,
+              "observed": 1,
+              "success": false
+            }
+          ],
+          "final_head": 1
+        },
+        {
+          "order": "seq_cst",
+          "history": [
+            {
+              "actor": 1,
+              "expected": 0,
+              "observed": 0,
+              "success": true
+            },
+            {
+              "actor": 0,
+              "expected": 0,
+              "observed": 1,
+              "success": false
+            }
+          ],
+          "final_head": 1
+        },
+        {
+          "order": "relaxed",
+          "history": [
+            {
+              "actor": 0,
+              "expected": 0,
+              "observed": 0,
+              "success": true
+            },
+            {
+              "actor": 1,
+              "expected": 0,
+              "observed": 1,
+              "success": false
+            }
+          ],
+          "final_head": 1
+        },
+        {
+          "order": "relaxed",
+          "history": [
+            {
+              "actor": 1,
+              "expected": 0,
+              "observed": 0,
+              "success": true
+            },
+            {
+              "actor": 0,
+              "expected": 0,
+              "observed": 1,
+              "success": false
+            }
+          ],
+          "final_head": 1
+        }
+      ],
+      "conclusion": "relaxed CAS is still indivisible; two stale expected=0 claims cannot both succeed without wrap/reset"
+    }
+  ]
+}

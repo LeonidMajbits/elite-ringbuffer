@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Adversarial verification tests, including rehashed semantic mutations.
 
-The freshly executed Turn17 source-bound campaign is the fixture.
-The original Turn13 receipts remain unchanged; changing a reviewed source binding
+The freshly executed signal-include maintenance campaign is the fixture.
+The original Turn13 and Turn17 receipts remain unchanged; changing a reviewed source binding
 requires a new run rather than weakening the source-identity oracle. Rehashing is deliberate: a verifier
 must reject invalid interpretations even when ordinary file integrity is valid.
 No upstream evidence is modified.
@@ -18,7 +18,7 @@ class ReceiptTests(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
         self.out=Path(self.tmp.name)/'campaign'
-        shutil.copytree(ROOT/'evidence/turn17/formal_admitted',self.out)
+        shutil.copytree(ROOT/'evidence/maintenance_signal_include/formal_admitted',self.out)
     def change(self,name,fn):
         p=self.out/name;r=json.loads(p.read_text());fn(r);p.write_text(json.dumps(r,indent=2)+'\n')
         execution=self.out/'execution.json'

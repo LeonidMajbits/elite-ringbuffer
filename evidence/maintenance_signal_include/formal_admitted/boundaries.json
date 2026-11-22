@@ -1,0 +1,1565 @@
+{
+  "schema": "elite-formal-boundaries-v1",
+  "bounds": {
+    "status": "PASS_WITHIN_SCOPE",
+    "scalar_checks": 577491,
+    "domains": "ticket widths 3..10; all admitted t and block encodings; native U64 boundary fixtures",
+    "theorem": "guard t < J implies t+1 <= J < 2**w; no repeated cursor value before retirement",
+    "status_domain": "6 total bits -> epoch ceiling 14; native epoch ceiling 2**62-2"
+  },
+  "wrap_mutant": {
+    "status": "FAIL_WITNESS",
+    "mutation": "allow represented head wrap; suppress session retirement",
+    "abstraction": "single head-CAS identity domain; not a full 260-lifecycle queue exploration",
+    "width": 8,
+    "capacity": 4,
+    "ceiling": 251,
+    "saved_expected": 4,
+    "competing_advances": 260,
+    "at_256": {
+      "current_representation": 4,
+      "logical_ticket": 260,
+      "stale_CAS_comparison_would_match": true
+    },
+    "baseline": {
+      "status": "RETIRE_BEFORE_REPEAT",
+      "allowed_advances": 247,
+      "stops_at": 251
+    },
+    "steps": [
+      {
+        "logical_claim": 4,
+        "expected": 4,
+        "desired": 5
+      },
+      {
+        "logical_claim": 5,
+        "expected": 5,
+        "desired": 6
+      },
+      {
+        "logical_claim": 6,
+        "expected": 6,
+        "desired": 7
+      },
+      {
+        "logical_claim": 7,
+        "expected": 7,
+        "desired": 8
+      },
+      {
+        "logical_claim": 8,
+        "expected": 8,
+        "desired": 9
+      },
+      {
+        "logical_claim": 9,
+        "expected": 9,
+        "desired": 10
+      },
+      {
+        "logical_claim": 10,
+        "expected": 10,
+        "desired": 11
+      },
+      {
+        "logical_claim": 11,
+        "expected": 11,
+        "desired": 12
+      },
+      {
+        "logical_claim": 12,
+        "expected": 12,
+        "desired": 13
+      },
+      {
+        "logical_claim": 13,
+        "expected": 13,
+        "desired": 14
+      },
+      {
+        "logical_claim": 14,
+        "expected": 14,
+        "desired": 15
+      },
+      {
+        "logical_claim": 15,
+        "expected": 15,
+        "desired": 16
+      },
+      {
+        "logical_claim": 16,
+        "expected": 16,
+        "desired": 17
+      },
+      {
+        "logical_claim": 17,
+        "expected": 17,
+        "desired": 18
+      },
+      {
+        "logical_claim": 18,
+        "expected": 18,
+        "desired": 19
+      },
+      {
+        "logical_claim": 19,
+        "expected": 19,
+        "desired": 20
+      },
+      {
+        "logical_claim": 20,
+        "expected": 20,
+        "desired": 21
+      },
+      {
+        "logical_claim": 21,
+        "expected": 21,
+        "desired": 22
+      },
+      {
+        "logical_claim": 22,
+        "expected": 22,
+        "desired": 23
+      },
+      {
+        "logical_claim": 23,
+        "expected": 23,
+        "desired": 24
+      },
+      {
+        "logical_claim": 24,
+        "expected": 24,
+        "desired": 25
+      },
+      {
+        "logical_claim": 25,
+        "expected": 25,
+        "desired": 26
+      },
+      {
+        "logical_claim": 26,
+        "expected": 26,
+        "desired": 27
+      },
+      {
+        "logical_claim": 27,
+        "expected": 27,
+        "desired": 28
+      },
+      {
+        "logical_claim": 28,
+        "expected": 28,
+        "desired": 29
+      },
+      {
+        "logical_claim": 29,
+        "expected": 29,
+        "desired": 30
+      },
+      {
+        "logical_claim": 30,
+        "expected": 30,
+        "desired": 31
+      },
+      {
+        "logical_claim": 31,
+        "expected": 31,
+        "desired": 32
+      },
+      {
+        "logical_claim": 32,
+        "expected": 32,
+        "desired": 33
+      },
+      {
+        "logical_claim": 33,
+        "expected": 33,
+        "desired": 34
+      },
+      {
+        "logical_claim": 34,
+        "expected": 34,
+        "desired": 35
+      },
+      {
+        "logical_claim": 35,
+        "expected": 35,
+        "desired": 36
+      },
+      {
+        "logical_claim": 36,
+        "expected": 36,
+        "desired": 37
+      },
+      {
+        "logical_claim": 37,
+        "expected": 37,
+        "desired": 38
+      },
+      {
+        "logical_claim": 38,
+        "expected": 38,
+        "desired": 39
+      },
+      {
+        "logical_claim": 39,
+        "expected": 39,
+        "desired": 40
+      },
+      {
+        "logical_claim": 40,
+        "expected": 40,
+        "desired": 41
+      },
+      {
+        "logical_claim": 41,
+        "expected": 41,
+        "desired": 42
+      },
+      {
+        "logical_claim": 42,
+        "expected": 42,
+        "desired": 43
+      },
+      {
+        "logical_claim": 43,
+        "expected": 43,
+        "desired": 44
+      },
+      {
+        "logical_claim": 44,
+        "expected": 44,
+        "desired": 45
+      },
+      {
+        "logical_claim": 45,
+        "expected": 45,
+        "desired": 46
+      },
+      {
+        "logical_claim": 46,
+        "expected": 46,
+        "desired": 47
+      },
+      {
+        "logical_claim": 47,
+        "expected": 47,
+        "desired": 48
+      },
+      {
+        "logical_claim": 48,
+        "expected": 48,
+        "desired": 49
+      },
+      {
+        "logical_claim": 49,
+        "expected": 49,
+        "desired": 50
+      },
+      {
+        "logical_claim": 50,
+        "expected": 50,
+        "desired": 51
+      },
+      {
+        "logical_claim": 51,
+        "expected": 51,
+        "desired": 52
+      },
+      {
+        "logical_claim": 52,
+        "expected": 52,
+        "desired": 53
+      },
+      {
+        "logical_claim": 53,
+        "expected": 53,
+        "desired": 54
+      },
+      {
+        "logical_claim": 54,
+        "expected": 54,
+        "desired": 55
+      },
+      {
+        "logical_claim": 55,
+        "expected": 55,
+        "desired": 56
+      },
+      {
+        "logical_claim": 56,
+        "expected": 56,
+        "desired": 57
+      },
+      {
+        "logical_claim": 57,
+        "expected": 57,
+        "desired": 58
+      },
+      {
+        "logical_claim": 58,
+        "expected": 58,
+        "desired": 59
+      },
+      {
+        "logical_claim": 59,
+        "expected": 59,
+        "desired": 60
+      },
+      {
+        "logical_claim": 60,
+        "expected": 60,
+        "desired": 61
+      },
+      {
+        "logical_claim": 61,
+        "expected": 61,
+        "desired": 62
+      },
+      {
+        "logical_claim": 62,
+        "expected": 62,
+        "desired": 63
+      },
+      {
+        "logical_claim": 63,
+        "expected": 63,
+        "desired": 64
+      },
+      {
+        "logical_claim": 64,
+        "expected": 64,
+        "desired": 65
+      },
+      {
+        "logical_claim": 65,
+        "expected": 65,
+        "desired": 66
+      },
+      {
+        "logical_claim": 66,
+        "expected": 66,
+        "desired": 67
+      },
+      {
+        "logical_claim": 67,
+        "expected": 67,
+        "desired": 68
+      },
+      {
+        "logical_claim": 68,
+        "expected": 68,
+        "desired": 69
+      },
+      {
+        "logical_claim": 69,
+        "expected": 69,
+        "desired": 70
+      },
+      {
+        "logical_claim": 70,
+        "expected": 70,
+        "desired": 71
+      },
+      {
+        "logical_claim": 71,
+        "expected": 71,
+        "desired": 72
+      },
+      {
+        "logical_claim": 72,
+        "expected": 72,
+        "desired": 73
+      },
+      {
+        "logical_claim": 73,
+        "expected": 73,
+        "desired": 74
+      },
+      {
+        "logical_claim": 74,
+        "expected": 74,
+        "desired": 75
+      },
+      {
+        "logical_claim": 75,
+        "expected": 75,
+        "desired": 76
+      },
+      {
+        "logical_claim": 76,
+        "expected": 76,
+        "desired": 77
+      },
+      {
+        "logical_claim": 77,
+        "expected": 77,
+        "desired": 78
+      },
+      {
+        "logical_claim": 78,
+        "expected": 78,
+        "desired": 79
+      },
+      {
+        "logical_claim": 79,
+        "expected": 79,
+        "desired": 80
+      },
+      {
+        "logical_claim": 80,
+        "expected": 80,
+        "desired": 81
+      },
+      {
+        "logical_claim": 81,
+        "expected": 81,
+        "desired": 82
+      },
+      {
+        "logical_claim": 82,
+        "expected": 82,
+        "desired": 83
+      },
+      {
+        "logical_claim": 83,
+        "expected": 83,
+        "desired": 84
+      },
+      {
+        "logical_claim": 84,
+        "expected": 84,
+        "desired": 85
+      },
+      {
+        "logical_claim": 85,
+        "expected": 85,
+        "desired": 86
+      },
+      {
+        "logical_claim": 86,
+        "expected": 86,
+        "desired": 87
+      },
+      {
+        "logical_claim": 87,
+        "expected": 87,
+        "desired": 88
+      },
+      {
+        "logical_claim": 88,
+        "expected": 88,
+        "desired": 89
+      },
+      {
+        "logical_claim": 89,
+        "expected": 89,
+        "desired": 90
+      },
+      {
+        "logical_claim": 90,
+        "expected": 90,
+        "desired": 91
+      },
+      {
+        "logical_claim": 91,
+        "expected": 91,
+        "desired": 92
+      },
+      {
+        "logical_claim": 92,
+        "expected": 92,
+        "desired": 93
+      },
+      {
+        "logical_claim": 93,
+        "expected": 93,
+        "desired": 94
+      },
+      {
+        "logical_claim": 94,
+        "expected": 94,
+        "desired": 95
+      },
+      {
+        "logical_claim": 95,
+        "expected": 95,
+        "desired": 96
+      },
+      {
+        "logical_claim": 96,
+        "expected": 96,
+        "desired": 97
+      },
+      {
+        "logical_claim": 97,
+        "expected": 97,
+        "desired": 98
+      },
+      {
+        "logical_claim": 98,
+        "expected": 98,
+        "desired": 99
+      },
+      {
+        "logical_claim": 99,
+        "expected": 99,
+        "desired": 100
+      },
+      {
+        "logical_claim": 100,
+        "expected": 100,
+        "desired": 101
+      },
+      {
+        "logical_claim": 101,
+        "expected": 101,
+        "desired": 102
+      },
+      {
+        "logical_claim": 102,
+        "expected": 102,
+        "desired": 103
+      },
+      {
+        "logical_claim": 103,
+        "expected": 103,
+        "desired": 104
+      },
+      {
+        "logical_claim": 104,
+        "expected": 104,
+        "desired": 105
+      },
+      {
+        "logical_claim": 105,
+        "expected": 105,
+        "desired": 106
+      },
+      {
+        "logical_claim": 106,
+        "expected": 106,
+        "desired": 107
+      },
+      {
+        "logical_claim": 107,
+        "expected": 107,
+        "desired": 108
+      },
+      {
+        "logical_claim": 108,
+        "expected": 108,
+        "desired": 109
+      },
+      {
+        "logical_claim": 109,
+        "expected": 109,
+        "desired": 110
+      },
+      {
+        "logical_claim": 110,
+        "expected": 110,
+        "desired": 111
+      },
+      {
+        "logical_claim": 111,
+        "expected": 111,
+        "desired": 112
+      },
+      {
+        "logical_claim": 112,
+        "expected": 112,
+        "desired": 113
+      },
+      {
+        "logical_claim": 113,
+        "expected": 113,
+        "desired": 114
+      },
+      {
+        "logical_claim": 114,
+        "expected": 114,
+        "desired": 115
+      },
+      {
+        "logical_claim": 115,
+        "expected": 115,
+        "desired": 116
+      },
+      {
+        "logical_claim": 116,
+        "expected": 116,
+        "desired": 117
+      },
+      {
+        "logical_claim": 117,
+        "expected": 117,
+        "desired": 118
+      },
+      {
+        "logical_claim": 118,
+        "expected": 118,
+        "desired": 119
+      },
+      {
+        "logical_claim": 119,
+        "expected": 119,
+        "desired": 120
+      },
+      {
+        "logical_claim": 120,
+        "expected": 120,
+        "desired": 121
+      },
+      {
+        "logical_claim": 121,
+        "expected": 121,
+        "desired": 122
+      },
+      {
+        "logical_claim": 122,
+        "expected": 122,
+        "desired": 123
+      },
+      {
+        "logical_claim": 123,
+        "expected": 123,
+        "desired": 124
+      },
+      {
+        "logical_claim": 124,
+        "expected": 124,
+        "desired": 125
+      },
+      {
+        "logical_claim": 125,
+        "expected": 125,
+        "desired": 126
+      },
+      {
+        "logical_claim": 126,
+        "expected": 126,
+        "desired": 127
+      },
+      {
+        "logical_claim": 127,
+        "expected": 127,
+        "desired": 128
+      },
+      {
+        "logical_claim": 128,
+        "expected": 128,
+        "desired": 129
+      },
+      {
+        "logical_claim": 129,
+        "expected": 129,
+        "desired": 130
+      },
+      {
+        "logical_claim": 130,
+        "expected": 130,
+        "desired": 131
+      },
+      {
+        "logical_claim": 131,
+        "expected": 131,
+        "desired": 132
+      },
+      {
+        "logical_claim": 132,
+        "expected": 132,
+        "desired": 133
+      },
+      {
+        "logical_claim": 133,
+        "expected": 133,
+        "desired": 134
+      },
+      {
+        "logical_claim": 134,
+        "expected": 134,
+        "desired": 135
+      },
+      {
+        "logical_claim": 135,
+        "expected": 135,
+        "desired": 136
+      },
+      {
+        "logical_claim": 136,
+        "expected": 136,
+        "desired": 137
+      },
+      {
+        "logical_claim": 137,
+        "expected": 137,
+        "desired": 138
+      },
+      {
+        "logical_claim": 138,
+        "expected": 138,
+        "desired": 139
+      },
+      {
+        "logical_claim": 139,
+        "expected": 139,
+        "desired": 140
+      },
+      {
+        "logical_claim": 140,
+        "expected": 140,
+        "desired": 141
+      },
+      {
+        "logical_claim": 141,
+        "expected": 141,
+        "desired": 142
+      },
+      {
+        "logical_claim": 142,
+        "expected": 142,
+        "desired": 143
+      },
+      {
+        "logical_claim": 143,
+        "expected": 143,
+        "desired": 144
+      },
+      {
+        "logical_claim": 144,
+        "expected": 144,
+        "desired": 145
+      },
+      {
+        "logical_claim": 145,
+        "expected": 145,
+        "desired": 146
+      },
+      {
+        "logical_claim": 146,
+        "expected": 146,
+        "desired": 147
+      },
+      {
+        "logical_claim": 147,
+        "expected": 147,
+        "desired": 148
+      },
+      {
+        "logical_claim": 148,
+        "expected": 148,
+        "desired": 149
+      },
+      {
+        "logical_claim": 149,
+        "expected": 149,
+        "desired": 150
+      },
+      {
+        "logical_claim": 150,
+        "expected": 150,
+        "desired": 151
+      },
+      {
+        "logical_claim": 151,
+        "expected": 151,
+        "desired": 152
+      },
+      {
+        "logical_claim": 152,
+        "expected": 152,
+        "desired": 153
+      },
+      {
+        "logical_claim": 153,
+        "expected": 153,
+        "desired": 154
+      },
+      {
+        "logical_claim": 154,
+        "expected": 154,
+        "desired": 155
+      },
+      {
+        "logical_claim": 155,
+        "expected": 155,
+        "desired": 156
+      },
+      {
+        "logical_claim": 156,
+        "expected": 156,
+        "desired": 157
+      },
+      {
+        "logical_claim": 157,
+        "expected": 157,
+        "desired": 158
+      },
+      {
+        "logical_claim": 158,
+        "expected": 158,
+        "desired": 159
+      },
+      {
+        "logical_claim": 159,
+        "expected": 159,
+        "desired": 160
+      },
+      {
+        "logical_claim": 160,
+        "expected": 160,
+        "desired": 161
+      },
+      {
+        "logical_claim": 161,
+        "expected": 161,
+        "desired": 162
+      },
+      {
+        "logical_claim": 162,
+        "expected": 162,
+        "desired": 163
+      },
+      {
+        "logical_claim": 163,
+        "expected": 163,
+        "desired": 164
+      },
+      {
+        "logical_claim": 164,
+        "expected": 164,
+        "desired": 165
+      },
+      {
+        "logical_claim": 165,
+        "expected": 165,
+        "desired": 166
+      },
+      {
+        "logical_claim": 166,
+        "expected": 166,
+        "desired": 167
+      },
+      {
+        "logical_claim": 167,
+        "expected": 167,
+        "desired": 168
+      },
+      {
+        "logical_claim": 168,
+        "expected": 168,
+        "desired": 169
+      },
+      {
+        "logical_claim": 169,
+        "expected": 169,
+        "desired": 170
+      },
+      {
+        "logical_claim": 170,
+        "expected": 170,
+        "desired": 171
+      },
+      {
+        "logical_claim": 171,
+        "expected": 171,
+        "desired": 172
+      },
+      {
+        "logical_claim": 172,
+        "expected": 172,
+        "desired": 173
+      },
+      {
+        "logical_claim": 173,
+        "expected": 173,
+        "desired": 174
+      },
+      {
+        "logical_claim": 174,
+        "expected": 174,
+        "desired": 175
+      },
+      {
+        "logical_claim": 175,
+        "expected": 175,
+        "desired": 176
+      },
+      {
+        "logical_claim": 176,
+        "expected": 176,
+        "desired": 177
+      },
+      {
+        "logical_claim": 177,
+        "expected": 177,
+        "desired": 178
+      },
+      {
+        "logical_claim": 178,
+        "expected": 178,
+        "desired": 179
+      },
+      {
+        "logical_claim": 179,
+        "expected": 179,
+        "desired": 180
+      },
+      {
+        "logical_claim": 180,
+        "expected": 180,
+        "desired": 181
+      },
+      {
+        "logical_claim": 181,
+        "expected": 181,
+        "desired": 182
+      },
+      {
+        "logical_claim": 182,
+        "expected": 182,
+        "desired": 183
+      },
+      {
+        "logical_claim": 183,
+        "expected": 183,
+        "desired": 184
+      },
+      {
+        "logical_claim": 184,
+        "expected": 184,
+        "desired": 185
+      },
+      {
+        "logical_claim": 185,
+        "expected": 185,
+        "desired": 186
+      },
+      {
+        "logical_claim": 186,
+        "expected": 186,
+        "desired": 187
+      },
+      {
+        "logical_claim": 187,
+        "expected": 187,
+        "desired": 188
+      },
+      {
+        "logical_claim": 188,
+        "expected": 188,
+        "desired": 189
+      },
+      {
+        "logical_claim": 189,
+        "expected": 189,
+        "desired": 190
+      },
+      {
+        "logical_claim": 190,
+        "expected": 190,
+        "desired": 191
+      },
+      {
+        "logical_claim": 191,
+        "expected": 191,
+        "desired": 192
+      },
+      {
+        "logical_claim": 192,
+        "expected": 192,
+        "desired": 193
+      },
+      {
+        "logical_claim": 193,
+        "expected": 193,
+        "desired": 194
+      },
+      {
+        "logical_claim": 194,
+        "expected": 194,
+        "desired": 195
+      },
+      {
+        "logical_claim": 195,
+        "expected": 195,
+        "desired": 196
+      },
+      {
+        "logical_claim": 196,
+        "expected": 196,
+        "desired": 197
+      },
+      {
+        "logical_claim": 197,
+        "expected": 197,
+        "desired": 198
+      },
+      {
+        "logical_claim": 198,
+        "expected": 198,
+        "desired": 199
+      },
+      {
+        "logical_claim": 199,
+        "expected": 199,
+        "desired": 200
+      },
+      {
+        "logical_claim": 200,
+        "expected": 200,
+        "desired": 201
+      },
+      {
+        "logical_claim": 201,
+        "expected": 201,
+        "desired": 202
+      },
+      {
+        "logical_claim": 202,
+        "expected": 202,
+        "desired": 203
+      },
+      {
+        "logical_claim": 203,
+        "expected": 203,
+        "desired": 204
+      },
+      {
+        "logical_claim": 204,
+        "expected": 204,
+        "desired": 205
+      },
+      {
+        "logical_claim": 205,
+        "expected": 205,
+        "desired": 206
+      },
+      {
+        "logical_claim": 206,
+        "expected": 206,
+        "desired": 207
+      },
+      {
+        "logical_claim": 207,
+        "expected": 207,
+        "desired": 208
+      },
+      {
+        "logical_claim": 208,
+        "expected": 208,
+        "desired": 209
+      },
+      {
+        "logical_claim": 209,
+        "expected": 209,
+        "desired": 210
+      },
+      {
+        "logical_claim": 210,
+        "expected": 210,
+        "desired": 211
+      },
+      {
+        "logical_claim": 211,
+        "expected": 211,
+        "desired": 212
+      },
+      {
+        "logical_claim": 212,
+        "expected": 212,
+        "desired": 213
+      },
+      {
+        "logical_claim": 213,
+        "expected": 213,
+        "desired": 214
+      },
+      {
+        "logical_claim": 214,
+        "expected": 214,
+        "desired": 215
+      },
+      {
+        "logical_claim": 215,
+        "expected": 215,
+        "desired": 216
+      },
+      {
+        "logical_claim": 216,
+        "expected": 216,
+        "desired": 217
+      },
+      {
+        "logical_claim": 217,
+        "expected": 217,
+        "desired": 218
+      },
+      {
+        "logical_claim": 218,
+        "expected": 218,
+        "desired": 219
+      },
+      {
+        "logical_claim": 219,
+        "expected": 219,
+        "desired": 220
+      },
+      {
+        "logical_claim": 220,
+        "expected": 220,
+        "desired": 221
+      },
+      {
+        "logical_claim": 221,
+        "expected": 221,
+        "desired": 222
+      },
+      {
+        "logical_claim": 222,
+        "expected": 222,
+        "desired": 223
+      },
+      {
+        "logical_claim": 223,
+        "expected": 223,
+        "desired": 224
+      },
+      {
+        "logical_claim": 224,
+        "expected": 224,
+        "desired": 225
+      },
+      {
+        "logical_claim": 225,
+        "expected": 225,
+        "desired": 226
+      },
+      {
+        "logical_claim": 226,
+        "expected": 226,
+        "desired": 227
+      },
+      {
+        "logical_claim": 227,
+        "expected": 227,
+        "desired": 228
+      },
+      {
+        "logical_claim": 228,
+        "expected": 228,
+        "desired": 229
+      },
+      {
+        "logical_claim": 229,
+        "expected": 229,
+        "desired": 230
+      },
+      {
+        "logical_claim": 230,
+        "expected": 230,
+        "desired": 231
+      },
+      {
+        "logical_claim": 231,
+        "expected": 231,
+        "desired": 232
+      },
+      {
+        "logical_claim": 232,
+        "expected": 232,
+        "desired": 233
+      },
+      {
+        "logical_claim": 233,
+        "expected": 233,
+        "desired": 234
+      },
+      {
+        "logical_claim": 234,
+        "expected": 234,
+        "desired": 235
+      },
+      {
+        "logical_claim": 235,
+        "expected": 235,
+        "desired": 236
+      },
+      {
+        "logical_claim": 236,
+        "expected": 236,
+        "desired": 237
+      },
+      {
+        "logical_claim": 237,
+        "expected": 237,
+        "desired": 238
+      },
+      {
+        "logical_claim": 238,
+        "expected": 238,
+        "desired": 239
+      },
+      {
+        "logical_claim": 239,
+        "expected": 239,
+        "desired": 240
+      },
+      {
+        "logical_claim": 240,
+        "expected": 240,
+        "desired": 241
+      },
+      {
+        "logical_claim": 241,
+        "expected": 241,
+        "desired": 242
+      },
+      {
+        "logical_claim": 242,
+        "expected": 242,
+        "desired": 243
+      },
+      {
+        "logical_claim": 243,
+        "expected": 243,
+        "desired": 244
+      },
+      {
+        "logical_claim": 244,
+        "expected": 244,
+        "desired": 245
+      },
+      {
+        "logical_claim": 245,
+        "expected": 245,
+        "desired": 246
+      },
+      {
+        "logical_claim": 246,
+        "expected": 246,
+        "desired": 247
+      },
+      {
+        "logical_claim": 247,
+        "expected": 247,
+        "desired": 248
+      },
+      {
+        "logical_claim": 248,
+        "expected": 248,
+        "desired": 249
+      },
+      {
+        "logical_claim": 249,
+        "expected": 249,
+        "desired": 250
+      },
+      {
+        "logical_claim": 250,
+        "expected": 250,
+        "desired": 251
+      },
+      {
+        "logical_claim": 251,
+        "expected": 251,
+        "desired": 252
+      },
+      {
+        "logical_claim": 252,
+        "expected": 252,
+        "desired": 253
+      },
+      {
+        "logical_claim": 253,
+        "expected": 253,
+        "desired": 254
+      },
+      {
+        "logical_claim": 254,
+        "expected": 254,
+        "desired": 255
+      },
+      {
+        "logical_claim": 255,
+        "expected": 255,
+        "desired": 0
+      },
+      {
+        "logical_claim": 256,
+        "expected": 0,
+        "desired": 1
+      },
+      {
+        "logical_claim": 257,
+        "expected": 1,
+        "desired": 2
+      },
+      {
+        "logical_claim": 258,
+        "expected": 2,
+        "desired": 3
+      },
+      {
+        "logical_claim": 259,
+        "expected": 3,
+        "desired": 4
+      },
+      {
+        "logical_claim": 260,
+        "expected": 4,
+        "desired": 5
+      },
+      {
+        "logical_claim": 261,
+        "expected": 5,
+        "desired": 6
+      },
+      {
+        "logical_claim": 262,
+        "expected": 6,
+        "desired": 7
+      },
+      {
+        "logical_claim": 263,
+        "expected": 7,
+        "desired": 8
+      }
+    ]
+  },
+  "starvation": {
+    "status": "COUNTEREXAMPLE_TO_INDIVIDUAL_WAIT_FREEDOM",
+    "model": "unbounded-ticket symbolic schedule; finite-width production eventually retires",
+    "loop": [
+      {
+        "actor": "victim",
+        "action": "load fresh expected h"
+      },
+      {
+        "actor": "peer",
+        "action": "claim h -> h+1; complete"
+      },
+      {
+        "actor": "victim",
+        "action": "CAS(h,h+1) fails; discard old observations"
+      }
+    ],
+    "scheduler": "both actors take infinitely many steps in symbolic model",
+    "global_progress": true,
+    "individual_success": false,
+    "conclusion": "no per-caller retry bound; finite generation ceiling is not a successful-return deadline"
+  },
+  "admission_gate": {
+    "status": "PASS_WITHIN_SCOPE",
+    "schedules": 6,
+    "traces": [
+      [
+        {
+          "action": "A_read",
+          "success": null,
+          "gate": [
+            "READY",
+            0
+          ]
+        },
+        {
+          "action": "A_CAS",
+          "success": true,
+          "gate": [
+            "READY",
+            1
+          ]
+        },
+        {
+          "action": "R_read",
+          "success": null,
+          "gate": [
+            "READY",
+            1
+          ]
+        },
+        {
+          "action": "R_CAS",
+          "success": true,
+          "gate": [
+            "RETIRE",
+            1
+          ]
+        }
+      ],
+      [
+        {
+          "action": "A_read",
+          "success": null,
+          "gate": [
+            "READY",
+            0
+          ]
+        },
+        {
+          "action": "R_read",
+          "success": null,
+          "gate": [
+            "READY",
+            0
+          ]
+        },
+        {
+          "action": "A_CAS",
+          "success": true,
+          "gate": [
+            "READY",
+            1
+          ]
+        },
+        {
+          "action": "R_CAS",
+          "success": false,
+          "gate": [
+            "READY",
+            1
+          ]
+        }
+      ],
+      [
+        {
+          "action": "A_read",
+          "success": null,
+          "gate": [
+            "READY",
+            0
+          ]
+        },
+        {
+          "action": "R_read",
+          "success": null,
+          "gate": [
+            "READY",
+            0
+          ]
+        },
+        {
+          "action": "R_CAS",
+          "success": true,
+          "gate": [
+            "RETIRE",
+            0
+          ]
+        },
+        {
+          "action": "A_CAS",
+          "success": false,
+          "gate": [
+            "RETIRE",
+            0
+          ]
+        }
+      ],
+      [
+        {
+          "action": "R_read",
+          "success": null,
+          "gate": [
+            "READY",
+            0
+          ]
+        },
+        {
+          "action": "A_read",
+          "success": null,
+          "gate": [
+            "READY",
+            0
+          ]
+        },
+        {
+          "action": "A_CAS",
+          "success": true,
+          "gate": [
+            "READY",
+            1
+          ]
+        },
+        {
+          "action": "R_CAS",
+          "success": false,
+          "gate": [
+            "READY",
+            1
+          ]
+        }
+      ],
+      [
+        {
+          "action": "R_read",
+          "success": null,
+          "gate": [
+            "READY",
+            0
+          ]
+        },
+        {
+          "action": "A_read",
+          "success": null,
+          "gate": [
+            "READY",
+            0
+          ]
+        },
+        {
+          "action": "R_CAS",
+          "success": true,
+          "gate": [
+            "RETIRE",
+            0
+          ]
+        },
+        {
+          "action": "A_CAS",
+          "success": false,
+          "gate": [
+            "RETIRE",
+            0
+          ]
+        }
+      ],
+      [
+        {
+          "action": "R_read",
+          "success": null,
+          "gate": [
+            "READY",
+            0
+          ]
+        },
+        {
+          "action": "R_CAS",
+          "success": true,
+          "gate": [
+            "RETIRE",
+            0
+          ]
+        },
+        {
+          "action": "A_read",
+          "success": null,
+          "gate": [
+            "RETIRE",
+            0
+          ]
+        },
+        {
+          "action": "A_CAS",
+          "success": false,
+          "gate": [
+            "RETIRE",
+            0
+          ]
+        }
+      ]
+    ],
+    "scope": "one enrollment CAS vs one retirement CAS, not the entire lifecycle authority"
+  }
+}

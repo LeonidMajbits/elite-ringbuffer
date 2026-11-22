@@ -1,11 +1,11 @@
 # Turn 7 benchmark extension
 
-Start with [`docs/BENCHMARKS.md`](docs/BENCHMARKS.md) for native RTT, validated
+Start with [`docs/BENCHMARKS.md`](../../docs/BENCHMARKS.md) for native RTT, validated
 goodput, raw evidence replay and separate cache/counter diagnostics.
 The Turn 6 core below is preserved except for the credited Darwin creation-mode
 fix in `src/elite_shm.c`. Earlier reports/evidence remain historical records.
 
-# ELITEIPC — LE128-V1 C11 implementation
+# ELITEIPC :  LE128-V1 C11 implementation
 
 Turn 6 implementation of the frozen SPSC and publish-first NCQ-SC64 protocols.
 The native library has no third-party dependencies. It uses C11, POSIX shared

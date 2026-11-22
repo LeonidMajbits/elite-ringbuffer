@@ -1,4 +1,4 @@
-# Turn 14 — Owned-process chaos and managed recovery verification
+# Turn 14 :  Owned-process chaos and managed recovery verification
 
 The queue, shared ABI, and hardened Python bindings remain **ELITEIPC 1.0.1 / LE128-V1**.
 This extension adds real spawned-process fault histories, monotonic control-plane
@@ -19,14 +19,14 @@ stays a failure/incomplete record; no child is reclaimed from heartbeat age alon
 A safe old generation can contain unavailable orphaned tokens or pending committed
 messages until whole-object disposal. Those are reported, not silently called delivered.
 
-Read [CHAOS_RECOVERY.md](docs/CHAOS_RECOVERY.md) and the
-[Turn 14 report](14_Turn_14_Chaos_and_Crash_Recovery_Report.md) for exact coverage,
+Read [CHAOS_RECOVERY.md](../../docs/CHAOS_RECOVERY.md) and the
+[Turn 14 report](../../14_Turn_14_Chaos_and_Crash_Recovery_Report.md) for exact coverage,
 source identity, commands, and exclusions. Historical sections below keep their
 original evidence scope; a bounded native pass is not an all-execution proof.
 
 ---
 
-# Turn 13 — Lane V1 formal verification extension
+# Turn 13 :  Lane V1 formal verification extension
 
 This tree retains ELITEIPC 1.0.1 and LE128-V1 unchanged. It adds executable
 finite data-plane models, a separate release/acquire handoff-graph checker,
@@ -46,8 +46,8 @@ An extended search that reaches a resource cap returns INCOMPLETE rather than PA
 Strong relaxed CAS remains atomic; the mutation suite separates missing ordering
 from broken compare/exchange and stale-retry logic.
 
-Read [FORMAL_VERIFICATION.md](docs/FORMAL_VERIFICATION.md) and
-[the Turn 13 report](13_Turn_13_Formal_Verification_Report.md) for exact bounds,
+Read [FORMAL_VERIFICATION.md](../../docs/FORMAL_VERIFICATION.md) and
+[the Turn 13 report](../../13_Turn_13_Formal_Verification_Report.md) for exact bounds,
 proof assumptions and the optional, unexecuted Spin/GenMC inputs.
 Historical release and measurement text below keeps its original evidence scope.
 
@@ -65,10 +65,10 @@ framework, payload socket/pipe, background daemon, or third-party native library
 is required. Optional Python support needs matching CPython development headers;
 the native library does not depend on Python.
 
-Start with [the integration runbook](docs/INTEGRATION.md),
-[the Python API](bindings/python/README.md), and
-[the hardening report](10_Turn_10_Hardened_Release_Candidate_Report.md).
-[The native API](docs/API.md) and [native benchmark guide](docs/BENCHMARKS.md)
+Start with [the integration runbook](../../docs/INTEGRATION.md),
+[the Python API](../../bindings/python/README.md), and
+[the hardening report](../../10_Turn_10_Hardened_Release_Candidate_Report.md).
+[The native API](../../docs/API.md) and [native benchmark guide](../../docs/BENCHMARKS.md)
 retain the detailed ownership and measurement contracts.
 
 ## Topology-aware evidence (Turn 12)
@@ -77,8 +77,8 @@ The optional measurement tools discover OS-visible CPU/cache/NUMA and resource
 boundaries, then predeclare an eight-axis **contrast matrix**, not an exhaustive
 Cartesian qualification. Results retain raw offer/entry/read/release times,
 exact membership and final token snapshots. Unsupported placement is explicit.
-See [hardware claim boundaries](docs/HARDWARE_BOUNDS.md) and
-[matrix execution/replay](docs/MATRIX_VERIFICATION.md).
+See [hardware claim boundaries](../../docs/HARDWARE_BOUNDS.md) and
+[matrix execution/replay](../../docs/MATRIX_VERIFICATION.md).
 
 ```sh
 make CC=clang BUILD=build/matrix benchmarks libraries python check-topology check-matrix
@@ -189,7 +189,7 @@ reports and evidence remain named as such. The archive includes no compiled
 libraries, executables, proprietary SDK, sanitizer runtime, or the multi-GB Turn7
 raw dataset. It retains that dataset's existing identity and summary records.
 
-Algorithmic attribution is in [NOTICE.md](NOTICE.md); the existing [MIT license](LICENSE) is unchanged.
+Algorithmic attribution is in [NOTICE.md](../../NOTICE.md); the existing [MIT license](../../LICENSE) is unchanged.
 
 ## What 1.0.1 hardens
 

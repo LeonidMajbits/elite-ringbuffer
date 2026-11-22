@@ -25,10 +25,10 @@ jobs:
           - {lane: tsan, cc: gcc, os: ubuntu-22.04}
           - {lane: valgrind, cc: gcc, os: ubuntu-24.04}
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.13'
       - name: Development tools (not native runtime dependencies)
@@ -43,7 +43,7 @@ jobs:
         run: mandoc -Tlint -Werror man/elite_ringbuffer.3 man/eliteipc.7
       - name: Preserve logs, including failed lanes
         if: always()
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: ubuntu-${{ matrix.lane }}-${{ matrix.cc }}-${{ github.run_attempt }}
           path: build/ci-evidence
@@ -54,10 +54,10 @@ jobs:
     runs-on: macos-15
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v6.0.0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.13'
       - name: Require native Apple Silicon, not Rosetta
@@ -78,7 +78,7 @@ jobs:
           brew install --build-from-source eliteipc/ci/elite-ringbuffer
           brew test eliteipc/ci/elite-ringbuffer
       - if: always()
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: macos-arm64-${{ github.run_attempt }}
           path: build/ci-evidence
@@ -89,7 +89,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: FreeBSD guest; experimental target admission
@@ -109,10 +109,10 @@ jobs:
             set -eu
             uname -a
             freebsd-version
-            python3.13 ci/run_lane.py --lane freebsd --cc cc --out build/ci-evidence
+            python3.13 ci/run_lane.py --lane freebsd --cc cc --out build/ci-evidence || { cat build/ci-evidence/*.log || true; exit 1; }
             mandoc -Tlint -Werror man/elite_ringbuffer.3 man/eliteipc.7
       - if: always()
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: freebsd-14.4-${{ github.run_attempt }}
           path: build/ci-evidence
